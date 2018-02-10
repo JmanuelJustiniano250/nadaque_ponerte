@@ -1,0 +1,141 @@
+<?php
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+
+$this->registerCssFile('@web/assets_b/web/css/easy-responsive-tabs.css', ['media' => 'screen', '']);
+$this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' => \app\assets_b\AppAsset::class, 'position' => \yii\web\View::POS_END]);
+
+echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configuracion::find()->one()]);
+?>
+
+<div id="mainbody">
+
+    <h1 class="text-center">Carrito</h1>
+    <div class="row top-spacing4 bottom-spacing3">
+
+        <div class="col-md-7 col-lg-6 col-lg-offset-1">
+
+            <?php \yii\widgets\Pjax::begin() ?>
+
+
+            <div class="table-responsive carw">
+
+                <table class="table table-hover table-condensed text-cener">
+                    <thead>
+                    <tr>
+                        <td class="pad20">
+                            <div align="center"><strong>Producto</strong></div>
+                        </td>
+                        <td class="pad20">
+                            <div align="center"><strong>Descripcion</strong></div>
+                        </td>
+                        <td class="pad20">
+                            <div align="center"><strong>Cantidad</strong></div>
+                        </td>
+                        <td class="pad20">
+                            <div align="center"><strong>Precio (Bs.)</strong></div>
+                        </td>
+
+                        <td class="pad20">
+                            <div align="center"></div>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach (Yii::$app->cart->positions as $item):
+                        ?>
+                        <tr>
+                            <td align="center" class="pad20"><?= $item['nombre'] ?></td>
+                            <td align="center" class="pad20"><?= $item['descripcion'] ?></td>
+                            <td align="center" class="pad20"><?= $item->quantity ?></td>
+                            <td align="center" class="pad20"><?= $item->precio ?></td>
+
+                            <td align="center" class="pad20"><a
+                                        href="<?= \yii\helpers\Url::to(['remove', 'id' => $item->id]) ?>"
+                                        class="btn btn-sm btn-danger"><i class="fa fa-trash fa-lg"></i></a></td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col-md-5 col-lg-4 col-xs-11 padlew" style="padding-left: 40px;">
+
+
+        <div class="panel panel-default carw">
+
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <strong>Cantidad Articulos</strong>
+                    <div class="pull-right">
+                        <span>
+                <?= Yii::$app->cart->getCount() ?>
+
+                         </span>
+                    </div>
+                    <hr>
+                </div>
+
+
+                <div class="col-md-12">
+                    <strong>Monto total</strong>
+                    <div class="pull-right"><span>Bs. </span><span><?= Yii::$app->cart->getCost() ?> </span></div>
+                    <hr>
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <div class="" role="group" aria-label="...">
+
+                        <?php
+                        if (empty(Yii::$app->session->get('user'))) {
+                            echo Html::a('REALIZAR PAGO', Url::to(['site/login']), ['class' => 'btn enviarsus btnpag', 'data-target' => '#squarespaceModal']);
+                        } else {
+                            echo Html::a('REALIZAR PAGO', Url::to(['pasos', 'pasos' => '1']), ['class' => 'btn enviarsus btnpag']);
+                        }
+                        ?>
+                    </div>
+                    <br>
+                    <a href="<?= Url::to(Yii::$app->request->referrer); ?>" class="cea"><span style="font-size: 1.5em;"><i
+                                    class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;
+                    </span> Continuar comprando </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <?php \yii\widgets\Pjax::end() ?>
+
+
+    </div>
+
+
+</div>
+</div>
+
+
+<?php
+$script = <<<JS
+   $('#ChildVerticalTab_1').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true,
+            tabidentify: 'ver_1', // The tab groups identifier
+            activetab_bg: '#fff', // background color for active tabs in this group
+            inactive_bg: '#fff', // background color for inactive tabs in this group
+            //active_border_color: '#c1c1c1', // border color for active tabs heads in this group
+           // active_content_border_color: '#5AB1D0' // border color for active tabs contect in this group so that it matches the tab head border
+        });
+JS;
+$this->registerJs($script, \yii\web\View::POS_READY); ?>

@@ -1,0 +1,17 @@
+[10-Jan-2018 04:50:55 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/views/layouts/main.php on line 130
+[10-Jan-2018 04:51:32 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/views/layouts/main.php on line 130
+[10-Jan-2018 20:09:44 America/Chicago] PHP Fatal error:  Class 'yii2mod\alert\Alert' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/views/layouts/main.php on line 360
+[10-Jan-2018 20:22:00 America/Chicago] PHP Fatal error:  Class 'yii2mod\alert\Alert' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/views/layouts/main.php on line 360
+[12-Jan-2018 13:30:31 America/Chicago] PHP Fatal error:  Call to a member function formName() on null in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/vendor/yiisoft/yii2/helpers/BaseHtml.php on line 2089
+[15-Jan-2018 09:10:44 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[15-Jan-2018 09:11:02 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[15-Jan-2018 15:43:01 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 08:52:04 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 08:52:10 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 08:53:04 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 08:57:34 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 09:04:54 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 09:09:12 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 09:09:16 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 09:11:04 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56
+[17-Jan-2018 09:14:42 America/Chicago] PHP Fatal error:  Class 'yii2tech\crontab\CronTab' not found in /home1/marca/dev.marcaymercado.com/nada_que_ponerte/controllers/SiteController.php on line 56

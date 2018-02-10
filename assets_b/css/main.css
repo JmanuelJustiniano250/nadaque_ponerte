@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.titulo1{
+    font-family: "Raleway";
+    font-size: 11px;
+}
+.plomo-1t{
+    color: #444 !important;
+    padding: 5px 15px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    padding-bottom: 0;
+}
+.plomo-1t:hover, .plomo-1t:focus,.plomo-1t:active{
+    color: #444;
+}
+
+.plomo-1t > li > a{
+
+    color: #444!important;
+    font-size: 13px!important;
+    font-family: 'Raleway', sans-serif;
+    font-weight:400!important;
+    text-transform: none!important;
+}
+
+.plomo-1t > li > a:hover, .plomo-1t > li > a:focus, .plomo-1t > li > a:active {
+
+    color: #ff5a96!important;
+    font-weight: 600!important;
+
+    background-color: transparent!important;
+}
+
+.padding-title > li > a{
+    padding: 0px 5px !important;
+}
+
+
+
+.v-hr{
+
+    border:         none;
+    border-left:    1px solid #eee;
+    height:         100%;
+    width:          1px;
+}
+.hr {
+
+    background: url("../images/adorno.png") center no-repeat;
+    background-size: contain;
+    /*height: 1px;
+    width: 100vh;*/
+}
