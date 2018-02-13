@@ -4,9 +4,12 @@ namespace app\modules\admin\controllers;
 
 use app\components\Funcions;
 use app\models\Categoria;
+use app\models\Ciudad;
+use app\models\ColoresProductos;
 use app\models\Filtros;
 use app\models\FiltrosSearch;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -57,12 +60,21 @@ class FiltrosController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new FiltrosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $tablas = array();
+        array_push($tablas, [
+            'data'=>new ActiveDataProvider(['query' => Ciudad::find()]),
+            'titulo'=>'Ciudad',
+            'model'=>new Ciudad(),
+        ]);
+        array_push($tablas, [
+            'data'=>new ActiveDataProvider(['query' => ColoresProductos::find()]),
+            'titulo'=>'Colores',
+            'model'=>new ColoresProductos(),
+        ]);
+
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'tablas' => $tablas,
         ]);
     }
 
@@ -85,16 +97,17 @@ class FiltrosController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Filtros();
 
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->save())
-                return $this->redirect(['index']);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        $modelc = new Ciudad();
+        $modelcp = new ColoresProductos();
+
+        if ($modelc->load(Yii::$app->request->post())) {
+            $modelc->save();
         }
+        if ($modelcp->load(Yii::$app->request->post())) {
+            $modelcp->save();
+        }
+        return $this->redirect(['index']);
     }
 
     /**

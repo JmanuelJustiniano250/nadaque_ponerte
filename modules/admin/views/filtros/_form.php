@@ -12,26 +12,15 @@ use yii\helpers\Html;
 
     <?php $form = ActiveForm::begin([
         'action' => ['create'],
-        'type' => ActiveForm::TYPE_HORIZONTAL,
-        'formConfig' => ['labelSpan' => 3, 'deviceSize' => ActiveForm::SIZE_MEDIUM],
+        'type' => ActiveForm::TYPE_INLINE,
+        'formConfig' => ['deviceSize' => ActiveForm::SIZE_TINY],
     ]); ?>
 
 
     <div class="form-group">
-        <div class="col-md-4">
+            <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-md-4">
-            <?php // Top most parent
-            echo $form->field($model, 'idPadre')->widget(\kartik\widgets\Select2::classname(), [
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Filtros::findAll(['estado' => '1', 'idPadre' => null]), 'idfiltro', 'nombre'),
-                'language' => 'es',
-                'options' => ['placeholder' => 'Filtros'],
-            ]); ?>
-        </div>
-        <div class="col-md-4">
-            <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        </div>
+            <?= Html::submitButton(\rmrevin\yii\fontawesome\FA::icon(\rmrevin\yii\fontawesome\FA::_PLUS), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
 

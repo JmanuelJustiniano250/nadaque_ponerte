@@ -32,78 +32,42 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                 <div class="box">
 
                     <div class="box-header">
-                        <?= $this->render('_form', ['model' => new \app\models\Filtros()]); ?>
+                        <?php //= $this->render('_form', ['model' => new \app\models\Filtros()]); ?>
 
                     </div>
 
                     <div class="box-body ">
                         <?php Pjax::begin(['id' => 'table']); ?>
-                        <div class="table-responsive">
-                            <?= GridView::widget([
-                                'dataProvider' => $dataProvider,
-                                'filterModel' => $searchModel,
-                                'columns' => [
-                                    ['class' => 'yii\grid\SerialColumn'],
-                                    'nombre',
-                                    [
-                                        'header' => 'Filtros Padre',
-                                        'filter' => \kartik\widgets\Select2::widget([
-                                            'model' => $searchModel,
-                                            'attribute' => 'idPadre',
-                                            'data' => \yii\helpers\ArrayHelper::map(\app\models\Filtros::findAll(['estado' => '1', 'idPadre' => null]), 'idfiltro', 'nombre'),
-                                            'options' => ['placeholder' => 'Filtros Padre'],
-                                            'pluginOptions' => [
-                                                'allowClear' => true
+                        <?php foreach ($tablas as $item): ?>
+                            <div class="col-sm-6 col-md-4">
+                                <h2><?= $item['titulo']?></h2>
+                                <?= $this->render('_form', ['model' => $item['model']]); ?>
+                                <div class="table-responsive">
+                                    <?= GridView::widget([
+                                        'dataProvider' => $item['data'],
+                                        'columns' => [
+                                            ['class' => 'yii\grid\SerialColumn'],
+                                            'nombre',
+                                            'value',
+
+                                            [
+                                                'class' => 'yii\grid\ActionColumn',
+                                                'header' => '',
+                                                'template' => '<div class="btn-group" role="group">{delete}</div>',
+                                                'buttons' => [
+                                                    'delete' => function ($url, $model, $key) {
+                                                        return Html::a('<i class="fa fa-trash"></i>', $url, ['class' => 'btn btn-danger', 'data' => [
+                                                            'confirm' => 'Esta seguro?.'
+                                                        ], "title" => "Eliminar"]);
+                                                    },
+
+                                                ],
                                             ],
-                                        ]),
-                                        'value' => function ($model) {
-                                            if (!empty($model->padre))
-                                                return $model->padre['nombre'];
-                                            return '';
-                                        },
-                                    ],
-                                    //'idcategoria',
-                                    //'descripcion:ntext',
-                                    //'imagen',
-                                    // 'link1',
-                                    // 'link2',
-                                    // 'imagen3',
-                                    // 'idpadre',
-
-                                    // 'modulo',
-                                    // 'estado',
-
-                                    [
-                                        'class' => 'yii\grid\ActionColumn',
-                                        'header' => 'Estado',
-                                        'template' => '<div class="btn-group" role="group">{estado}{delete}</div>',
-                                        'buttons' => [
-                                            'estado' => function ($url, $model, $key) {
-                                                switch ($model->estado) {
-                                                    case '1':
-                                                        $model->estado = 'success';
-                                                        break;
-                                                    case '2':
-                                                        $model->estado = 'warning';
-                                                        break;
-                                                    default:
-                                                        $model->estado = 'default';
-                                                        break;
-                                                }
-                                                return Html::a('<i class="toggle fa fa-eye"></i>', "#", ['class' => 'btn btn-' . $model->estado, 'onclick' => "action('{$url}'); return false;", "title" => "Visible"]);
-                                            },
-                                            'delete' => function ($url, $model, $key) {
-
-                                                return Html::a('<i class="fa fa-trash"></i>', $url, ['class' => 'btn btn-danger', 'data' => [
-                                                    'confirm' => 'Esta seguro?.'
-                                                ], "title" => "Eliminar"]);
-                                            },
-
                                         ],
-                                    ],
-                                ],
-                            ]); ?>
-                        </div>
+                                    ]); ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                         <?php Pjax::end(); ?>
                     </div>
                 </div>
