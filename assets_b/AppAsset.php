@@ -44,7 +44,7 @@ class AppAsset extends AssetBundle
         'js/owl.carousel.min.js',
         'js/jquery.magnific-popup.min.js',
         'js/jquery.bxslider.min.js',
-       // 'js/jquery.appear.js',
+        // 'js/jquery.appear.js',
         //'js/jquery.stellar.min.js',
         //'js/bootstrap.js',
         // 'js/jquery.imagesloaded.min.js',

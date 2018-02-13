@@ -1,14 +1,8 @@
 <?php
 
-use yii\grid\GridView;
-use yii\helpers\Html;
-use yii\widgets\Pjax;
-
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AnunciosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-
 
 
 $script = <<<CSS
@@ -29,7 +23,6 @@ $this->registerCss($script);
 
 
 ?>
-
 
 
 <div class="anuncios-index">
@@ -74,12 +67,8 @@ $this->registerCss($script);
     </ul>
 
 
-
-
-
     <div class="tab-content">
         <div class="tab-pane active" id="trendy">
-
 
 
             <?= $this->render('paquetes'); ?>
@@ -93,15 +82,11 @@ $this->registerCss($script);
         </div>
 
 
-
-
         <div class="tab-pane" id="development">
             <?= $this->render('vigentes'); ?>
 
 
         </div>
-
-
 
 
         <div class="tab-pane" id="support">

@@ -4,6 +4,7 @@ use dosamigos\ckeditor\CKEditor;
 use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 $user = Yii::$app->session->get('user');
 ?>
 
@@ -17,7 +18,7 @@ $user = Yii::$app->session->get('user');
         <div class="col-md-6">
 
 
-            <?php $form->field($model, 'idusuario')->hiddenInput(['value'=> $user['idusuario']])->label(false); ?>
+            <?php $form->field($model, 'idusuario')->hiddenInput(['value' => $user['idusuario']])->label(false); ?>
 
 
             <?= $form->field($model, 'idcategoria')->widget(Select2::classname(), [

@@ -11,7 +11,6 @@ use yii\widgets\Pjax;
 ?>
 
 
-
 <div class="anuncios-index">
 
     <h1>Mis productos</h1>

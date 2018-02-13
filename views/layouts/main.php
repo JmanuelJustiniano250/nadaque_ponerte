@@ -47,7 +47,7 @@ $model = New \app\models\SuscribeForm();
         $items = [];
         $user = Yii::$app->session->get('user');
         if (!empty($user)) {
-            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] . ' ' , 'url' => ['/site/deseos/'],
+            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] . ' ', 'url' => ['/site/deseos/'],
                 'items' => [
                     ['label' => FA::icon(FA::_USER) . ' Mi cuenta', 'url' => ['/cuenta/principal']],
                     ['label' => FA::icon(FA::_SIGN_OUT) . ' Salir', 'url' => ['/site/logout/']],

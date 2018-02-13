@@ -14,6 +14,8 @@ use yii\helpers\Html;
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -37,7 +39,7 @@ use yii\helpers\Html;
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
             <!-- Navbar Right Menu -->
@@ -124,7 +126,7 @@ use yii\helpers\Html;
                     //["label" => "Videos", "url" => ['videos/index'], "icon" => "video-camera"],
                     //["label" => "Usuarios", "url" => ['usuarios/index'], "icon" => "user"],
                 ],*/
-                'options' => ['class' => 'sidebar-menu']
+                'options' => ['class' => 'sidebar-menu', 'data-widget' => "tree"]
             ])
             ?>
         </section>

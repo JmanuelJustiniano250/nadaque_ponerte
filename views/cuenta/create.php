@@ -13,10 +13,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="anuncios-create">
     <div class="container">
 
-    <h1><?= Html::encode($this->title) ?></h1> <br>
+        <h1><?= Html::encode($this->title) ?></h1> <br>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+        <?= $this->render('_form', [
+            'model' => $model,
+        ]) ?>
     </div>
 </div>

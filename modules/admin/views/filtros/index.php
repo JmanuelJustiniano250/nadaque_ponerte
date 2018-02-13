@@ -76,7 +76,7 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                                     [
                                         'class' => 'yii\grid\ActionColumn',
                                         'header' => 'Estado',
-                                        'template' => '<div class="btn-group btn-group-justified" role="group">{estado}{delete}</div>',
+                                        'template' => '<div class="btn-group" role="group">{estado}{delete}</div>',
                                         'buttons' => [
                                             'estado' => function ($url, $model, $key) {
                                                 switch ($model->estado) {
@@ -100,7 +100,6 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                                             },
 
                                         ],
-                                        'contentOptions' => ['class' => 'col-sm-1']
                                     ],
                                 ],
                             ]); ?>

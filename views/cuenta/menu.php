@@ -8,8 +8,6 @@
 use kartik\sidenav\SideNav;
 
 
-
-
 $script = <<<CSS
 
 .nav-stacked > li + li {
@@ -59,8 +57,6 @@ $script = <<<CSS
 
 CSS;
 $this->registerCss($script);
-
-
 
 
 $this->params['breadcrumbs'][] = $this->title;

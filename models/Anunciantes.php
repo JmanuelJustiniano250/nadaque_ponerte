@@ -35,7 +35,7 @@ class Anunciantes extends \yii\db\ActiveRecord
     {
         return [
             [['fecha_registro'], 'safe'],
-            [['estado','idusuario'], 'integer'],
+            [['estado', 'idusuario'], 'integer'],
             [['descripcion'], 'string'],
             [['foto', 'email'], 'string', 'max' => 250],
             [['alias', 'direccion'], 'string', 'max' => 100],
@@ -64,9 +64,10 @@ class Anunciantes extends \yii\db\ActiveRecord
             'idusuario' => 'Usuario',
         ];
     }
+
     //
     public function getUsuario()
     {
-        return $this->hasOne(Usuarios::className(),['idusuario'=>'idusuario']);
+        return $this->hasOne(Usuarios::className(), ['idusuario' => 'idusuario']);
     }
 }

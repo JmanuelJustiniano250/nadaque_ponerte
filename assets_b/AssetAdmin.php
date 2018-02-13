@@ -16,7 +16,7 @@ class AssetAdmin extends \yii\web\AssetBundle
         'plugins/iCheck/square/blue.css'
     ];
     public $js = [
-        'dist/js/app.min.js',
+        'dist/js/adminlte.min.js',
         'plugins/iCheck/icheck.min.js'
     ];
     public $depends = [

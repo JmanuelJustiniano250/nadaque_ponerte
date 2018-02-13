@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use himiklab\thumbnail\EasyThumbnailImage;
 
 
 /* @var $this yii\web\View */
@@ -9,10 +9,6 @@ use yii\helpers\Html;
 $this->title = 'Crear Anuncios';
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-
-use himiklab\thumbnail\EasyThumbnailImage;
-use rmrevin\yii\fontawesome\FA;
 
 
 ?>

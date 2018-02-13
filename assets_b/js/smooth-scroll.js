@@ -3,86 +3,86 @@
 
 var $ = jQuery.noConflict();
 
-$(document).ready(function($) {
-	"use strict";
+$(document).ready(function ($) {
+    "use strict";
 
-	/*-------------------------------------------------*/
-	/* =   Smooth scroll
-	/*-------------------------------------------------*/
+    /*-------------------------------------------------*/
+    /* =   Smooth scroll
+    /*-------------------------------------------------*/
 
-	$('#container').imagesLoaded(function(){
-		//Get Sections top position
-		function getTargetTop(elem){
-			
-			//gets the id of the section header
-			//from the navigation's href e.g. ("#html")
-			var id = elem.attr("href");
+    $('#container').imagesLoaded(function () {
+        //Get Sections top position
+        function getTargetTop(elem) {
 
-			//Height of the navigation
-			var offset = 67;
+            //gets the id of the section header
+            //from the navigation's href e.g. ("#html")
+            var id = elem.attr("href");
 
-			//Gets the distance from the top and 
-			//subtracts the height of the nav.
-			return $(id).offset().top - offset;
-		}
+            //Height of the navigation
+            var offset = 67;
 
-		//Smooth scroll when user click link that starts with #
+            //Gets the distance from the top and 
+            //subtracts the height of the nav.
+            return $(id).offset().top - offset;
+        }
 
-		var elemHref = $('.navbar-right a[href^="#"]');
+        //Smooth scroll when user click link that starts with #
 
-		elemHref.click(function(event) {
-			
-			//gets the distance from the top of the 
-			//section refenced in the href.
-			var target = getTargetTop($(this));
+        var elemHref = $('.navbar-right a[href^="#"]');
 
-			//scrolls to that section.
-			$('html, body').animate({scrollTop:target}, 500);
+        elemHref.click(function (event) {
 
-			//prevent the browser from jumping down to section.
-			event.preventDefault();
-		});
+            //gets the distance from the top of the 
+            //section refenced in the href.
+            var target = getTargetTop($(this));
 
-		//Pulling sections from main nav.
-		var sections = $('.navbar-right a[href^="#"]');
+            //scrolls to that section.
+            $('html, body').animate({scrollTop: target}, 500);
 
-		// Go through each section to see if it's at the top.
-		// if it is add an active class
-		function checkSectionSelected(scrolledTo){
-			
-			//How close the top has to be to the section.
-			var threshold = 100;
+            //prevent the browser from jumping down to section.
+            event.preventDefault();
+        });
 
-			var i;
+        //Pulling sections from main nav.
+        var sections = $('.navbar-right a[href^="#"]');
 
-			for (i = 0; i < sections.length; i++) {
-				
-				//get next nav item
-				var section = $(sections[i]);
+        // Go through each section to see if it's at the top.
+        // if it is add an active class
+        function checkSectionSelected(scrolledTo) {
 
-				//get the distance from top
-				var target = getTargetTop(section);
-				
-				//Check if section is at the top of the page.
-				if (scrolledTo > target - threshold && scrolledTo < target + threshold) {
+            //How close the top has to be to the section.
+            var threshold = 100;
 
-					//remove all selected elements
-					sections.removeClass("active");
+            var i;
 
-					//add current selected element.
-					section.addClass("active");
-				}
+            for (i = 0; i < sections.length; i++) {
 
-			}
-		}
+                //get next nav item
+                var section = $(sections[i]);
 
-		//Check if page is already scrolled to a section.
-		checkSectionSelected($(window).scrollTop());
+                //get the distance from top
+                var target = getTargetTop(section);
 
-		$(window).scroll(function(){
-			checkSectionSelected($(window).scrollTop());
-		});
+                //Check if section is at the top of the page.
+                if (scrolledTo > target - threshold && scrolledTo < target + threshold) {
 
-	});
+                    //remove all selected elements
+                    sections.removeClass("active");
+
+                    //add current selected element.
+                    section.addClass("active");
+                }
+
+            }
+        }
+
+        //Check if page is already scrolled to a section.
+        checkSectionSelected($(window).scrollTop());
+
+        $(window).scroll(function () {
+            checkSectionSelected($(window).scrollTop());
+        });
+
+    });
 });
 

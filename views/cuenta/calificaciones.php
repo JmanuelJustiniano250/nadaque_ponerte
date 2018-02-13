@@ -1,6 +1,7 @@
 <?php
 
-use yii\helpers\Html;
+use himiklab\thumbnail\EasyThumbnailImage;
+use kartik\widgets\StarRating;
 
 
 /* @var $this yii\web\View */
@@ -10,10 +11,6 @@ $this->title = 'Calificaciones
 ';
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-
-use himiklab\thumbnail\EasyThumbnailImage;
-use rmrevin\yii\fontawesome\FA;
 
 
 ?>
@@ -42,8 +39,6 @@ use rmrevin\yii\fontawesome\FA;
 
                     <div class="estrellas">
                         <?php
-
-                        use kartik\widgets\StarRating;
 
                         echo StarRating::widget([
                             'name' => 'rating_21',

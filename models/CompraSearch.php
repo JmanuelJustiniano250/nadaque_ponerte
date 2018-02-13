@@ -16,8 +16,8 @@ class CompraSearch extends Compra
     public function rules()
     {
         return [
-            [['idcompra','idusuario', 'idpaquete', 'tipo_pago'], 'integer'],
-            [['fecha_registro', 'fecha_aprovacion','fecha_pago'], 'safe'],
+            [['idcompra', 'idusuario', 'idpaquete', 'tipo_pago'], 'integer'],
+            [['fecha_registro', 'fecha_aprovacion', 'fecha_pago'], 'safe'],
             [['precio'], 'number'],
             [['nombre_factura', 'nit_factura'], 'string', 'max' => 50],
             [['session'], 'string', 'max' => 255],

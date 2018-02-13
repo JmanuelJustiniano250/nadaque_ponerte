@@ -19,7 +19,7 @@ $cat = \app\models\Categorias::findOne(['alias' => 'noticias']);
                         <div class="item project-post">
                             <div class="project-gal">
                                 <a class=""
-                                   href="<?= Url::to(['noticias?' . ((!empty($item['alias'])) ? 'id='. $item['alias'] : '?cat=' . $item['idcategoria'])]) ?>">
+                                   href="<?= Url::to(['noticias?' . ((!empty($item['alias'])) ? 'id=' . $item['alias'] : '?cat=' . $item['idcategoria'])]) ?>">
                                     <img alt="" src="<?= Url::to($item['imagen']) ?>">
 
                                     <h2 CLASS="Ttiel"><?= $item['nombre'] ?></h2>

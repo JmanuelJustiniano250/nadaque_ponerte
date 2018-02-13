@@ -1,10 +1,9 @@
 #lightbox-slider .layer {
-	font-family: 'Open Sans', sans-serif;
-	text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
 }
 
-
 #custom-controls {
-	width: 460px;
-	margin: 20px auto;
+    width: 460px;
+    margin: 20px auto;
 }

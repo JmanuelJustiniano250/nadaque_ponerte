@@ -13,7 +13,6 @@ CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
 
-
 $filtros = \app\models\Filtros::findAll(['estado' => 1, 'idPadre' => null]);
 $index = 0;
 ?>

@@ -39,7 +39,7 @@ class Compra extends \yii\db\ActiveRecord
         return [
             [['idusuario', 'idpaquete'], 'require'],
             [['idusuario', 'idpaquete', 'tipo_pago'], 'integer'],
-            [['fecha_registro', 'fecha_aprovacion','fecha_pago'], 'safe'],
+            [['fecha_registro', 'fecha_aprovacion', 'fecha_pago'], 'safe'],
             [['precio'], 'number'],
             [['nombre_factura', 'nit_factura'], 'string', 'max' => 50],
             [['session'], 'string', 'max' => 255],
@@ -87,7 +87,7 @@ class Compra extends \yii\db\ActiveRecord
 
     public function getEstado($all = false)
     {
-        $estado = ['armado', 'comprado', 'a cobrar','vencido'];
+        $estado = ['armado', 'comprado', 'a cobrar', 'vencido'];
         if ($all)
             return $estado;
         return $estado[$this->idcompra];

@@ -51,8 +51,6 @@ class CuentaController extends Controller
      */
 
 
-
-
     public function actionCreate()
     {
 
@@ -61,7 +59,6 @@ class CuentaController extends Controller
         }
 
         $model = new Anuncios();
-
 
 
         if ($model->load(Yii::$app->request->post())) {
@@ -104,11 +101,10 @@ class CuentaController extends Controller
         }
 
 
-
         if ($model->load(Yii::$app->request->post())) {
 
 
-            if   ($model->save()){
+            if ($model->save()) {
 
                 return $this->redirect(['anuncios']);
             }
@@ -119,9 +115,6 @@ class CuentaController extends Controller
                 'model' => $model,
             ]);
         }
-
-
-
 
 
     }
@@ -349,6 +342,7 @@ class CuentaController extends Controller
             'model' => $model
         ]);
     }
+
     public function actionCompras()
     {
         if (empty(Yii::$app->session->get('user'))) {
@@ -378,7 +372,6 @@ class CuentaController extends Controller
     }
 
 
-
     public function actionUpdate($id = null)
     {
         if (empty(Yii::$app->session->get('user'))) {
@@ -387,7 +380,7 @@ class CuentaController extends Controller
         if (is_null($id)) {
             $this->redirect(['cuenta/anuncios']);
         }
-       // $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+        // $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         $model = Anuncios::find()->where(['idanuncio' => $id])->one();
         if ($model->load(Yii::$app->request->post())) {
             $model->fecha_registro = date('Y-m-d H:i:s');
@@ -428,17 +421,10 @@ class CuentaController extends Controller
         }
 
 
-
-
-
-
-
-
-
         if ($model->load(Yii::$app->request->post())) {
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
 
-            if   ($model->save()){
+            if ($model->save()) {
 
                 return $this->redirect(['anuncios']);
             }
@@ -449,14 +435,6 @@ class CuentaController extends Controller
                 'model' => $model,
             ]);
         }
-
-
-
-
-
-
-
-
 
 
     }

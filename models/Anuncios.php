@@ -56,7 +56,7 @@ class Anuncios extends \yii\db\ActiveRecord
             [['idcompra'], 'required'],
             [['idcategoria', 'idusuario', 'estado', 'enable', 'idcompra', 'visitas'], 'integer'],
             [['decripcion', 'otra_descripcion', 'razon'], 'string'],
-            [['fecha_registro', 'fecha_aprobado','filtro'], 'safe'],
+            [['fecha_registro', 'fecha_aprobado', 'filtro'], 'safe'],
             [['titulo'], 'string', 'max' => 200],
             [['codigo'], 'string', 'max' => 20],
             [['foto'], 'string', 'max' => 250],
@@ -180,7 +180,7 @@ class Anuncios extends \yii\db\ActiveRecord
             'vencido',
             'rechazo-definitivo'
         ];
-        if($all)
+        if ($all)
             return $estado;
 
         return $estado[$this->estado];

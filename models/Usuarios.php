@@ -54,7 +54,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         return [
             [['fecha_nacimiento', 'fecha_registro', 'nombrenit', 'nit'], 'safe'],
             [['sexo', 'estado', 'tipo'], 'integer'],
-            [['alias', 'nombres','telefono'], 'required'],
+            [['alias', 'nombres', 'telefono'], 'required'],
             [['descripcion'], 'string'],
             [['nombres', 'apellidos', 'ciudad', 'pais'], 'string', 'max' => 50],
             [['direccion'], 'string', 'max' => 200],

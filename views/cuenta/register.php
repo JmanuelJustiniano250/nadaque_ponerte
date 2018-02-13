@@ -1,9 +1,9 @@
 <?php
 
-use yii\bootstrap\ActiveForm;
-
-use yii\helpers\Html;
 use app\assets_b\AppAsset;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
 $script = <<<CSS
 .krajee-default.file-preview-frame .kv-file-content {
     width: 100%;
@@ -175,19 +175,13 @@ $this->registerjsFile('@web/assets_b/js/moment.js', ['depends' => AppAsset::clas
 $this->registerjsFile('@web/assets_b/js/daterangepicker.js', ['depends' => AppAsset::class, 'position' => \yii\web\View::POS_END]);
 
 
-
-
 $this->registerCss($script);
-
-
-
 
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuarios */
 /* @var $form ActiveForm */
 ?>
-
 
 
 <div class="">
@@ -202,11 +196,11 @@ $this->registerCss($script);
         'options' => ['enctype' => 'multipart/form-data']
     ]); ?>
     <div class="col-md-4">
-    <div class="row">
-        <?php
-        $initial = [];
-        array_push($initial, Html::img('@web/imagen/usuarios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-        ?>
+        <div class="row">
+            <?php
+            $initial = [];
+            array_push($initial, Html::img('@web/imagen/usuarios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+            ?>
 
             <?php
             echo $form->field($model, 'file')->widget(\kartik\widgets\FileInput::classname(), [
@@ -216,7 +210,7 @@ $this->registerCss($script);
                 ],
                 'pluginOptions' => [
                     'uploadUrl' => \yii\helpers\Url::to(['upload']),
-                    'browseLabel' =>  '',
+                    'browseLabel' => '',
                     'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
                     'uploadExtraData' => [
                         'id' => $model->idusuario,
@@ -238,95 +232,79 @@ $this->registerCss($script);
         </div>
 
 
-
-
     </div>
-
 
 
     <div class="col-md-8">
         <div class="menuform">
 
-    <div class="row">
-        <div class="col-md-6">
-            <label for="">Nombre completo <span>*</span></label>
-            <?= $form->field($model, 'nombres')->label(false) ?>
-        </div>
-        <div class="col-md-6">
-            <label for="">Nombre para mostrar <span>*</span></label>
-            <?= $form->field($model, 'alias')->label(false) ?>
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Nombre completo <span>*</span></label>
+                    <?= $form->field($model, 'nombres')->label(false) ?>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Nombre para mostrar <span>*</span></label>
+                    <?= $form->field($model, 'alias')->label(false) ?>
+                </div>
 
-        <div class="col-md-6">
-            <label for="">  Correo electrónico opcional(opcional)</label>
+                <div class="col-md-6">
+                    <label for=""> Correo electrónico opcional(opcional)</label>
 
-            <?= $form->field($model, 'email')->label(false) ?>
-        </div>
-
-
-        <div class="col-md-6">
-            <label for="">Fecha de Nacimiento <span>*</span></label>
-    
-            <?= $form->field($model, 'fecha_nacimiento')->label(false)->textInput(['class' => 'fecha_nacimiento form-control', 'placeholder' => 'Email(requerido)', 'required' => true, 'id' => 'fecha_nacimiento']) ?>
-        </div>
+                    <?= $form->field($model, 'email')->label(false) ?>
+                </div>
 
 
-        <div class="col-md-6">
+                <div class="col-md-6">
+                    <label for="">Fecha de Nacimiento <span>*</span></label>
 
-            <label for="">Ciudad donde vive <span>*</span></label>
-            <?= $form->field($model, 'ciudad')->label(false) ?>
-        </div>
-
-
+                    <?= $form->field($model, 'fecha_nacimiento')->label(false)->textInput(['class' => 'fecha_nacimiento form-control', 'placeholder' => 'Email(requerido)', 'required' => true, 'id' => 'fecha_nacimiento']) ?>
+                </div>
 
 
-        <div class="col-md-6">
-            <label for="">Dirección</label>
-            <?= $form->field($model, 'direccion')->label(false) ?>
-        </div>
+                <div class="col-md-6">
+
+                    <label for="">Ciudad donde vive <span>*</span></label>
+                    <?= $form->field($model, 'ciudad')->label(false) ?>
+                </div>
 
 
-        <div class="col-md-6">
-            <label for="">Telefono o celular <span>*</span></label>
-            <?= $form->field($model, 'telefono')->label(false) ?>
-        </div>
+                <div class="col-md-6">
+                    <label for="">Dirección</label>
+                    <?= $form->field($model, 'direccion')->label(false) ?>
+                </div>
 
 
+                <div class="col-md-6">
+                    <label for="">Telefono o celular <span>*</span></label>
+                    <?= $form->field($model, 'telefono')->label(false) ?>
+                </div>
 
 
-
-    </div>
+            </div>
         </div>
 
-   <div class="menuform">
-    <div class="row">
+        <div class="menuform">
+            <div class="row">
 
-            <div class="col-md-6">
-            <label for="">Intereses</label>
-            <?= $form->field($model, 'intereses')->label(false) ?>
+                <div class="col-md-6">
+                    <label for="">Intereses</label>
+                    <?= $form->field($model, 'intereses')->label(false) ?>
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="">Link de conexión con las redes sociales </label>
+                    <?= $form->field($model, 'facebook')->label(false)->textInput(['placeholder' => 'Facebook']) ?>
+                    <?= $form->field($model, 'twitter')->label(false)->textInput(['placeholder' => 'Twitter']) ?>
+                    <?= $form->field($model, 'youtube')->label(false)->textInput(['placeholder' => 'Youtube']) ?>
+                    <?= $form->field($model, 'instagram')->label(false)->textInput(['placeholder' => 'Instagram']) ?>
+
+                </div>
+
+
+            </div>
         </div>
-
-
-        <div class="col-md-6">
-            <label for="">Link de conexión con las redes sociales </label>
-            <?= $form->field($model, 'facebook')->label(false)->textInput(['placeholder' => 'Facebook']) ?>
-            <?= $form->field($model, 'twitter')->label(false)->textInput(['placeholder' => 'Twitter']) ?>
-            <?= $form->field($model, 'youtube')->label(false)->textInput(['placeholder' => 'Youtube']) ?>
-            <?= $form->field($model, 'instagram')->label(false)->textInput(['placeholder' => 'Instagram']) ?>
-           
-        </div>
-
-
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
 
         <div class="menuform">
@@ -347,12 +325,8 @@ $this->registerCss($script);
                 </div>
 
 
-
-
-
             </div>
         </div>
-
 
 
         <div class="col-xs-12">
@@ -360,21 +334,20 @@ $this->registerCss($script);
         </div>
 
 
-
-        </div>
+    </div>
     <?php ActiveForm::end(); ?>
 
 </div>
 
 
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $('input[name="Usuarios[fecha_nacimiento]"]').daterangepicker({
 
                 singleDatePicker: true,
                 showDropdowns: true
             },
-            function(start, end, label) {
+            function (start, end, label) {
                 var years = moment().diff(start, 'years');
                 $('#fecha_nacimiento').html(start.format('MMMM-D-YYYY'));
 

@@ -49,6 +49,7 @@ class Deseos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Anuncios::className(), ['idanuncio' => 'idnuncio']);
     }
+
     //
     public function getUsuario()
     {
