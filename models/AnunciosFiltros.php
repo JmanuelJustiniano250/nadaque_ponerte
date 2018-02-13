@@ -5,13 +5,15 @@ namespace app\models;
 /**
  * This is the model class for table "anuncios_filtros".
  *
- * @property int $idpf
  * @property int $idfiltro
  * @property int $idanuncio
- * @property string $fecha_registro
- *
- * @property Anuncios $anuncio
- * @property Filtros $filtro
+ * @property int $idciudad
+ * @property int $idcolores
+ * @property int $idcondicion
+ * @property int $idmarca
+ * @property int $idmaterial
+ * @property int $idtalla
+ * @property string $fecha_creacion
  */
 class AnunciosFiltros extends \yii\db\ActiveRecord
 {
@@ -29,10 +31,8 @@ class AnunciosFiltros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idfiltro', 'idanuncio'], 'integer'],
-            [['fecha_registro'], 'safe'],
-            [['idanuncio'], 'exist', 'skipOnError' => true, 'targetClass' => Anuncios::className(), 'targetAttribute' => ['idanuncio' => 'idanuncio']],
-            [['idfiltro'], 'exist', 'skipOnError' => true, 'targetClass' => Filtros::className(), 'targetAttribute' => ['idfiltro' => 'idfiltro']],
+            [['idanuncio', 'idciudad', 'idcolores', 'idcondicion', 'idmarca', 'idmaterial', 'idtalla'], 'integer'],
+            [['fecha_creacion'], 'safe'],
         ];
     }
 
@@ -42,26 +42,15 @@ class AnunciosFiltros extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idpf' => 'Idpf',
             'idfiltro' => 'Idfiltro',
             'idanuncio' => 'Idanuncio',
-            'fecha_registro' => 'Fecha Registro',
+            'idciudad' => 'Idciudad',
+            'idcolores' => 'Idcolores',
+            'idcondicion' => 'Idcondicion',
+            'idmarca' => 'Idmarca',
+            'idmaterial' => 'Idmaterial',
+            'idtalla' => 'Idtalla',
+            'fecha_creacion' => 'Fecha Creacion',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAnuncio()
-    {
-        return $this->hasOne(Anuncios::className(), ['idanuncio' => 'idanuncio']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getFiltro()
-    {
-        return $this->hasOne(Filtros::className(), ['idfiltro' => 'idfiltro']);
     }
 }
