@@ -137,7 +137,14 @@ class FiltrosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = Yii::$app->request->get('model');
+        if(!empty($model)){
+            $item = $model::findOne($id);
+            //$item = new $model();
+            $item->delete();
+        }
+
+
 
         return $this->redirect(['index']);
     }

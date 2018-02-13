@@ -56,7 +56,7 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                                                 'template' => '<div class="btn-group" role="group">{delete}</div>',
                                                 'buttons' => [
                                                     'delete' => function ($url, $model, $key) {
-                                                        return Html::a('<i class="fa fa-trash"></i>', $url, ['class' => 'btn btn-danger', 'data' => [
+                                                        return Html::a('<i class="fa fa-trash"></i>', ['delete','model'=>$model->className(),'id'=>$key], ['class' => 'btn btn-danger', 'data' => [
                                                             'confirm' => 'Esta seguro?.'
                                                         ], "title" => "Eliminar"]);
                                                     },
