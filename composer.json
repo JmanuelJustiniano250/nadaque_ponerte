@@ -34,6 +34,7 @@
         "kartik-v/yii2-social": "@dev",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-export": "@dev",
+        "kartik-v/yii2-slider": "*",
         "omnilight/yii2-shopping-cart": "*",
         "omnilight/yii2-scheduling": "*",
         "himiklab/yii2-recaptcha-widget" : "*",

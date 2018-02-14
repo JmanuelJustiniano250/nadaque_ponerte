@@ -70,7 +70,6 @@ $this->registerCss($script);
     <div class="tab-content">
         <div class="tab-pane active" id="trendy">
 
-
             <?= $this->render('paquetes'); ?>
 
         </div>

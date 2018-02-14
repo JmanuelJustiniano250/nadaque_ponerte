@@ -34,7 +34,7 @@ $script = <<<CSS
     border: 1px solid #ff5a96!important;
 }
 CSS;
-$this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
+$this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
 
 ?>
 

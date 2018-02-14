@@ -6,8 +6,12 @@ use app\components\Funcions;
 use app\models\Categoria;
 use app\models\Ciudad;
 use app\models\ColoresProductos;
+use app\models\CondicionProducto;
 use app\models\Filtros;
 use app\models\FiltrosSearch;
+use app\models\MarcaProducto;
+use app\models\MaterialProducto;
+use app\models\TallasProducto;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -71,7 +75,26 @@ class FiltrosController extends Controller
             'titulo'=>'Colores',
             'model'=>new ColoresProductos(),
         ]);
-
+        array_push($tablas, [
+            'data'=>new ActiveDataProvider(['query' => CondicionProducto::find()]),
+            'titulo'=>'Condiciones',
+            'model'=>new CondicionProducto(),
+        ]);
+        array_push($tablas, [
+            'data'=>new ActiveDataProvider(['query' => MarcaProducto::find()]),
+            'titulo'=>'Marcas',
+            'model'=>new MarcaProducto(),
+        ]);
+        array_push($tablas, [
+            'data'=>new ActiveDataProvider(['query' => MaterialProducto::find()]),
+            'titulo'=>'Materiales',
+            'model'=>new MaterialProducto(),
+        ]);
+        array_push($tablas, [
+            'data'=>new ActiveDataProvider(['query' => TallasProducto::find()]),
+            'titulo'=>'Tallas',
+            'model'=>new TallasProducto(),
+        ]);
 
         return $this->render('index', [
             'tablas' => $tablas,
@@ -140,7 +163,6 @@ class FiltrosController extends Controller
         $model = Yii::$app->request->get('model');
         if(!empty($model)){
             $item = $model::findOne($id);
-            //$item = new $model();
             $item->delete();
         }
 

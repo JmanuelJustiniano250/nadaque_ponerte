@@ -276,24 +276,21 @@ $cats = $categoria->categorias;
                     if (count($sub2) > 0) {
                         $tmp = [];
                         foreach ($sub2 as $value2) {
-                            array_push($tmp, ['label' => $value2['nombre'], 'icon' => '', 'url' => Url::to([$categoria['alias'] . '?cat=' . $value2['idcategoria']]), 'active' => ($value2['idcategoria'] == Yii::$app->getRequest()->getQueryParam('cat'))]);
+                            array_push($tmp, ['label' => $value2['nombre'], 'icon' => '', 'url' => Url::to(['comprar' . '?cat=' . $value2['idcategoria']]), 'active' => ($value2['idcategoria'] == Yii::$app->getRequest()->getQueryParam('cat'))]);
                         }
                         array_push($values, ['label' => $value['nombre'], 'icon' => '', 'items' => $tmp]);
                     } else {
-                        array_push($values, ['label' => $value['nombre'], 'icon' => '', 'url' => Url::to([$categoria['alias'] . '?cat=' . $value['idcategoria']]), 'active' => ($value['idcategoria'] == Yii::$app->getRequest()->getQueryParam('cat'))]);
+                        array_push($values, ['label' => $value['nombre'], 'icon' => '', 'url' => Url::to(['comprar' . '?cat=' . $value['idcategoria']]), 'active' => ($value['idcategoria'] == Yii::$app->getRequest()->getQueryParam('cat'))]);
                     }
                 }
                 array_push($items, ['label' => $item['nombre'], 'icon' => '', 'items' => $values]);
             } else {
-                array_push($items, ['label' => $item['nombre'], 'icon' => 'indicator glyphicon glyphicon-menu-right pull-right', 'url' => Url::to([$categoria['alias'] . '?cat=' . $item['idcategoria']]), 'active' => ($item['idcategoria'] == Yii::$app->getRequest()->getQueryParam('cat')),]);
+                array_push($items, ['label' => $item['nombre'], 'icon' => 'indicator glyphicon glyphicon-menu-right pull-right', 'url' => Url::to(['comprar' . '?cat=' . $item['idcategoria']]), 'active' => ($item['idcategoria'] == Yii::$app->getRequest()->getQueryParam('cat')),]);
 
             }
 
 
         } ?>
-
-
-
 
         <?php
         echo "<div class='sidebarpcat'>" . SideNav::widget([
@@ -304,9 +301,7 @@ $cats = $categoria->categorias;
 
             ]) . "</div>"; ?>
 
-
     </div>
-
 
 <?php
 

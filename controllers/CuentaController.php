@@ -103,19 +103,15 @@ class CuentaController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-
             if ($model->save()) {
-
                 return $this->redirect(['anuncios']);
             }
-
 
         } else {
             return $this->render('../anuncios/create', [
                 'model' => $model,
             ]);
         }
-
 
     }
 

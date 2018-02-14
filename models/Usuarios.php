@@ -27,6 +27,13 @@ use yii\web\IdentityInterface;
  * @property string $alias
  * @property string $foto
  * @property string $descripcion
+ * @property string $facebook
+ * @property string $twitter
+ * @property string $youtube
+ * @property string $instagram
+ * @property string $intereses
+ * @property string $nombrenit
+ * @property string $nit
  *
  * @property Anuncios[] $anuncios
  * @property Compra[] $compras
@@ -57,11 +64,11 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             [['alias', 'nombres', 'telefono'], 'required'],
             [['descripcion'], 'string'],
             [['nombres', 'apellidos', 'ciudad', 'pais'], 'string', 'max' => 50],
-            [['direccion'], 'string', 'max' => 200],
+            [['direccion','nit'], 'string', 'max' => 200],
             [['telefono', 'movil'], 'string', 'max' => 15],
-            [['email'], 'string', 'max' => 250],
-            [['contrasena', 'foto', 'intereses', 'facebook', 'instagram', 'twitter', 'youtube'], 'string', 'max' => 255],
-            [['alias'], 'string', 'max' => 100],
+            [['email','intereses'], 'string', 'max' => 250],
+            [['contrasena', 'foto'], 'string', 'max' => 255],
+            [['alias','facebook', 'instagram', 'twitter', 'youtube'], 'string', 'max' => 100],
             ['file', 'file', 'extensions' => 'jpg, jpeg, png', 'mimeTypes' => 'image/jpeg, image/png'],
         ];
     }

@@ -73,13 +73,17 @@ class AnunciosSearch extends Anuncios
             ->andFilterWhere(['like', 'codigo', $this->codigo])
             ->andFilterWhere(['like', 'foto', $this->foto])
             ->andFilterWhere(['like', 'precio', $this->precio]);
-        if (isset($params['filtro'])) {
+        if (isset($params['vendedor'])) {
+            $query->innerJoinWith('anunciosFiltros');
+            $query->andFilterWhere(['IN', 'idfiltro', $tmp]);
+        }
+        /*if (isset($params['filtro'])) {
             $tmp = array();
             foreach ($params['filtro'] as $key => $item)
                 $tmp[] = $key;
             $query->innerJoinWith('anunciosFiltros');
             $query->andFilterWhere(['IN', 'idfiltro', $tmp]);
-        }
+        }*/
 
 
         return $dataProvider;
