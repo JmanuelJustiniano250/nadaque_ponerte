@@ -32,6 +32,8 @@ class Categorias extends \yii\db\ActiveRecord
         return 'categorias';
     }
 
+    var $idfiltro;
+    var $tmp;
     /**
      * @inheritdoc
      */

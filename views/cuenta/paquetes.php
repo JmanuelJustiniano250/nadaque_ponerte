@@ -17,7 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                    <tr>
                        <td>
-                           <p>Codigo del Paquete <span>25464</span></p>
+                           <p>Codigo del Paquete <span>25464</span> <br>
+                           <span style="font-size: 11px;">(Fecha de compra : <span></span>05 Mar 2018 )</span>
+                           </p>
                        </td>
                        <td>
                            <p>Anuncios totales <span>7</span></p>
@@ -27,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                        </td>
                        <td>
                            <p style="border-right: 1px solid transparent">Fecha de expiracion
-                               <br> <span>05 Ene 2018</span>
+                               <br> <span>05 Mar 2018</span>
                            </p>
                        </td>
                    </tr>

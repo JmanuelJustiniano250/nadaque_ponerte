@@ -78,14 +78,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                                 </div>
+
+                                <div class="text-center" align="center" style="margin-top: 15px;">
+                                    <a href="" class="registrarse" style="margin-left: 0">VOLVER A PUBLICAR</a>
+                                </div>
                             </div>
 
                         </div>
 
 
-                        <div class="text-center" align="center" style="margin-top: 15px;">
-                            <a href="" class="registrarse" style="margin-left: 0">VOLVER A PUBLICAR</a>
-                        </div>
+
                     </div>
 
                 </div>

@@ -16,6 +16,20 @@ background-color: #f6f6f6;
     margin-left: 5px;
 }
 
+
+.cajadeanuncio:hover, .cajadeanuncio:focus, .cajadeanuncio:active {
+    background: transparent;
+    
+    border-color: #ff6d89;
+}
+
+.cajadeanuncio:hover > .cajadesc, .cajadeanuncio:focus > .cajadesc, .cajadeanuncio:active > .cajadesc {
+    color: #fd839a;
+}
+
+.cajadeanuncio:hover p, .cajadeanuncio:focus p, .cajadeanuncio:active p {
+    color: #fd839a !important;
+}
 CSS;
 
 
@@ -38,7 +52,7 @@ $this->registerCss($script);
         <li>
             <a href="#planning" data-toggle="tab">
 
-                <h2>Pagos en aprobación</h2>
+                <h2>Anuncios en aprobación</h2>
 
             </a>
         </li>

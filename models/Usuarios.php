@@ -60,14 +60,14 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['fecha_nacimiento', 'fecha_registro', 'nombrenit', 'nit'], 'safe'],
-            [['sexo', 'estado', 'tipo'], 'integer'],
-            [['alias', 'nombres', 'telefono'], 'required'],
+            [['sexo', 'estado', 'tipo', 'visiblefacebook', 'visibletwittwe' ,'visibleyoutu', 'visibleinsta', 'visibletelefono'], 'integer'],
+            [['alias', 'nombres'], 'required'],
             [['descripcion'], 'string'],
             [['nombres', 'apellidos', 'ciudad', 'pais'], 'string', 'max' => 50],
             [['direccion','nit'], 'string', 'max' => 200],
-            [['telefono', 'movil'], 'string', 'max' => 15],
-            [['email','intereses'], 'string', 'max' => 250],
-            [['contrasena', 'foto'], 'string', 'max' => 255],
+            [['telefono', 'movil'], 'string', 'max' => 20],
+            [['email','intereses', 'ano', 'mes', 'dia'], 'string', 'max' => 250],
+            [['contrasena',  'foto', 'tallasblusas', 'tallaspantalones', 'tallaszapatos'], 'string', 'max' => 255],
             [['alias','facebook', 'instagram', 'twitter', 'youtube'], 'string', 'max' => 100],
             ['file', 'file', 'extensions' => 'jpg, jpeg, png', 'mimeTypes' => 'image/jpeg, image/png'],
         ];

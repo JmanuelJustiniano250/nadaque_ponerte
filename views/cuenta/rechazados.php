@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                             <br>
 
-                                            Rechazado desde <span> 25 Nov 2017</span>
+                                            Rechazado en <span> 25 Nov 2017</span>
 
 
                                         </p>

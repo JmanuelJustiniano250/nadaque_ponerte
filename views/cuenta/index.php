@@ -137,28 +137,57 @@ $this->registerCss($script);
                     <div class="col-sm-4 col-xs-12">
                         <ul class="redespergil">
                             <?php if ($model['facebook']): ?>
+
+                                <?php if ($model['visiblefacebook']): ?>
                                 <li>
                                     <a href="<?= $model['facebook'] ?>" target="_blank"><i
                                                 class="fa fa-facebook" aria-hidden="true"></i></a>
                                 </li>
+                                    <?php else:?>
+                                <?php endif; ?>
                             <?php endif; ?>
+
+
+
+
+
                             <?php if ($model['twitter']): ?>
+                                <?php if ($model['visibletwittwe']): ?>
                                 <li>
                                     <a href="<?= $model['twitter'] ?>" target="_blank"><i
                                                 class="fa fa-twitter" aria-hidden="true"></i></a>
                                 </li>
+                            <?php else:?>
                             <?php endif; ?>
+                            <?php endif; ?>
+
+
+
                             <?php if ($model['youtube']): ?>
+
+                                <?php if ($model['visibleyoutu']): ?>
                                 <li>
                                     <a href="<?= $model['youtube'] ?>" target="_blank"><i
                                                 class="fa fa-youtube" aria-hidden="true"></i></a>
                                 </li>
+                            <?php else:?>
                             <?php endif; ?>
+                            <?php endif; ?>
+
+
+
                             <?php if ($model['instagram']): ?>
+
+                                <?php if ($model['visibleinsta']): ?>
+
                                 <li>
                                     <a href="<?= $model['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
                                                                                             aria-hidden="true"></i></a>
                                 </li>
+                            <?php else:?>
+
+                            <?php endif; ?>
+
                             <?php endif; ?>
                         </ul>
                     </div>
