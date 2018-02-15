@@ -229,11 +229,15 @@ class CuentaController extends Controller
         }
 
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['id']]);
+        $model->fecha_nacimiento =  date($model['ano'].'-'.$model['mes'].'-'.$model['dia']);
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 if ($model->contrasena != Yii::$app->session->get('user')['contrasena'])
                     $model->contrasena = md5($model->contrasena);
                 if ($model->save()) {
+
+
+
                     Yii::$app->session->setFlash('success', ['message' => 'actualizacion Realizada', 'type' => 'success']);
                 } else {
                     Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la actualizacion, Intentelo de nuevo mas tarde']);

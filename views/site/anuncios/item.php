@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 
 use himiklab\thumbnail\EasyThumbnailImage;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -134,7 +135,22 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
             <p><span class="colorww">Marca :</span>Sin marca </p>
             <p><span class="colorww">Ciudad :</span>Santa Cruz</p>-->
             <br>
+            <div class="text">
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <script type="text/javascript"
+                        src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53e2c6583afe0ece"></script>
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="sociales top-spacing3 bottom-spacing3">
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <script type="text/javascript"
+                            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54f678625eb57483"
+                            async="async"></script>
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_native_toolbox"></div>
+                </div>
 
+
+            </div>
 
             <div class="shortcodes-elem">
 
@@ -195,6 +211,22 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
             </div>
 
+        </div>
+
+        <hr>
+        <div class="col-xs-12">
+            <?php $form = ActiveForm::begin([
+                'action' => ['cuenta/cuenta'],
+                'id' => 'login-form',
+                /*'layout' => 'horizontal',
+                'fieldConfig' => [
+                    'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+                    'labelOptions' => ['class' => 'col-md-4 control-label'],
+                ],*/
+                'options' => ['enctype' => 'multipart/form-data']
+            ]); ?>
+
+            <?php ActiveForm::end(); ?>
         </div>
 
     </div>
