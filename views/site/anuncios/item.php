@@ -48,7 +48,7 @@ $script = <<<CSS
     margin: 0 0 10px;
 }
 
-
+.btnregister{ border: 0px solid; padding:10px 18px}
 .tab-content.desce .tab-pane {
     padding: 15px 0px;
    
@@ -214,9 +214,11 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
         </div>
 
         <hr>
-        <div class="col-xs-12">
+        <br><br><br>
+        <div class="col-xs-12"><br><br><br>
+
             <?php $form = ActiveForm::begin([
-                'action' => ['cuenta/cuenta'],
+                'action' => [''],
                 'id' => 'login-form',
                 /*'layout' => 'horizontal',
                 'fieldConfig' => [
@@ -226,13 +228,112 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                 'options' => ['enctype' => 'multipart/form-data']
             ]); ?>
 
-            <?php ActiveForm::end(); ?>
+
+            <textarea class="form-control cajadesct" id="description" placeholder="Dejanos tus consultas y comentarios"
+                      rows="5"></textarea>
+
+
+            <div class="submit-area" align="left"><br>
+                <input type="submit" name="enviar" id="" class="btnregister" style="text-transform: none"
+                       value="Dejar Mensaje">
+
+            </div>
+
+            <?php ActiveForm::end(); ?> <br><br>
+
+
+            <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
+                <div class="col-md-11 col-xs-12">
+
+                    <div class="cajausuario">
+
+                        <div class="cahas">
+                            <img src="<?= Url::to('@web/assets_b/images/chats.png') ?>" alt="">
+
+
+                        </div>
+
+
+                        <div class="imagenusario" align="right"><span>Paola Melgar </span>
+                            <?=
+                            EasyThumbnailImage::thumbnailImg(
+                                Yii::getAlias('@webroot/assets_b/images/') . 'usuario.jpg',
+                                45,
+                                45,
+                                EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+                                ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
+                            );
+                            ?>
+
+                        </div>
+
+                        <div class="comentarios2" style="padding-left: 10px">
+                            <p>Hola, bla bla dsd dsa </p>
+                            <br>
+                            <p style="color: #ff6d89; font-weight: 600">20 marz 2017 </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-md-1 hidden-xs hidden-sm"></div>
+
+
+            </div>
+
+
+            <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
+
+                <div class="col-md-1 hidden-xs hidden-sm"></div>
+
+                <div class="col-md-11 col-xs-12">
+                    <div class="anunciantes">
+
+
+                        <div class="cahas">
+                            <img src="<?= Url::to('@web/assets_b/images/chats.png') ?>" alt="">
+
+
+                        </div>
+
+                        <div class="imagenusario" align="right"><span><?php echo $model->usuario['nombres'] ?></span>
+
+                        <?=
+                        EasyThumbnailImage::thumbnailImg(
+                            Yii::getAlias('@webroot/imagen/usuarios/') . $model->usuario['foto'],
+                            45,
+                            45,
+                            EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+                            ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
+                        );
+                        ?>
+
+
+                    </div>
+
+
+                        <div class="comentarios2" style="padding-left: 10px">
+                            <p>Hola, bla bla dsd dsa </p>
+                            <br>
+                            <p style="color: #ff6d89; font-weight: 600">20 marz 2017 </p>
+                        </div>
+
+
+                </div>
+
+            </div>
+            <br>
+
+
         </div>
 
     </div>
 </div>
+</div>
 
-
+<br><br>
 <?php
 $script = <<<JS
   $('#responsive-slider').advancedSlider({width: 740,

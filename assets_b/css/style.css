@@ -5849,3 +5849,27 @@ color: white;
     text-decoration: none;
     background: #ff839a;
 }
+
+.cajadesct{
+    border-color: #ff6d89;
+}
+.cajadesct:hover, .cajadesct:focus, .cajadesct:active {
+    border-color: #ff6d89;
+}
+
+.cajadesct::placeholder { color: rgba(255, 109, 137, 0.77)!important;  }
+
+
+.cajausuario{
+    background: #e2e2e2;
+    padding: 5px;
+    margin-bottom: 5px;
+
+}
+
+.anunciantes{
+    background: #ffdee9;
+    padding: 5px;
+
+    margin-bottom: 5px;
+}
