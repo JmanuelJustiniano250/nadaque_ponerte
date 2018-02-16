@@ -131,17 +131,17 @@ class SiteController extends Controller
         $data['configuracion'] = Configuracion::find()->one();
         $data['modelSearch'] = new AnunciosSearch();
         $datos = Yii::$app->request->queryParams;
-        $data['modelFiltro'] = array();
-        if (isset($datos['filtro'])) {
-            $data['modelFiltro'] = $datos['filtro'];
-        }
-
+        if (empty($datos['precio']))
+            $datos['precio'] = Anuncios::find()->min('cast(precio as unsigned)') . ',' . Anuncios::find()->max('cast(precio as unsigned)');
+        $datos['precios']['min'] = Anuncios::find()->min('cast(precio as unsigned)');
+        $datos['precios']['max'] = Anuncios::find()->max('cast(precio as unsigned)');
         $data['modelSearch']['estado'] = 1;
         $data['data'] = $data['modelSearch']->search(Yii::$app->request->queryParams);
         $data['data']->setSort([
             'defaultOrder' => ['idanuncio' => SORT_DESC]]);
         $data['data']->query->distinct();
         $data['data']->pagination->pageSize = 9;
+        $data['datos'] = $datos;
         return $this->render('anuncios', $data);//$filtro['idfiltro'];
     }
 

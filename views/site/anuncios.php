@@ -27,7 +27,7 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
             ) */ ?> -->
 
 
-            <?= $this->render('anuncios/sidebar', ['model' => $modelFiltro]) ?>
+            <?= $this->render('anuncios/sidebar', ['model' => $datos]) ?>
 
         </div>
 

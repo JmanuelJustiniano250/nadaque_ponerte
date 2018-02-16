@@ -2,7 +2,6 @@
 
 use kartik\slider\Slider;
 use kartik\widgets\Select2;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -22,6 +21,7 @@ $index = 0;
     <?php
     echo Select2::widget([
         'name' => 'vendedor',
+        'value' => ((isset($model['vendedor'])) ? $model['vendedor'] : ''),
         'language' => 'es',
         'data' => \yii\helpers\ArrayHelper::map(\app\models\Usuarios::find()->where(['estado' => 1, 'tipo' => 1])->all(), 'idusuario', 'nombres'),
         'theme' => Select2::THEME_BOOTSTRAP,
@@ -36,89 +36,72 @@ $index = 0;
         <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
     </div>
     <br>
-    <?php if (!isset($categorias)){
+    <?php if (!isset($categorias)) {
         $categorias = array();
     } ?>
-    <?php if (!isset($padre)){
+    <?php if (!isset($padre)) {
         $padre = '13';
     } ?>
     <h5 class="text-uppercase"><strong>Sub Categoria</strong></h5>
-    <?= Html::checkboxList('categorias',$categorias,ArrayHelper::map(\app\models\Categorias::findAll(['estado'=>1,'idPadre'=>$padre]),'idcategoria','nombre'))?>
-    <?php $tmp = \app\models\Categorias::findAll(['estado'=>1,'idPadre'=>$padre]) ?>
+    <?php $tmp = \app\models\Categorias::findAll(['estado' => 1, 'idPadre' => $padre]) ?>
     <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("filtro[" . $item['idfiltro'] . "]", ((isset($model[$item['idfiltro']])) ? $model[$item['idfiltro']] : ''), ['label' => $item['nombre']]) ?>
-        <?php $index++; ?>
+        <?= Html::checkbox("categorias[" . $item['idcategoria'] . "]", ((isset($model['categorias'][$item['idcategoria']])) ? $model['categorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
     <?php endforeach; ?>
     <br>
     <h5 class="text-uppercase"><strong>Rango de precio</strong></h5>
-    <?php echo '<b class="badge">10 Bs</b> ' . Slider::widget([
-    'name'=>'precio',
-    'value'=>'250,650',
-    'sliderColor'=>Slider::TYPE_GREY,
-    'pluginOptions'=>[
-    'min'=>10,
-    'max'=>1000,
-    'step'=>10,
-    'range'=>true
-    ],
-    ]) . ' <b class="badge">1,000 Bs</b>';
+    <?php echo '<b class="badge">' . $model['precios']['min'] . ' Bs</b> ' . Slider::widget([
+            'name' => 'precio',
+            'value' => $model['precio'],
+            'sliderColor' => Slider::TYPE_GREY,
+            'pluginOptions' => [
+                'min' => (double)$model['precios']['min'],
+                'max' => (double)$model['precios']['max'],
+                'step' => 10,
+                'range' => true
+            ],
+        ]) . ' <b class="badge">' . $model['precios']['max'] . ' Bs</b>';
     ?>
     <br>
-    <?php $condiciones = \app\models\CondicionProducto::find()->all()?>
-    <?php if(count($condiciones)>0):?>
-        <h5 class="text-uppercase"><strong>Condicion del Producto</strong></h5>
-        <?php if (!isset($condicion)){
-            $condicion = array();
-        } ?>
-        <?= Html::checkboxList('condicion',$condicion,ArrayHelper::map($condiciones,'id_cp','nombre'))?>
-        <br>
-    <?php endif;?>
-    <?php $tallas = \app\models\TallasProducto::find()->all()?>
-    <?php if(count($tallas)>0):?>
-        <h5 class="text-uppercase"><strong>Tallas de los Productos</strong></h5>
-        <?php if (!isset($talla)){
-            $talla = array();
-        } ?>
-        <?= Html::checkboxList('talla',$talla,ArrayHelper::map($tallas,'id_tp','nombre'))?>
-        <br>
-    <?php endif;?>
-    <?php $materiales = \app\models\MaterialProducto::find()->all()?>
-    <?php if(count($materiales)>0):?>
-        <h5 class="text-uppercase"><strong>Material de los Productos</strong></h5>
-        <?php if (!isset($material)){
-            $material = array();
-        } ?>
-        <?= Html::checkboxList('material',$material,ArrayHelper::map($materiales,'id_mp','nombre'))?>
-        <br>
-    <?php endif;?>
-    <?php $marcas = \app\models\MarcaProducto::find()->all()?>
-    <?php if(count($marcas)>0):?>
-        <h5 class="text-uppercase"><strong>Marcas de los Productos</strong></h5>
-        <?php if (!isset($marca)){
-            $marca = array();
-        } ?>
-        <?= Html::checkboxList('marca',$marca,ArrayHelper::map($marcas,'id_msp','nombre'))?>
-        <br>
-    <?php endif;?>
-    <?php $colores = \app\models\ColoresProductos::find()->all()?>
-    <?php if(count($colores)>0):?>
-        <h5 class="text-uppercase"><strong>Colores de los Productos</strong></h5>
-        <?php if (!isset($color)){
-            $color = array();
-        } ?>
-        <?= Html::checkboxList('color',$color,ArrayHelper::map($colores,'id_cp','nombre'))?>
-        <br>
-    <?php endif;?>
-    <?php $ciudades = \app\models\Ciudad::find()->all()?>
-    <?php if(count($ciudades)>0):?>
-        <h5 class="text-uppercase"><strong>Ciudad</strong></h5>
-        <?php if (!isset($ciudad)){
-            $ciudad = array();
-        } ?>
-        <?= Html::checkboxList('ciudad',$ciudad,ArrayHelper::map($ciudades,'idciudad','nombre'))?>
-        <br>
-    <?php endif;?>
+    <?php $tmp = \app\models\CondicionProducto::find()->all() ?>
+    <h5 class="text-uppercase"><strong>Condicion del Producto</strong></h5>
+    <?php foreach ($tmp as $item): ?>
+        <?= Html::checkbox("condicion[" . $item['id_cp'] . "]", ((isset($model['condicion'][$item['id_cp']])) ? $model['condicion'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
+    <?php endforeach; ?>
+    <br>
 
+    <?php $tmp = \app\models\TallasProducto::find()->all() ?>
+    <h5 class="text-uppercase"><strong>Tallas de los Productos</strong></h5>
+    <?php foreach ($tmp as $item): ?>
+        <?= Html::checkbox("talla[" . $item['id_tp'] . "]", ((isset($model['talla'][$item['id_tp']])) ? $model['talla'][$item['id_tp']] : ''), ['label' => $item['nombre']]) ?>
+    <?php endforeach; ?>
+    <br>
+    <?php $tmp = \app\models\MaterialProducto::find()->all() ?>
+    <h5 class="text-uppercase"><strong>Material de los Productos</strong></h5>
+    <?php foreach ($tmp as $item): ?>
+        <?= Html::checkbox("material[" . $item['id_mp'] . "]", ((isset($model['material'][$item['id_mp']])) ? $model['material'][$item['id_mp']] : ''), ['label' => $item['nombre']]) ?>
+    <?php endforeach; ?>
+    <br>
+    <?php $marcas = \app\models\MarcaProducto::find()->all() ?>
+    <h5 class="text-uppercase"><strong>Marcas de los Productos</strong></h5>
+    <?php foreach ($tmp as $item): ?>
+        <?= Html::checkbox("marca[" . $item['id_msp'] . "]", ((isset($model['marca'][$item['id_msp']])) ? $model['marca'][$item['id_msp']] : ''), ['label' => $item['nombre']]) ?>
+    <?php endforeach; ?>
+    <br>
+    <?php $tmp = \app\models\ColoresProductos::find()->all() ?>
+    <h5 class="text-uppercase"><strong>Colores de los Productos</strong></h5>
+    <?php foreach ($tmp as $item): ?>
+        <?= Html::checkbox("color[" . $item['id_cp'] . "]", ((isset($model['color'][$item['id_cp']])) ? $model['color'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
+    <?php endforeach; ?>
+    <br>
+    <?php $tmp = \app\models\Ciudad::find()->all() ?>
+    <h5 class="text-uppercase"><strong>Ciudad</strong></h5>
+    <?php foreach ($tmp as $item): ?>
+        <?= Html::checkbox("ciudad[" . $item['idciudad'] . "]", ((isset($model['ciudad'][$item['idciudad']])) ? $model['ciudad'][$item['idciudad']] : ''), ['label' => $item['nombre']]) ?>
+    <?php endforeach; ?>
+    <br>
+    <div>
+        <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
+    </div>
 
     <?php $form::end() ?>
 </div>
