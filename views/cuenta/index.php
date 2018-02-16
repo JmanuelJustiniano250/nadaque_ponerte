@@ -23,6 +23,7 @@ $this->registerCss($script);
 ?>
 
 <?= $this->render('../site/widgets/perfilus'); ?>
+<?php $compra = \app\models\Compra::find()->where(['idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
 
 
 <div class="section-content blog-section with-sidebar">
@@ -39,9 +40,14 @@ $this->registerCss($script);
 
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>VENDIDOS</p>
+                                <?php  if($compra): ?>
+                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>VENDIDOS</p>
+
+                                <?php else: ?>
+
+                                <?php endif;?>
 
                             </div>
                         </div>
@@ -49,9 +55,14 @@ $this->registerCss($script);
 
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->sum('visitas') ?>
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>ANUNCIOS VIGENTES</p>
+                                <?php  if($compra): ?>
+                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->sum('visitas') ?>
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>ANUNCIOS VIGENTES</p>
+
+                                <?php else: ?>
+
+                                <?php endif;?>
 
                             </div>
                         </div>
@@ -80,18 +91,30 @@ $this->registerCss($script);
 
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 2, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
 
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>EXPIRADOS</p>
+
+                                <?php  if($compra): ?>
+
+                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 2, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
+
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>EXPIRADOS</p>
+
+                                <?php else: ?>
+
+                                <?php endif;?>
 
                             </div>
                         </div>
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 3, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->select('COUNT(visitas) as visitas')->count() ?>
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>PAQUETES VIGENTES</p>
+                                <?php  if($compra): ?>
+                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 3, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->select('COUNT(visitas) as visitas')->count() ?>
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>PAQUETES VIGENTES</p>
+                                <?php else: ?>
+
+                                <?php endif;?>
 
                             </div>
                         </div>

@@ -175,6 +175,7 @@ $model = New \app\models\SuscribeForm();
 
 <?= $content ?>
 
+<div class="col-xs-12" style="padding-left: 0; padding-right: 0">
 
 <div class="newslatter">
 
@@ -203,6 +204,7 @@ $model = New \app\models\SuscribeForm();
         </div>
     </div>
 
+</div>
 </div>
 <div id="footer">
     <div class="container">

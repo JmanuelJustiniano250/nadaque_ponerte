@@ -174,9 +174,11 @@ class SiteController extends Controller
         if ($page == 'comprar') {
             $anunciante = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
             if ($anunciante['tipo'] == 1) {
+                $model2 = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['id']]);
                 $model = Paquetes::find()->where(['estado' => 1])->all();
                 return $this->render('carrito/paquetes', [
                     'model' => $model,
+                    'model2' => $model2,
                 ]);
             } else {
                 $model = Yii::$app->session->get('user');
@@ -208,6 +210,7 @@ class SiteController extends Controller
             if ($model->load(Yii::$app->request->post())) {
                 $model->idusuario = Yii::$app->session->get('user')['idusuario'];
                 $model->estado = 0;
+
                 $model->enable = 0;
                 $model->fecha_registro = date('Y-m-d H:i:s');
                 $model->file = UploadedFile::getInstance($model, 'file');

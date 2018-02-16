@@ -42,6 +42,9 @@ $this->registerCss($script);
 <div class="anuncios-index">
 
 
+
+
+
     <ul class="nav nav-tabs" id="myTab">
         <li class="active">
             <a href="#trendy" data-toggle="tab">
@@ -113,5 +116,9 @@ $this->registerCss($script);
         </div>
 
     </div>
+
+
+
+
 
 </div>
