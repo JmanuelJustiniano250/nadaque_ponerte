@@ -84,6 +84,9 @@ $url = \yii\helpers\Url::to(['site/item', 'id' => $item['idanuncio']])
                 <div class="col-xs-12 fl2" align="left">
 
                     <div class="imgrod">
+
+
+                        <?php if($item->usuario['foto']) : ?>
                         <?=
                         EasyThumbnailImage::thumbnailImg(
                             Yii::getAlias('@webroot/imagen/usuarios/') . $item->usuario['foto'],
@@ -93,6 +96,20 @@ $url = \yii\helpers\Url::to(['site/item', 'id' => $item['idanuncio']])
                             ['style' => ' border-radius: 40px', 'class' => 'img-responsive']
                         );
                         ?>
+
+                        <?php else: ?>
+
+                            <?=
+                            EasyThumbnailImage::thumbnailImg(
+                                Yii::getAlias('@webroot/imagen/usuarios/') . 'perfil.png',
+                                51,
+                                51,
+                                EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+                                ['style' => ' border-radius: 40px', 'class' => 'img-responsive']
+                            );
+                            ?>
+
+                        <?php endif; ?>
 
                     </div>
                     <div class="imgrod2">

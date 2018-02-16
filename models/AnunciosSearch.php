@@ -74,8 +74,56 @@ class AnunciosSearch extends Anuncios
             ->andFilterWhere(['like', 'foto', $this->foto])
             ->andFilterWhere(['like', 'precio', $this->precio]);
         if (isset($params['vendedor'])) {
+            $query->andFilterWhere(['idusuario'=> $params['vendedor']]);
+        }
+        if (isset($params['categorias'])) {
+            $tmp = array();
+            foreach ($params['categorias'] as $key => $item)
+                $tmp[] = $key;
+            $query->andFilterWhere(['IN', 'idcategoria', $tmp]);
+        }
+        if (isset($params['precio'])) {
+            $tmp = explode(',',$params['precio']);
+            $query->andFilterWhere(['between', 'cast(precio as unsigned)', $tmp[0],$tmp[1]]);
+        }
+        if (isset($params['condicion']) OR isset($params['talla']) OR isset($params['material']) OR isset($params['marca']) OR isset($params['color']) OR isset($params['ciudad'])) {
             $query->innerJoinWith('anunciosFiltros');
-            $query->andFilterWhere(['IN', 'idfiltro', $tmp]);
+            if (isset($params['condicion'])) {
+                $tmp = array();
+                foreach ($params['condicion'] as $key => $item)
+                    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'idcondicion', $tmp]);
+            }
+            if (isset($params['talla'])) {
+                $tmp = array();
+                foreach ($params['talla'] as $key => $item)
+                    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'idtalla', $tmp]);
+            }
+            if (isset($params['material'])) {
+                $tmp = array();
+                foreach ($params['material'] as $key => $item)
+                    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'idmaterial', $tmp]);
+            }
+            if (isset($params['marca'])) {
+                $tmp = array();
+                foreach ($params['marca'] as $key => $item)
+                    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'idmarca', $tmp]);
+            }
+            if (isset($params['color'])) {
+                $tmp = array();
+                foreach ($params['color'] as $key => $item)
+                    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'idcolores', $tmp]);
+            }
+            if (isset($params['ciudad'])) {
+                $tmp = array();
+                foreach ($params['ciudad'] as $key => $item)
+                    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'idciudad', $tmp]);
+            }
         }
         /*if (isset($params['filtro'])) {
             $tmp = array();

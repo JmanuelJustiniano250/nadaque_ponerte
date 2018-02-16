@@ -27,7 +27,7 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
             ) */ ?> -->
 
 
-            <?= $this->render('anuncios/sidebar', ['model' => $modelFiltro]) ?>
+            <?= $this->render('anuncios/sidebar', ['model' => $datos]) ?>
 
         </div>
 
@@ -36,7 +36,7 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
 
             <?= $this->render('anuncios/lista', ['model' => $data->getModels()]); ?>
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12" align="center">
                     <?php
                     echo \yii\widgets\LinkPager::widget([
                         'pagination' => $data->pagination,

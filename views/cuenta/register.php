@@ -233,7 +233,7 @@ $this->registerCss($script);
 
         <div class=" contact-form col-xs-12">
 
-            <?= $form->field($model, 'descripcion')->label(false)->textarea(['rows' => 5, 'class' => 'mi-input', 'placeholder' => 'Descripcion...']) ?>
+            <?= $form->field($model, 'descripcion')->label(false)->textarea(['rows' => 5, 'class' => 'mi-input', 'placeholder' => 'Descripcion personal, gustos e intereses en moda, forma de ventas y envio']) ?>
 
         </div>
 
