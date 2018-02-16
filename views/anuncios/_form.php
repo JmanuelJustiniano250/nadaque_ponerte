@@ -111,9 +111,12 @@ $user = Yii::$app->session->get('user');
                 $model['filtro'] = $tmp;
             }
             ?>
+
+            <h3>Condición del producto</h3>
+
             <?= $form->field($model, 'filtro')->widget(Select2::classname(), [
 
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Filtros::find()->where(['estado' => 1])->andWhere(['IS NOT', 'idpadre', NULL])->all(), 'idfiltro', 'nombre'),
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\Ciudad::find()->where(['IS NOT', 'idciudad', NULL])->all(), 'idciudad', 'nombre'),
                 'language' => 'es',
                 'options' => [
                     'placeholder' => 'compras',

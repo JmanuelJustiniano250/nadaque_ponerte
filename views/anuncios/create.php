@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncios */
 
-$this->title = 'Create Anuncios';
+$this->title = 'Crea tu anuncio';
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
 
 
-            <h1><?= Html::encode($this->title) ?></h1>
+            <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
+            <p class="text-center">Rellena los campos</p> <br><br>
 
             <?= $this->render('_form', [
                 'model' => $model,
