@@ -10,6 +10,7 @@ use app\models\AnunciosSearch;
 use app\models\CompraSearch;
 use app\models\ContactForm;
 use app\models\Forget;
+use app\models\Mensajes;
 use app\models\Newsletter;
 use app\models\Usuarios;
 use Yii;
@@ -439,5 +440,24 @@ class CuentaController extends Controller
 
     }
 
+    public function actionMensaje()
+    {
+
+        if (empty(Yii::$app->session->get('user'))) {
+            return $this->goHome();
+        }
+
+        $model = new Mensajes();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->idusuario =Yii::$app->session->get('user')['idusuario'];
+            $model->fecha_registro =date('Y-m-d H:i:s');
+            $model->estado =1;
+                if ($model->save()) {
+                    Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
+                } else
+                    Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
+        }
+        return $this->redirect(Yii::$app->request->referrer);
+    }
 
 }

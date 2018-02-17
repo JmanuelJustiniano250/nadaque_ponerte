@@ -128,7 +128,7 @@ class Anuncios extends \yii\db\ActiveRecord
      */
     public function getAnunciosFiltros()
     {
-        return $this->hasMany(AnunciosFiltros::className(), ['idanuncio' => 'idanuncio']);
+        return $this->hasOne(AnunciosFiltros::className(), ['idanuncio' => 'idanuncio']);
     }
 
     /**
@@ -153,6 +153,14 @@ class Anuncios extends \yii\db\ActiveRecord
     public function getDeseos()
     {
         return $this->hasMany(Deseo::className(), ['idanuncio' => 'idanuncio']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMensajes()
+    {
+        return $this->hasMany(Mensajes::className(), ['idanuncio' => 'idanuncio']);
     }
 
     public function upload($name)

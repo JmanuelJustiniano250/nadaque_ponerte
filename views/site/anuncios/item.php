@@ -110,25 +110,32 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
             <!--<p><span class="colorww">Sub categoria </span>: Jean</p>-->
             <!--<p><span class="colorww">Condición :</span>Nuevo con etiqueta</p>-->
 
-            <p class="colortemp" style="font-size: 22px; font-weight: 600">Bs. <?= $model['precio'] ?></p>
-            <!--<p style="margin-top: -10px;  text-decoration: line-through;">Bs. 280</p>-->
+            <?php if ($model['precio_promocion']): ?>
+
+                <p class="colortemp" style="font-size: 22px; font-weight: 600">
+                    Bs. <?= $model['precio_promocion'] ?>  </p>
+                <p class="colortemp" style="font-size: 11px;
+    text-decoration: line-through;
+    font-weight: 300;">Bs.<?= $model['precio'] ?></p>
+
+            <?php else: ?>
+
+                <p class="colortemp" style="font-size: 22px; font-weight: 600">Bs. <?= $model['precio'] ?> </p>
+
+            <?php endif; ?>
+
             <div class="imgquiero">
-                <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt=""></div>
+                <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
+            </div>
 
             <div class="linecir"></div>
 
-            <?php
-            foreach ($model->anunciosFiltros as $item) {
-                echo Html::tag(
-                    'p',
-                    Html::tag(
-                        'span',
-                        $item->filtro->padre['nombre'],
-                        ['class' => 'colorww']
-                    ) . $item->filtro['nombre']
-                );
-            }
-            ?>
+            <p><?= (isset($model->anunciosFiltros->condicion['value'])) ? (Html::tag('span', 'Condicion: ', ['class' => 'colorww']) . $model->anunciosFiltros->condicion['value']) : '' ?></p>
+            <p><?= (isset($model->anunciosFiltros->talla['value'])) ? (Html::tag('span', 'Talla: ', ['class' => 'colorww']) . $model->anunciosFiltros->talla['value']) : '' ?></p>
+            <p><?= (isset($model->anunciosFiltros->color['value'])) ? (Html::tag('span', 'Color: ', ['class' => 'colorww']) . $model->anunciosFiltros->color['value']) : '' ?></p>
+            <p><?= (isset($model->anunciosFiltros->material['value'])) ? (Html::tag('span', 'Material: ', ['class' => 'colorww']) . $model->anunciosFiltros->material['value']) : '' ?></p>
+            <p><?= (isset($model->anunciosFiltros->marca['value'])) ? (Html::tag('span', 'Marca: ', ['class' => 'colorww']) . $model->anunciosFiltros->marca['value']) : '' ?></p>
+            <p><?= (isset($model->anunciosFiltros->ciudad['value'])) ? (Html::tag('span', 'Ciudad: ', ['class' => 'colorww']) . $model->anunciosFiltros->ciudad['value']) : '' ?></p>
             <!--<p><span class="colorww">Talla </span>: M</p>
             <p><span class="colorww">Color </span>: Celeste</p>
             <p><span class="colorww">Material :</span>Jeans</p>
@@ -202,9 +209,10 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     ?>
                 </div>
 
-                <p class="text-center"
-                   style="color: white; font-weight: 600"><?= \app\models\Anuncios::find()->where(['idusuario' => $model->idusuario, 'estado' => 1])->count() ?>
-                    prendas</p>
+                <p class="text-center" style="color: white; font-weight: 600">
+                    <?= \app\models\Anuncios::find()->where(['idusuario' => $model->idusuario, 'estado' => 1])->count() ?>
+                    prendas
+                </p>
                 <div style="border-bottom: 1px solid white;  border-bottom-style: dashed;  margin: 0px 30px "></div>
 
                 <a class="moreven btn center-block" href="#">Mas de la vendedora</a>
@@ -215,122 +223,74 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
         <hr>
         <br><br><br>
-        <div class="col-xs-12"><br><br><br>
-
+        <?php if(!empty(Yii::$app->session->get('user'))):?>
+        <div class="col-xs-12">
+            <h3>Comentarios</h3>
+            <br><br>
+            <?php $modmess= new \app\models\Mensajes();?>
+            <?php $modmess->idanuncio = $model->idanuncio;?>
+            <?php $modmess->tipo = 1;?>
             <?php $form = ActiveForm::begin([
-                'action' => [''],
+                'action' => ['/cuenta/mensaje'],
                 'id' => 'login-form',
                 /*'layout' => 'horizontal',
                 'fieldConfig' => [
                     'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
                     'labelOptions' => ['class' => 'col-md-4 control-label'],
                 ],*/
-                'options' => ['enctype' => 'multipart/form-data']
             ]); ?>
-
-
-            <textarea class="form-control cajadesct" id="description" placeholder="Dejanos tus consultas y comentarios"
-                      rows="5"></textarea>
-
+            <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control cajadesct','placeholder'=>'Dejanos tus consultas y comentarios'])->label(false)?>
+            <?= $form->field($modmess,'idanuncio')->hiddenInput()->label(false)?>
+            <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
 
             <div class="submit-area" align="left"><br>
                 <input type="submit" name="enviar" id="" class="btnregister" style="text-transform: none"
                        value="Dejar Mensaje">
-
             </div>
 
             <?php ActiveForm::end(); ?> <br><br>
 
+            <?php foreach ($model->mensajes as $key => $mensaje): ?>
+                <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
+                    <div class="col-md-11 col-xs-12">
 
-            <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
-                <div class="col-md-11 col-xs-12">
+                        <div class="<?= (($mensaje->usuario['idusuario'] == $model->idusuario) ? 'anunciantes' : 'cajausuario') ?>">
 
-                    <div class="cajausuario">
+                            <div class="cahas">
+                                <?= Html::img('@web/assets_b/images/chats.png') ?>
+                            </div>
 
-                        <div class="cahas">
-                            <img src="<?= Url::to('@web/assets_b/images/chats.png') ?>" alt="">
+                            <div class="imagenusario" align="right">
+                                <span><?= $mensaje->usuario['nombres'] .' '. $mensaje->usuario['apellidos'] ?> </span>
+                                <?=
+                                EasyThumbnailImage::thumbnailImg(
+                                    Yii::getAlias('@webroot/imagen/usuarios/'. $mensaje->usuario['foto']) ,
+                                    45,
+                                    45,
+                                    EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+                                    ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
+                                );
+                                ?>
 
+                            </div>
 
+                            <div class="comentarios2" style="padding-left: 10px">
+                                <p><?= $mensaje['detalle']?></p>
+                                <br>
+                                <p style="color: #ff6d89; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
+                            </div>
                         </div>
-
-
-                        <div class="imagenusario" align="right"><span>Paola Melgar </span>
-                            <?=
-                            EasyThumbnailImage::thumbnailImg(
-                                Yii::getAlias('@webroot/assets_b/images/') . 'usuario.jpg',
-                                45,
-                                45,
-                                EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                                ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
-                            );
-                            ?>
-
-                        </div>
-
-                        <div class="comentarios2" style="padding-left: 10px">
-                            <p>Hola, bla bla dsd dsa </p>
-                            <br>
-                            <p style="color: #ff6d89; font-weight: 600">20 marz 2017 </p>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div class="col-md-1 hidden-xs hidden-sm"></div>
-
-
-            </div>
-
-
-            <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
-
-                <div class="col-md-1 hidden-xs hidden-sm"></div>
-
-                <div class="col-md-11 col-xs-12">
-                    <div class="anunciantes">
-
-
-                        <div class="cahas">
-                            <img src="<?= Url::to('@web/assets_b/images/chats.png') ?>" alt="">
-
-
-                        </div>
-
-                        <div class="imagenusario" align="right"><span><?php echo $model->usuario['nombres'] ?></span>
-
-                        <?=
-                        EasyThumbnailImage::thumbnailImg(
-                            Yii::getAlias('@webroot/imagen/usuarios/') . $model->usuario['foto'],
-                            45,
-                            45,
-                            EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                            ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
-                        );
-                        ?>
-
 
                     </div>
 
-
-                        <div class="comentarios2" style="padding-left: 10px">
-                            <p>Hola, bla bla dsd dsa </p>
-                            <br>
-                            <p style="color: #ff6d89; font-weight: 600">20 marz 2017 </p>
-                        </div>
-
-
                 </div>
-
-            </div>
-            <br>
-
+            <?php endforeach; ?>
 
         </div>
-
+        <br>
+        <?php endif;?>
     </div>
-</div>
+
 </div>
 
 <br><br>

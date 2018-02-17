@@ -313,8 +313,8 @@ class SiteController extends Controller
 
         $model = new LoginWeb();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            //return $this->goBack();
-            return $this->redirect(Yii::$app->request->referrer);
+            return $this->goBack();
+            //return $this->redirect(Yii::$app->request->referrer);
         }
         return $this->render('cuenta/login', ['model' => $model]);
 

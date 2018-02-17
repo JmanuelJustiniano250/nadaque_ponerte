@@ -2,8 +2,8 @@
 
 use himiklab\thumbnail\EasyThumbnailImage;
 use rmrevin\yii\fontawesome\FA;
+use yii\helpers\Html;
 
-$url = \yii\helpers\Url::to(['site/item', 'id' => $item['idanuncio']])
 ?>
 
 <div class="cajadeanuncio">
@@ -19,9 +19,7 @@ $url = \yii\helpers\Url::to(['site/item', 'id' => $item['idanuncio']])
             );
             ?>
             <div class="hover-box box2">
-                <a href="<?= $url ?>">
-                    <?= FA::icon(FA::_SEARCH_PLUS) ?>
-                </a>
+                <?= Html::a(FA::icon(FA::_SEARCH_PLUS), ['site/item', 'id' => $item['idanuncio']]) ?>
             </div>
 
         </div>
@@ -34,43 +32,29 @@ $url = \yii\helpers\Url::to(['site/item', 'id' => $item['idanuncio']])
 
                 <h3 class="text-center"><?= $item['titulo'] ?></h3>
 
-
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
-                    <p>Talla: M</p>
-                    <p>Marca</p>
-                    <p>Nuevo con etiqueta
-
-                        <!--
-                <?php /*
-                foreach ($item->anunciosFiltros as $filtro) {
-                    $filtro->filtro['nombre'];
-                }
-               */ ?>
--->
-
-
-                    </p>
-
+                    <p><?= (isset($item->anunciosFiltros->talla['value'])) ? ('Talla: ' . $item->anunciosFiltros->talla['value']) : '' ?></p>
+                    <p><?= (isset($item->anunciosFiltros->marca['nombre'])) ? $item->anunciosFiltros->marca['nombre'] : '' ?></p>
+                    <p><?= (isset($item->anunciosFiltros->condicion['nombre'])) ? $item->anunciosFiltros->condicion['nombre'] : '' ?></p>
                 </div>
-
 
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
                     <p>Codigo: <?= $item['codigo'] ?></p>
 
                     <?php if ($item['precio_promocion']): ?>
+
                         <p class="colorwqw">Bs. <?= $item['precio_promocion'] ?>  </p>
                         <p class="colorwqw" style="font-size: 11px;
     text-decoration: line-through;
     font-weight: 300;">Bs.<?= $item['precio'] ?></p>
+
                     <?php else: ?>
 
-                        <p class="colorwqw" s>Bs. <?= $item['precio'] ?> </p>
+                        <p class="colorwqw" >Bs. <?= $item['precio'] ?> </p>
 
                     <?php endif; ?>
 
-
                 </div>
-
 
                 <!--<div class=" fl3">
                 <p style="    margin-bottom: -5px;  margin-top: 0;"><a href=""><?= FA::icon(FA::_HEART) ?></a></p>
@@ -85,32 +69,23 @@ $url = \yii\helpers\Url::to(['site/item', 'id' => $item['idanuncio']])
 
                     <div class="imgrod">
 
-
-                        <?php if($item->usuario['foto']) : ?>
-                        <?=
-                        EasyThumbnailImage::thumbnailImg(
-                            Yii::getAlias('@webroot/imagen/usuarios/') . $item->usuario['foto'],
-                            51,
-                            51,
-                            EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                            ['style' => ' border-radius: 40px', 'class' => 'img-responsive']
-                        );
-                        ?>
-
-                        <?php else: ?>
-
-                            <?=
-                            EasyThumbnailImage::thumbnailImg(
+                        <?php if ($item->usuario['foto']) {
+                            echo EasyThumbnailImage::thumbnailImg(
+                                Yii::getAlias('@webroot/imagen/usuarios/') . $item->usuario['foto'],
+                                51,
+                                51,
+                                EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+                                ['style' => ' border-radius: 40px', 'class' => 'img-responsive']
+                            );
+                        } else {
+                            echo EasyThumbnailImage::thumbnailImg(
                                 Yii::getAlias('@webroot/imagen/usuarios/') . 'perfil.png',
                                 51,
                                 51,
                                 EasyThumbnailImage::THUMBNAIL_OUTBOUND,
                                 ['style' => ' border-radius: 40px', 'class' => 'img-responsive']
                             );
-                            ?>
-
-                        <?php endif; ?>
-
+                        } ?>
                     </div>
                     <div class="imgrod2">
                         <?= $item->usuario['nombres'] ?>
@@ -118,11 +93,8 @@ $url = \yii\helpers\Url::to(['site/item', 'id' => $item['idanuncio']])
 
                 </div>
 
-
                 <p class="text-center">
-
                     <br>
-
                 </p>
             </div>
 

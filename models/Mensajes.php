@@ -10,9 +10,9 @@ namespace app\models;
  * @property string $titulo
  * @property string $detalle
  * @property string $fecha_registro
- * @property int $idcliente
  * @property int $tipo
  * @property int $estado
+ * @property int $idanuncio
  */
 class Mensajes extends \yii\db\ActiveRecord
 {
@@ -30,8 +30,8 @@ class Mensajes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idusuario', 'detalle', 'idcliente', 'tipo', 'estado'], 'required'],
-            [['idusuario', 'idcliente', 'tipo', 'estado'], 'integer'],
+            [['idusuario', 'detalle', 'tipo', 'estado'], 'required'],
+            [['idusuario', 'tipo', 'estado','idanuncio'], 'integer'],
             [['detalle'], 'string'],
             [['fecha_registro'], 'safe'],
             [['titulo'], 'string', 'max' => 250],
@@ -46,12 +46,17 @@ class Mensajes extends \yii\db\ActiveRecord
         return [
             'idmensaje' => 'Idmensaje',
             'idusuario' => 'Idusuario',
+            'idanuncio' => 'idanuncio',
             'titulo' => 'Titulo',
             'detalle' => 'Detalle',
             'fecha_registro' => 'Fecha Registro',
-            'idcliente' => 'Idcliente',
             'tipo' => 'Tipo',
             'estado' => 'Estado',
         ];
+    }
+
+    public function getUsuario()
+    {
+        return $this->hasOne(Usuarios::className(), ['idusuario' => 'idusuario']);
     }
 }
