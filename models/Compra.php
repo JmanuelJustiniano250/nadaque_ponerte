@@ -37,7 +37,7 @@ class Compra extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idusuario', 'idpaquete'], 'require'],
+            [['idusuario', 'idpaquete'], 'required'],
             [['idusuario', 'idpaquete', 'tipo_pago'], 'integer'],
             [['fecha_registro', 'fecha_aprovacion', 'fecha_pago'], 'safe'],
             [['precio'], 'number'],
