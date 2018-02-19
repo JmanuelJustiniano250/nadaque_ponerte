@@ -40,14 +40,14 @@ $this->registerCss($script);
 
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php  if($compra): ?>
+                                <?php if ($compra): ?>
                                     <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
                                     <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                    <p>VENDIDOS</p>
+                                    <p>ANUNCIOS EN LINEA</p>
 
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -55,14 +55,19 @@ $this->registerCss($script);
 
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php  if($compra): ?>
-                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->sum('visitas') ?>
+                                <?php if ($compra): ?>
+                                    <?php $tmp = \app\models\Anuncios::find()
+                                        ->joinWith(['paquete','paquete.paquete'])
+                                        ->andWhere(['<=','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['anuncios.idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                        ->distinct()
+                                        ->count() ?>
                                     <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
                                     <p>ANUNCIOS VIGENTES</p>
 
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -93,28 +98,38 @@ $this->registerCss($script);
                             <div class="statistic-counter">
 
 
-                                <?php  if($compra): ?>
+                                <?php if ($compra): ?>
 
-                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 2, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
+                                    <?php $tmp = \app\models\Compra::find()
+                                        ->joinWith('paquete')
+                                        ->andWhere(['>','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                        ->distinct()
+                                        ->count() ?>
 
                                     <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
                                     <p>EXPIRADOS</p>
 
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php  if($compra): ?>
-                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 3, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->select('COUNT(visitas) as visitas')->count() ?>
+                                <?php if ($compra): ?>
+                                    <?php $tmp = \app\models\Compra::find()
+                                        ->joinWith('paquete')
+                                        ->andWhere(['<=','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                        ->distinct()
+                                        ->count() ?>
                                     <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
                                     <p>PAQUETES VIGENTES</p>
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -162,11 +177,11 @@ $this->registerCss($script);
                             <?php if ($model['facebook']): ?>
 
                                 <?php if ($model['visiblefacebook']): ?>
-                                <li>
-                                    <a href="<?= $model['facebook'] ?>" target="_blank"><i
-                                                class="fa fa-facebook" aria-hidden="true"></i></a>
-                                </li>
-                                    <?php else:?>
+                                    <li>
+                                        <a href="<?= $model['facebook'] ?>" target="_blank"><i
+                                                    class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    </li>
+                                <?php else: ?>
                                 <?php endif; ?>
                             <?php endif; ?>
 
@@ -176,12 +191,12 @@ $this->registerCss($script);
 
                             <?php if ($model['twitter']): ?>
                                 <?php if ($model['visibletwittwe']): ?>
-                                <li>
-                                    <a href="<?= $model['twitter'] ?>" target="_blank"><i
-                                                class="fa fa-twitter" aria-hidden="true"></i></a>
-                                </li>
-                            <?php else:?>
-                            <?php endif; ?>
+                                    <li>
+                                        <a href="<?= $model['twitter'] ?>" target="_blank"><i
+                                                    class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    </li>
+                                <?php else: ?>
+                                <?php endif; ?>
                             <?php endif; ?>
 
 
@@ -189,12 +204,12 @@ $this->registerCss($script);
                             <?php if ($model['youtube']): ?>
 
                                 <?php if ($model['visibleyoutu']): ?>
-                                <li>
-                                    <a href="<?= $model['youtube'] ?>" target="_blank"><i
-                                                class="fa fa-youtube" aria-hidden="true"></i></a>
-                                </li>
-                            <?php else:?>
-                            <?php endif; ?>
+                                    <li>
+                                        <a href="<?= $model['youtube'] ?>" target="_blank"><i
+                                                    class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </li>
+                                <?php else: ?>
+                                <?php endif; ?>
                             <?php endif; ?>
 
 
@@ -203,13 +218,13 @@ $this->registerCss($script);
 
                                 <?php if ($model['visibleinsta']): ?>
 
-                                <li>
-                                    <a href="<?= $model['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
-                                                                                            aria-hidden="true"></i></a>
-                                </li>
-                            <?php else:?>
+                                    <li>
+                                        <a href="<?= $model['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
+                                                                                                aria-hidden="true"></i></a>
+                                    </li>
+                                <?php else: ?>
 
-                            <?php endif; ?>
+                                <?php endif; ?>
 
                             <?php endif; ?>
                         </ul>

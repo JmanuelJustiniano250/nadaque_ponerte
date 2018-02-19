@@ -243,441 +243,419 @@ $this->registerCss($script);
 
     <div class="col-md-8">
         <div class="col-xs-12">
-        <div class="menuform">
+            <div class="menuform">
 
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <label for="">Nombre completo <span>*</span></label>
-                    <?= $form->field($model, 'nombres')->label(false) ?>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <label for="">Nombre para mostrar <span>*</span></label>
-                    <?= $form->field($model, 'alias')->label(false) ?>
-                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <label for="">Nombre completo <span>*</span></label>
+                        <?= $form->field($model, 'nombres')->label(false) ?>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <label for="">Nombre para mostrar <span>*</span></label>
+                        <?= $form->field($model, 'alias')->label(false) ?>
+                    </div>
 
-                <div class="col-md-6 col-xs-12">
-                    <label for=""> Correo electrónico opcional(opcional)</label>
+                    <div class="col-md-6 col-xs-12">
+                        <label for=""> Correo electrónico opcional(opcional)</label>
 
-                    <?= $form->field($model, 'email')->label(false) ?>
-                </div>
+                        <?= $form->field($model, 'email')->label(false) ?>
+                    </div>
 
 
-                <div class="col-md-6 col-xs-12">
-                   <div class="col-xs-12" style="padding-left: 0; padding-right: 0"><label for="">Fecha de Nacimiento <span>*</span></label></div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="col-xs-12" style="padding-left: 0; padding-right: 0"><label for="">Fecha de
+                                Nacimiento <span>*</span></label></div>
 
-                    <div class="col-md-3 col-xs-12" style="padding-left: 0">
-                    <?= $form->field($model, 'dia')->label(false)->dropDownList(
-                        [
-                          '1' => '1',
-                            '2' => '2',
-                            '3' => '3',
-                            '4' => '4',
-                            '5' => '5',
-                            '6' => '6',
-                            '7' => '7',
-                            '8' => '8',
-                            '9' => '9',
-                            '10' => '10',
-                            '11' => '11',
-                            '12' => '12',
-                            '13' => '13',
-                            '14' => '14',
-                            '15' => '15',
-                            '16' => '16',
-                            '17' => '17',
-                            '18' => '18',
-                            '19' => '19',
-                            '20' => '20',
-                            '21' => '21',
-                            '22' => '22',
-                            '23' => '23',
-                            '24' => '24',
-                            '25' => '25',
-                            '26' => '26',
-                            '27' => '27',
-                            '28' => '28',
-                            '29' => '29',
-                            '30' => '30',
-                            '31' => '31',
-                        ]
-                    ) ?>
+                        <div class="col-md-3 col-xs-12" style="padding-left: 0">
+                            <?= $form->field($model, 'dia')->label(false)->dropDownList(
+                                [
+                                    '1' => '1',
+                                    '2' => '2',
+                                    '3' => '3',
+                                    '4' => '4',
+                                    '5' => '5',
+                                    '6' => '6',
+                                    '7' => '7',
+                                    '8' => '8',
+                                    '9' => '9',
+                                    '10' => '10',
+                                    '11' => '11',
+                                    '12' => '12',
+                                    '13' => '13',
+                                    '14' => '14',
+                                    '15' => '15',
+                                    '16' => '16',
+                                    '17' => '17',
+                                    '18' => '18',
+                                    '19' => '19',
+                                    '20' => '20',
+                                    '21' => '21',
+                                    '22' => '22',
+                                    '23' => '23',
+                                    '24' => '24',
+                                    '25' => '25',
+                                    '26' => '26',
+                                    '27' => '27',
+                                    '28' => '28',
+                                    '29' => '29',
+                                    '30' => '30',
+                                    '31' => '31',
+                                ]
+                            ) ?>
+
+                        </div>
+
+
+                        <div class="col-md-4 col-xs-12" style="padding-left: 0">
+                            <?= $form->field($model, 'mes')->label(false)->dropDownList(
+
+                                [
+                                    '1' => 'Ene',
+                                    '2' => 'Feb',
+                                    '3' => 'Mar',
+                                    '4' => 'Abr',
+                                    '5' => 'May',
+                                    '6' => 'Jun',
+                                    '7' => 'Jul',
+                                    '8' => 'Ago',
+                                    '9' => 'Sep',
+                                    '10' => 'Oct',
+                                    '11' => 'Nov',
+                                    '12' => 'Dic',
+
+                                ]
+                            ) ?>
+                        </div>
+
+
+                        <div class="col-md-5 col-xs-12" style="padding-left: 0">
+
+
+                            <?= $form->field($model, 'ano')->label(false)->dropDownList([
+                                '2018' => '2018',
+                                '2017' => '2017',
+                                '2016' => '2016',
+                                '2015' => '2015',
+                                '2014' => '2014',
+                                '2013' => '2013',
+                                '2012' => '2012',
+                                '2011' => '2011',
+                                '2010' => '2010',
+                                '2009' => '2009',
+                                '2008' => '2008',
+                                '2007' => '2007',
+                                '2006' => '2006',
+                                '2005' => '2005',
+                                '2004' => '2004',
+                                '2003' => '2003',
+                                '2002' => '2002',
+                                '2001' => '2001',
+                                '2000' => '2000',
+                                '1999' => '1999',
+                                '1998' => '1998',
+                                '1997' => '1997',
+                                '1996' => '1996',
+                                '1995' => '1995',
+                                '1994' => '1994',
+                                '1993' => '1993',
+                                '1992' => '1992',
+                                '1991' => '1991',
+                                '1990' => '1990',
+                                '1989' => '1989',
+                                '1988' => '1988',
+                                '1987' => '1987',
+                                '1986' => '1986',
+                                '1985' => '1985',
+                                '1984' => '1984',
+                                '1983' => '1983',
+                                '1982' => '1982',
+                                '1981' => '1981',
+                                '1980' => '1980',
+                                '1979' => '1979',
+                                '1978' => '1978',
+                                '1977' => '1977',
+                                '1976' => '1976',
+                                '1975' => '1975',
+                                '1974' => '1974',
+                                '1973' => '1973',
+                                '1972' => '1972',
+                                '1971' => '1971',
+                                '1970' => '1970',
+                                '1969' => '1969',
+                                '1968' => '1968',
+                                '1967' => '1967',
+                                '1966' => '1966',
+                                '1965' => '1965',
+                                '1964' => '1964',
+                                '1963' => '1963',
+                                '1962' => '1962',
+                                '1961' => '1961',
+                                '1960' => '1960',
+                                '1959' => '1959',
+                                '1958' => '1958',
+                                '1957' => '1957',
+                                '1956' => '1956',
+                                '1955' => '1955',
+                                '1954' => '1954',
+                                '1953' => '1953',
+                                '1952' => '1952',
+                                '1951' => '1951',
+                                '1950' => '1950',
+                                '1949' => '1949',
+                                '1948' => '1948',
+                                '1947' => '1947',
+                                '1946' => '1946',
+                                '1945' => '1945',
+                                '1944' => '1944',
+                                '1943' => '1943',
+                                '1942' => '1942',
+                                '1941' => '1941',
+                                '1940' => '1940',
+                                '1939' => '1939',
+                                '1938' => '1938',
+                                '1937' => '1937',
+                                '1936' => '1936',
+                                '1935' => '1935',
+                                '1934' => '1934',
+                                '1933' => '1933',
+                                '1932' => '1932',
+                                '1931' => '1931',
+                                '1930' => '1930',
+                                '1929' => '1929',
+                                '1928' => '1928',
+                                '1927' => '1927',
+                                '1926' => '1926',
+                                '1925' => '1925',
+                                '1924' => '1924',
+                                '1923' => '1923',
+                                '1922' => '1922',
+                                '1921' => '1921',
+                                '1920' => '1920',
+                                '1919' => '1919',
+                                '1918' => '1918',
+                                '1917' => '1917',
+                                '1916' => '1916',
+                                '1915' => '1915',
+                                '1914' => '1914',
+                                '1913' => '1913',
+                                '1912' => '1912',
+                                '1911' => '1911',
+                                '1910' => '1910',
+                                '1909' => '1909',
+                                '1908' => '1908',
+                                '1907' => '1907',
+                                '1906' => '1906',
+                                '1905' => '1905',
+                                '1904' => '1904',
+                                '1903' => '1903',
+                                '1902' => '1902',
+                                '1901' => '1901',
+                                '1900' => '1900',
+
+                            ])
+                            ?>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-xs-12">
+
+                        <label for="">Ciudad donde vive <span>*</span></label>
+                        <?= $form->field($model, 'ciudad')->label(false) ?>
+                    </div>
+
+
+                    <div class="col-md-6 col-xs-12">
+                        <label for="">Dirección</label>
+                        <?= $form->field($model, 'direccion')->label(false) ?>
+                    </div>
+
+
+                    <div class="col-md-6 col-xs-12">
+                        <label for="">Telefono o celular <span>*</span></label>
+                        <?= $form->field($model, 'telefono')->label(false) ?>
+
+
+                    </div>
+                    <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0">Visible </label> <br>
+
+                        <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+                        <label for="">Contraseña</label>
+
+                        <?= $form->field($model, 'contrasena')->textInput(['class' => 'password',])->input('password')->label(false) ?>
+
 
                     </div>
 
 
-                    <div class="col-md-4 col-xs-12" style="padding-left: 0">
-                    <?= $form->field($model, 'mes')->label(false)->dropDownList(
-
-                        [
-                            '1' => 'Ene',
-                            '2' => 'Feb',
-                            '3' => 'Mar',
-                            '4' => 'Abr',
-                            '5' => 'May',
-                            '6' => 'Jun',
-                            '7' => 'Jul',
-                            '8' => 'Ago',
-                            '9' => 'Sep',
-                            '10' => 'Oct',
-                            '11' => 'Nov',
-                            '12' => 'Dic',
-
-                        ]
-                    ) ?>
                 </div>
-
-
-                    <div class="col-md-5 col-xs-12" style="padding-left: 0">
-
-
-
-
-                        <?= $form->field($model, 'ano')->label(false)->dropDownList([
-                            '2018' => '2018',
-                            '2017' => '2017',
-                            '2016' => '2016',
-                            '2015' => '2015',
-                            '2014' => '2014',
-                            '2013' => '2013',
-                            '2012' => '2012',
-                            '2011' => '2011',
-                            '2010' => '2010',
-                            '2009' => '2009',
-                            '2008' => '2008',
-                            '2007' => '2007',
-                            '2006' => '2006',
-                            '2005' => '2005',
-                            '2004' => '2004',
-                            '2003' => '2003',
-                            '2002' => '2002',
-                            '2001' => '2001',
-                            '2000' => '2000',
-                            '1999' => '1999',
-                            '1998' => '1998',
-                            '1997' => '1997',
-                            '1996' => '1996',
-                            '1995' => '1995',
-                            '1994' => '1994',
-                            '1993' => '1993',
-                            '1992' => '1992',
-                            '1991' => '1991',
-                            '1990' => '1990',
-                            '1989' => '1989',
-                            '1988' => '1988',
-                            '1987' => '1987',
-                            '1986' => '1986',
-                            '1985' => '1985',
-                            '1984' => '1984',
-                            '1983' => '1983',
-                            '1982' => '1982',
-                            '1981' => '1981',
-                            '1980' => '1980',
-                            '1979' => '1979',
-                            '1978' => '1978',
-                            '1977' => '1977',
-                            '1976' => '1976',
-                            '1975' => '1975',
-                            '1974' => '1974',
-                            '1973' => '1973',
-                            '1972' => '1972',
-                            '1971' => '1971',
-                            '1970' => '1970',
-                            '1969' => '1969',
-                            '1968' => '1968',
-                            '1967' => '1967',
-                            '1966' => '1966',
-                            '1965' => '1965',
-                            '1964' => '1964',
-                            '1963' => '1963',
-                            '1962' => '1962',
-                            '1961' => '1961',
-                            '1960' => '1960',
-                            '1959' => '1959',
-                            '1958' => '1958',
-                            '1957' => '1957',
-                            '1956' => '1956',
-                            '1955' => '1955',
-                            '1954' => '1954',
-                            '1953' => '1953',
-                            '1952' => '1952',
-                            '1951' => '1951',
-                            '1950' => '1950',
-                            '1949' => '1949',
-                            '1948' => '1948',
-                            '1947' => '1947',
-                            '1946' => '1946',
-                            '1945' => '1945',
-                            '1944' => '1944',
-                            '1943' => '1943',
-                            '1942' => '1942',
-                            '1941' => '1941',
-                            '1940' => '1940',
-                            '1939' => '1939',
-                            '1938' => '1938',
-                            '1937' => '1937',
-                            '1936' => '1936',
-                            '1935' => '1935',
-                            '1934' => '1934',
-                            '1933' => '1933',
-                            '1932' => '1932',
-                            '1931' => '1931',
-                            '1930' => '1930',
-                            '1929' => '1929',
-                            '1928' => '1928',
-                            '1927' => '1927',
-                            '1926' => '1926',
-                            '1925' => '1925',
-                            '1924' => '1924',
-                            '1923' => '1923',
-                            '1922' => '1922',
-                            '1921' => '1921',
-                            '1920' => '1920',
-                            '1919' => '1919',
-                            '1918' => '1918',
-                            '1917' => '1917',
-                            '1916' => '1916',
-                            '1915' => '1915',
-                            '1914' => '1914',
-                            '1913' => '1913',
-                            '1912' => '1912',
-                            '1911' => '1911',
-                            '1910' => '1910',
-                            '1909' => '1909',
-                            '1908' => '1908',
-                            '1907' => '1907',
-                            '1906' => '1906',
-                            '1905' => '1905',
-                            '1904' => '1904',
-                            '1903' => '1903',
-                            '1902' => '1902',
-                            '1901' => '1901',
-                            '1900' => '1900',
-
-                        ])
-                        ?>
-
-
-                    </div>
             </div>
-
-
-                <div class="col-md-6 col-xs-12">
-
-                    <label for="">Ciudad donde vive <span>*</span></label>
-                    <?= $form->field($model, 'ciudad')->label(false) ?>
-                </div>
-
-
-                <div class="col-md-6 col-xs-12">
-                    <label for="">Dirección</label>
-                    <?= $form->field($model, 'direccion')->label(false) ?>
-                </div>
-
-
-                <div class="col-md-6 col-xs-12">
-                    <label for="">Telefono o celular <span>*</span></label>
-                    <?= $form->field($model, 'telefono')->label(false) ?>
-
-
-                </div>
-                <div class="col-md-6 col-xs-12"><br>  <label for="" style="margin-bottom: 0">Visible </label> <br>
-
-                    <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
-
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                    <label for="" >Contraseña</label>
-
-                    <?= $form->field($model, 'contrasena')->textInput(['class' => 'password',])->input('password')->label(false) ?>
-
-
-
-                </div>
-
-
-
-
-            </div>
-        </div>
         </div>
 
         <div class="col-md-5 col-xs-12">
             <div class="menuform">
-            <div class="row">
-                <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
 
-                    <label for="" style="font-weight: 600">Tipos de tallas (danos tu talla)</label> <br>
-
-
-                    <label for="">Blusas</label>
-
-                    <?= $form->field($model, 'tallasblusas')->label(false)->dropDownList(
-                        [   'XXS-(0-2-US)' => 'XXS (0-2 US)',
-                            'XS-(2-US)' => 'XS (2 US)',
-                            'S-(2-4-US)' => 'S (2-4 US)',
-                            'M-(6-8-US)' => 'M (6-8 US)',
-                            'L-(8-10-US)' => 'L (8-10 US)',
-                            'XL-(10-12-US)' => 'XL (10-12 US)',
-                            '1XL-(12-14-US)' => '1XL (12-14 US)',
-                            '2XL-(14-16-US)' => '2XL (14-16 US)',
-                            '3XL-(16-18-US)' => '3XL (16-18 US)',
-                            '4XL-(18-20-US)' => '4XL (18-20 US)',
-                            '5XL-(20-US)' => '5XL (20 US)',
-                        ]
-                    ) ?>
+                        <label for="" style="font-weight: 600">Tipos de tallas (danos tu talla)</label> <br>
 
 
-                    <label for="">Pantalones</label>
+                        <label for="">Blusas</label>
 
-                    <?= $form->field($model, 'tallaspantalones')->label(false)->dropDownList(
-                        [   'XXS-(0-US)' => 'XXS (0 US)',
-                            'XS-(2-US)' => 'XS (2 US)',
-                            'S-(4-US)' => 'S (4 US)',
-                            'M-(6-US)' => 'M (6 US)',
-                            'L-(8-US)' => 'L (8 US)',
-                            'XL-(10-US)' => 'XL (10 US)',
-                            '1XL-(12-US)' => '1XL (12 US)',
-                            '2XL-(14-US)' => '2XL (14 US)',
-                            '3XL-(16-US)' => '3XL (16 US)',
-                            '4XL-(18-US)' => '4XL (18 US)',
-                            '5XL-(20-US)' => '5XL (20 US)',
-                        ]
-                    ) ?>
-
-                    <label for="">Zapatos</label>
-
-                    <?= $form->field($model, 'tallaszapatos')->label(false)->dropDownList(
-                        [   '33-BR/5-US/22.8-cm' => '33 BR/ 5 US/ 22.8 cm.',
-                            '33-BR/5.5-US/23.1-cm' => '33 BR/ 5.5 US/ 23.1 cm.',
-                            '34-BR/6-US/23.5-cm' => '34 BR/ 6 US/ 23.5 cm.',
-                            '35-BR/6.5-US/23.8-cm' => '35 BR/ 6.5 US/ 23.8 cm.',
-                            '35-BR/7-US/24.1-cm' => '35 BR/ 7 US/ 24.1 cm.',
-                            '36-BR/7.5-US/-24.5-cm' => ' 36 BR/ 7.5 US/ 24.5 cm.',
-                            '36-BR/8-US/-24.8-cm' => '36 BR/ 8 US/ 24.8 cm.',
-                            '37-BR/8.5-US/25.1-cm' => '37 BR/ 8.5 US/ 25.1 cm.',
-                            '38-BR/9-US/25.4-cm' => '38 BR/ 9 US/ 25.4 cm.',
-                            '39-BR/9.5-US/25.7-cm' => '39 BR/ 9.5 US/ 25.7 cm.',
-                            '40-BR/10-US/26-cm' => '40 BR/ 10 US/ 26 cm.',
-                            '41-BR/10.5-US/26.7-cm' => '41 BR/ 10.5 US/ 26.7 cm.',
-                            '42-BR/11-US/27.3-cm' => '42 BR/ 11 US/ 27.3 cm.',
-                        ]
-                    ) ?>
+                        <?= $form->field($model, 'tallasblusas')->label(false)->dropDownList(
+                            ['XXS-(0-2-US)' => 'XXS (0-2 US)',
+                                'XS-(2-US)' => 'XS (2 US)',
+                                'S-(2-4-US)' => 'S (2-4 US)',
+                                'M-(6-8-US)' => 'M (6-8 US)',
+                                'L-(8-10-US)' => 'L (8-10 US)',
+                                'XL-(10-12-US)' => 'XL (10-12 US)',
+                                '1XL-(12-14-US)' => '1XL (12-14 US)',
+                                '2XL-(14-16-US)' => '2XL (14-16 US)',
+                                '3XL-(16-18-US)' => '3XL (16-18 US)',
+                                '4XL-(18-20-US)' => '4XL (18-20 US)',
+                                '5XL-(20-US)' => '5XL (20 US)',
+                            ]
+                        ) ?>
 
 
+                        <label for="">Pantalones</label>
+
+                        <?= $form->field($model, 'tallaspantalones')->label(false)->dropDownList(
+                            ['XXS-(0-US)' => 'XXS (0 US)',
+                                'XS-(2-US)' => 'XS (2 US)',
+                                'S-(4-US)' => 'S (4 US)',
+                                'M-(6-US)' => 'M (6 US)',
+                                'L-(8-US)' => 'L (8 US)',
+                                'XL-(10-US)' => 'XL (10 US)',
+                                '1XL-(12-US)' => '1XL (12 US)',
+                                '2XL-(14-US)' => '2XL (14 US)',
+                                '3XL-(16-US)' => '3XL (16 US)',
+                                '4XL-(18-US)' => '4XL (18 US)',
+                                '5XL-(20-US)' => '5XL (20 US)',
+                            ]
+                        ) ?>
+
+                        <label for="">Zapatos</label>
+
+                        <?= $form->field($model, 'tallaszapatos')->label(false)->dropDownList(
+                            ['33-BR/5-US/22.8-cm' => '33 BR/ 5 US/ 22.8 cm.',
+                                '33-BR/5.5-US/23.1-cm' => '33 BR/ 5.5 US/ 23.1 cm.',
+                                '34-BR/6-US/23.5-cm' => '34 BR/ 6 US/ 23.5 cm.',
+                                '35-BR/6.5-US/23.8-cm' => '35 BR/ 6.5 US/ 23.8 cm.',
+                                '35-BR/7-US/24.1-cm' => '35 BR/ 7 US/ 24.1 cm.',
+                                '36-BR/7.5-US/-24.5-cm' => ' 36 BR/ 7.5 US/ 24.5 cm.',
+                                '36-BR/8-US/-24.8-cm' => '36 BR/ 8 US/ 24.8 cm.',
+                                '37-BR/8.5-US/25.1-cm' => '37 BR/ 8.5 US/ 25.1 cm.',
+                                '38-BR/9-US/25.4-cm' => '38 BR/ 9 US/ 25.4 cm.',
+                                '39-BR/9.5-US/25.7-cm' => '39 BR/ 9.5 US/ 25.7 cm.',
+                                '40-BR/10-US/26-cm' => '40 BR/ 10 US/ 26 cm.',
+                                '41-BR/10.5-US/26.7-cm' => '41 BR/ 10.5 US/ 26.7 cm.',
+                                '42-BR/11-US/27.3-cm' => '42 BR/ 11 US/ 27.3 cm.',
+                            ]
+                        ) ?>
 
 
-
+                    </div>
 
 
                 </div>
-
-
-
-            </div>
 
             </div>
         </div>
 
         <div class="col-md-7 col-xs-12">
 
-        <div class="menuform">
+            <div class="menuform">
 
-            <div class="row">
+                <div class="row">
 
-                <div class="col-xs-12">
+                    <div class="col-xs-12">
 
-                    <label for="" style="font-weight: 600">Link de conexión con las redes sociales </label>
-
-
-                   <div class="col-sm-4 col-xs-12" style="padding-left: 0">
-                       <div class="radios">
-                           <label for="" style="margin-bottom: 0">Visible </label> <br>
+                        <label for="" style="font-weight: 600">Link de conexión con las redes sociales </label>
 
 
-                           <?= $form->field($model, 'visiblefacebook')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
-                      </div>
-                   </div>
+                        <div class="col-sm-4 col-xs-12" style="padding-left: 0">
+                            <div class="radios">
+                                <label for="" style="margin-bottom: 0">Visible </label> <br>
 
-                    <div class="col-sm-8 col-xs-12"><br>
-                    <?= $form->field($model, 'facebook')->label(false)->textInput(['placeholder' => 'Facebook']) ?>
 
-                    </div>
+                                <?= $form->field($model, 'visiblefacebook')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
+                            </div>
+                        </div>
 
-                </div>
-
-                <div class="col-xs-12">
-
-                    <div class="col-sm-4 col-xs-12" style="padding-left: 0">
-                        <div class="radios">
-                            <label for="" style="margin-bottom: 0">Visible </label> <br>
-
-                            <?= $form->field($model, 'visibletwittwe')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
-
+                        <div class="col-sm-8 col-xs-12"><br>
+                            <?= $form->field($model, 'facebook')->label(false)->textInput(['placeholder' => 'Facebook']) ?>
 
                         </div>
-                    </div>
-
-
-                    <div class="col-sm-8 col-xs-12"><br>
-                        <?= $form->field($model, 'twitter')->label(false)->textInput(['placeholder' => 'Twitter']) ?>
 
                     </div>
 
+                    <div class="col-xs-12">
 
-                </div>
+                        <div class="col-sm-4 col-xs-12" style="padding-left: 0">
+                            <div class="radios">
+                                <label for="" style="margin-bottom: 0">Visible </label> <br>
 
-
-
-                <div class="col-xs-12">
-
-                    <div class="col-sm-4 col-xs-12" style="padding-left: 0">
-                        <div class="radios">
-                            <label for="" style="margin-bottom: 0">Visible </label> <br>
-                            <?= $form->field($model, 'visibleyoutu')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
+                                <?= $form->field($model, 'visibletwittwe')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
 
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-8 col-xs-12"><br>
+                            <?= $form->field($model, 'twitter')->label(false)->textInput(['placeholder' => 'Twitter']) ?>
 
                         </div>
+
+
                     </div>
 
 
-                    <div class="col-sm-8 col-xs-12"><br>
-                        <?= $form->field($model, 'youtube')->label(false)->textInput(['placeholder' => 'Youtube']) ?>
-                    </div>
+                    <div class="col-xs-12">
+
+                        <div class="col-sm-4 col-xs-12" style="padding-left: 0">
+                            <div class="radios">
+                                <label for="" style="margin-bottom: 0">Visible </label> <br>
+                                <?= $form->field($model, 'visibleyoutu')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
 
-                </div>
-
-
-
-
-
-                <div class="col-xs-12">
-
-                    <div class="col-sm-4 col-xs-12" style="padding-left: 0">
-                        <div class="radios">
-                            <label for="" style="margin-bottom: 0">Visible </label> <br>
-                            <?= $form->field($model, 'visibleinsta')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
-
-
+                            </div>
                         </div>
+
+
+                        <div class="col-sm-8 col-xs-12"><br>
+                            <?= $form->field($model, 'youtube')->label(false)->textInput(['placeholder' => 'Youtube']) ?>
+                        </div>
+
+
                     </div>
 
 
-                    <div class="col-sm-8 col-xs-12"><br>
-                        <?= $form->field($model, 'instagram')->label(false)->textInput(['placeholder' => 'Instagram']) ?>
+                    <div class="col-xs-12">
+
+                        <div class="col-sm-4 col-xs-12" style="padding-left: 0">
+                            <div class="radios">
+                                <label for="" style="margin-bottom: 0">Visible </label> <br>
+                                <?= $form->field($model, 'visibleinsta')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-8 col-xs-12"><br>
+                            <?= $form->field($model, 'instagram')->label(false)->textInput(['placeholder' => 'Instagram']) ?>
+                        </div>
+
+
                     </div>
-
-
-                </div>
-
-
-
-
-
-
-
 
 
                 </div>
@@ -687,29 +665,28 @@ $this->registerCss($script);
         </div>
 
 
+        <div class="col-xs-12">
+            <div class="menuform">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class="datposfac">Datos para facturación <span>(obligatorio y no es público)</span></p>
+                    </div>
 
-<div class="col-xs-12">
-        <div class="menuform">
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="datposfac">Datos para facturación <span>(obligatorio y no es público)</span></p>
+                    <div class="col-md-6">
+                        <label for="">Nombre</label>
+                        <?= $form->field($model, 'nombrenit')->label(false) ?>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label for="">NIT</label>
+                        <?= $form->field($model, 'nit')->label(false) ?>
+                    </div>
+
+
                 </div>
-
-                <div class="col-md-6">
-                    <label for="">Nombre</label>
-                    <?= $form->field($model, 'nombrenit')->label(false) ?>
-                </div>
-
-
-                <div class="col-md-6">
-                    <label for="">NIT</label>
-                    <?= $form->field($model, 'nit')->label(false) ?>
-                </div>
-
-
             </div>
         </div>
-</div>
 
         <div class="col-xs-12">
             <?= Html::submitButton('Aplicar cambios', ['class' => 'btnregister btn btn-primary center-block']) ?>
@@ -737,13 +714,11 @@ $this->registerCss($script);
     });*/
 
 
-
-
     var password = document.getElementById("password")
         , confirm_password = document.getElementById("confirm_password");
 
-    function validatePassword(){
-        if(password.value != confirm_password.value) {
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
             confirm_password.setCustomValidity("Passwords Don't Match");
         } else {
             confirm_password.setCustomValidity('');

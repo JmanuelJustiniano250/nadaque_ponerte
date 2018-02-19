@@ -42,9 +42,6 @@ $this->registerCss($script);
 <div class="anuncios-index">
 
 
-
-
-
     <ul class="nav nav-tabs" id="myTab">
         <li class="active">
             <a href="#trendy" data-toggle="tab">
@@ -93,32 +90,145 @@ $this->registerCss($script);
 
 
         <div class="tab-pane" id="planning">
-            <?= $this->render('aprobacion'); ?>
+
+            <div class="anuncios-create">
+                <div class="paquetesres">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <?php
+                                $tabla = \app\models\Anuncios::find()
+                                    ->andWhere(['estado' => 0])
+                                    ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                    ->all();
+                                $provider = new \yii\data\ArrayDataProvider([
+                                    'allModels' => $tabla,
+                                    'pagination' => [
+                                        'pageSize' => 9,
+                                    ],
+                                ]);
+                                \yii\widgets\Pjax::begin();
+
+                                echo \yii\widgets\ListView::widget([
+                                    'dataProvider' => $provider,
+                                    'itemView' => 'aprobacion',
+                                    'summary' => false,
+                                    'itemOptions' => ['class' => 'item'],
+
+                                ]);
+                                \yii\widgets\Pjax::end();
+                                ?>
+                            </div>
+                        </div>
+                </div>
+            </div>
 
         </div>
 
 
         <div class="tab-pane" id="development">
-            <?= $this->render('vigentes'); ?>
+            <div class="anuncios-create">
+                <div class="paquetesres">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
+                            $tabla = \app\models\Anuncios::find()
+                                ->andWhere(['estado' => 1])
+                                ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->all();
+                            $provider = new \yii\data\ArrayDataProvider([
+                                'allModels' => $tabla,
+                                'pagination' => [
+                                    'pageSize' => 9,
+                                ],
+                            ]);
+                            \yii\widgets\Pjax::begin();
+
+                            echo \yii\widgets\ListView::widget([
+                                'dataProvider' => $provider,
+                                'itemView' => 'vigentes',
+                                'summary' => false,
+                                'itemOptions' => ['class' => 'item2'],
+                            ]);
+                            \yii\widgets\Pjax::end();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
 
 
         <div class="tab-pane" id="support">
-            <?= $this->render('rechazados'); ?>
+            <div class="anuncios-create">
+                <div class="paquetesres">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
+                            $tabla = \app\models\Anuncios::find()
+                                ->andWhere(['or',['estado' => 2],['estado' => 4]])
+                                ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->all();
+                            $provider = new \yii\data\ArrayDataProvider([
+                                'allModels' => $tabla,
+                                'pagination' => [
+                                    'pageSize' => 9,
+                                ],
+                            ]);
+                            \yii\widgets\Pjax::begin();
+
+                            echo \yii\widgets\ListView::widget([
+                                'dataProvider' => $provider,
+                                'itemView' => 'rechazados',
+                                'summary' => false,
+                                'itemOptions' => ['class' => 'item3'],
+
+                            ]);
+                            \yii\widgets\Pjax::end();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
         <div class="tab-pane" id="support2">
-            <?= $this->render('expirados'); ?>
+            <div class="anuncios-create">
+                <div class="paquetesres">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
+                            $tabla = \app\models\Anuncios::find()
+                                ->andWhere(['estado' => 3])
+                                ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->all();
+                            $provider = new \yii\data\ArrayDataProvider([
+                                'allModels' => $tabla,
+                                'pagination' => [
+                                    'pageSize' => 9,
+                                ],
+                            ]);
+                            \yii\widgets\Pjax::begin();
+
+                            echo \yii\widgets\ListView::widget([
+                                'dataProvider' => $provider,
+                                'itemView' => 'expirados',
+                                'summary' => false,
+                                'itemOptions' => ['class' => 'item4'],
+
+                            ]);
+                            \yii\widgets\Pjax::end();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
     </div>
-
-
-
 
 
 </div>
