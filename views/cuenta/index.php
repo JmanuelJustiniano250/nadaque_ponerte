@@ -259,8 +259,51 @@ $this->registerCss($script);
                         echo $this->render('calificaciones');
                         break;
                     case '4':
-                        echo $this->render('calificaciones', ['searchModel' => $searchModel,
-                            'dataProvider' => $dataProvider,]);
+                        $tabla = \app\models\Anuncios::find()
+                            ->andWhere(['estado' => 1])
+                            ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                            ->all();
+                        $provider = new \yii\data\ArrayDataProvider([
+                            'allModels' => $tabla,
+                            'pagination' => [
+                                'pageSize' => 9,
+                            ],
+                        ]);
+                        \yii\widgets\Pjax::begin();
+                        ?>
+                        <div class="anuncios-create">
+
+                            <div class="row" align="center">
+
+                                <div class="col-xs-12 col-sm-8" style="float: initial!important;">
+                                    <div class="cajacomentearios">
+
+
+                                        <div class="calificaciones">
+                                            <?= \yii\widgets\ListView::widget([
+                                                'dataProvider' => $provider,
+                                                'itemView' => 'comentarios',
+                                                'summary' => false,
+                                                'itemOptions' => ['class' => 'item4'],
+
+                                            ]);
+                                            ?>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <br><br>
+
+                            </div>
+
+                        </div>
+
+                        <?php
+                        \yii\widgets\Pjax::end();
                         break;
                     case '5':
                         echo $this->render('form_anuncio', ['model' => $model]);

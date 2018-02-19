@@ -103,29 +103,86 @@ $user = Yii::$app->session->get('user');
             ]); ?>
         </div>
         <div class="col-md-6">
-            <?php
-            if ($model->anunciosFiltros) {
-                $tmp = array();
-                foreach ($model->anunciosFiltros as $item)
-                    $tmp[] = $item->idfiltro;
-                $model['filtro'] = $tmp;
-            }
-            ?>
 
-            <h3>Condición del producto</h3>
+            <h4>Ciudad</h4>
+            <?= $form->field($filtro, 'idciudad')->widget(Select2::classname(), [
 
-            <?= $form->field($model, 'filtro')->widget(Select2::classname(), [
-
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Ciudad::find()->where(['IS NOT', 'idciudad', NULL])->all(), 'idciudad', 'nombre'),
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\Ciudad::find()->all(), 'idciudad', 'nombre'),
                 'language' => 'es',
                 'options' => [
-                    'placeholder' => 'compras',
-                    'multiple' => true,
+                    'placeholder' => 'Ciudad',
+                    'multiple' => false,
                 ],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],
-            ]); ?>
+            ])->label(false); ?>
+            <h4>Colores</h4>
+            <?= $form->field($filtro, 'idcolores')->widget(Select2::classname(), [
+
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\ColoresProductos::find()->all(), 'id_cp', 'nombre'),
+                'language' => 'es',
+                'options' => [
+                    'placeholder' => 'Colores',
+                    'multiple' => false,
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label(false); ?>
+            <h4>Condicion</h4>
+            <?= $form->field($filtro, 'idcondicion')->widget(Select2::classname(), [
+
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\CondicionProducto::find()->all(), 'id_cp', 'nombre'),
+                'language' => 'es',
+                'options' => [
+                    'placeholder' => 'Condicion',
+                    'multiple' => false,
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label(false); ?>
+            <h4>Marca</h4>
+            <?= $form->field($filtro, 'idmarca')->widget(Select2::classname(), [
+
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\MarcaProducto::find()->all(), 'id_msp', 'nombre'),
+                'language' => 'es',
+                'options' => [
+                    'placeholder' => 'Marca',
+                    'multiple' => false,
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label(false); ?>
+            <h4>Material</h4>
+            <?= $form->field($filtro, 'idmaterial')->widget(Select2::classname(), [
+
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\MaterialProducto::find()->all(), 'id_mp', 'nombre'),
+                'language' => 'es',
+                'options' => [
+                    'placeholder' => 'Material',
+                    'multiple' => false,
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label(false); ?>
+            <h4>Talla</h4>
+            <?= $form->field($filtro, 'idtalla')->widget(Select2::classname(), [
+
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\TallasProducto::find()->all(), 'id_tp', 'nombre'),
+                'language' => 'es',
+                'options' => [
+                    'placeholder' => 'Talla',
+                    'multiple' => false,
+                ],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label(false); ?>
+
         </div>
 
     </div>

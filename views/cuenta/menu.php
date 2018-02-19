@@ -60,42 +60,40 @@ $this->registerCss($script);
 
 
 $this->params['breadcrumbs'][] = $this->title;
+$items = array();
+array_push($items,[
+    'url' => ['cuenta/principal'],
+    'label' => 'Mi Perfil',
+]);
+array_push($items,[
+    'url' => ['cuenta/anuncios2'],
+    'label' => 'Anuncios',
+]);
+/*array_push($items,[
+    'url' => '#',
+    'label' => 'Muro',
+]);*/
+array_push($items,[
+    'url' => ['/cuenta/calificaciones'],
+    'label' => 'Calificaciones',
+]);
+array_push($items,[
+    'url' => ['/cuenta/comentarios'],
+    'label' => 'Comentarios',
+]);
+array_push($items,[
+    'url' => '#',
+    'label' => 'Mi lista de Deseos',
+]);
 ?>
 <?= SideNav::widget([
     'type' => SideNav::TYPE_DEFAULT,
     'heading' => false,
-    'items' => [
-        [
-            'url' => ['cuenta/principal'],
-            'label' => 'Mi Perfil',
-        ],
-        [
-            'url' => ['cuenta/anuncios2'],
-            'label' => 'Anuncios',
-        ],
-
-        [
-            'url' => '#',
-            'label' => 'Muro',
-        ],
-
-        [
-            'url' => ['cuenta/calificaciones'],
-            'label' => 'Calificaciones',
-        ],
-
-        [
-            'url' => '#',
-            'label' => 'Mensajes',
-        ],
-        [
-            'url' => '#',
-            'label' => 'Mi lista de Deseos',
-        ],
+    'items' => $items
         /*[
             'url' => ['cuenta/compras'],
             'label' => 'Mis Compras',
         ],*/
-    ],
+    ,
 ]);
 ?>

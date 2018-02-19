@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p class="text-center">Rellena los campos</p> <br><br>
 
             <?= $this->render('_form', [
+                'filtro' => $filtro,
                 'model' => $model,
             ]) ?>
         </div>

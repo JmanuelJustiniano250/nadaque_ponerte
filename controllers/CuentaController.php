@@ -60,6 +60,7 @@ class CuentaController extends Controller
         }
 
         $model = new Anuncios();
+        $modelfiltro = new AnunciosFiltros();
 
 
         if ($model->load(Yii::$app->request->post())) {
@@ -78,16 +79,8 @@ class CuentaController extends Controller
                     $model->foto = $name . '.' . $model->file->extension;
                 }
                 if ($model->save(false)) {
-                    if (is_array($model['filtro'])) {
-                        AnunciosFiltros::deleteAll(['idanuncio' => $model->idanuncio]);
-                        foreach ($model['filtro'] as $item) {
-                            $tmp = new AnunciosFiltros();
-                            $tmp->idanuncio = $model->idanuncio;
-                            $tmp->idfiltro = $item;
-                            $tmp->fecha_registro = date('Y-m-d H:i:s');
-                            $tmp->save();
-                        }
-                    }
+                    $modelfiltro->idanuncio=$model->idanuncio;
+                    $modelfiltro->save();
                     Yii::$app->session->setFlash('success', ['message' => 'Anuncio Creado', 'type' => 'success']);
                 } else {
                     if ($model->foto) {
@@ -111,6 +104,7 @@ class CuentaController extends Controller
         } else {
             return $this->render('../anuncios/create', [
                 'model' => $model,
+                'filtro' => $modelfiltro,
             ]);
         }
 
@@ -372,6 +366,15 @@ class CuentaController extends Controller
         return $this->render('index', ['op' => 3, 'model' => $model]);
     }
 
+    public function actionComentarios()
+    {
+        if (empty(Yii::$app->session->get('user'))) {
+            return $this->redirect(['site/login']);
+        }
+        $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+        return $this->render('index', ['op' => 4, 'model' => $model]);
+    }
+
 
     public function actionUpdate($id = null)
     {
@@ -383,6 +386,7 @@ class CuentaController extends Controller
         }
         // $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         $model = Anuncios::find()->where(['idanuncio' => $id])->one();
+        $modelfiltro = AnunciosFiltros::find()->where(['idanuncio' => $id])->one();
         if ($model->load(Yii::$app->request->post())) {
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->file = UploadedFile::getInstance($model, 'file');
@@ -398,16 +402,7 @@ class CuentaController extends Controller
                     $model->foto = $name . '.' . $model->file->extension;
                 }
                 if ($model->save(false)) {
-                    if (is_array($model['filtro'])) {
-                        AnunciosFiltros::deleteAll(['idanuncio' => $model->idanuncio]);
-                        foreach ($model['filtro'] as $item) {
-                            $tmp = new AnunciosFiltros();
-                            $tmp->idanuncio = $model->idanuncio;
-                            $tmp->idfiltro = $item;
-                            $tmp->fecha_registro = date('Y-m-d H:i:s');
-                            $tmp->save();
-                        }
-                    }
+                    $modelfiltro->save();
                     Yii::$app->session->setFlash('success', ['message' => 'actualizacion Realizada', 'type' => 'success']);
                 } else {
                     if ($model->foto) {
@@ -433,6 +428,7 @@ class CuentaController extends Controller
 
         } else {
             return $this->render('../anuncios/update', [
+                'filtro' => $modelfiltro,
                 'model' => $model,
             ]);
         }

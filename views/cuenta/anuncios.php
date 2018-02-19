@@ -64,15 +64,6 @@ use yii\widgets\Pjax;
                     return $model->getEstado();
                 }
             ],
-            [
-                'header' => 'filtros',
-                'value' => function ($model) {
-                    $tmp = '';
-                    foreach ($model->anunciosFiltros as $item)
-                        $tmp .= '(' . $item->filtro['nombre'] . ') ';
-                    return $tmp;
-                }
-            ],
 
 
             [
