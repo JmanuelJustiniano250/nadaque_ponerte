@@ -3283,7 +3283,7 @@ ul.team-social li a:hover i {
 .statistic-box.style2 {
     overflow: hidden;
     padding-bottom: 0px;
-    padding-top: 45px;
+    padding-top: 20px;
 
     background: #ff839a;
     border-bottom: 0px solid #e6eaed;
@@ -4808,6 +4808,15 @@ footer .up-footer .footer-line p {
 }
 
 @media (max-width: 767px) {
+
+
+    .linemedioa{
+        border-right: 0px solid #ff6d89!important;
+        padding-bottom: 15px!important;
+        border-bottom: 1px solid #ff6d89!important;
+    }
+
+
     .redespergil {
         text-align: center;
         float: initial !important;
@@ -5523,7 +5532,7 @@ h2.Ttiel {
 }
 
 .bread {
-    background: #ececec;
+    background: white;
     top: 0;
     margin-top: -50px;
     padding: 15px;
@@ -5832,13 +5841,13 @@ p.nobor {
     margin-top: 5px;
     margin-bottom: 5px;
     color: white;
-    border: 1px solid #ff6d89;
+    border: 1px solid black;
     padding: 10px;
     margin-right: 10px;
     font-weight: 600;
 
     border-radius: 5px;
-    background: #ff6d89;
+    background: black;
 }
 
 
@@ -5848,6 +5857,7 @@ p.nobor {
 color: white;
     text-decoration: none;
     background: #ff839a;
+    border: 1px solid #ff839a;
 }
 
 .cajadesct{
@@ -5904,4 +5914,9 @@ color: white;
     border: 1px solid #d8d8d8;
     margin-right: 3px;
     border-radius: 5px;
+}
+
+.linemedioa{
+    border-right: 1px solid #ff6d89;
+    padding-right: 15px;
 }

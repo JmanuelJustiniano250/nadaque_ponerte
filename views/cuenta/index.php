@@ -16,6 +16,31 @@ $script = <<<CSS
 .blog-section.with-sidebar {
     padding: 0px 0;
 }
+
+.item4{
+background: #f6f6f6;
+    padding: 30px 30px;
+    margin-bottom: 20px;
+}
+
+
+.item4 h3 {
+    color: #ff6d89;
+
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 80px;
+
+}
+
+.item4 p {
+    font-size: 13px;
+    text-align: left;
+    padding-left: 80px;
+
+}
+
 CSS;
 $this->registerCss($script);
 
@@ -84,7 +109,7 @@ $this->registerCss($script);
                             205,
                             205,
                             EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                            ['style' => ' border-radius: 140px; margin: 0 auto; margin-top:20px;', 'class' => 'img-responsive']
+                            ['style' => ' border-radius: 140px; margin: 0 auto;', 'class' => 'img-responsive']
                         );
                         ?>
 
@@ -149,7 +174,6 @@ $this->registerCss($script);
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 esor">
 
-                        <p class="aliasestrela">  <?php echo $model['alias'] ?> </p>
 
 
                         <?php
@@ -168,7 +192,7 @@ $this->registerCss($script);
                     <div class="col-sm-4 col-xs-12">
                         <p class="nomcom">
 
-                            <?php echo $model['nombres'] ?>
+                            <?php echo $model['alias'] ?>
                         </p>
                     </div>
 
@@ -276,7 +300,6 @@ $this->registerCss($script);
                             <div class="row" align="center">
 
                                 <div class="col-xs-12 col-sm-8" style="float: initial!important;">
-                                    <div class="cajacomentearios">
 
 
                                         <div class="calificaciones">
@@ -291,7 +314,7 @@ $this->registerCss($script);
 
                                         </div>
 
-                                    </div>
+
 
 
                                 </div>
@@ -311,6 +334,15 @@ $this->registerCss($script);
                     case '6':
                         echo $this->render('anuncios', ['searchModel' => $searchModel,
                             'dataProvider' => $dataProvider, 'model' => $model]);
+                        break;
+
+                    case '7':
+                        echo $this->render('mensajeria', ['model' => $model]);
+                        break;
+
+
+                    case '8':
+                        echo $this->render('listadeseos', ['model' => $model]);
                         break;
 
                 }

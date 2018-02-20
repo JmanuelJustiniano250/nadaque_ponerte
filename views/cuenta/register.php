@@ -9,12 +9,27 @@ $script = <<<CSS
     width: 100%;
     height: 160px;
 }
+
+.file-zoom-content {
+    height: auto;
+    text-align: center;
+}
+
+
 .file-preview {
     border-radius: 0px;
     border: 0px solid #ddd;
     padding: 0px;
     width: 100%;
     margin-bottom: 5px;
+}
+
+.kv-preview-data.krajee-init-preview.file-preview-image.file-zoom-detail
+ {
+    width: auto!important;
+    height: auto!important;
+    
+    border-radius: 0!important;
 }
 .krajee-default.file-preview-frame {
     margin: 0px;
@@ -203,6 +218,10 @@ $this->registerCss($script);
     ]); ?>
     <div class="col-md-4">
         <div class="row">
+
+            <H3 style="    font-size: 14px;
+    text-align: center; font-weight: 600">FOTO (sube tu foto de perfil)</H3>
+
             <?php
             $initial = [];
             array_push($initial, Html::img('@web/imagen/usuarios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
@@ -246,17 +265,22 @@ $this->registerCss($script);
             <div class="menuform">
 
                 <div class="row">
+                    <div class="col-xs-12">
+                        <p>
+                            <label for="" style="    font-size: 15px;"> <span>*</span> Campos obligatorios</label>
+                        </p>
+                    </div>
                     <div class="col-md-6 col-xs-12">
                         <label for="">Nombre completo <span>*</span></label>
                         <?= $form->field($model, 'nombres')->label(false) ?>
                     </div>
                     <div class="col-md-6 col-xs-12">
-                        <label for="">Nombre para mostrar <span>*</span></label>
+                        <label for="">Nombre para mostrar en su perfil <span>*</span></label>
                         <?= $form->field($model, 'alias')->label(false) ?>
                     </div>
 
                     <div class="col-md-6 col-xs-12">
-                        <label for=""> Correo electrónico opcional(opcional)</label>
+                        <label for=""> Correo electrónico (opcional)</label>
 
                         <?= $form->field($model, 'email')->label(false) ?>
                     </div>
@@ -462,13 +486,13 @@ $this->registerCss($script);
 
                     <div class="col-md-6 col-xs-12">
 
-                        <label for="">Ciudad donde vive <span>*</span></label>
+                        <label for="">Ciudad donde vive o la mas cercana<span>*</span></label>
                         <?= $form->field($model, 'ciudad')->label(false) ?>
                     </div>
 
 
                     <div class="col-md-6 col-xs-12">
-                        <label for="">Dirección</label>
+                        <label for="">Dirección (No sera mostrada)</label>
                         <?= $form->field($model, 'direccion')->label(false) ?>
                     </div>
 
@@ -479,7 +503,7 @@ $this->registerCss($script);
 
 
                     </div>
-                    <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0">Visible </label> <br>
+                    <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
 
                         <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
@@ -494,6 +518,9 @@ $this->registerCss($script);
                     </div>
 
 
+
+
+
                 </div>
             </div>
         </div>
@@ -503,7 +530,7 @@ $this->registerCss($script);
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <label for="" style="font-weight: 600">Tipos de tallas (danos tu talla)</label> <br>
+                        <label for="" style="font-weight: 600">Indicanos tu talla (no sera publicada)</label> <br>
 
 
                         <label for="">Blusas</label>
@@ -582,7 +609,7 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0">Visible </label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
 
 
                                 <?= $form->field($model, 'visiblefacebook')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
@@ -600,7 +627,7 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0">Visible </label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
 
                                 <?= $form->field($model, 'visibletwittwe')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
@@ -622,7 +649,7 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0">Visible </label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
                                 <?= $form->field($model, 'visibleyoutu')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
 
@@ -642,7 +669,7 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0">Visible </label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
                                 <?= $form->field($model, 'visibleinsta')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
 
@@ -714,17 +741,20 @@ $this->registerCss($script);
     });*/
 
 
-    var password = document.getElementById("password")
-        , confirm_password = document.getElementById("confirm_password");
+    var contrasena, contrasena2;
 
-    function validatePassword() {
-        if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
-        } else {
-            confirm_password.setCustomValidity('');
-        }
+    contrasena = document.getElementById('contrasena');
+    contrasena2 = document.getElementById('contrasena2');
+
+    contrasena.onchange = contrasena2.onkeyup = passwordMatch;
+
+    function passwordMatch() {
+        if(contrasena.value !== contrasena2.value)
+            contrasena2.setCustomValidity('Las contraseñas no coinciden.');
+        else
+            contrasena2.setCustomValidity('');
     }
 
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
+
+
 </script>

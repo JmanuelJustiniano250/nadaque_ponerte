@@ -354,7 +354,7 @@ class SiteController extends Controller
                     if ($model->save()) {
                         //$model->send();
                         Correos::nuevoUsuario($model, $randomString);
-                        Yii::$app->session->setFlash('success', ['message' => 'Registro Realizado', 'type' => 'success']);
+                        Yii::$app->session->setFlash('success', ['message' => 'Registro Realizado, Revisa tu correo electronico en breve', 'type' => 'success']);
                         return $this->redirect(['site/login']);
                     }
                     Yii::$app->session->setFlash('error', ['message' => 'Hubo un error, intentelo mas tarde']);

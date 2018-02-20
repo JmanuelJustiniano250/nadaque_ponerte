@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
 
 
-            <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
+            <h1 class="text-center" style="font-weight: 600"><?= Html::encode($this->title) ?></h1>
             <p class="text-center">Rellena los campos</p> <br><br>
 
             <?= $this->render('_form', [

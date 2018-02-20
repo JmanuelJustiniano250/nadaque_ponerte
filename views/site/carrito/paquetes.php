@@ -64,14 +64,14 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php  if($compra): ?>
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>VENDIDOS</p>
+                                <?php if ($compra): ?>
+                                    <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>ANUNCIOS EN LINEA</p>
 
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -79,14 +79,19 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php  if($compra): ?>
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->sum('visitas') ?>
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>ANUNCIOS VIGENTES</p>
+                                <?php if ($compra): ?>
+                                    <?php $tmp = \app\models\Anuncios::find()
+                                        ->joinWith(['paquete','paquete.paquete'])
+                                        ->andWhere(['<=','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['anuncios.idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                        ->distinct()
+                                        ->count() ?>
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>ANUNCIOS VIGENTES</p>
 
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -103,7 +108,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                             205,
                             205,
                             EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                            ['style' => ' border-radius: 140px; margin: 0 auto; margin-top:20px;', 'class' => 'img-responsive']
+                            ['style' => ' border-radius: 140px; margin: 0 auto;', 'class' => 'img-responsive']
                         );
                         ?>
 
@@ -117,28 +122,38 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                             <div class="statistic-counter">
 
 
-                                <?php  if($compra): ?>
+                                <?php if ($compra): ?>
 
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 2, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
+                                    <?php $tmp = \app\models\Compra::find()
+                                        ->joinWith('paquete')
+                                        ->andWhere(['>','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                        ->distinct()
+                                        ->count() ?>
 
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>EXPIRADOS</p>
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>EXPIRADOS</p>
 
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
                         <div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php  if($compra): ?>
-                                <?php $tmp = \app\models\Anuncios::find()->where(['estado' => 3, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->select('COUNT(visitas) as visitas')->count() ?>
-                                <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
-                                <p>PAQUETES VIGENTES</p>
+                                <?php if ($compra): ?>
+                                    <?php $tmp = \app\models\Compra::find()
+                                        ->joinWith('paquete')
+                                        ->andWhere(['<=','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                        ->distinct()
+                                        ->count() ?>
+                                    <p><span class="timer" data-from="0" data-to="<?= $tmp ?>"><?= $tmp ?></span></p>
+                                    <p>PAQUETES VIGENTES</p>
                                 <?php else: ?>
 
-                                <?php endif;?>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -158,8 +173,6 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 esor">
 
-                        <p class="aliasestrela">  <?php echo $model2['alias'] ?> </p>
-
 
                         <?php
 
@@ -177,7 +190,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                     <div class="col-sm-4 col-xs-12">
                         <p class="nomcom">
 
-                            <?php echo $model2['nombres'] ?>
+                            <?php echo $model2['alias'] ?>
                         </p>
                     </div>
 
@@ -253,8 +266,8 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
     <div class="title-section white">
         <div class="container">
-            <h1>Paquetes de anuncios</h1> <br>
-            <p>Seleccione el paquete que mas le agrade</p>
+            <h1>Oferta de anuncios</h1> <br>
+            <p>Seleccione el anuncio suelto o el paquete que te convenga</p>
         </div>
     </div>
 

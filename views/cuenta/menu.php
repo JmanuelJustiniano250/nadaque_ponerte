@@ -69,10 +69,10 @@ array_push($items,[
     'url' => ['cuenta/anuncios2'],
     'label' => 'Anuncios',
 ]);
-/*array_push($items,[
-    'url' => '#',
-    'label' => 'Muro',
-]);*/
+array_push($items,[
+    'url' => ['cuenta/mensajeria'],
+    'label' => 'Mensajes',
+]);
 array_push($items,[
     'url' => ['/cuenta/calificaciones'],
     'label' => 'Calificaciones',
@@ -82,7 +82,7 @@ array_push($items,[
     'label' => 'Comentarios',
 ]);
 array_push($items,[
-    'url' => '#',
+    'url' => 'listadeseos',
     'label' => 'Mi lista de Deseos',
 ]);
 ?>

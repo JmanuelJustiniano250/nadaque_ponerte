@@ -14,6 +14,7 @@ $user = Yii::$app->session->get('user');
     'formConfig' => ['labelSpan' => 4, 'deviceSize' => ActiveForm::SIZE_SMALL
     ] */// important
 ]); ?>
+<div class="container">
     <div class="row">
         <div class="col-md-6">
 
@@ -192,4 +193,5 @@ $user = Yii::$app->session->get('user');
     </div>
     <br>
     <br>
+</div>
 <?php ActiveForm::end(); ?>

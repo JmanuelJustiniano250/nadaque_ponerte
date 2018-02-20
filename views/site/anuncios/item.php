@@ -54,6 +54,9 @@ $script = <<<CSS
    
 }
 
+
+
+
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
 
@@ -252,6 +255,14 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
             <?php foreach ($model->mensajes as $key => $mensaje): ?>
                 <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
+
+
+                    <?php if ($mensaje->usuario['idusuario'] == $model->idusuario) :?>
+                     <div class="col-md-1"></div>
+                    <?php else: ?>
+
+                    <?php  endif; ?>
+
                     <div class="col-md-11 col-xs-12">
 
                         <div class="<?= (($mensaje->usuario['idusuario'] == $model->idusuario) ? 'anunciantes' : 'cajausuario') ?>">
@@ -261,7 +272,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                             </div>
 
                             <div class="imagenusario" align="right">
-                                <span><?= $mensaje->usuario['nombres'] .' '. $mensaje->usuario['apellidos'] ?> </span>
+                                <span><?= $mensaje->usuario['nombres'] ?> </span>
                                 <?=
                                 EasyThumbnailImage::thumbnailImg(
                                     Yii::getAlias('@webroot/imagen/usuarios/'. $mensaje->usuario['foto']) ,

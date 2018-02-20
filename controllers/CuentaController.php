@@ -224,7 +224,7 @@ class CuentaController extends Controller
         }
 
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['id']]);
-        $model->fecha_nacimiento =  date($model['ano'].'-'.$model['mes'].'-'.$model['dia']);
+       /* $model->fecha_nacimiento =  date($model['ano'].'-'.$model['mes'].'-'.$model['dia']);*/
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 if ($model->contrasena != Yii::$app->session->get('user')['contrasena'])
@@ -375,6 +375,27 @@ class CuentaController extends Controller
         return $this->render('index', ['op' => 4, 'model' => $model]);
     }
 
+
+
+    public function actionListadeseos()
+    {
+        if (empty(Yii::$app->session->get('user'))) {
+            return $this->redirect(['site/login']);
+        }
+        $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+        return $this->render('index', ['op' => 8, 'model' => $model]);
+    }
+
+
+
+    public function actionMensajeria()
+    {
+        if (empty(Yii::$app->session->get('user'))) {
+            return $this->redirect(['site/login']);
+        }
+        $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+        return $this->render('index', ['op' => 7, 'model' => $model]);
+    }
 
     public function actionUpdate($id = null)
     {
