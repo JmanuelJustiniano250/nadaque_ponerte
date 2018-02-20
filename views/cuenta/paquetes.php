@@ -38,13 +38,6 @@ $provider = new \yii\data\ArrayDataProvider([
                     'dataProvider' => $provider,
                      'tableOptions'=>['class' => 'table table-hover'],
                      'showHeader'=>false,
-                     'pager' => [
-                         'class' => \kop\y2sp\ScrollPager::className(),
-                         'container' => '.grid-view tbody',
-                         'item' => 'tr',
-                         'paginationSelector' => '.grid-view .pagination',
-                         'triggerTemplate' => '<tr class="ias-trigger"><td colspan="100%" style="text-align: center"><a style="cursor: pointer">{text}</a></td></tr>',
-                     ],
                      'columns' => [
                          [
                              'format' => 'raw',
