@@ -13,9 +13,11 @@ namespace app\models;
  * @property int $tipo
  * @property int $estado
  * @property int $idanuncio
+ * @property int $idvendedor
  */
 class Mensajes extends \yii\db\ActiveRecord
 {
+    //tipo ['mensaje','comentario']
     /**
      * @inheritdoc
      */
@@ -31,7 +33,7 @@ class Mensajes extends \yii\db\ActiveRecord
     {
         return [
             [['idusuario', 'detalle', 'tipo', 'estado'], 'required'],
-            [['idusuario', 'tipo', 'estado','idanuncio'], 'integer'],
+            [['idusuario', 'tipo', 'estado','idanuncio','idvendedor'], 'integer'],
             [['detalle'], 'string'],
             [['fecha_registro'], 'safe'],
             [['titulo'], 'string', 'max' => 250],
@@ -47,6 +49,7 @@ class Mensajes extends \yii\db\ActiveRecord
             'idmensaje' => 'Idmensaje',
             'idusuario' => 'Idusuario',
             'idanuncio' => 'idanuncio',
+            'idvendedor' => 'Idvendedor',
             'titulo' => 'Titulo',
             'detalle' => 'Detalle',
             'fecha_registro' => 'Fecha Registro',
@@ -59,4 +62,13 @@ class Mensajes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['idusuario' => 'idusuario']);
     }
+    public function getVendedor()
+    {
+        return $this->hasOne(Usuarios::className(), ['idvendedor' => 'idusuario']);
+    }
+    public function getAnuncio()
+    {
+        return $this->hasOne(Anuncios::className(), ['idanuncio' => 'idanuncio']);
+    }
+
 }

@@ -173,14 +173,13 @@ $this->registerCss($script);
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 esor">
-
-
-
                         <?php
-
+                        $query = \app\models\Calificaciones::find()
+                            ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+                        $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
                         echo StarRating::widget([
                             'name' => 'rating_21',
-                            'value' => 2,
+                            'value' => ($valor/5),
                             'pluginOptions' => [
                                 'readonly' => true,
                                 'showClear' => false,
@@ -280,7 +279,39 @@ $this->registerCss($script);
                             'dataProvider' => $dataProvider, 'model' => $model]);
                         break;
                     case '3':
-                        echo $this->render('calificaciones');
+                        ?>
+                <div class="anuncios-create">
+
+                        <div class="row" align="center">
+
+                            <div class="col-xs-12 col-sm-8" style="float: initial!important;">
+                                    <?php
+                                    $tabla = \app\models\Calificaciones::find()
+                                        ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                                        ->orderBy(['fecha_creacion'=>SORT_DESC])
+                                        ->all();
+                                    $provider = new \yii\data\ArrayDataProvider([
+                                        'allModels' => $tabla,
+                                        'pagination' => [
+                                            'pageSize' => 9,
+                                        ],
+                                    ]);
+                                    \yii\widgets\Pjax::begin();
+
+                                    echo \yii\widgets\ListView::widget([
+                                        'dataProvider' => $provider,
+                                        'itemView' => 'calificaciones',
+                                        'summary' => false,
+                                        'itemOptions' => ['class' => 'item4'],
+
+                                    ]);
+                                    \yii\widgets\Pjax::end();
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <?php
                         break;
                     case '4':
                         $tabla = \app\models\Anuncios::find()
@@ -302,20 +333,17 @@ $this->registerCss($script);
                                 <div class="col-xs-12 col-sm-8" style="float: initial!important;">
 
 
-                                        <div class="calificaciones">
-                                            <?= \yii\widgets\ListView::widget([
-                                                'dataProvider' => $provider,
-                                                'itemView' => 'comentarios',
-                                                'summary' => false,
-                                                'itemOptions' => ['class' => 'item4'],
+                                    <div class="calificaciones">
+                                        <?= \yii\widgets\ListView::widget([
+                                            'dataProvider' => $provider,
+                                            'itemView' => 'comentarios',
+                                            'summary' => false,
+                                            'itemOptions' => ['class' => 'item4'],
 
-                                            ]);
-                                            ?>
+                                        ]);
+                                        ?>
 
-                                        </div>
-
-
-
+                                    </div>
 
                                 </div>
 
@@ -337,14 +365,41 @@ $this->registerCss($script);
                         break;
 
                     case '7':
-                        echo $this->render('mensajeria', ['model' => $model]);
+                        echo $this->render('mensajeria', ['model' => $model,'mensaje'=>$mensaje,'chat'=>$chat]);
                         break;
 
 
                     case '8':
-                        echo $this->render('listadeseos', ['model' => $model]);
-                        break;
+                        ?>
+                        <div class="paquetesres">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <?php
+                                    $tabla = \app\models\Deseo::find()
+                                        ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                        ->all();
+                                    $provider = new \yii\data\ArrayDataProvider([
+                                        'allModels' => $tabla,
+                                        'pagination' => [
+                                            'pageSize' => 9,
+                                        ],
+                                    ]);
+                                    \yii\widgets\Pjax::begin();
 
+                                    echo \yii\widgets\ListView::widget([
+                                        'dataProvider' => $provider,
+                                        'itemView' => 'listadeseos',
+                                        'summary' => false,
+                                        'itemOptions' => ['class' => 'item4'],
+
+                                    ]);
+                                    \yii\widgets\Pjax::end();
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <?php
                 }
                 ?>
             </div>

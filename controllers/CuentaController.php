@@ -224,7 +224,7 @@ class CuentaController extends Controller
         }
 
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['id']]);
-       /* $model->fecha_nacimiento =  date($model['ano'].'-'.$model['mes'].'-'.$model['dia']);*/
+        /* $model->fecha_nacimiento =  date($model['ano'].'-'.$model['mes'].'-'.$model['dia']);*/
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 if ($model->contrasena != Yii::$app->session->get('user')['contrasena'])
@@ -394,7 +394,42 @@ class CuentaController extends Controller
             return $this->redirect(['site/login']);
         }
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
-        return $this->render('index', ['op' => 7, 'model' => $model]);
+        if($model['tipo']){
+            $mensajes = Mensajes::find()
+                ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                ->andWhere(['tipo' => 0])
+                ->distinct('idusuario')
+                ->all();
+            $chat = Mensajes::find()
+                ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                ->andWhere(['idusuario' => Yii::$app->request->get('id')])
+                ->andWhere(['tipo' => 0])
+                ->all();
+        }
+        else{
+            $mensajes = Mensajes::find()
+                ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                ->andWhere(['tipo' => 0])
+                ->distinct('idvendedor')
+                ->all();
+            $chat = Mensajes::find()
+                ->andWhere(['or',
+                    ['and',
+                        ['idvendedor' => Yii::$app->request->get('id')],
+                        ['idusuario' => Yii::$app->session->get('user')['idusuario']]
+                    ]
+                ],[
+                    ['and',
+                        ['idusuario' => Yii::$app->request->get('id')],
+                        ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
+                    ]
+                ])
+                ->andWhere(['tipo' => 0])
+                ->orderBy(['fecha_registro'=>SORT_ASC])
+                ->all();
+        }
+
+        return $this->render('index', ['op' => 7, 'model' => $model,'mensaje'=>$mensajes,'chat'=>$chat]);
     }
 
     public function actionUpdate($id = null)
@@ -469,10 +504,10 @@ class CuentaController extends Controller
             $model->idusuario =Yii::$app->session->get('user')['idusuario'];
             $model->fecha_registro =date('Y-m-d H:i:s');
             $model->estado =1;
-                if ($model->save()) {
-                    Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
-                } else
-                    Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
+            } else
+                Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
         }
         return $this->redirect(Yii::$app->request->referrer);
     }

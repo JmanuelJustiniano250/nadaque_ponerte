@@ -14,66 +14,46 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 ?>
-<div class="anuncios-create">
+
+<div class="cajacomentearios">
 
 
-    <div class="">
+    <?=
+    EasyThumbnailImage::thumbnailImg(
+        Yii::getAlias('@webroot/imagen/usuarios/') . $model->usuario['foto'],
+        51,
+        51,
+        EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+        ['style' => ' border-radius: 140px; margin: 0 auto; margin-top:20px;', 'class' => 'img-responsive']
+    );
+    ?>
 
 
-        <div class="row" align="center">
+    <div class="estrellas">
+        <?php
 
-            <div class="col-xs-12 col-sm-8" style="float: initial!important;">
-                <div class="cajacomentearios">
-
-
-                    <?=
-                    EasyThumbnailImage::thumbnailImg(
-                        Yii::getAlias('@webroot/imagen/usuarios/') . '0Z84_fSb3cyhEa_bXiWxDvRqxT2MFsjH.png',
-                        51,
-                        51,
-                        EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                        ['style' => ' border-radius: 140px; margin: 0 auto; margin-top:20px;', 'class' => 'img-responsive']
-                    );
-                    ?>
+        echo StarRating::widget([
+            'name' => 'rating_21',
+            'value' => $model['puntaje']/5,
+            'pluginOptions' => [
+                'readonly' => true,
+                'showClear' => false,
+                'showCaption' => false,
+            ],
+        ]); ?>
+    </div>
 
 
-                    <div class="estrellas">
-                        <?php
+    <div class="calificaciones">
 
-                        echo StarRating::widget([
-                            'name' => 'rating_21',
-                            'value' => 2,
-                            'pluginOptions' => [
-                                'readonly' => true,
-                                'showClear' => false,
-                                'showCaption' => false,
-                            ],
-                        ]); ?>
-                    </div>
+        <h3><?= $model->usuario['alias'] ?></h3>
 
-
-                    <div class="calificaciones">
-
-                        <h3>Ana Sara Justiniano</h3>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non lorem elementum, accumsan
-                            magna sed, faucibus mauris. Nulla pellente
-                            sque ante nibh, ac hendrerit ante fermentum sed.
-                        </p>
-
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-            <br><br>
-
-        </div>
+        <p><?= $model['mensaje']?>
+        </p>
 
 
     </div>
 
 </div>
+
+
