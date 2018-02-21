@@ -47,6 +47,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
      */
     var $authKey;
     var $file;
+    var $contrasena2;
 
     public static function tableName()
     {

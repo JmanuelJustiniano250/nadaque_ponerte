@@ -18,6 +18,7 @@ namespace app\models;
  * @property string $youtube
  * @property string $coordenadas
  * @property string $cron
+ * @property string $google_analitics
  */
 class Configuracion extends \yii\db\ActiveRecord
 {
@@ -40,7 +41,7 @@ class Configuracion extends \yii\db\ActiveRecord
             [['titulo_pagina'], 'string', 'max' => 500],
             [['email'], 'string', 'max' => 250],
             [['telefono', 'movil'], 'string', 'max' => 15],
-            [['direccion', 'twitter', 'facebook', 'youtube', 'instagram', 'coordenadas'], 'string', 'max' => 200],
+            [['direccion', 'twitter', 'facebook', 'youtube', 'instagram', 'coordenadas','google_analitics'], 'string', 'max' => 200],
         ];
     }
 
@@ -64,6 +65,7 @@ class Configuracion extends \yii\db\ActiveRecord
             'instagram' => 'Instagram',
             'coordenadas' => 'Coordenadas',
             'cron' => 'Cron',
+            'google_analitics' => 'Google Analitics',
         ];
     }
 }

@@ -59,6 +59,7 @@ $this->title = 'Datos de configuracion';
                     <?= $form->field($model, 'twitter') ?>
                     <?= $form->field($model, 'instagram') ?>
                     <?= $form->field($model, 'youtube') ?>
+                    <?= $form->field($model, 'google_analitics')->textInput(['placeholder'=>'UA-XXXXXXXX-X']) ?>
 
 
                     <div class="form-group">

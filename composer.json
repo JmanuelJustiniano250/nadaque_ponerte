@@ -42,9 +42,9 @@
         "newerton/yii2-jcrop": "dev-master",
         "rmrevin/yii2-fontawesome":"*",
         "unclead/yii2-multiple-input": "~2.0",
-        "cybercog/yii2-google-analytics": "*",
         "yii2mod/yii2-sweet-alert": "*",
-        "yii2tech/crontab": "*"
+        "yii2tech/crontab": "*",
+        "geertw/yii2-adsense": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

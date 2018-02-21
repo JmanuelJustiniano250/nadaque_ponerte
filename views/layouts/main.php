@@ -5,6 +5,7 @@
 /* @var $content string */
 
 use app\assets_b\AppAsset;
+use kartik\social\GoogleAnalytics;
 use rmrevin\yii\fontawesome\FA;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -26,13 +27,22 @@ AppAsset::register($this);
     <link rel="shortcut icon" type="image/png" href="<?= \yii\helpers\Url::to('@web/web/images/favicon.png') ?>"/>
     <?php $this->head() ?>
 </head>
-
-
-<body>
 <?php
 $configuracion = \app\models\Configuracion::find()->one();
 $model = New \app\models\SuscribeForm();
 ?>
+<?php
+if($configuracion['google_analitics']) {
+    echo GoogleAnalytics::widget([
+        'id'=>$configuracion['google_analitics'],
+        'domain'=>Url::home(true)
+    ]);
+}
+?>
+
+
+<body>
+
 <?php $this->beginBody() ?>
 
 <div id="header" class="titulo1">

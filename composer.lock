@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bf03ae30b722ef0b7758bb784c1af46",
+    "content-hash": "d616b1868d1dabb0cc206c6a96c363bc",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -755,50 +755,6 @@
             "time": "2017-12-29T09:13:20+00:00"
         },
         {
-            "name": "cybercog/yii2-google-analytics",
-            "version": "v0.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cybercog/yii2-google-analytics.git",
-                "reference": "6331e592ea8ce89a201781e563a4cc8526045b09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cybercog/yii2-google-analytics/zipball/6331e592ea8ce89a201781e563a4cc8526045b09",
-                "reference": "6331e592ea8ce89a201781e563a4cc8526045b09",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.11"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "cybercog\\yii\\googleanalytics\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Anton Komarev",
-                    "email": "ell@cybercog.su"
-                }
-            ],
-            "description": "Google Analytics Widget for the Yii2 framework",
-            "keywords": [
-                "analytics",
-                "google",
-                "yii2"
-            ],
-            "time": "2016-06-23T20:28:23+00:00"
-        },
-        {
             "name": "dmstr/yii2-adminlte-asset",
             "version": "2.6.0",
             "source": {
@@ -907,16 +863,16 @@
         },
         {
             "name": "facebook/graph-sdk",
-            "version": "5.6.1",
+            "version": "5.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-graph-sdk.git",
-                "reference": "2f9639c15ae043911f40ffe44080b32bac2c5280"
+                "reference": "030f8c5b9b1a6c09e71719fd638b66ea4daa2f10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/2f9639c15ae043911f40ffe44080b32bac2c5280",
-                "reference": "2f9639c15ae043911f40ffe44080b32bac2c5280",
+                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/030f8c5b9b1a6c09e71719fd638b66ea4daa2f10",
+                "reference": "030f8c5b9b1a6c09e71719fd638b66ea4daa2f10",
                 "shasum": ""
             },
             "require": {
@@ -961,7 +917,7 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2017-08-16T17:28:07+00:00"
+            "time": "2018-02-14T23:24:51+00:00"
         },
         {
             "name": "fortawesome/font-awesome",
@@ -1010,6 +966,50 @@
                 "icon"
             ],
             "time": "2016-10-24T15:52:54+00:00"
+        },
+        {
+            "name": "geertw/yii2-adsense",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geertw/yii2-adsense.git",
+                "reference": "44904689e6da05bad674c81cdcd64b34a7457c8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geertw/yii2-adsense/zipball/44904689e6da05bad674c81cdcd64b34a7457c8a",
+                "reference": "44904689e6da05bad674c81cdcd64b34a7457c8a",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "geertw\\Yii2\\Adsense\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Geert Wirken",
+                    "email": "geert@gwirken.nl"
+                }
+            ],
+            "description": "Widget for displaying Google AdSense banners",
+            "keywords": [
+                "adsense",
+                "adwords",
+                "extension",
+                "google",
+                "widget",
+                "yii2"
+            ],
+            "time": "2017-07-20T00:14:57+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3770,16 +3770,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.13.1",
+            "version": "2.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "7af96d8da5ea3e9a5dd05d0e734b21c5726a6ddf"
+                "reference": "1c9cf916b1394681c7d043e79e1522c33e5bc6c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/7af96d8da5ea3e9a5dd05d0e734b21c5726a6ddf",
-                "reference": "7af96d8da5ea3e9a5dd05d0e734b21c5726a6ddf",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/1c9cf916b1394681c7d043e79e1522c33e5bc6c1",
+                "reference": "1c9cf916b1394681c7d043e79e1522c33e5bc6c1",
                 "shasum": ""
             },
             "require": {
@@ -3866,7 +3866,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-11-14T11:08:21+00:00"
+            "time": "2018-02-18T22:52:12+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -4243,21 +4243,21 @@
         },
         {
             "name": "yiisoft/yii2-faker",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-faker.git",
-                "reference": "b88ca69ee226a3610b2c26c026c3203d7ac50f6c"
+                "reference": "3df62b1dcb272a8413f9c6e532c9d73f325ccde1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/b88ca69ee226a3610b2c26c026c3203d7ac50f6c",
-                "reference": "b88ca69ee226a3610b2c26c026c3203d7ac50f6c",
+                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/3df62b1dcb272a8413f9c6e532c9d73f325ccde1",
+                "reference": "3df62b1dcb272a8413f9c6e532c9d73f325ccde1",
                 "shasum": ""
             },
             "require": {
-                "fzaninotto/faker": "*",
-                "yiisoft/yii2": "*"
+                "fzaninotto/faker": "~1.4",
+                "yiisoft/yii2": "~2.0.0"
             },
             "type": "yii2-extension",
             "extra": {
@@ -4286,7 +4286,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2015-03-01T06:22:44+00:00"
+            "time": "2018-02-19T20:27:10+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
