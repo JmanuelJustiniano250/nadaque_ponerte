@@ -127,9 +127,50 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
             <?php endif; ?>
 
-            <div class="imgquiero">
+           <div class="imgquiero">
+
+
+                <a href="" data-toggle="modal" data-target="#squarespaceModal">
                 <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
+
+                </a>
+
+
+                <!-- Modal del enviar mensaje -->
+
+                <!-- line modal -->
+                <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                <h3 class="modal-title" id="lineModalLabel">Envia mensaje a NombreVendedora</h3>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- content goes here -->
+                                <form>
+                                    <div class="form-group">
+
+                                        <textarea name="" id="" style="width: 100%" class="form-control"  rows="5" placeholder="Escribe el mensaje y el nombre de la prenda"></textarea>
+
+                                    </div>
+
+                                    <button type="submit" class="btn btn-default">Enviar</button>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
 
             <div class="linecir"></div>
 
