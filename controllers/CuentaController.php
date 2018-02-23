@@ -77,6 +77,7 @@ class CuentaController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
             $model->fecha_registro = date('Y-m-d H:i:s');
+            $model->razon = "";
             $model->file = UploadedFile::getInstance($model, 'file');
             $name = Yii::$app->security->generateRandomString();
             if ($model->validate()) {
