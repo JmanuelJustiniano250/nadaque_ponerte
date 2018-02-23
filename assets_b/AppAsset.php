@@ -41,6 +41,7 @@ class AppAsset extends AssetBundle
     public $js = [
         //'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js',
         'js/jquery.migrate.js',
+         'js/back-to-top.js',
         'js/owl.carousel.min.js',
         'js/jquery.magnific-popup.min.js',
         'js/jquery.bxslider.min.js',
