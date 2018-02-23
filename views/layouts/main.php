@@ -367,6 +367,9 @@ if($configuracion['google_analitics']) {
     </div>
 </div>
 
+	<a href="#0" class="cd-top" title="Go to top">Top</a>
+	
+	
 <?php foreach (Yii::$app->session->getAllFlashes() as $message): ?>
     <?php /*= \kartik\widgets\Growl::widget([
         'type' => (!empty($message['type'])) ? $message['type'] : 'danger',
