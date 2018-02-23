@@ -18,6 +18,7 @@ use app\models\NoticiasSearch;
 use app\models\Paquetes;
 use app\models\Usuarios;
 use Yii;
+use yii\filters\AccessControl;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -44,6 +45,22 @@ class SiteController extends Controller
         ];
     }
 
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['vender','logout'],
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
     /*
      * pagina principal
      */
@@ -166,9 +183,10 @@ class SiteController extends Controller
      */
     public function actionVender()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['login']);
-        }
+        }*/
+
         $page = Yii::$app->request->get('page');
 
         if ($page == 'comprar') {
@@ -307,15 +325,19 @@ class SiteController extends Controller
     public function actionLogin()
     {
 
-        if (!empty(Yii::$app->session->get('user'))) {
+        /*if (!empty(Yii::$app->session->get('user'))) {
             return $this->goHome();
-        }
+        }*/
 
         $model = new LoginWeb();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
-            //return $this->redirect(Yii::$app->request->referrer);
         }
+        /*else{
+            Yii::$app->user->setReturnUrl(Yii::$app->request->referrer);
+            echo Yii::$app->user->getReturnUrl();
+
+        }*/
         return $this->render('cuenta/login', ['model' => $model]);
 
     }
@@ -323,14 +345,20 @@ class SiteController extends Controller
 
     public function actionLogout()
     {
-        if (!empty(Yii::$app->session->get('user'))) {
+        Yii::$app->user->logout();
+        if (Yii::$app->request->referrer) {
+            return $this->redirect(Yii::$app->request->referrer);
+        } else {
+            return $this->redirect(['index']);
+        }
+        /*if (!empty(Yii::$app->session->get('user'))) {
             Yii::$app->session->remove('user');
             if (Yii::$app->request->referrer) {
                 return $this->redirect(Yii::$app->request->referrer);
             } else {
                 return $this->goHome();
             }
-        }
+        }*/
     }
 
     public function actionRegister()

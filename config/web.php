@@ -33,8 +33,9 @@ $config = [
             //'useMemcached' => true,
         ],
         'user' => [
-            'identityClass' => 'app\models\Administrador',
+            'identityClass' => 'app\models\Usuarios',
             'enableAutoLogin' => true,
+            'loginUrl' => ['site/login'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

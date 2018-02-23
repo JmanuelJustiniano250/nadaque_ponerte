@@ -144,20 +144,31 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <h3 class="modal-title" id="lineModalLabel">Envia mensaje a NombreVendedora</h3>
+                                <h3 class="modal-title" id="lineModalLabel">Envia mensaje a <?= $model->usuario['alias']?></h3>
                             </div>
                             <div class="modal-body">
 
                                 <!-- content goes here -->
-                                <form>
-                                    <div class="form-group">
 
-                                        <textarea name="" id="" style="width: 100%" class="form-control"  rows="5" placeholder="Escribe el mensaje y el nombre de la prenda"></textarea>
+                                <?php $modmess= new \app\models\Mensajes();?>
+                                <?php $modmess->idvendedor = $model->idusuario;?>
+                                <?php $modmess->tipo = 0;?>
+                                <?php $form = ActiveForm::begin([
+                                    'action' => ['/cuenta/mensaje'],
+                                    'id' => 'login-form',
+                                    /*'layout' => 'horizontal',
+                                    'fieldConfig' => [
+                                        'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+                                        'labelOptions' => ['class' => 'col-md-4 control-label'],
+                                    ],*/
+                                ]); ?>
+                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
+                                <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
+                                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
 
-                                    </div>
+                                <button type="submit" class="btn btn-default">Enviar</button>
 
-                                    <button type="submit" class="btn btn-default">Enviar</button>
-                                </form>
+                                <?php ActiveForm::end(); ?>
 
                             </div>
                             <div class="modal-footer">

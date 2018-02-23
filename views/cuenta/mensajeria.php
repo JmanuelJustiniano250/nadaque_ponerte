@@ -43,9 +43,9 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
 
     <div class="list-group">
         <?php foreach ($mensaje as $item): ?>
-            <?php if($model['tipo']): ?>
-                <a href="<?= \yii\helpers\Url::to(['cuenta/mensajeria','id'=>$item['idusuario']])?>" class="list-group-item imagenusario <?= ((Yii::$app->request->get('id')==$item['idusuario'])?'active':'') ?>">
-                    <?=
+            <?php /*if($model['tipo']): */?><!--
+                <a href="<?php /*= \yii\helpers\Url::to(['cuenta/mensajeria','id'=>$item['idusuario']])*/?>" class="list-group-item imagenusario <?/*= ((Yii::$app->request->get('id')==$item['idusuario'])?'active':'') */?>">
+                    <?php /*=
                     EasyThumbnailImage::thumbnailImg(
                         Yii::getAlias('@webroot/imagen/usuarios/' . $item->usuario['foto']),
                         45,
@@ -53,11 +53,11 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
                         EasyThumbnailImage::THUMBNAIL_OUTBOUND,
                         ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;      margin-right: 10px;   margin-top: -10px;', 'class' => 'img-responsive']
                     );
-                    ?>
+                    */?>
 
-                    <span style="color: #ff839a; font-weight: 600;     font-size: 18px;"> <?= $item->usuario['alias'] ?> </span>
+                    <span style="color: #ff839a; font-weight: 600;     font-size: 18px;"> <?php /*= $item->usuario['alias'] */?> </span>
                 </a>
-            <?php else:?>
+            --><?php /*else:*/?>
                 <a href="<?= \yii\helpers\Url::to(['cuenta/mensajeria','id'=>$item['idvendedor']])?>" class="list-group-item imagenusario <?= ((Yii::$app->request->get('id')==$item['idvendedor'])?'active':'') ?>">
                     <?=
                     EasyThumbnailImage::thumbnailImg(
@@ -71,7 +71,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
 
                     <span style="color: #ff839a; font-weight: 600;     font-size: 18px;"> <?= $item->vendedor['alias'] ?> </span>
                 </a>
-            <?php endif;?>
+            <?php /*endif;*/?>
         <?php endforeach;?>
 
     </div>
@@ -105,11 +105,11 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
                             ?>
                         </div>
                         <div class="col-sm-10 col-xs-12">
-                            <p><?= $model['detalle']?></p>
+                            <p><?= $item['detalle']?></p>
                         </div>
                     <?php else:?>
                         <div class="col-sm-10 col-xs-12">
-                            <p><?= $model['detalle']?></p>
+                            <p><?= $item['detalle']?></p>
                         </div>
                         <div class="col-sm-2 col-xs-12">
                             <?=

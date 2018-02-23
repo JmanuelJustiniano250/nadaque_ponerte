@@ -14,6 +14,7 @@ use app\models\Mensajes;
 use app\models\Newsletter;
 use app\models\Usuarios;
 use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 
@@ -25,7 +26,17 @@ class CuentaController extends Controller
     public function behaviors()
     {
         return [
-
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create','principal','forget','register','cuenta','anuncios','anuncios2','compras','calificaciones','comentarios','listadeseos','mensajeria','update','mensaje'],
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -55,9 +66,9 @@ class CuentaController extends Controller
     public function actionCreate()
     {
 
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
 
         $model = new Anuncios();
         $modelfiltro = new AnunciosFiltros();
@@ -113,9 +124,9 @@ class CuentaController extends Controller
 
     public function actionPrincipal()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         return $this->render('index', ['op' => 1, 'model' => $model]);
     }
@@ -160,9 +171,9 @@ class CuentaController extends Controller
     public function actionForget()
     {
 
-        if (!empty(Yii::$app->session->get('user'))) {
+        /*if (!empty(Yii::$app->session->get('user'))) {
             return $this->goHome();
-        }
+        }*/
 
         $model = new Forget();
         if ($model->load(Yii::$app->request->post())) {
@@ -189,9 +200,9 @@ class CuentaController extends Controller
     public function actionRegister()
     {
 
-        if (empty(Yii::$app->session->get('user'))) {
+       /* if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
 
         $model = new Usuarios();
         $model->fecha_registro = date('Y-m-d H:i:s');
@@ -219,9 +230,9 @@ class CuentaController extends Controller
     public function actionCuenta()
     {
 
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
 
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['id']]);
         /* $model->fecha_nacimiento =  date($model['ano'].'-'.$model['mes'].'-'.$model['dia']);*/
@@ -303,9 +314,9 @@ class CuentaController extends Controller
 
     public function actionAnuncios()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         $searchModel = new AnunciosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->query->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
@@ -322,9 +333,9 @@ class CuentaController extends Controller
 
     public function actionAnuncios2()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         $searchModel = new AnunciosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->query->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
@@ -340,9 +351,9 @@ class CuentaController extends Controller
 
     public function actionCompras()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         $searchModel = new CompraSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->query->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
@@ -368,9 +379,9 @@ class CuentaController extends Controller
 
     public function actionComentarios()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         return $this->render('index', ['op' => 4, 'model' => $model]);
     }
@@ -379,9 +390,9 @@ class CuentaController extends Controller
 
     public function actionListadeseos()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+       /* if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         return $this->render('index', ['op' => 8, 'model' => $model]);
     }
@@ -390,53 +401,56 @@ class CuentaController extends Controller
 
     public function actionMensajeria()
     {
-        if (empty(Yii::$app->session->get('user'))) {
+        /*if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
-        if($model['tipo']){
+       /* if($model['tipo']){*/
             $mensajes = Mensajes::find()
-                ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
                 ->andWhere(['tipo' => 0])
-                ->distinct('idusuario')
+                ->distinct('idvendedor')
+                ->select('idvendedor')
                 ->all();
-            $chat = Mensajes::find()
+           /* $chat = Mensajes::find()
                 ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
                 ->andWhere(['idusuario' => Yii::$app->request->get('id')])
                 ->andWhere(['tipo' => 0])
                 ->all();
         }
-        else{
-            $mensajes = Mensajes::find()
-                ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
-                ->andWhere(['tipo' => 0])
-                ->distinct('idvendedor')
-                ->all();
-            $chat = Mensajes::find()
-                ->andWhere(['or',
+        else{*/
+        /*$mensajes = Mensajes::find()
+            ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+            ->andWhere(['tipo' => 0])
+            ->distinct('idvendedor')
+            ->all();*/
+        $chat = Mensajes::find()
+            ->andWhere(['or',
                     ['and',
                         ['idvendedor' => Yii::$app->request->get('id')],
                         ['idusuario' => Yii::$app->session->get('user')['idusuario']]
                     ]
-                ],[
+                    ,
                     ['and',
                         ['idusuario' => Yii::$app->request->get('id')],
                         ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
                     ]
-                ])
-                ->andWhere(['tipo' => 0])
-                ->orderBy(['fecha_registro'=>SORT_ASC])
-                ->all();
-        }
+                ]
+            )
+            ->andWhere(['tipo' => 0])
+            ->orderBy(['fecha_registro' => SORT_ASC])
+            ->all();
 
-        return $this->render('index', ['op' => 7, 'model' => $model,'mensaje'=>$mensajes,'chat'=>$chat]);
+        // }
+
+        return $this->render('index', ['op' => 7, 'model' => $model, 'mensaje' => $mensajes, 'chat' => $chat]);
     }
 
     public function actionUpdate($id = null)
     {
-        if (empty(Yii::$app->session->get('user'))) {
+       /* if (empty(Yii::$app->session->get('user'))) {
             return $this->redirect(['site/login']);
-        }
+        }*/
         if (is_null($id)) {
             $this->redirect(['cuenta/anuncios']);
         }

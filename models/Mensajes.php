@@ -64,7 +64,7 @@ class Mensajes extends \yii\db\ActiveRecord
     }
     public function getVendedor()
     {
-        return $this->hasOne(Usuarios::className(), ['idvendedor' => 'idusuario']);
+        return $this->hasOne(Usuarios::className(), [ 'idusuario'=> 'idvendedor']);
     }
     public function getAnuncio()
     {
