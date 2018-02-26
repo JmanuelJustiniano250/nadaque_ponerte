@@ -7,6 +7,7 @@ use app\models\Anuncios;
 use app\models\AnunciosFiltros;
 use app\models\AnunciosGaleria;
 use app\models\AnunciosSearch;
+use app\models\Calificaciones;
 use app\models\CompraSearch;
 use app\models\ContactForm;
 use app\models\Forget;
@@ -28,7 +29,7 @@ class CuentaController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create','principal','forget','register','cuenta','anuncios','anuncios2','compras','calificaciones','comentarios','listadeseos','mensajeria','update','mensaje'],
+                'only' => ['create','principal','forget','register','cuenta','anuncios','anuncios2','compras','calificaciones','calificar','comentarios','listadeseos','mensajeria','update','mensaje'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -376,6 +377,28 @@ class CuentaController extends Controller
         }
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         return $this->render('index', ['op' => 3, 'model' => $model]);
+    }
+    public function actionCalificar()
+    {
+        if (empty(Yii::$app->session->get('user'))) {
+            return $this->redirect(['site/login']);
+        }
+        $model = new Calificaciones();
+        $model->idusuario = Yii::$app->session->get('user')['idusuario'];
+        $model->fecha_creacion = date('Y-m-d H:i:s');
+
+        if($model->load(Yii::$app->request->post()))
+        {
+            if($model->idusuario!=$model->idvendedor){
+                $model->puntaje = round($model->puntaje);
+                if ($model->save()) {
+                    Yii::$app->session->setFlash('success', ['message' => 'calificacion Realizada', 'type' => 'success']);
+                } else {
+                    Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la actualizacion, Intentelo de nuevo mas tarde']);
+                }
+            }
+        }
+        $this->redirect(Yii::$app->request->referrer);
     }
 
     public function actionComentarios()

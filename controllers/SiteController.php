@@ -7,10 +7,12 @@ use app\models\Anuncios;
 use app\models\AnunciosFiltros;
 use app\models\AnunciosGaleria;
 use app\models\AnunciosSearch;
+use app\models\Calificaciones;
 use app\models\Categorias;
 use app\models\Configuracion;
 use app\models\ContactForm;
 use app\models\Contenido;
+use app\models\Deseos;
 use app\models\Faq;
 use app\models\LoginWeb;
 use app\models\Noticias;
@@ -54,11 +56,13 @@ class SiteController extends Controller
                 'rules' => [
                     // allow authenticated users
                     [
+
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
             ],
+
         ];
     }
     /*
@@ -452,6 +456,17 @@ class SiteController extends Controller
     {
         return $this->renderAjax('mapa', ['coordgoogle' => $la . ',' . $lo]);
         //return $this->render('mapa',['coordgoogle'=>$la.','.$lo]);
+    }
+
+    public function actionPerfil($id = null)
+    {
+        $model = Usuarios::find()->where(['estado'=>1,'idusuario'=>$id])->one();
+        $calificacion = new Calificaciones();
+        if(empty($model))
+        {
+            $model = new Usuarios();
+        }
+        return $this->render('anunciante',['model'=>$model]);
     }
 
 }

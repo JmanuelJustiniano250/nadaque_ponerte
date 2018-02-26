@@ -76,18 +76,23 @@ class LoginWeb extends Model
     public function getUser()
     {
         $session = Yii::$app->session;
-        if (empty(Yii::$app->session->get('user'))) {
-            $usuario = Usuarios::findOne(['email' => $this->username, 'estado' => 1]);
-            if ($usuario) {
-                if ($usuario->estado) {
-                    $usuario->estado = 1;
-                    $usuario->save();
+        if ($this->_user === false) {
+            if (empty(Yii::$app->session->get('user'))) {
+                $usuario = Usuarios::findOne(['email' => $this->username, 'estado' => 1]);
+
+                if ($usuario) {
+                    if ($usuario->estado) {
+                        $usuario->estado = 1;
+                        $usuario->save();
+                    }
+                    $session->set('user', $usuario);
+                    $this->_user = $usuario;
                 }
-                $session->set('user', $usuario);
             }
         }
 
-        return $session->get('user');
+
+        return $this->_user;
     }
 
     /**

@@ -127,11 +127,11 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
             <?php endif; ?>
 
-           <div class="imgquiero">
+            <div class="imgquiero">
 
 
                 <a href="" data-toggle="modal" data-target="#squarespaceModal">
-                <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
+                    <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
 
                 </a>
 
@@ -268,9 +268,63 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     <?= \app\models\Anuncios::find()->where(['idusuario' => $model->idusuario, 'estado' => 1])->count() ?>
                     prendas
                 </p>
-                <div style="border-bottom: 1px solid white;  border-bottom-style: dashed;  margin: 0px 30px "></div>
+                <div style="border-bottom: 1px solid white;  border-bottom-style: dashed;  margin: 0px 30px ">
+                    <?php
+                    $us= '';
+                    if(isset(Yii::$app->session->get('user')['idusuario']))
+                        $us =Yii::$app->session->get('user')['idusuario'];
+                    if($model->idusuario != $us):
+                        ?>
+                        <a href="" data-toggle="modal" data-target="#califModal">
+                            Calificar
+                        </a>
+                        <!-- line modal -->
+                        <div class="modal fade" id="califModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                        <h3 class="modal-title" id="lineModalLabel">Envia mensaje a <?= $model->usuario['alias']?></h3>
+                                    </div>
+                                    <div class="modal-body">
 
-                <a class="moreven btn center-block" href="#">Mas de la vendedora</a>
+                                        <!-- content goes here -->
+                                        <?php // Usage with ActiveForm and model
+                                        $modelcal = new \app\models\Calificaciones();
+                                        $modelcal->idvendedor = $model->idusuario;
+
+                                        ?>
+                                        <?php $form = ActiveForm::begin([
+                                            'action' => ['/cuenta/calificar'],
+                                            'id' => 'login-form',
+                                            /*'layout' => 'horizontal',
+                                            'fieldConfig' => [
+                                                'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+                                                'labelOptions' => ['class' => 'col-md-4 control-label'],
+                                            ],*/
+                                        ]); ?>
+                                        <?= $form->field($modelcal, 'puntaje')->widget(\kartik\widgets\StarRating::classname()); ?>
+                                        <?= $form->field($modelcal,'mensaje')->textarea(['class'=>'form-control','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
+                                        <?= $form->field($modelcal,'idvendedor')->hiddenInput()->label(false)?>
+
+                                        <button type="submit" class="btn btn-default">Enviar</button>
+
+                                        <?php ActiveForm::end(); ?>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif;?>
+
+                </div>
+
+                <a class="moreven btn center-block" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Mas de la vendedora</a>
 
             </div>
 
@@ -279,78 +333,78 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
         <hr>
         <br><br><br>
         <?php if(!empty(Yii::$app->session->get('user'))):?>
-        <div class="col-xs-12">
-            <h3>Comentarios</h3>
-            <br><br>
-            <?php $modmess= new \app\models\Mensajes();?>
-            <?php $modmess->idanuncio = $model->idanuncio;?>
-            <?php $modmess->tipo = 1;?>
-            <?php $form = ActiveForm::begin([
-                'action' => ['/cuenta/mensaje'],
-                'id' => 'login-form',
-                /*'layout' => 'horizontal',
-                'fieldConfig' => [
-                    'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
-                    'labelOptions' => ['class' => 'col-md-4 control-label'],
-                ],*/
-            ]); ?>
-            <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control cajadesct','placeholder'=>'Dejanos tus consultas y comentarios'])->label(false)?>
-            <?= $form->field($modmess,'idanuncio')->hiddenInput()->label(false)?>
-            <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
+            <div class="col-xs-12">
+                <h3>Comentarios</h3>
+                <br><br>
+                <?php $modmess= new \app\models\Mensajes();?>
+                <?php $modmess->idanuncio = $model->idanuncio;?>
+                <?php $modmess->tipo = 1;?>
+                <?php $form = ActiveForm::begin([
+                    'action' => ['/cuenta/mensaje'],
+                    'id' => 'login-form',
+                    /*'layout' => 'horizontal',
+                    'fieldConfig' => [
+                        'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+                        'labelOptions' => ['class' => 'col-md-4 control-label'],
+                    ],*/
+                ]); ?>
+                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control cajadesct','placeholder'=>'Dejanos tus consultas y comentarios'])->label(false)?>
+                <?= $form->field($modmess,'idanuncio')->hiddenInput()->label(false)?>
+                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
 
-            <div class="submit-area" align="left"><br>
-                <input type="submit" name="enviar" id="" class="btnregister" style="text-transform: none"
-                       value="Dejar Mensaje">
-            </div>
+                <div class="submit-area" align="left"><br>
+                    <input type="submit" name="enviar" id="" class="btnregister" style="text-transform: none"
+                           value="Dejar Mensaje">
+                </div>
 
-            <?php ActiveForm::end(); ?> <br><br>
+                <?php ActiveForm::end(); ?> <br><br>
 
-            <?php foreach ($model->mensajes as $key => $mensaje): ?>
-                <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
+                <?php foreach ($model->mensajes as $key => $mensaje): ?>
+                    <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
 
 
-                    <?php if ($mensaje->usuario['idusuario'] == $model->idusuario) :?>
-                     <div class="col-md-1"></div>
-                    <?php else: ?>
+                        <?php if ($mensaje->usuario['idusuario'] == $model->idusuario) :?>
+                            <div class="col-md-1"></div>
+                        <?php else: ?>
 
-                    <?php  endif; ?>
+                        <?php  endif; ?>
 
-                    <div class="col-md-11 col-xs-12">
+                        <div class="col-md-11 col-xs-12">
 
-                        <div class="<?= (($mensaje->usuario['idusuario'] == $model->idusuario) ? 'anunciantes' : 'cajausuario') ?>">
+                            <div class="<?= (($mensaje->usuario['idusuario'] == $model->idusuario) ? 'anunciantes' : 'cajausuario') ?>">
 
-                            <div class="cahas">
-                                <?= Html::img('@web/assets_b/images/chats.png') ?>
+                                <div class="cahas">
+                                    <?= Html::img('@web/assets_b/images/chats.png') ?>
+                                </div>
+
+                                <div class="imagenusario" align="right">
+                                    <span><?= $mensaje->usuario['nombres'] ?> </span>
+                                    <?=
+                                    EasyThumbnailImage::thumbnailImg(
+                                        Yii::getAlias('@webroot/imagen/usuarios/'. $mensaje->usuario['foto']) ,
+                                        45,
+                                        45,
+                                        EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+                                        ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
+                                    );
+                                    ?>
+
+                                </div>
+
+                                <div class="comentarios2" style="padding-left: 10px">
+                                    <p><?= $mensaje['detalle']?></p>
+                                    <br>
+                                    <p style="color: #ff6d89; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
+                                </div>
                             </div>
 
-                            <div class="imagenusario" align="right">
-                                <span><?= $mensaje->usuario['nombres'] ?> </span>
-                                <?=
-                                EasyThumbnailImage::thumbnailImg(
-                                    Yii::getAlias('@webroot/imagen/usuarios/'. $mensaje->usuario['foto']) ,
-                                    45,
-                                    45,
-                                    EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                                    ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
-                                );
-                                ?>
-
-                            </div>
-
-                            <div class="comentarios2" style="padding-left: 10px">
-                                <p><?= $mensaje['detalle']?></p>
-                                <br>
-                                <p style="color: #ff6d89; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
-                            </div>
                         </div>
 
                     </div>
+                <?php endforeach; ?>
 
-                </div>
-            <?php endforeach; ?>
-
-        </div>
-        <br>
+            </div>
+            <br>
         <?php endif;?>
     </div>
 
