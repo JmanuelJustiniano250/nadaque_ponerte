@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <p class="text-center nobor">
-
+                        <?= $model['razon']?>
                         <br>
 
                         Registrado en <span> <?= \app\components\Funcions::fecha($model->paquete['fecha_pago'],true,true) ?></span>

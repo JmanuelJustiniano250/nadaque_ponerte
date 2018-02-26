@@ -9,16 +9,31 @@ use yii\widgets\DetailView;
 $this->title = $model->idanuncio;
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$url = \yii\helpers\Url::to(['anuncios/comentario','id'=>$model->idanuncio]);
+$script = <<<JS
+function rechazo() {
+    opcion = prompt("Razón:","Datos incorrectos");
+    form = new FormData;
+jQuery.ajax({
+    url:'$url',
+    data: {'com':opcion,'est':2},
+    success:function(data) {
+      location.href=document.referrer;
+    }
+});  
+}
+JS;
+$this->registerJs($script,\yii\web\View::POS_BEGIN);
 ?>
+
 <section class="content-header">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
-        <?= Html::a('rechazar', ['denny', 'id' => $model->idanuncio], [
+
+        <?= Html::a('rechazar', '#', [
             'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Esta seguro?',
-            ],
+            'onClick' => 'rechazo()',
         ]) ?>
 
         <?= Html::a('Aprobar', ['aprove', 'id' => $model->idanuncio], [

@@ -113,6 +113,17 @@ class AnunciosController extends Controller
             ]);
         }
     }
+    public function actionComentario($id)
+    {
+        $model = $this->findModel($id);
+        if (Yii::$app->request->isAjax) {
+            $model->razon = Yii::$app->request->get('com');
+            $model->estado = Yii::$app->request->get('est');
+            $model->save(false);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Deletes an existing Anuncios model.
