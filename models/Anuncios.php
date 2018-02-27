@@ -65,6 +65,7 @@ class Anuncios extends \yii\db\ActiveRecord
             [['idcompra'], 'exist', 'skipOnError' => true, 'targetClass' => Compra::className(), 'targetAttribute' => ['idcompra' => 'idcompra']],
             [['idusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['idusuario' => 'idusuario']],
             ['file', 'file', 'extensions' => 'jpg, jpeg, png', 'mimeTypes' => 'image/jpeg, image/png'],
+
         ];
     }
 
@@ -82,6 +83,10 @@ class Anuncios extends \yii\db\ActiveRecord
             'otra_descripcion' => 'Otra Descripcion',
             'codigo' => 'Codigo',
             'foto' => 'Foto',
+            'foto2' => 'Foto2',
+            'foto3' => 'Foto3',
+            'foto4' => 'Foto4',
+            'foto5' => 'Foto5',
             'file' => 'Foto Portada',
             'precio' => 'Precio',
             'precio_promocion' => 'Precio Promocion',
@@ -175,6 +180,9 @@ class Anuncios extends \yii\db\ActiveRecord
                 if ($this->file->saveAs($path))
                     return true;
             }
+
+
+
         }
         return false;
     }

@@ -400,8 +400,21 @@ $this->registerCss($script);
                             </div>
                         </div>
                         <?php
+                        break;
+
+
+                    case '9':
+                        echo $this->render('changepassword', ['model' => $model]);
+                        break;
+
+
                 }
+
                 ?>
+
+
+
+
             </div>
         </div>
     </div>

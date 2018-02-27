@@ -469,4 +469,12 @@ class SiteController extends Controller
         return $this->render('anunciante',['model'=>$model]);
     }
 
+
+
+    public function actionOpciones()
+    {
+        $data['configuracion'] = Configuracion::find()->one();
+        return $this->render('carrito/opciones', $data);
+    }
+
 }

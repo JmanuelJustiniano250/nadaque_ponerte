@@ -54,7 +54,14 @@ $script = <<<CSS
    
 }
 
-
+.redespergil {
+    padding-left: 10px;
+    padding-top: 0px;
+    float: inherit;
+    list-style: none;
+    display: inline-block;
+    margin-bottom: 25px;
+}
 
 
 CSS;
@@ -144,15 +151,100 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <h3 class="modal-title" id="lineModalLabel">Envia mensaje a <?= $model->usuario['alias']?></h3>
+                                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: #fda4b5">
+
+                                    Envia un mensaje privado a  <?= $model->usuario['alias']?> <br> <span style=" color: black;   font-size: 13px;
+    font-weight: 300;">la respuesta aparecera en tus mensajes privados.
+                                </span>
+                                </h3>
                             </div>
                             <div class="modal-body">
 
+
+
+
+
+
+                                <p style="margin-top: 10px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
+
+
+                                    <?php if ($model->usuario['telefono']): ?>
+                                    <?php if ($model->usuario['visibletelefono']): ?>
+
+                                   <?= $model->usuario['telefono'] ?>
+
+                                <?php else: ?>
+
+                                <?php endif; ?>
+                                <?php endif; ?>
+                                </p>
+
+
+
+
+                                <span style="font-weight: 600; color: #fda4b5">Redes Sociales: </span>
+                                <ul class="redespergil">
+                                    <?php if ($model->usuario['facebook']): ?>
+                                        <?php if ($model->usuario['visiblefacebook']): ?>
+                                            <li>
+                                                <a href="<?= $model->usuario['facebook'] ?>" target="_blank"><i
+                                                            class="fa fa-facebook" aria-hidden="true"></i></a>
+                                            </li>
+                                        <?php else: ?>
+
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+
+
+
+
+
+                                    <?php if ($model->usuario['twitter']): ?>
+                                        <?php if ($model->usuario['visibletwittwe']): ?>
+                                            <li>
+                                                <a href="<?= $model->usuario['twitter'] ?>" target="_blank"><i
+                                                            class="fa fa-twitter" aria-hidden="true"></i></a>
+                                            </li>
+                                        <?php else: ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+
+
+
+                                    <?php if ($model->idusuario['youtube']): ?>
+
+                                        <?php if ($model->idusuario['visibleyoutu']): ?>
+                                            <li>
+                                                <a href="<?= $model->usuario['youtube'] ?>" target="_blank"><i
+                                                            class="fa fa-youtube" aria-hidden="true"></i></a>
+                                            </li>
+                                        <?php else: ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+
+
+
+                                    <?php if ($model->usuario['instagram']): ?>
+
+                                        <?php if ($model->usuario['visibleinsta']): ?>
+
+                                            <li>
+                                                <a href="<?= $model->usuario['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
+                                                                                                                 aria-hidden="true"></i></a>
+                                            </li>
+                                        <?php else: ?>
+
+                                        <?php endif; ?>
+
+                                    <?php endif; ?>
+                                </ul>
+
+
+
+
                                 <!-- content goes here -->
 
-                                <?php $modmess= new \app\models\Mensajes();?>
-                                <?php $modmess->idvendedor = $model->idusuario;?>
-                                <?php $modmess->tipo = 0;?>
+
                                 <?php $form = ActiveForm::begin([
                                     'action' => ['/cuenta/mensaje'],
                                     'id' => 'login-form',
@@ -162,17 +254,25 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                         'labelOptions' => ['class' => 'col-md-4 control-label'],
                                     ],*/
                                 ]); ?>
-                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
+
+
+                                <?php $modmess= new \app\models\Mensajes();?>
+                                <?php $modmess->idvendedor = $model->idusuario;?>
+                                <?php $modmess->tipo = 0;?>
+
+
+
+                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control privatemen','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
                                 <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
                                 <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
 
-                                <button type="submit" class="btn btn-default">Enviar</button>
-
+                              <div align="center">  <button type="submit" class="btn btn-default btnregister">Enviar</button>
+                              </div>
                                 <?php ActiveForm::end(); ?>
 
                             </div>
                             <div class="modal-footer">
-                                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                <div class="btn-group btn-group-justified " role="group" aria-label="group button">
 
                                 </div>
                             </div>
@@ -348,7 +448,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         'labelOptions' => ['class' => 'col-md-4 control-label'],
                     ],*/
                 ]); ?>
-                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control cajadesct','placeholder'=>'Dejanos tus consultas y comentarios'])->label(false)?>
+                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control cajadesct','placeholder'=>'Deja tu comentario o duda aqui para la vendedora ej: mas caracteristicas, medidas, tipo de envio o lo que desees para estar segura de la compra'])->label(false)?>
                 <?= $form->field($modmess,'idanuncio')->hiddenInput()->label(false)?>
                 <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
 

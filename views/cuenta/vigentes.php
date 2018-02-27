@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="post-gal">
                 <?=
                 EasyThumbnailImage::thumbnailImg(
-                    Yii::getAlias('@webroot/imagen/anuncios/') . 'anuncio1.jpg',
+                    Yii::getAlias('@webroot/imagen/anuncios/') . $model['foto'],
                     283,
                     300,
                     EasyThumbnailImage::THUMBNAIL_OUTBOUND,
@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $days = (strtotime($fecha_expiracion) - time())/(3600*24);
                         ?>
 
-                        DIas remanentes <span> <?= $days?></span>
+                        Dias remanentes <span> <?= $days?></span>
 
 
                     </p>

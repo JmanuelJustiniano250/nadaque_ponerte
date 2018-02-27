@@ -31,7 +31,7 @@ class AnunciosFiltros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idanuncio', 'idciudad', 'idcolores', 'idcondicion', 'idmarca', 'idmaterial', 'idtalla'], 'integer'],
+            [['idanuncio', 'idciudad', 'idcolores', 'idcondicion', 'id_tp', 'idmarca', 'idmaterial', 'idtalla'], 'integer'],
             [['fecha_creacion'], 'safe'],
         ];
     }

@@ -178,6 +178,19 @@ label  span{
     -o-transition: all 0.2s ease-in-out;
 }
 
+.field-usuarios-visibletelefono .radio-inline, .checkbox-inline {
+    
+    display: block; margin-top: 10px;
+   
+}
+
+.field-usuarios-visibletelefono .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+  
+    
+     margin-left: 0px;
+   
+}
+  
 .radios .form-group{
 display: inline-block;
 }
@@ -503,19 +516,14 @@ $this->registerCss($script);
 
 
                     </div>
-                    <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
+                    <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0; font-size: 11px;">Selecciona una opcion,
+                            <br> (Si quiero que mi telefono o celular visible en mis anuncios y perfil)</label> <br>
 
                         <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
                     </div>
 
-                    <div class="col-md-6 col-xs-12">
-                        <label for="">Contraseña</label>
 
-                        <?= $form->field($model, 'contrasena')->textInput(['class' => 'password',])->input('password')->label(false) ?>
-
-
-                    </div>
 
 
 
@@ -706,7 +714,7 @@ $this->registerCss($script);
 
 
                     <div class="col-md-6">
-                        <label for="">NIT</label>
+
                         <?= $form->field($model, 'nit')->label(false) ?>
                     </div>
 
@@ -741,18 +749,19 @@ $this->registerCss($script);
     });*/
 
 
-    var contrasena, contrasena2;
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
 
-    contrasena = document.getElementById('contrasena');
-    contrasena2 = document.getElementById('contrasena2');
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
 
-    contrasena.onchange = contrasena2.onkeyup = passwordMatch;
-
-    function passwordMatch() {
-        if(contrasena.value !== contrasena2.value)
-            contrasena2.setCustomValidity('Las contraseñas no coinciden.');
-        else
-            contrasena2.setCustomValidity('');
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;   contrasena2.setCustomValidity('');
     }
 
 

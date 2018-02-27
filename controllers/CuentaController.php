@@ -94,7 +94,7 @@ class CuentaController extends Controller
                 if ($model->save(false)) {
                     $modelfiltro->idanuncio=$model->idanuncio;
                     $modelfiltro->save();
-                    Yii::$app->session->setFlash('success', ['message' => 'Anuncio Creado', 'type' => 'success']);
+                    Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido por nuestro equipo con exito y esta en proceso de aprobacion. <br> Te responderemos en un maximo de 24 horas si tu anuncio es aprobado o necesitas hacerle algun cambio.', 'type' => 'success']);
                 } else {
                     if ($model->foto) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
@@ -132,6 +132,18 @@ class CuentaController extends Controller
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         return $this->render('index', ['op' => 1, 'model' => $model]);
     }
+
+
+
+    public function actionChangepassword()
+    {
+        /*if (empty(Yii::$app->session->get('user'))) {
+            return $this->redirect(['site/login']);
+        }*/
+        $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+        return $this->render('index', ['op' => 9, 'model' => $model]);
+    }
+
 
     public function actionSuscribe()
     {

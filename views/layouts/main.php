@@ -31,14 +31,15 @@ AppAsset::register($this);
 $configuracion = \app\models\Configuracion::find()->one();
 $model = New \app\models\SuscribeForm();
 ?>
-<?php
+<!--
+<?php/*
 if($configuracion['google_analitics']) {
     echo GoogleAnalytics::widget([
         'id'=>$configuracion['google_analitics'],
         'domain'=>Url::home(true)
     ]);
-}
-?>
+}*/
+?>-->
 
 
 <body>
@@ -60,6 +61,7 @@ if($configuracion['google_analitics']) {
             $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] . ' ', 'url' => ['/site/deseos/'],
                 'items' => [
                     ['label' => FA::icon(FA::_USER) . ' Mi cuenta', 'url' => ['/cuenta/principal']],
+                    ['label' => FA::icon(FA::_KEY) . ' Cambiar contraseña', 'url' => ['/cuenta/changepassword']],
                     ['label' => FA::icon(FA::_SIGN_OUT) . ' Salir', 'url' => ['/site/logout/']],
                 ]];
         } else {
@@ -155,7 +157,7 @@ if($configuracion['google_analitics']) {
 
                     'items' => [
                         ['label' => 'COMPRAR', 'url' => ['/site/comprar']],
-                        ['label' => 'ANUNCIAR ' . FA::icon(FA::_CAMERA), 'url' => ['/site/vender']],
+                        ['label' => 'ANUNCIAR ' . FA::icon(FA::_CAMERA), 'url' => ['/site/opciones']],
                         ['label' => '¿COMO FUNCIONA?', 'url' => ['/site/pages', 'id' => 'como-funciona']],
                         ['label' => "<img class='logover'  src='" . Yii::$app->request->baseUrl . "/assets_b/images/logo" . ".png' alt='Image Missing'>", 'url' => ['/site/index'], 'options' => ['class' => 'hidden-xs hidden-sm logovera'],],
 

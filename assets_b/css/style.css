@@ -3285,7 +3285,7 @@ ul.team-social li a:hover i {
     padding-bottom: 0px;
     padding-top: 20px;
 
-    background: #ff839a;
+    background: rgba(85, 11, 86, 0.63);
     border-bottom: 0px solid #e6eaed;
 }
 
@@ -3297,8 +3297,8 @@ ul.team-social li a:hover i {
 
 .statistic-box.style2 .statistic-post .statistic-counter {
     padding: 30px 0px;
-    background: #ff839a;
-    border: 1px solid #ff839a;
+    background: rgb(147, 100, 148);
+    border: 1px solid rgb(147, 100, 148);
     margin-bottom: 30px;
     overflow: hidden;
 }
@@ -3307,6 +3307,12 @@ ul.team-social li a:hover i {
     color: white;
     text-align: center;
     font-weight: 500;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+
+    background-color: black;
+
 }
 
 .statistic-box.style2 .statistic-post .statistic-counter p span {
@@ -3654,7 +3660,7 @@ ul.team-social li a:hover i {
 }
 
 .pricing-box .pricing-item {
-    width: 25%;
+    width: 20%;
     float: left;
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -4808,7 +4814,10 @@ footer .up-footer .footer-line p {
 }
 
 @media (max-width: 767px) {
-
+.bderq{
+    border-right: 0px solid!important;
+    border-bottom: 1px solid #ff6d89;
+}
 
     .linemedioa{
         border-right: 0px solid #ff6d89!important;
@@ -5867,7 +5876,15 @@ color: white;
     border-color: #ff6d89;
 }
 
-.cajadesct::placeholder { color: rgba(255, 109, 137, 0.77)!important;  }
+.cajadesct::placeholder { color: #fda4b5!important;  }
+
+.privatemen{
+    border-color: #ff6d89;
+
+}
+
+.privatemen::placeholder { color: #fda4b5!important;  }
+
 
 
 .cajausuario{
@@ -5953,3 +5970,13 @@ color: white;
     transition: opacity .3s 0s, visibility 0s .3s;
 }
 
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #ffd9e0;
+    border-color: #ffd9e0;
+}
+.bderq{
+    border-right: 1px solid #ff6d89
+}

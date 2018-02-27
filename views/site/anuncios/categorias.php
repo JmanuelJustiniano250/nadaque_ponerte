@@ -232,6 +232,19 @@ color: #ff5a96;
 background: transparent;
 }
 
+.todosn:hover, .todosn:focus, .todosn:active{
+    text-decoration: none;
+    color: #ff5a96;
+}
+.todosn{
+border-radius: 0;
+    border-bottom: 0px solid #000;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    color: #505050;
+    padding-left: 5px;
+}
 
 
 CSS;
@@ -252,6 +265,8 @@ $cats = $categoria->categorias;
 
     <h5 class="menu-left sidebarpr text-uppercase"><!--<?//= $categoria['nombre'] ?>--> CATEGORIAS</h5>
     <p class="menu-left sidebarpcat "><!--<?//= $categoria['nombre'] ?>--> Todos los productos</p>
+    <a href="<?= Url::to(['comprar']) ?>" class="todosn">Todos los anuncios</a>
+
     <!--<span style="color: #3565b5;">POR CIUDAD</span>--></h5>
     <div id="accordion" class="panel-group accordion">
         <!--<div class="panel">

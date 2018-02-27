@@ -13,7 +13,7 @@ use yii\widgets\Pjax;
 
 <div class="anuncios-index">
 
-    <h1>Mis productos</h1>
+    <h1>Mis Anuncios</h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
