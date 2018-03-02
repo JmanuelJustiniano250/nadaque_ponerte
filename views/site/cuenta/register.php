@@ -42,7 +42,11 @@ $this->registerCss($script);
         <h2 class="bold text-center"
             style="font-weight: 600;  font-size: 30px;   margin-bottom: 24px;  margin-top: -5px;"><?= ($model->isNewRecord) ? 'Crear una cuenta' : 'Datos de cuenta' ?></h2>
 
-        <p style="text-align: center; ">Utilize un correo que revises diariamente ya que todas <br> las notificaciones de comentarios, mensajes, compras/ventas, y otros te llegarán al que ingreso acá</p>
+        <p style="text-align: center; ">
+            Proporciona a continuación un correo electrónico que utilices con frecuencia, luego sigue el link que se te enviará ahí para completar el registro en nuestra plataforma.
+            <br>
+            Ese correo proporcionado lo usarás para iniciar sesión cuando nos visites.
+
         <br> <div class="blog-box">
             <div class="well2" style="padding: 40px 25px; padding-bottom: 5px;">
                 <?php $form = ActiveForm::begin([

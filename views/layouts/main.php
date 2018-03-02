@@ -156,7 +156,7 @@ if($configuracion['google_analitics']) {
 
 
                     'items' => [
-                        ['label' => 'COMPRAR', 'url' => ['/site/comprar']],
+                        ['label' => 'VER ANUNCIOS', 'url' => ['/site/comprar']],
                         ['label' => 'ANUNCIAR ' . FA::icon(FA::_CAMERA), 'url' => ['/site/opciones']],
                         ['label' => '¿COMO FUNCIONA?', 'url' => ['/site/pages', 'id' => 'como-funciona']],
                         ['label' => "<img class='logover'  src='" . Yii::$app->request->baseUrl . "/assets_b/images/logo" . ".png' alt='Image Missing'>", 'url' => ['/site/index'], 'options' => ['class' => 'hidden-xs hidden-sm logovera'],],

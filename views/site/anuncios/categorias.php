@@ -264,10 +264,10 @@ $cats = $categoria->categorias;
 ?>
 
     <h5 class="menu-left sidebarpr text-uppercase"><!--<?//= $categoria['nombre'] ?>--> CATEGORIAS</h5>
-    <p class="menu-left sidebarpcat "><!--<?//= $categoria['nombre'] ?>--> Todos los productos</p>
-    <a href="<?= Url::to(['comprar']) ?>" class="todosn">Todos los anuncios</a>
+    <a class="menu-left sidebarpcat " href="<?= Url::to(['comprar']) ?>" style="color: #505050">  <!--<?//= $categoria['nombre'] ?>--> Todos los productos</a>
 
-    <!--<span style="color: #3565b5;">POR CIUDAD</span>--></h5>
+
+    <!--<span style="color: #3565b5;">POR CIUDAD</span>-->
     <div id="accordion" class="panel-group accordion">
         <!--<div class="panel">
             <div class="panel-heading">

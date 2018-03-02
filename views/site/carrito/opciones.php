@@ -64,8 +64,8 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
     <div class="title-section white">
         <div class="container">
-            <h1 style="font-size: 25px;">Selecciona </h1> <br>
-            <p>una opcion para crear tu anuncio</p>
+            <h1 style="font-size: 25px;">Selecciona    una opcion para crear tu anuncio
+            </h1>
 
 
         </div>
@@ -86,12 +86,14 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
         <div class="pricing-box">
 
 
-            <div class="col-sm-6 col-xs-12 bderq" align="center">
+            <div class="col-sm-6 col-xs-12 " align="center">
 
-
+<div class="bderq">
                 <H3 CLASS="fec">Comprar paquete de anuncios <br> o anuncio suelto</H3><br>
                 <br>
                 <a href="<?php echo Url::to('vender') ?>" class="btnregister">Compra tu anuncio </a> <br><br><br>
+
+</div>
             </div>
 
 
@@ -99,9 +101,11 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
 
 
-            <div class="col-sm-6 col-xs-12" align="center">
+            <div class="col-sm-6 col-xs-12 " align="center">
+                <div class="bderq">
                 <H3 CLASS="fec">Usar un anuncio de paquete <br> que ya compraste</H3><br><br>
                 <a href="<?php echo Url::to('cuenta/create') ?>" class="btnregister">Publica tu anuncio </a><br><br><br>
+                </div>
             </div>
 
 
