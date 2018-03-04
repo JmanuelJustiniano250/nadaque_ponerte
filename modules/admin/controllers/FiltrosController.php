@@ -123,12 +123,27 @@ class FiltrosController extends Controller
 
         $modelc = new Ciudad();
         $modelcp = new ColoresProductos();
-
+        $modelcnp= new CondicionProducto();
+        $modelmp=new MarcaProducto();
+        $modelmlp =new MaterialProducto();
+        $modeltp=new TallasProducto();
         if ($modelc->load(Yii::$app->request->post())) {
             $modelc->save();
         }
         if ($modelcp->load(Yii::$app->request->post())) {
             $modelcp->save();
+        }
+        if ($modelcnp->load(Yii::$app->request->post())) {
+            $modelcnp->save();
+        }
+        if ($modelmp->load(Yii::$app->request->post())) {
+            $modelmp->save();
+        }
+        if ($modelmlp->load(Yii::$app->request->post())) {
+            $modelmlp->save();
+        }
+        if ($modeltp->load(Yii::$app->request->post())) {
+            $modeltp->save();
         }
         return $this->redirect(['index']);
     }

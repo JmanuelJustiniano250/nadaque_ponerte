@@ -140,7 +140,7 @@ $index = 0;
         <?= Html::checkbox("material[" . $item['id_mp'] . "]", ((isset($model['material'][$item['id_mp']])) ? $model['material'][$item['id_mp']] : ''), ['label' => $item['nombre']]) ?>
     <?php endforeach; ?>
     <br>
-    <?php $marcas = \app\models\MarcaProducto::find()->all() ?>
+    <?php $tmp = \app\models\MarcaProducto::find()->all() ?>
     <h5 class="text-uppercase"><strong>Marcas de los Productos</strong></h5>
     <?php foreach ($tmp as $item): ?>
         <?= Html::checkbox("marca[" . $item['id_msp'] . "]", ((isset($model['marca'][$item['id_msp']])) ? $model['marca'][$item['id_msp']] : ''), ['label' => $item['nombre']]) ?>

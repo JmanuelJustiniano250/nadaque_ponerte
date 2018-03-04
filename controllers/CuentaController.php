@@ -75,7 +75,7 @@ class CuentaController extends Controller
         $modelfiltro = new AnunciosFiltros();
 
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $modelfiltro->load(Yii::$app->request->post())) {
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->razon = "";
@@ -94,7 +94,7 @@ class CuentaController extends Controller
                 if ($model->save(false)) {
                     $modelfiltro->idanuncio=$model->idanuncio;
                     $modelfiltro->save();
-                    Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido por nuestro equipo con exito y esta en proceso de aprobacion. <br> Te responderemos en un maximo de 24 horas si tu anuncio es aprobado o necesitas hacerle algun cambio.', 'type' => 'success']);
+                    Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido por nuestro equipo con exito y esta en proceso de aprobacion. \n Te responderemos en un maximo de 24 horas si tu anuncio es aprobado o necesitas hacerle algun cambio.', 'type' => 'success']);
                 } else {
                     if ($model->foto) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
@@ -111,7 +111,7 @@ class CuentaController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
             if ($model->save()) {
-                return $this->redirect(['anuncios']);
+                return $this->redirect(['cuenta/anuncios2']);
             }
 
         } else {
