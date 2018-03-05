@@ -4814,6 +4814,10 @@ footer .up-footer .footer-line p {
 }
 
 @media (max-width: 767px) {
+
+    .sendensw{
+        text-align: center!important;
+    }
 .bderq{
 
     border: 1px solid #ff6d89;
@@ -5990,4 +5994,8 @@ color: white;
     border: 1px solid #ff6d89;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.sendensw{
+    text-align: right;
 }
