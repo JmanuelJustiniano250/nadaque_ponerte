@@ -9,9 +9,6 @@ use yii\helpers\Html;
 
 $model = new \app\models\Usuarios();
 
-
-
-
 $script = <<<CSS
 
 
@@ -67,10 +64,6 @@ $this->registerCss($script);
                     </div>
 
                 </div>
-
-
-
-
 
                 <div class="form-group" align="center">
                     <?= Html::submitButton('Registrar', ['class' => 'btnregister']) ?>

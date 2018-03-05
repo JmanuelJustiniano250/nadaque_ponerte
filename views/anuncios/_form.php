@@ -181,16 +181,15 @@ $user = Yii::$app->session->get('user');
                             $initial = [];
                             array_push($initial, Html::img('@web/imagen/anuncios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
                             ?>
-                            <?= $form->field($model, 'file')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                            <?= $form->field($model, 'file[]')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
-                                    'multiple' => true,
+                                    /*'multiple' => true,*/
                                     'accept' => 'image/*',
-
                                 ],
                                 'pluginOptions' => [
                                     'initialPreviewFileType' => 'image',
                                     'initialPreview' => $initial,
-                                    'browseLabel' => 'Escoger imagen',
+                                    'browseLabel' => 'Escoger tu imagen (*.jpg)',
                                     'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
                                     'maxFileCount' => 5,
                                     'allowedFileExtensions' => ['jpg', 'png', 'gif'],
