@@ -5,7 +5,7 @@ use yii\helpers\Url;
 
 
 $this->registerCssFile('@web/assets_b/web/css/easy-responsive-tabs.css', ['media' => 'screen', '']);
-$this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' => \app\assets_b\AppAsset::class, 'position' => \yii\web\View::POS_END]);
+$this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' => \app\assets_b\AppAsset::className(), 'position' => \yii\web\View::POS_END]);
 
 echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configuracion::find()->one()]);
 ?>
@@ -121,7 +121,6 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
     </div>
 
 
-</div>
 </div>
 
 

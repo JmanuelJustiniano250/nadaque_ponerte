@@ -113,7 +113,11 @@ class CarritoController extends Controller
                     $model->idusuario = Yii::$app->session->get('user')['idusuario'];
                     $model->session = Yii::$app->session->get('cart');
                     $model->estado = 0;
-                    $model->fecha_registro = date('Y-m-d H:i:s');
+                    if($model->nit_factura)
+                        $model->nit_factura = Yii::$app->session->get('user')['nit'];
+                    if($model->nombre_factura)
+                        $model->nombre_factura = Yii::$app->session->get('user')['nombrenit'];
+
                     if (Yii::$app->cart->getCost() == 0) {
                         $model->estado = 1;
                         $model->fecha_pago = date('Y-m-d H:i:s');

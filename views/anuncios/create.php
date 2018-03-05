@@ -64,4 +64,4 @@ $bannersp2 = \app\models\Banners::find()
         </div>
     </div>
 </div>
-<script type="text/javascript" src="../assets_b/js/jquery.flexslider.js"></script>
+<?= $this->registerJsFile('@web/assets_b/js/jquery.flexslider.js');?>

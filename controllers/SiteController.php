@@ -152,12 +152,15 @@ class SiteController extends Controller
         $data['configuracion'] = Configuracion::find()->one();
         $data['modelSearch'] = new AnunciosSearch();
         $datos = Yii::$app->request->queryParams;
+        if (!empty($datos['cat']))
+            $datos['categorias'] = [$datos['cat']=>'categoria'];
         if (empty($datos['precio']))
             $datos['precio'] = Anuncios::find()->min('cast(precio as unsigned)') . ',' . Anuncios::find()->max('cast(precio as unsigned)');
         $datos['precios']['min'] = Anuncios::find()->min('cast(precio as unsigned)');
         $datos['precios']['max'] = Anuncios::find()->max('cast(precio as unsigned)');
         $data['modelSearch']['estado'] = 1;
-        $data['data'] = $data['modelSearch']->search(Yii::$app->request->queryParams);
+        $data['data'] = $data['modelSearch']->search($datos);
+        //$data['data'] = $data['modelSearch']->search(Yii::$app->request->queryParams);
         $data['data']->setSort([
             'defaultOrder' => ['idanuncio' => SORT_DESC]]);
         $data['data']->query->distinct();

@@ -115,7 +115,7 @@ class CuentaController extends Controller
             }
 
         } else {
-            return $this->render('../anuncios/create', [
+            return $this->render('./../anuncios/create', [
                 'model' => $model,
                 'filtro' => $modelfiltro,
             ]);

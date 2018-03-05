@@ -6,8 +6,6 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 
-
-
 $script = <<<CSS
 
 
@@ -134,326 +132,322 @@ $user = Yii::$app->session->get('user');
     'formConfig' => ['labelSpan' => 4, 'deviceSize' => ActiveForm::SIZE_SMALL
     ] */// important
 ]); ?>
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">
 
-        <?php if ($model->isNewRecord): ?>
+            <?php if ($model->isNewRecord): ?>
 
-        <div class="" align="center">
-            <div class="medioas col-xs-12 des" style="">
+                <div class="" align="center">
+                    <div class="medioas col-xs-12 des" style="">
+                        <div class="row">
+                            <label for="">Selecciona tu paquete</label>
+                            <?php
+
+                            $tmp = array();
+                            $tmp_model = \app\models\Compra::find()->where(['paquetes.estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->joinWith(['paquete'])->distinct()->all();
+                            foreach ($tmp_model as $item) {
+                                $cant = \app\models\Anuncios::find()->where(['idcompra' => $item->idcompra, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->distinct()->count();
+                                if ($item->paquete->nro_anuncios > $cant)
+                                    $tmp[] = ['id' => $item->idcompra, 'nombre' => $item->paquete->nombre.' ('.($item->paquete->nro_anuncios - $cant).')'];
+                            }
+                            $array = \yii\helpers\ArrayHelper::map(
+                                $tmp,
+                                'id',
+                                'nombre'
+                            );
+                            echo $form->field($model, 'idcompra')->label(false)->widget(Select2::classname(), [
+
+                                'data' => $array,
+                                'language' => 'es',
+                                'options' => [
+                                    'placeholder' => 'compras',
+                                    //'multiple' => true,
+                                ],
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ]) ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class=" " align="center">
+                <div class=" col-xs-12 des" style="">
+                    <div class="row">
+                        <div class="col-xs-12 des" align="center"><br>
+                            <label for="">Foto de tu prenda</label>
+                            <?php
+                            $initial = [];
+                            array_push($initial, Html::img('@web/imagen/anuncios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+                            ?>
+                            <?= $form->field($model, 'file')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                                'options' => [
+                                    'multiple' => true,
+                                    'accept' => 'image/*',
+
+                                ],
+                                'pluginOptions' => [
+                                    'initialPreviewFileType' => 'image',
+                                    'initialPreview' => $initial,
+                                    'browseLabel' => 'Escoger imagen',
+                                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                                    'maxFileCount' => 5,
+                                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                                    "language" => "es",
+                                    'browseClass' => 'btn enviarsus',
+                                ]
+                            ]); ?>
+
+                            <br>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="medioas col-xs-12" style="">
                 <div class="row">
-            <label for="">Selecciona tu paquete</label>
-                <?php
+                    <div class="col-md-6">
+                        <label for="">Nombre de tu prenda</label>
+                        <?= $form->field($model, 'titulo')->label(false) ?>
+                    </div>
 
-                $tmp = array();
-                $tmp_model = \app\models\Compra::find()->where(['paquetes.estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->joinWith(['paquete'])->distinct()->all();
-                foreach ($tmp_model as $item) {
-                    $cant = \app\models\Anuncios::find()->where(['idcompra' => $item->idcompra, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->distinct()->count();
-                    if ($item->paquete->nro_anuncios > $cant)
-                        $tmp[] = ['id' => $item->idcompra, 'nombre' => $item->paquete->nombre];
-                }
-                $array = \yii\helpers\ArrayHelper::map(
-                    $tmp,
-                    'id',
-                    'nombre'
-                );
-                echo $form->field($model, 'idcompra')->label(false)->widget(Select2::classname(), [
+                    <div class="col-md-6 col-xs-12">
 
-                    'data' => $array,
-                    'language' => 'es',
-                    'options' => [
-                        'placeholder' => 'compras',
-                        //'multiple' => true,
-                    ],
-                    'pluginOptions' => [
-                        'allowClear' => true
-                    ],
-                ]) ?>
+                        <label for="">Seleccionar categoría</label>
+
+                        <?php $form->field($model, 'idusuario')->hiddenInput(['value' => $user['idusuario']])->label(false); ?>
+
+
+                        <?= $form->field($model, 'idcategoria')->label(false)->widget(Select2::classname(), [
+
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\Categorias::findOne(['alias' => 'anuncios'])->categorias, 'idcategoria', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Categorias',
+                                //'multiple' => true,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ]) ?>
+                    </div>
+
+                </div>
             </div>
-            </div>
-        </div>
-        <?php endif; ?>
-
-    <div class=" " align="center">
-        <div class=" col-xs-12 des" style="">
-            <div class="row">
-        <div class="col-xs-12 des" align="center"><br>
-            <label for="">Foto de tu prenda</label>
-            <?php
-            $initial = [];
-            array_push($initial, Html::img('@web/imagen/anuncios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-            ?>
-            <?= $form->field($model, 'file')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
-                'options' => [
-                    'multiple' => true,
-                    'accept' => 'image/*',
-
-                ],
-                'pluginOptions' => [
-                    'initialPreviewFileType' => 'image',
-                    'initialPreview' => $initial,
-                    'browseLabel' => 'Escoger imagen',
-                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-                    'maxFileCount' => 5,
-                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
-                    "language" => "es",
-                    'browseClass' => 'btn enviarsus',
-                ]
-            ]); ?>
-
-            <br>
-        </div>
-
-            </div>
-        </div>
-    </div>
-
-        <div class="medioas col-xs-12" style="">
-            <div class="row">
-        <div class="col-md-6">
-            <label for="">Nombre de tu prenda</label>
-            <?= $form->field($model, 'titulo')->label(false) ?>
-        </div>
-
-        <div class="col-md-6 col-xs-12">
-
-            <label for="">Seleccionar categoría</label>
-
-            <?php $form->field($model, 'idusuario')->hiddenInput(['value' => $user['idusuario']])->label(false); ?>
 
 
-            <?= $form->field($model, 'idcategoria')->label(false)->widget(Select2::classname(), [
-
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Categorias::findOne(['alias' => 'anuncios'])->categorias, 'idcategoria', 'nombre'),
-                'language' => 'es',
-                'options' => [
-                    'placeholder' => 'Categorias',
-                    //'multiple' => true,
-                ],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]) ?>
-        </div>
-
-            </div>
-        </div>
-
-
-<div class="medioas col-xs-12" style="">
-    <div class="row">
-        <div class="col-xs-12" >
-            <h3 style="    font-size: 16px;
+            <div class="medioas col-xs-12" style="">
+                <div class="row">
+                    <div class="col-xs-12" >
+                        <h3 style="    font-size: 16px;
     margin-bottom: 25px;
     font-weight: 600;">Selecciona las categorias de 2do nivel</h3>
-        </div>
-        <div class="col-md-6 col-xs-12">
+                    </div>
+                    <div class="col-md-6 col-xs-12">
 
 
 
 
-            <label for="">Ciudad</label>
-            <?= $form->field($filtro, 'idciudad')->widget(Select2::classname(), [
+                        <label for="">Ciudad</label>
+                        <?= $form->field($filtro, 'idciudad')->widget(Select2::classname(), [
 
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Ciudad::find()->all(), 'idciudad', 'nombre'),
-                'language' => 'es',
-                'options' => [
-                    'placeholder' => 'Ciudad',
-                    'multiple' => false,
-                ],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label(false); ?>
-
-
-
-        </div>
-
-            <div class="col-md-6 col-xs-12">
-
-            <label>Colores</label>
-            <?= $form->field($filtro, 'idcolores')->widget(Select2::classname(), [
-
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\ColoresProductos::find()->all(), 'id_cp', 'nombre'),
-                'language' => 'es',
-                'options' => [
-                    'placeholder' => 'Colores',
-                    'multiple' => false,
-                ],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label(false); ?>
-
-
-            </div>
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\Ciudad::find()->all(), 'idciudad', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Ciudad',
+                                'multiple' => false,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ])->label(false); ?>
 
 
 
-        <div class="col-md-6 col-xs-12">
-            <label>Condicion</label>
-            <?= $form->field($filtro, 'idcondicion')->widget(Select2::classname(), [
+                    </div>
 
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\CondicionProducto::find()->all(), 'id_cp', 'nombre'),
-                'language' => 'es',
-                'options' => [
-                    'placeholder' => 'Condicion',
-                    'multiple' => false,
-                ],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label(false); ?>
-        </div>
+                    <div class="col-md-6 col-xs-12">
+
+                        <label>Colores</label>
+                        <?= $form->field($filtro, 'idcolores')->widget(Select2::classname(), [
+
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\ColoresProductos::find()->all(), 'id_cp', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Colores',
+                                'multiple' => false,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ])->label(false); ?>
 
 
-
-            <div class="col-md-6 col-xs-12">
-            <label>Marca</label>
-            <?= $form->field($filtro, 'idmarca')->widget(Select2::classname(), [
-
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\MarcaProducto::find()->all(), 'id_msp', 'nombre'),
-                'language' => 'es',
-                'options' => [
-                    'placeholder' => 'Marca',
-                    'multiple' => false,
-                ],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label(false); ?>
-            </div>
+                    </div>
 
 
 
-                <div class="col-md-6 col-xs-12">
+                    <div class="col-md-6 col-xs-12">
+                        <label>Condicion</label>
+                        <?= $form->field($filtro, 'idcondicion')->widget(Select2::classname(), [
+
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\CondicionProducto::find()->all(), 'id_cp', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Condicion',
+                                'multiple' => false,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ])->label(false); ?>
+                    </div>
 
 
 
-            <label>Material</label>
-            <?= $form->field($filtro, 'idmaterial')->widget(Select2::classname(), [
+                    <div class="col-md-6 col-xs-12">
+                        <label>Marca</label>
+                        <?= $form->field($filtro, 'idmarca')->widget(Select2::classname(), [
 
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\MaterialProducto::find()->all(), 'id_mp', 'nombre'),
-                'language' => 'es',
-                'options' => [
-                    'placeholder' => 'Material',
-                    'multiple' => false,
-                ],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label(false); ?>
-                </div>
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\MarcaProducto::find()->all(), 'id_msp', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Marca',
+                                'multiple' => false,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ])->label(false); ?>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+
+                        <label>Material</label>
+                        <?= $form->field($filtro, 'idmaterial')->widget(Select2::classname(), [
+
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\MaterialProducto::find()->all(), 'id_mp', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Material',
+                                'multiple' => false,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ])->label(false); ?>
+                    </div>
 
 
 
 
 
                     <div class="col-md-6 col-xs-12">
-            <label>Talla</label>
-            <?= $form->field($filtro, 'idtalla')->widget(Select2::classname(), [
+                        <label>Talla</label>
+                        <?= $form->field($filtro, 'idtalla')->widget(Select2::classname(), [
 
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\TallasProducto::find()->all(), 'id_tp', 'nombre'),
-                'language' => 'es',
-                'options' => [
-                    'placeholder' => 'Talla',
-                    'multiple' => false,
-                ],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ])->label(false); ?>
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\TallasProducto::find()->all(), 'id_tp', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Talla',
+                                'multiple' => false,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ])->label(false); ?>
 
 
                     </div>
 
+                </div>
+
+            </div>
+
         </div>
 
-    </div>
 
-</div>
-
-
-
-    <div class="row">
-    <div class="medioas">
 
         <div class="row">
+            <div class="medioas">
 
-        <div class="col-xs-12" >
-            <h3 style="    font-size: 16px;
+                <div class="row">
+
+                    <div class="col-xs-12" >
+                        <h3 style="    font-size: 16px;
     margin-bottom: 25px;
     font-weight: 600;">Haz una descripcion sobre la prenda que quieres anunciar</h3>
+                    </div>
+
+
+                    <div class=" col-md-6 col-xs-12" >
+
+                        <label>Descripcion</label>
+
+
+                        <?= $form->field($model, 'decripcion')->label(false)->widget(CKEditor::className(), [
+                            'options' => ['rows' => 6],
+                            'preset' => 'basic'
+                        ]) ?>
+
+                    </div>
+
+
+                    <div class=" col-md-6 col-xs-12" >
+
+                        <label>Medidas</label>
+
+
+                        <?= $form->field($model, 'otra_descripcion')->label(false)->widget(CKEditor::className(), [
+                            'options' => ['rows' => 6],
+                            'preset' => 'basic'
+                        ]) ?>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
-        <div class=" col-md-6 col-xs-12" >
-
-            <label>Descripcion</label>
-
-
-            <?= $form->field($model, 'decripcion')->label(false)->widget(CKEditor::className(), [
-                'options' => ['rows' => 6],
-                'preset' => 'basic'
-            ]) ?>
-
-        </div>
-
-
-        <div class=" col-md-6 col-xs-12" >
-
-            <label>Medidas</label>
-
-
-            <?= $form->field($model, 'otra_descripcion')->label(false)->widget(CKEditor::className(), [
-                'options' => ['rows' => 6],
-                'preset' => 'basic'
-            ]) ?>
-
-        </div>
-        </div>
-    </div>
-    </div>
 
 
 
-
-
-    <div class="row">
-
-    <div class="medioas col-xs-12" style="">
         <div class="row">
 
+            <div class="medioas col-xs-12" style="">
+                <div class="row">
 
-            <div class="col-xs-12" >
-                <h3 style="    font-size: 16px;
+
+                    <div class="col-xs-12" >
+                        <h3 style="    font-size: 16px;
     margin-bottom: 25px;
     font-weight: 600;">Precios</h3>
-            </div>
+                    </div>
 
 
 
 
-            <div class="col-md-6">
+                    <div class="col-md-6">
 
-                <label>Precio original</label>
-                <?= $form->field($model, 'precio')->label(false) ?>
-            </div>
+                        <label>Precio original</label>
+                        <?= $form->field($model, 'precio')->label(false) ?>
+                    </div>
 
-            <div class="col-md-6">
-                <label>Precio de oferta</label>
-                <?= $form->field($model, 'precio_promocion')->label(false) ?>
+                    <div class="col-md-6">
+                        <label>Precio de oferta</label>
+                        <?= $form->field($model, 'precio_promocion')->label(false) ?>
+                    </div>
+
+
+
+                </div>
             </div>
 
 
 
         </div>
-    </div>
-
-
-
-</div>
 
 
 
@@ -465,5 +459,4 @@ $user = Yii::$app->session->get('user');
     </div>
     <br>
     <br>
-</div>
 <?php ActiveForm::end(); ?>

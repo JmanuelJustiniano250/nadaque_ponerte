@@ -48,10 +48,6 @@ use yii\helpers\Url;
     ?>
 
 </div>
-</div>
-
-</div>
-</section>
 
 <?php
 $script = <<<JS

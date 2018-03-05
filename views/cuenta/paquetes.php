@@ -15,11 +15,21 @@ $compras = \app\models\Compra::find()
     ->all();
 $tabla = array();
 foreach ($compras as $item){
+    $row = array();
     $row['codigo'] = $item->paquete['codig'];
-    $row['fecha_pago'] = $item['fecha_pago'];
+    $paquete = $item->paquete;
     $row['nro_anuncios'] = $item->paquete['nro_anuncios'];
     $row['nro_anuncios_restantes'] = $item->paquete['nro_anuncios']-\app\models\Anuncios::find()->where(['idcompra'=>$item['idcompra']])->count();
-    $row['fecha_expiracion'] = mktime(0, 0, 0, date("m", $item['fecha_pago']), date("d", $item['fecha_pago'])+$item->paquete['tiempo_vida'], date("Y", $item['fecha_pago']));
+    if(empty($item['fecha_pago'])){
+        $row['fecha_expiracion'] = 'aun no se cancelo el pago';
+        $row['fecha_pago'] = 0;
+
+    }else{
+        $row['fecha_pago'] = $item['fecha_pago'];
+        $dia = date("d", strtotime($item['fecha_pago']))+(int)$item->paquete['tiempo_vida'];
+        $row['fecha_expiracion'] = mktime(0, 0, 0, date("m", strtotime($item['fecha_pago'])), $dia, date("Y", strtotime($item['fecha_pago'])));
+    }
+    array_push($tabla,$row);
 }
 $provider = new \yii\data\ArrayDataProvider([
     'allModels' => $tabla,
@@ -47,12 +57,6 @@ $provider = new \yii\data\ArrayDataProvider([
                                      'Codigo del Paquete '.Html::tag(
                                          'span',
                                          $model['codigo']
-                                     ).
-                                     '<br>'.
-                                     Html::tag(
-                                         'span',
-                                         '(Fecha de compra :'.$model['codigo'].')',
-                                         ['style'=>"font-size: 11px;"]
                                      )
                                  );
                              },
@@ -76,12 +80,13 @@ $provider = new \yii\data\ArrayDataProvider([
                                      'p',
                                      'Fecha de expiracion '.Html::tag(
                                          'span',
-                                         \app\components\Funcions::fecha($model['fecha_expiracion'],true,true)
+                                         ((is_integer($model['fecha_expiracion']))?\app\components\Funcions::fecha(date('Y-m-d H:i:s',$model['fecha_expiracion']),true,true):$model['fecha_expiracion'])
+
                                      ).
                                      '<br>'.
                                      Html::tag(
                                          'span',
-                                         '(Fecha de compra :'.$model['codigo'].')',
+                                         '(Fecha de compra : '.((!empty($model['fecha_pago']))?\app\components\Funcions::fecha($model['fecha_pago'],true,true):' - ').' )',
                                          ['style'=>"font-size: 11px;"]
                                      ),
                                      ['style'=>"border-right: 1px solid transparent"]

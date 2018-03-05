@@ -133,7 +133,7 @@ class AnunciosSearch extends Anuncios
             $query->andFilterWhere(['IN', 'idfiltro', $tmp]);
         }*/
 
-
+        $query->distinct();
         return $dataProvider;
     }
 }
