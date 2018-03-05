@@ -54,6 +54,16 @@ $script = <<<CSS
    
 }
 
+.rating-md {
+    font-size: 1.5em;
+}
+
+.rating-container .caption {
+    margin-left: 5px;
+    margin-right: 0;
+    display: none;
+}
+
 .redespergil {
     padding-left: 10px;
     padding-top: 0px;
@@ -63,6 +73,24 @@ $script = <<<CSS
     margin-bottom: 25px;
 }
 
+.rating-container .clear-rating {
+    padding-right: 5px;
+    display: none;
+}
+
+.rating-container .caption {
+   
+    display: none;
+}
+.rating-container .empty-stars {
+    color: #ff839a;
+}
+
+.rating-container .filled-stars {
+    color: #ff839a;
+    -webkit-text-stroke: 0px #777;
+    text-shadow: 0px 0px #ff839a;
+}
 
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
@@ -375,16 +403,19 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         $us =Yii::$app->session->get('user')['idusuario'];
                     if($model->idusuario != $us):
                         ?>
-                        <a href="" data-toggle="modal" data-target="#califModal">
-                            Calificar
-                        </a>
+
+                        <div align="center">
+
+                        <a href="" data-toggle="modal" class="calsiw" data-target="#califModal" style="color: white; text-align: center">
+                            ¡Calificame!
+                        </a></div>
                         <!-- line modal -->
                         <div class="modal fade" id="califModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                        <h3 class="modal-title" id="lineModalLabel">Envia mensaje a <?= $model->usuario['alias']?></h3>
+                                        <h3 class="modal-title text-center" id="lineModalLabel">Calificame</h3>
                                     </div>
                                     <div class="modal-body">
 
@@ -403,11 +434,14 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                                 'labelOptions' => ['class' => 'col-md-4 control-label'],
                                             ],*/
                                         ]); ?>
-                                        <?= $form->field($modelcal, 'puntaje')->widget(\kartik\widgets\StarRating::classname()); ?>
-                                        <?= $form->field($modelcal,'mensaje')->textarea(['class'=>'form-control','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
+                                        <?= $form->field($modelcal, 'puntaje')->label(false)->widget(\kartik\widgets\StarRating::classname()); ?>
+                                        <?= $form->field($modelcal,'mensaje')->textarea(['class'=>'form-control','placeholder'=>'Escribe un comentario acerca de mi','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
                                         <?= $form->field($modelcal,'idvendedor')->hiddenInput()->label(false)?>
 
-                                        <button type="submit" class="btn btn-default">Enviar</button>
+
+                                        <div align="center">
+                                        <button type="submit" class="btn btn-default btnregister" style="color: white">Calificar</button>
+                                        </div>
 
                                         <?php ActiveForm::end(); ?>
 
@@ -423,6 +457,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     <?php endif;?>
 
                 </div>
+
 
                 <a class="moreven btn center-block" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Mas de la vendedora</a>
 

@@ -41,6 +41,10 @@ background: #f6f6f6;
 
 }
 
+.kv-sidenav li a{
+font-weight: 600;
+}
+
 CSS;
 $this->registerCss($script);
 

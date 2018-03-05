@@ -3713,7 +3713,7 @@ ul.team-social li a:hover i {
 }
 
 .pricing-box .pricing-item ul.pricing-table li:first-child {
-    padding: 34px 0 30px;
+    padding: 34px 20px 30px;
     border: none;
     background: #3a3d41;
     margin-bottom: 24px;
@@ -3762,7 +3762,7 @@ ul.team-social li a:hover i {
 }
 
 .pricing-box .pricing-item:hover ul.pricing-table li:first-child {
-    padding: 44px 0 30px;
+    padding: 44px 15px 30px;
     background: #ff6d89;
 }
 

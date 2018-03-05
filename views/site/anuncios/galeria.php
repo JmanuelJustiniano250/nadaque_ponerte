@@ -9,11 +9,34 @@ use yii\helpers\Url;
 
 ?>
 
-<h1>Galeria de Anuncio</h1>
+<style>
+    .btn-primary {
+        color: #fff;
+        background-color: #ff6d89;
+        border-color: #ff6d89;
+    }
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #fd879e;
+        border-color: #fd879e;
+    }
+
+
+
+</style>
+
+<br><br>
+<h1 class="text-center" style="    color: #3a3d41;
+    font-size: 28px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    margin: 0 0 7px;">Sube mas fotos de tu prenda</h1>
+<br><br>
 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <!-- Main content -->
-<div class="col-md-12">
+<div class="col-xs-12 col-lg-10 col-lg-offset-1" >
     <?php
     $initial = [];
     $config = [];
@@ -32,6 +55,9 @@ use yii\helpers\Url;
             'accept' => 'image/*',
         ],
         'pluginOptions' => [
+            'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+            'browseLabel' => 'Sube tus imagenes (*.jpg)',
+
             'uploadUrl' => Url::to(['upload2']),
             'uploadExtraData' => [
                 'id' => $id,
@@ -46,8 +72,17 @@ use yii\helpers\Url;
     ])->label(false);
     ActiveForm::end();
     ?>
+    <br><br>
 
+
+    <div style="" class="col-xs-12" align="center">
+
+        <?//= Html::submitButton('Anuncio listo, Publicar', ['class' => 'btn enviarsus ']) ?>
+        <br><br><br>
+
+    </div>
 </div>
+<br><br>
 
 <?php
 $script = <<<JS

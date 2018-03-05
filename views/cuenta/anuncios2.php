@@ -15,6 +15,9 @@ background-color: #f6f6f6;
     margin-top: 0px;
     margin-left: 5px;
 }
+.kv-sidenav li a{
+font-weight: 600;
+}
 
 
 .cajadeanuncio:hover, .cajadeanuncio:focus, .cajadeanuncio:active {

@@ -324,6 +324,8 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 esor">
+
+
                         <?php
                         $query = \app\models\Calificaciones::find()
                             ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
@@ -344,9 +346,11 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                         if($model->idusuario != $us):
                         ?>
 
-                        <a href="" data-toggle="modal" class="calsiw" data-target="#califModal">
-                            ¡Calificame!
-                        </a>
+                            <a href="" data-toggle="modal" class="calsiw" data-target="#califModal">
+                                ¡Calificame!
+                            </a>
+
+
                         <div style="border-bottom: 0px solid white;    margin: 0px 30px ">
 
                                 <!-- line modal -->
@@ -694,9 +698,9 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
 
         <div class=" col-sm-6 col-xs-12">
 
-                <div class="menuform">
 
-                    <div class="cajacomentearios">
+
+
 <?php
 $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
 
@@ -718,7 +722,8 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->
 
                         echo \yii\widgets\ListView::widget([
                             'dataProvider' => $provider,
-                            'itemView' => 'calificaciones',
+
+                            'itemView' => '../cuenta/calificaciones',
                             'summary' => false,
                             'itemOptions' => ['class' => 'item4'],
 
@@ -728,44 +733,15 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->
 
 
 
-                        <?=
-                        EasyThumbnailImage::thumbnailImg(
-                            Yii::getAlias('@webroot/imagen/usuarios/') . $modelcoent['foto'],
-                            51,
-                            51,
-                            EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                            ['style' => ' border-radius: 140px; margin: 0 auto; margin-top:20px;', 'class' => 'img-responsive']
-                        );
-                        ?>
 
 
-                        <div class="estrellas">
-                            <?php/*
-
-                            echo StarRating::widget([
-                                'name' => 'rating_21',
-                                'value' => $modelcoent['puntaje']/5,
-                                'pluginOptions' => [
-                                    'readonly' => true,
-                                    'showClear' => false,
-                                    'showCaption' => false,
-                                ],
-                            ]); */?>
-                        </div>
 
 
-                        <div class="calificaciones">
-
-                            <h3><?//= $modelcoent['alias'] ?></h3>
-
-                            <p><?//= $modelcoent['mensaje']?>
-                            </p>
 
 
-                        </div>
 
                     </div>
-                </div>
+
 
 
         </div>
@@ -836,6 +812,7 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->
                         $tabla = \app\models\Anuncios::find()
                             ->andWhere(['estado' => 1])
                             ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+
                             ->distinct()
                             ->all();
                         $provider = new \yii\data\ArrayDataProvider([
@@ -856,11 +833,6 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->
                         ?>
 
                     </div>
-
-
-
-
-
 
 
 

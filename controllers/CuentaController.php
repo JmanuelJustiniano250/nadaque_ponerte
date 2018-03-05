@@ -564,10 +564,25 @@ class CuentaController extends Controller
     public function actionPublicargaleria()
     {
         $id = Yii::$app->request->get('id');
+        $model = Anuncios::find()->where(['idanuncio' => $id])->one();
         if (empty($id)) {
             return $this->redirect(Yii::$app->request->referrer);
         }
 
-        return $this->render('../anuncios/galeria', ['model' => new AnunciosGaleria(), 'id' => $id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->idusuario = Yii::$app->session->get('user')['idusuario'];
+
+            if ($model->save()) {
+
+                return $this->redirect(['anuncios2']);
+            }
+
+
+        } else {
+            return $this->render('../site/anuncios/galeria', ['model' => new AnunciosGaleria(), 'id' => $id]);
+        }
+
+
+
     }
 }

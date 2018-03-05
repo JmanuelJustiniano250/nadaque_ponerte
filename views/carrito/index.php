@@ -12,7 +12,7 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
 
 <div id="mainbody">
 
-    <h1 class="text-center">Carrito</h1>
+    <h1 class="text-center">Carrito</h1> <br><br>
     <div class="row top-spacing4 bottom-spacing3">
 
         <div class="col-md-7 col-lg-6 col-lg-offset-1">
@@ -104,7 +104,8 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
                         ?>
                     </div>
                     <br>
-                    <a href="<?= Url::to(Yii::$app->request->referrer); ?>" class="cea"><span style="font-size: 1.5em;"><i
+                    <a href="<?= Url::to(Yii::$app->request->referrer); ?>" class="cea " style="    color: #ff6d89;
+    font-weight: 600;"><span style="font-size: 1.5em;"><i
                                     class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;
                     </span> Continuar comprando </a>
 
@@ -122,7 +123,7 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
 
 
 </div>
-
+<br><br><br>
 
 <?php
 $script = <<<JS

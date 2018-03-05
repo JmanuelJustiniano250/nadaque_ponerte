@@ -12,7 +12,7 @@ $this->registerCssFile('@web/assets_b/web/css/easy-responsive-tabs.css', ['media
 $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' => \app\assets_b\AppAsset::class, 'position' => \yii\web\View::POS_END]);
 ?>
 
-<?= $this->render('../site/banners/fijo', ['titulo' => 'Carrito']) ?>
+
     <div id="mainbody">
 
 
@@ -30,7 +30,7 @@ $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' =
                             </iframe>
                         </div>
                     <?php else: ?>
-                        <h1 class="text-center">Gracias por Comprar por <?= $model->getTipo($model->tipo_pago) ?></h1>
+                        <h1 class="text-center">Gracias por tu compra <?= $model->getTipo($model->tipo_pago) ?></h1>
                         <?php if ($model->tipo_pago == 2): ?>
                             <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 text-center">
                                 <div class="well well-lg">
@@ -46,6 +46,8 @@ $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' =
             </div>
         </div>
     </div>
+
+    <br><br><br>
 <?php
 $script = <<<JS
    $('#ChildVerticalTab_1').easyResponsiveTabs({
