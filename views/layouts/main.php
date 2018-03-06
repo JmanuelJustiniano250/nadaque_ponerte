@@ -62,7 +62,7 @@ if($configuracion['google_analitics']) {
                 ->andWhere(['tipo' => 0])
                 ->andWhere(['estado' => 0])
                 ->count();
-            $mensages = Html::tag('span',(int)$cmensages,['class'=>'badge']);
+            $mensages = Html::tag('span',(int)$cmensages,['class'=>'badge des2']);
             $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] . ' '.$mensages, 'url' => ['/site/deseos/'],
                 'items' => [
                     ['label' => FA::icon(FA::_USER) . ' Mi cuenta', 'url' => ['/cuenta/principal']],

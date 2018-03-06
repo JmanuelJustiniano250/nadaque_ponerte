@@ -500,7 +500,23 @@ $this->registerCss($script);
                     <div class="col-md-6 col-xs-12">
 
                         <label for="">Ciudad donde vive o la mas cercana<span>*</span></label>
-                        <?= $form->field($model, 'ciudad')->label(false) ?>
+
+
+                        <?= $form->field($model, 'ciudad')->label(false)->dropDownList(
+                            ['Santa-Cruz' => 'Santa Cruz',
+                                'La-Paz' => 'La Paz',
+                                'Cochabamba' => 'Cochabamba',
+                                'Beni' => 'Beni',
+                                'Tarija' => 'Tarija',
+                                'Sucre' => 'Sucre',
+                                'Pando' => 'Pando',
+                                'Oruro' => 'Oruro',
+                                'Potosi' => 'Potosi',
+
+                            ]
+                        ) ?>
+
+
                     </div>
 
 

@@ -193,18 +193,51 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
 
 
+
+                                <!-- content goes here -->
+
+
+                                <?php $form = ActiveForm::begin([
+                                    'action' => ['/cuenta/mensaje'],
+                                    'id' => 'login-form',
+                                    /*'layout' => 'horizontal',
+                                    'fieldConfig' => [
+                                        'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+                                        'labelOptions' => ['class' => 'col-md-4 control-label'],
+                                    ],*/
+                                ]); ?>
+
+
+                                <?php $modmess= new \app\models\Mensajes();?>
+                                <?php $modmess->idvendedor = $model->idusuario;?>
+                                <?php $modmess->tipo = 0;?>
+
+
+
+                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control privatemen','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
+                                <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
+                                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
+
+                              <div align="center">  <button type="submit" class="btn btn-default btnregister">Enviar</button>
+                              </div>
+                                <?php ActiveForm::end(); ?>
+
+
+                                <br>
+
+
                                 <p style="margin-top: 10px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
 
 
                                     <?php if ($model->usuario['telefono']): ?>
-                                    <?php if ($model->usuario['visibletelefono']): ?>
+                                        <?php if ($model->usuario['visibletelefono']): ?>
 
-                                   <?= $model->usuario['telefono'] ?>
+                                            <?= $model->usuario['telefono'] ?>
 
-                                <?php else: ?>
+                                        <?php else: ?>
 
-                                <?php endif; ?>
-                                <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 </p>
 
 
@@ -268,35 +301,6 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                 </ul>
 
 
-
-
-                                <!-- content goes here -->
-
-
-                                <?php $form = ActiveForm::begin([
-                                    'action' => ['/cuenta/mensaje'],
-                                    'id' => 'login-form',
-                                    /*'layout' => 'horizontal',
-                                    'fieldConfig' => [
-                                        'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
-                                        'labelOptions' => ['class' => 'col-md-4 control-label'],
-                                    ],*/
-                                ]); ?>
-
-
-                                <?php $modmess= new \app\models\Mensajes();?>
-                                <?php $modmess->idvendedor = $model->idusuario;?>
-                                <?php $modmess->tipo = 0;?>
-
-
-
-                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control privatemen','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
-                                <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
-                                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
-
-                              <div align="center">  <button type="submit" class="btn btn-default btnregister">Enviar</button>
-                              </div>
-                                <?php ActiveForm::end(); ?>
 
                             </div>
                             <div class="modal-footer">

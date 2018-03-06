@@ -3770,6 +3770,14 @@ ul.team-social li a:hover i {
     color: #ffffff;
 }
 
+.badge.des2 {
+
+    background-color: red!important;
+    color: white;
+    border-radius: 50px;
+
+}
+
 /*-------------------------------------------------*/
 /* =  contact
 /*-------------------------------------------------*/
