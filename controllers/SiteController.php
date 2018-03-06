@@ -12,6 +12,7 @@ use app\models\Categorias;
 use app\models\Configuracion;
 use app\models\ContactForm;
 use app\models\Contenido;
+use app\models\Deseo;
 use app\models\Deseos;
 use app\models\Faq;
 use app\models\LoginWeb;
@@ -52,7 +53,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['vender','logout'],
+                'only' => ['vender','logout','perfil','deseosadd'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -452,6 +453,24 @@ class SiteController extends Controller
         }
         Deseos::deleteAll(['iddeseo' => $id]);
         return $this->redirect(['deseos']);
+    }
+
+    public function actionDeseosadd($id)
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $model = new Deseo();
+        if(!empty($id)) {
+            $model->idanuncio = $id;
+            $model->idusuario = Yii::$app->session->get('user')['idusuario'];
+            $model->fecha_registro = date('Y-m-d H:i:s');
+            if ($model->save())
+                Yii::$app->session->setFlash('success', ['message' => 'Registro Realizado', 'type' => 'success']);
+            else
+                Yii::$app->session->setFlash('error', ['message' => 'Hubo un error, intentelo mas tarde']);
+        }
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
 

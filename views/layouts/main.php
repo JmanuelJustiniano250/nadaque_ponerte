@@ -5,7 +5,6 @@
 /* @var $content string */
 
 use app\assets_b\AppAsset;
-use kartik\social\GoogleAnalytics;
 use rmrevin\yii\fontawesome\FA;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -58,7 +57,13 @@ if($configuracion['google_analitics']) {
         $items = [];
         $user = Yii::$app->session->get('user');
         if (!empty($user)) {
-            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] . ' ', 'url' => ['/site/deseos/'],
+            $cmensages = \app\models\Mensajes::find()
+                ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                ->andWhere(['tipo' => 0])
+                ->andWhere(['estado' => 0])
+                ->count();
+            $mensages = Html::tag('span',(int)$cmensages,['class'=>'badge']);
+            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] . ' '.$mensages, 'url' => ['/site/deseos/'],
                 'items' => [
                     ['label' => FA::icon(FA::_USER) . ' Mi cuenta', 'url' => ['/cuenta/principal']],
                     ['label' => FA::icon(FA::_KEY) . ' Cambiar contraseña', 'url' => ['/cuenta/changepassword']],

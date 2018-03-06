@@ -29,7 +29,7 @@ class CuentaController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'principal', 'forget', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos', 'mensajeria', 'update', 'mensaje'],
+                'only' => ['create', 'principal', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos', 'mensajeria', 'update', 'mensaje'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -64,7 +64,7 @@ class CuentaController extends Controller
      */
 
 
-    public function actionCreate()
+    public function actionCreate($id=null)
     {
 
         /*if (empty(Yii::$app->session->get('user'))) {
@@ -95,6 +95,7 @@ class CuentaController extends Controller
                     $modelfiltro->idanuncio = $model->idanuncio;
                     $modelfiltro->save();
                     Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido por nuestro equipo con exito y esta en proceso de aprobacion. \n Te responderemos en un maximo de 24 horas si tu anuncio es aprobado o necesitas hacerle algun cambio.', 'type' => 'success']);
+                    return $this->redirect(['cuenta/publicargaleria', 'id' => $model->idanuncio]);
                 } else {
                     if ($model->foto) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
@@ -107,20 +108,18 @@ class CuentaController extends Controller
 
         }
 
-
-        if ($model->load(Yii::$app->request->post())) {
-
-            if ($model->save()) {
-                //return $this->redirect(['cuenta/anuncios2']);
-                return $this->redirect(['cuenta/publicargaleria','id'=>$model->idanuncio]);
-            }
-
-        } else {
-            return $this->render('../anuncios/create', [
-                'model' => $model,
-                'filtro' => $modelfiltro,
-            ]);
+        if(!is_null($id))
+        {
+            $model = Anuncios::find()->where(['idanuncio'=>$id])->one();
+            $modelfiltro = AnunciosFiltros::find()->where(['idanuncio'=>$id])->one();
+            if(empty($modelfiltro))
+                $modelfiltro= new AnunciosFiltros();
         }
+
+        return $this->render('../anuncios/create', [
+            'model' => $model,
+            'filtro' => $modelfiltro,
+        ]);
 
     }
 
@@ -476,7 +475,11 @@ class CuentaController extends Controller
             ->andWhere(['tipo' => 0])
             ->orderBy(['fecha_registro' => SORT_ASC])
             ->all();
-
+        Mensajes::updateAll(['estado'=>1],['and',
+            ['and',
+                ['idvendedor' => Yii::$app->session->get('user')['idusuario']],
+                ['tipo' => 0]
+            ],['estado' => 0]]);
         // }
 
         return $this->render('index', ['op' => 7, 'model' => $model, 'mensaje' => $mensajes, 'chat' => $chat]);
@@ -552,7 +555,7 @@ class CuentaController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
             $model->fecha_registro = date('Y-m-d H:i:s');
-            $model->estado = 1;
+            $model->estado = 0;
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
             } else

@@ -92,7 +92,7 @@ use yii\helpers\Html;
                     </div>
 
                     <div class=" fl3">
-                        <p style="    margin-bottom: -5px;  margin-top: 0;"><a href=""><?= FA::icon(FA::_HEART) ?></a>
+                        <p style="    margin-bottom: -5px;  margin-top: 0;"><a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$item->idanuncio])?>"><?= FA::icon(FA::_HEART) ?></a>
                         </p>
 
                     </div>

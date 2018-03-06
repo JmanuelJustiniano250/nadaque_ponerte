@@ -159,7 +159,7 @@ $index = 0;
     <?php endforeach; ?>
     <br>
     <div>
-        <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
+        <a href="<?= \yii\helpers\Url::to(['comprar'])?>" class="text-center registrarse btn text-uppercase" style="margin-left: 0">quitar filtro</a>
         <br>
     </div>
     <br><br>

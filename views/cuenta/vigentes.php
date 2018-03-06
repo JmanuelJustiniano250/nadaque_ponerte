@@ -63,11 +63,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         Publicado desde <span> <?= \app\components\Funcions::fecha($model->paquete['fecha_pago'],true,true) ?></span>
                         <br>
                         <?php
-                        $fecha_expiracion = mktime(0, 0, 0, date("m", $model->paquete['fecha_pago']), date("d", $model->paquete['fecha_pago'])+(isset($model->paquete->paquete['tiempo_vida'])?$model->paquete->paquete['tiempo_vida']:0), date("Y", $model->paquete['fecha_pago']));
-                        $days = (strtotime($fecha_expiracion) - time())/(3600*24);
+                        $fecha_pago = strtotime($model->paquete['fecha_pago']);
+                        $fecha_expiracion = mktime(0, 0, 0, date("m", $fecha_pago), date("d", $fecha_pago)+(isset($model->paquete->paquete['tiempo_vida'])?$model->paquete->paquete['tiempo_vida']:0), date("Y", $fecha_pago));
+                        $days = floor($fecha_expiracion - time())/(60*60*24);
                         ?>
 
-                        Dias remanentes <span> <?= $days?></span>
+                        Dias remanentes <span> <?= ($days>0)?(int)$days:' - '?></span>
 
 
                     </p>
