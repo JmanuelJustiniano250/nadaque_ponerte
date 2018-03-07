@@ -33,9 +33,9 @@ use yii\helpers\Html;
                 <h3 class="text-center"><?= $item['titulo'] ?></h3>
 
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
-                  <p><?= (isset($item->anunciosFiltros->talla['value'])) ? ('Talla: ' . $item->anunciosFiltros->talla['value']) : '' ?></p>
-                    <p><?= (isset($item->anunciosFiltros->marca['nombre'])) ? $item->anunciosFiltros->marca['nombre'] : '' ?></p>
-                    <p><?= (isset($item->anunciosFiltros->condicion['nombre'])) ? $item->anunciosFiltros->condicion['nombre'] : '' ?></p>
+                 <!-- <p><?//= (isset($item->anunciosFiltros->talla['value'])) ? ('Talla: ' . $item->anunciosFiltros->talla['value']) : '' ?></p>
+                    <p><?//= (isset($item->anunciosFiltros->marca['nombre'])) ? $item->anunciosFiltros->marca['nombre'] : '' ?></p>
+                    <p><?//= (isset($item->anunciosFiltros->condicion['nombre'])) ? $item->anunciosFiltros->condicion['nombre'] : '' ?></p>-->
                 </div>
 
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">

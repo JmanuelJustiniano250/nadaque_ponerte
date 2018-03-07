@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 $script = <<<CSS
 label {
     display: block;
-  
+    font-weight: normal;
 }
 .slider-handle {
     position: absolute;
@@ -77,6 +77,13 @@ $index = 0;
 ?>
 <div>
     <?php $form = ActiveForm::begin(['method' => 'get', 'action' => ['site/comprar']]); ?>
+    <div>
+        <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
+        <br>
+        <a class="" href="<?= \yii\helpers\Url::to(['comprar'])?>" style="color: #000;  font-size: 11px;   font-weight: 600;  ">
+    quitar filtros </a>
+    </div>
+    <br>
     <?php
     echo Select2::widget([
         'name' => 'vendedor',
@@ -91,10 +98,7 @@ $index = 0;
     ]);
     ?>
     <br>
-    <div>
-        <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
-    </div>
-    <br>
+    
     <?php if (!isset($categorias)) {
         $categorias = array();
     } ?>
@@ -159,8 +163,10 @@ $index = 0;
     <?php endforeach; ?>
     <br>
     <div>
-        <a href="<?= \yii\helpers\Url::to(['comprar'])?>" class="text-center registrarse btn text-uppercase" style="margin-left: 0">quitar filtro</a>
+        <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
         <br>
+        <a class="" href="<?= \yii\helpers\Url::to(['comprar'])?>" style="color: #000;    font-size: 11px;    font-weight: 600;">
+    quitar filtros </a>
     </div>
     <br><br>
 

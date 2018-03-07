@@ -6,7 +6,7 @@
 /* @var $model app\models\LoginForm */
 
 use kartik\sidenav\SideNav;
-
+use yii\helpers\Html;
 
 $script = <<<CSS
 
@@ -69,9 +69,16 @@ array_push($items,[
     'url' => ['cuenta/anuncios2'],
     'label' => 'Anuncios',
 ]);
+$cmensages = \app\models\Mensajes::find()
+                ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                ->andWhere(['tipo' => 0])
+                ->andWhere(['estado' => 0])
+                ->count();
+            
 array_push($items,[
+    
     'url' => ['cuenta/mensajeria'],
-    'label' => 'Mensajes',
+    'label' => 'Mensajes ('.$cmensages.')',
 ]);
 array_push($items,[
     'url' => ['/cuenta/calificaciones'],

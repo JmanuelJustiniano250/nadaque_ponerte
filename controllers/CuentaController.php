@@ -296,7 +296,10 @@ class CuentaController extends Controller
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->idanuncio = Yii::$app->request->post('id');
             if ($model->save(false)) {
-                return true;
+
+                return $this->redirect(['anuncios2']);
+                //return true;
+
             }
         }
         var_dump($model->getErrors());

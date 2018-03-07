@@ -148,7 +148,7 @@ $user = Yii::$app->session->get('user');
                             foreach ($tmp_model as $item) {
                                 $cant = \app\models\Anuncios::find()->where(['idcompra' => $item->idcompra, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->distinct()->count();
                                 if ($item->paquete->nro_anuncios > $cant)
-                                    $tmp[] = ['id' => $item->idcompra, 'nombre' => $item->paquete->nombre.' ('.($item->paquete->nro_anuncios - $cant).')'];
+                                    $tmp[] = ['id' => $item->idcompra, 'nombre' => $item->paquete->nombre.' ( Anuncios remanentes: '.($item->paquete->nro_anuncios - $cant).')'];
                             }
                             $array = \yii\helpers\ArrayHelper::map(
                                 $tmp,

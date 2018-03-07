@@ -702,14 +702,14 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
 
 
 <?php
-$modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+$modelcoent = \app\models\Usuarios::findOne(['idusuario' => $model->idusuario]);
 
 
  ?>
 
                         <?php
                         $tabla = \app\models\Calificaciones::find()
-                            ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                            ->andWhere(['idvendedor' => $model->idusuario])
                             ->orderBy(['fecha_creacion'=>SORT_DESC])
                             ->all();
                         $provider = new \yii\data\ArrayDataProvider([
@@ -758,13 +758,13 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->
                 <div align="center">
 
                 <ul class="nav nav-tabs" id="myTab">
-                    <li class="active">
+                   <!-- <li class="active">
                         <a href="#trendy" data-toggle="tab">
 
                             <h2>Anuncios Vendidos</h2>
                         </a>
-                    </li>
-                    <li>
+                    </li>-->
+                    <li class="active">
                         <a href="#planning" data-toggle="tab">
 
                             <h2>Anuncios Vigentes</h2>
@@ -779,12 +779,12 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->
                 </div>
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="trendy">
+                    <!--<div class="tab-pane active" id="trendy">
 
                         <?php
-                        $tabla = \app\models\Anuncios::find()
+/*                        $tabla = \app\models\Anuncios::find()
                             ->andWhere(['estado' => 1])
-                            ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                            ->andWhere(['idusuario' => $model->idusuario])
                             ->distinct()
                             ->all();
                         $provider = new \yii\data\ArrayDataProvider([
@@ -802,16 +802,16 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => Yii::$app->session->
                             'itemOptions' => ['class' => 'item2'],
                         ]);
                         \yii\widgets\Pjax::end();
-                        ?>
-                    </div>
+                        */?>
+                    </div>-->
 
 
-                    <div class="tab-pane" id="planning">
+                    <div class="tab-pane active" id="planning">
 
                         <?php
                         $tabla = \app\models\Anuncios::find()
                             ->andWhere(['estado' => 1])
-                            ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                            ->andWhere(['idusuario' => $model->idusuario])
 
                             ->distinct()
                             ->all();
