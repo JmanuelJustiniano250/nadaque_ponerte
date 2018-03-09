@@ -67,6 +67,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="text-center" align="center" style="margin-top: px;">
                         <a href="<?= \yii\helpers\Url::to(['cuenta/create','id'=>$model->idanuncio])?>" class="registrarse" style="margin-left: 0">EDITAR MI ANUNCIO</a>
                     </div>
+
+
+
+
+
                 </div>
 
 

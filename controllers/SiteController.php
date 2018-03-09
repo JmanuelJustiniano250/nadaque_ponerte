@@ -466,7 +466,7 @@ class SiteController extends Controller
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
             $model->fecha_registro = date('Y-m-d H:i:s');
             if ($model->save())
-                Yii::$app->session->setFlash('success', ['message' => 'Registro Realizado', 'type' => 'success']);
+                Yii::$app->session->setFlash('success', ['message' => 'Añadido a mi lista de deseos', 'type' => 'success']);
             else
                 Yii::$app->session->setFlash('error', ['message' => 'Hubo un error, intentelo mas tarde']);
         }

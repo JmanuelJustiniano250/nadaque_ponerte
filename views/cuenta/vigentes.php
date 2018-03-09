@@ -71,6 +71,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         Dias remanentes <span> <?= ($days>0)?(int)$days:' - '?></span>
 
 
+                    <div class="text-center" align="center" style="margin-top: px;"> <BR>
+                        <a href="" class="registrarse" style="margin-left: 0">CAMBIAR PRECIO</a>
+                    </div>
+
+
+                    <div class="text-center" align="center" style="margin-top: px;"> <BR>
+                        <a href="" class="registrarse" style="margin-left: 0">MARCAR COMO VENDIDO</a>
+                    </div>
+
+
                     </p>
                 </div>
 

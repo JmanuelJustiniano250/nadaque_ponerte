@@ -3660,7 +3660,7 @@ ul.team-social li a:hover i {
 }
 
 .pricing-box .pricing-item {
-    width: 20%;
+
     float: left;
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -3695,6 +3695,7 @@ ul.team-social li a:hover i {
 
 .pricing-box .pricing-item ul.pricing-table li p {
     font-size: 13px;
+
     color: #dddddd;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
@@ -3712,14 +3713,9 @@ ul.team-social li a:hover i {
     margin: 15px 0 28px;
 }
 
-.pricing-box .pricing-item ul.pricing-table li:first-child {
-    padding: 34px 20px 30px;
-    border: none;
-    background: #3a3d41;
-    margin-bottom: 24px;
-}
 
-.pricing-box .pricing-item ul.pricing-table li:first-child h1 {
+
+.pricing-box .pricing-item ul.pricing-table li h1 {
     color: #3a3d41;
     font-size: 24px;
     font-family: 'Raleway', sans-serif;
@@ -3729,10 +3725,10 @@ ul.team-social li a:hover i {
     margin-bottom: 40px;
 }
 
-.pricing-box .pricing-item ul.pricing-table li:first-child p {
-    color: #ffffff;
+.pricing-box .pricing-item ul.pricing-table li p {
+
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     font-family: 'Raleway', sans-serif;
     margin: 0;
 }
@@ -3761,13 +3757,54 @@ ul.team-social li a:hover i {
     margin-bottom: 38px;
 }
 
-.pricing-box .pricing-item:hover ul.pricing-table li:first-child {
+.pricing-box .pricing-item:hover  li {
     padding: 44px 15px 30px;
     background: #ff6d89;
 }
 
-.pricing-box .pricing-item:hover ul.pricing-table li:first-child p {
+.pricing-box .pricing-item:hover ul.pricing-table li .cajapaquetes p {
+    color: black;
+}
+
+
+.pricing-box .pricing-item:hover ul.pricing-table li p {
     color: #ffffff;
+}
+
+.pricing-box .pricing-item:hover .cajapaqeutepri{
+    background: #ff6d89;
+    color: white;
+}
+
+
+.cajapaquetes p{
+
+    color: #999999;
+    font-family: 'Raleway', sans-serif;
+
+
+}
+
+.cajapaquetes{
+    padding: 25px 30px;
+    border-bottom: 1px solid black;
+}
+.cajapaquetes h1{
+    padding: 25px 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.title.pricing-item{
+    list-style: none;
+    margin-right: 0px;
+    padding-right: 15px;
+
+}
+
+.pricing-box .pricing-item .cajapaqeutepri{
+    background: #3a3d41;
+    color: white;
+    padding: 25px 30px;
 }
 
 .badge.des2 {
@@ -3775,6 +3812,19 @@ ul.team-social li a:hover i {
     background-color: red!important;
     color: white;
     border-radius: 50px;
+
+}
+
+
+.pricing-box .pricing-item:hover .cajapaquetes p{
+    color: black;
+
+
+}
+
+
+.pricing-box .pricing-item:hover .cajapaquetes {
+    border-bottom: 1px solid #ff6d89;
 
 }
 
@@ -4633,7 +4683,7 @@ footer .up-footer .footer-line p {
 
     .cajadesc {
 
-        height: 210px;
+        height:195px;
     }
 
     .navbar-collapse {
@@ -4760,11 +4810,11 @@ footer .up-footer .footer-line p {
     }
 
     .pricing-box .pricing-item {
-        width: 50%;
+
         margin-bottom: 20px;
     }
 
-    .pricing-box .pricing-item:hover ul.pricing-table {
+    .pricing-box .pricing-item:hover li.pricing-table {
         margin-bottom: 10px;
     }
 
@@ -5471,7 +5521,7 @@ h2.Ttiel {
     -moz-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
-    left: 45%;
+    /*left: 45%;*/
 }
 
 .project-gal .hover-box.box2 a i {
@@ -5632,34 +5682,37 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .panelmejoresvendidos {
-    background: #ff6d89;
-    padding: 15px 0px;
+    background: #f6f6f6;
+    padding: 15px 0px 30px;
 }
 
 .pnmbreven {
-    background: white;
-    padding: 5px 0px 20px 0px;
+    background: transparent;
+    padding: 5px 0px 5px 0px;
     color: #ff6d89;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 14px;
+    margin-top: 10px;
 
 }
 
 .moreven {
-    background: white;
+    background: #ff6d89;    font-family: 'Raleway', sans-serif;
     /* position: absolute; */
     /* padding: 0px; */
     /* width: 64px; */
     /* margin: 0 auto; */
     margin-top: 17px;
-    margin-bottom: -30px !important;
+    margin-bottom: 0px !important;
     width: 57%;
+    padding:10px;
+    font-weight:600;
     margin: 0 auto;
-    border: 2px solid #ff6d89;
+    border: 1px solid #ff6d89;
     border-radius: 5px;
     margin-top: 20px;
     font-size: 13px;
-    color: #ff6d89;
+    color: white;
     padding: 10px 0px;
 }
 
@@ -6012,4 +6065,77 @@ color: white;
 .pagination {
 
     width: 100%;
+}
+
+.botoncollape{
+    background: transparent;
+    color: black;
+    font-weight: 600;
+    border-color: transparent;
+    font-family: 'Raleway', sans-serif;
+    padding-left: 0;
+    text-transform: uppercase;
+}
+
+.botoncollape:hover, .botoncollape:focus, .botoncollape:active  {
+
+
+    color: #7b7b7b;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.obligatorio{
+    color: red;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.zoom2{
+    left: 35%;
+}
+
+ul.pricing-table{
+    display: inline-block;
+}
+.link2{
+    left: 55%;
+}
+.cajapaqeutepri p {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+}
+
+.cajapaqeutepri h1 {
+    font-size: 24px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    margin: 0 0 7px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+
+.cajapaqeutepri span {
+    display: inline-block;
+    font-size: 60px;
+    margin: 0 6px;
+}
+
+
+div.bhoechie-tab-menu div.list-group>a.active, div.bhoechie-tab-menu div.list-group>a.active .glyphicon, div.bhoechie-tab-menu div.list-group>a.active .fa{
+    background-color: #ff6d89!important;
+}
+
+div.bhoechie-tab-menu div.list-group>a .glyphicon, div.bhoechie-tab-menu div.list-group>a .fa {
+    color: #ff6d89!important;
+}
+
+
+
+div.bhoechie-tab-menu div.list-group>a.active, div.bhoechie-tab-menu div.list-group>a.active .glyphicon, div.bhoechie-tab-menu div.list-group>a.active .fa {
+
+    color: #ffffff!important;
 }

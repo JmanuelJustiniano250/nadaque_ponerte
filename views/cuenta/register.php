@@ -16,6 +16,10 @@ $script = <<<CSS
 }
 
 
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label {
+    color: black;
+}
+
 .file-preview {
     border-radius: 0px;
     border: 0px solid #ddd;
@@ -233,7 +237,7 @@ $this->registerCss($script);
         <div class="row">
 
             <H3 style="    font-size: 14px;
-    text-align: center; font-weight: 600">FOTO (sube tu foto de perfil)</H3>
+    text-align: center; font-weight: 300">FOTO (sube tu foto de perfil)</H3>
 
             <?php
             $initial = [];
@@ -512,6 +516,20 @@ $this->registerCss($script);
                                 'Pando' => 'Pando',
                                 'Oruro' => 'Oruro',
                                 'Potosi' => 'Potosi',
+                                'El-alto' => 'El Alto',
+                                'Montero' => 'Montero',
+                                'Warnes' => 'Warnes',
+                                'San-ignacio-de-velasco' => 'San Ignacio de Velasco',
+                                'Yacuiba' => 'Yacuiba',
+                                'Camiri' => 'Camiri',
+                                'Uyuni' => 'Uyuni',
+                                'Samaipata' => 'Samaipata',
+                                'Riberalta' => 'Riberalta',
+                                'Quillacollo' => 'Quillacollo',
+
+
+
+
 
                             ]
                         ) ?>
@@ -533,9 +551,9 @@ $this->registerCss($script);
 
                     </div>
                     <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0; font-size: 11px;">Selecciona una opcion,
-                            <br> (Si quiero que mi telefono o celular visible en mis anuncios y perfil)</label> <br>
+                            <br>
 
-                        <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
+                        <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si quiero que mi telefono o celular sea visible en mis anuncios y perfil', '0' => 'No quiero que mi telefono o celular sea visible en mis anuncios y perfil'])->label(false) ?>
 
                     </div>
 
@@ -554,7 +572,7 @@ $this->registerCss($script);
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <label for="" style="font-weight: 600">Indicanos tu talla (no sera publicada)</label> <br>
+                        <label for="" style="font-weight: 300">Indicanos tu talla (no sera publicada)</label> <br>
 
 
                         <label for="">Blusas</label>
@@ -628,7 +646,7 @@ $this->registerCss($script);
 
                     <div class="col-xs-12">
 
-                        <label for="" style="font-weight: 600">Link de conexión con las redes sociales </label>
+                        <label for="" style="font-weight: 300">Link de conexión con las redes sociales </label>
 
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">

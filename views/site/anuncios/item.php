@@ -92,6 +92,47 @@ $script = <<<CSS
     text-shadow: 0px 0px #ff839a;
 }
 
+
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #ff6d89;
+    color: white;
+}
+
+
+
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: white;
+    border-radius: 65px;
+    padding: 0px 4px;
+    border: 0px solid;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #a2a2a2;
+    text-shadow: 0 0px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: 1;
+}
+
+.btnregister.enviarsns{
+background-color: #000000;
+    padding: 5px 20px;
+}
+
+.modal-footer{
+border-top: 1px solid transparent;
+}
+
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
 
@@ -179,54 +220,21 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: #fda4b5">
+                                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: white">
 
-                                    Envia un mensaje privado a  <?= $model->usuario['alias']?> <br> <span style=" color: black;   font-size: 13px;
-    font-weight: 300;">la respuesta aparecera en tus mensajes privados.
-                                </span>
+                                    Envia un mensaje a  <?= $model->usuario['alias']?>
                                 </h3>
                             </div>
                             <div class="modal-body">
 
+                                    <p style="color: #6b6b6b;">
+                                        Comunicate de la forma que mas te convenga con la vendedora
+                                    </p>
 
 
 
 
-
-
-                                <!-- content goes here -->
-
-
-                                <?php $form = ActiveForm::begin([
-                                    'action' => ['/cuenta/mensaje'],
-                                    'id' => 'login-form',
-                                    /*'layout' => 'horizontal',
-                                    'fieldConfig' => [
-                                        'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
-                                        'labelOptions' => ['class' => 'col-md-4 control-label'],
-                                    ],*/
-                                ]); ?>
-
-
-                                <?php $modmess= new \app\models\Mensajes();?>
-                                <?php $modmess->idvendedor = $model->idusuario;?>
-                                <?php $modmess->tipo = 0;?>
-
-
-
-                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control privatemen','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
-                                <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
-                                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
-
-                              <div align="center">  <button type="submit" class="btn btn-default btnregister">Enviar</button>
-                              </div>
-                                <?php ActiveForm::end(); ?>
-
-
-                                <br>
-
-
-                                <p style="margin-top: 10px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
+                                <p style="margin-top: 15px; margin-bottom: 5px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
 
 
                                     <?php if ($model->usuario['telefono']): ?>
@@ -235,6 +243,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                             <?= $model->usuario['telefono'] ?>
 
                                         <?php else: ?>
+                                            <strong>No disponible</strong>
 
                                         <?php endif; ?>
                                     <?php endif; ?>
@@ -298,7 +307,57 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                         <?php endif; ?>
 
                                     <?php endif; ?>
+                                    <br>
                                 </ul>
+
+
+                                <br>
+                                <p style="color: #6b6b6b;">
+                                   o también mandale un mensaje privado <br> la respuesta aparecera en tus mensajes privados.
+                                </p>
+
+
+
+
+
+
+                                <!-- content goes here -->
+
+
+                                <?php $form = ActiveForm::begin([
+                                    'action' => ['/cuenta/mensaje'],
+                                    'id' => 'login-form',
+                                    /*'layout' => 'horizontal',
+                                    'fieldConfig' => [
+                                        'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+                                        'labelOptions' => ['class' => 'col-md-4 control-label'],
+                                    ],*/
+                                ]); ?>
+
+
+                                <?php $modmess= new \app\models\Mensajes();?>
+                                <?php $modmess->idvendedor = $model->idusuario;?>
+                                <?php $modmess->tipo = 0;?>
+
+
+
+                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control privatemen','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
+                                <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
+                                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
+
+                              <div align="right">  <button type="submit" class="btn btn-default btnregister enviarsns">Enviar</button>
+                              </div>
+                                <?php ActiveForm::end(); ?>
+
+
+                                <br>
+
+
+
+                                    <div align="right">
+
+                                        <a class="" style="color: #ff6d89; text-decoration: underline;font-family: 'Raleway', sans-serif;" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Perfil de la vendedora</a>
+                                    </div>
 
 
 
@@ -380,23 +439,26 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
         <div class="col-md-3 col-xs-12">
             <div class="panelmejoresvendidos">
-                <p class="text-center pnmbreven">
-                    <strong><?= $model->usuario['nombres'] ?>
-                        <small>(<?= $model->usuario['alias'] ?>)</small>
-                    </strong></p>
+
                 <div class="center-block text-center">
                     <?=
                     EasyThumbnailImage::thumbnailImg(
                         Yii::getAlias('@webroot/imagen/usuarios/') . $model->usuario['foto'],
-                        51,
-                        51,
+                        70,
+                        70,
                         EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                        ['style' => 'margin: 0 auto; border-radius: 40px; margin-top: -25px;', 'class' => 'img-responsive']
+                        ['style' => 'margin: 0 auto; border-radius: 40px; margin-top: 5px;', 'class' => 'img-responsive']
                     );
                     ?>
                 </div>
 
-                <p class="text-center" style="color: white; font-weight: 600">
+                <p class="text-center pnmbreven">
+                    <strong><?= $model->usuario['nombres'] ?>
+                    </strong></p>
+
+
+
+                <p class="text-center" style="color: #929292; font-weight: 600">
                     <?= \app\models\Anuncios::find()->where(['idusuario' => $model->idusuario, 'estado' => 1])->count() ?>
                     prendas
                 </p>
@@ -410,7 +472,9 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                         <div align="center">
 
-                        <a href="" data-toggle="modal" class="calsiw" data-target="#califModal" style="color: white; text-align: center">
+                        <a href="" data-toggle="modal" class="calsiw" data-target="#califModal" style="color: #929292;
+    text-align: center;
+    font-weight: 600; text-align: center">
                             ¡Calificame!
                         </a></div>
                         <!-- line modal -->
@@ -463,7 +527,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                 </div>
 
 
-                <a class="moreven btn center-block" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Mas de la vendedora</a>
+                <a class="moreven btn center-block" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Perfil de la vendedora</a>
 
             </div>
 

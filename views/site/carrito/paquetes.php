@@ -28,6 +28,18 @@ $script = <<<CSS
     *display:inline; /* ie7 fix */
 }
 
+.deaq31{
+
+}
+@media (min-width: 992px)
+{
+.pricing-box .pricing-item{
+
+}
+
+}
+
+
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 ?>
@@ -60,7 +72,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
 
     <div class="title-section white">
-        <div class="container">nada
+        <div class="container">
             <h1>Oferta de anuncios</h1> <br>
             <p>Selecciona el anuncio suelto o el paquete que te convenga</p>
         </div>
@@ -78,27 +90,39 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
 
     <div class="container">
-        <div class="pricing-box">
-            <?php foreach ($model as $item): ?>
-                <div class="pricing-item">
+        <div class="pricing-box" align="center">
+            <div class="col-xs-12">
+                <div class="pricing-item2" >
                     <ul class="pricing-table basic">
-                        <li class="title">
+            <?php foreach ($model as $item): ?>
+
+
+                        <li class="title pricing-item">
+                            <div class="cajapaqeutepri">
                             <h1><?= $item['nombre'] ?></h1>
                             <p>Bs <span><?= $item['precio'] ?></span> / <?= $item['tiempo_vida'] ?> Dias</p>
-                        </li>
-                        <li>
-                            <p>Nro. de anuncios <?= $item['nro_anuncios'] ?> </p>
-                        </li>
-                        <li>
-                            <p><?= $item['descripcion'] ?></p>
-                        </li>
-                        <li>
+
+                            </div>
+
+
+                            <div class="cajapaquetes">
+
+                            <p>Nro. de anuncios <?= $item['nro_anuncios'] ?> </p> <br>
+
+
+                            <div><?= $item['descripcion'] ?> <br> </div>
+
+
                             <a href="<?= Url::to(['site/carrito', 'id' => $item['idpaquete']]) ?>" class="button-third">Elegir</a>
+                            </div>
+
                         </li>
+
+
+            <?php endforeach; ?>
                     </ul>
                 </div>
-            <?php endforeach; ?>
-
+            </div>
         </div>
     </div>
 

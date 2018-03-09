@@ -105,63 +105,198 @@ $index = 0;
     <?php if (!isset($padre)) {
         $padre = '13';
     } ?>
-    <h5 class="text-uppercase"><strong>Sub Categoria</strong></h5>
-    <?php $tmp = \app\models\Categorias::findAll(['estado' => 1, 'idPadre' => $padre]) ?>
-    <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("categorias[" . $item['idcategoria'] . "]", ((isset($model['categorias'][$item['idcategoria']])) ? $model['categorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
-    <?php endforeach; ?>
+    <h5 class="text-uppercase"><strong></strong></h5>
+
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Categoria <br>
+    </a>
+
+
+
+    <div class="collapse" id="collapseExample">
+        <div class="" style="padding-top: 10px;">
+            <?php $tmp = \app\models\Categorias::findAll(['estado' => 1, 'idPadre' => $padre]) ?>
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("categorias[" . $item['idcategoria'] . "]", ((isset($model['categorias'][$item['idcategoria']])) ? $model['categorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+
+
+
+
+
     <br>
-    <h5 class="text-uppercase"><strong>Rango de precio</strong></h5>
-    <?php echo '<b class="badge">' . $model['precios']['min'] . ' Bs</b> ' . Slider::widget([
-            'name' => 'precio',
-            'value' => $model['precio'],
-            'sliderColor' => Slider::TYPE_GREY,
-            'pluginOptions' => [
-                'min' => (double)$model['precios']['min'],
-                'max' => (double)$model['precios']['max'],
-                'step' => 10,
-                'range' => true
-            ],
-        ]) . ' <b class="badge">' . $model['precios']['max'] . ' Bs</b>';
-    ?>
-    <br><br>
+
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+        Rango de precio <br>
+    </a>
+
+
+    <div class="collapse" id="collapseExample2">
+        <div class="" style="padding-top: 10px;">
+            <?php echo '<b class="badge">' . $model['precios']['min'] . ' Bs</b> ' . Slider::widget([
+                    'name' => 'precio',
+                    'value' => $model['precio'],
+                    'sliderColor' => Slider::TYPE_GREY,
+                    'pluginOptions' => [
+                        'min' => (double)$model['precios']['min'],
+                        'max' => (double)$model['precios']['max'],
+                        'step' => 10,
+                        'range' => true
+                    ],
+                ]) . ' <b class="badge">' . $model['precios']['max'] . ' Bs</b>';
+            ?>
+
+        </div>
+    </div>
+
+
+    <br>
     <?php $tmp = \app\models\CondicionProducto::find()->all() ?>
-    <h5 class="text-uppercase"><strong>Condicion del Producto</strong></h5>
-    <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("condicion[" . $item['id_cp'] . "]", ((isset($model['condicion'][$item['id_cp']])) ? $model['condicion'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
-    <?php endforeach; ?>
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+        Condicion del Producto <br>
+    </a>
+
+
+    <div class="collapse" id="collapseExample3">
+        <div class="" style="padding-top: 10px;">
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("condicion[" . $item['id_cp'] . "]", ((isset($model['condicion'][$item['id_cp']])) ? $model['condicion'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+
+
+
     <br>
 
     <?php $tmp = \app\models\TallasProducto::find()->all() ?>
-    <h5 class="text-uppercase"><strong>Tallas de los Productos</strong></h5>
-    <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("talla[" . $item['id_tp'] . "]", ((isset($model['talla'][$item['id_tp']])) ? $model['talla'][$item['id_tp']] : ''), ['label' => $item['nombre']]) ?>
-    <?php endforeach; ?>
+
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+        Tallas de los Productos <br>
+    </a>
+
+
+    <div class="collapse" id="collapseExample4">
+        <div class="" style="padding-top: 10px;">
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("talla[" . $item['id_tp'] . "]", ((isset($model['talla'][$item['id_tp']])) ? $model['talla'][$item['id_tp']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
     <br>
+
+
+
     <?php $tmp = \app\models\MaterialProducto::find()->all() ?>
-    <h5 class="text-uppercase"><strong>Material de los Productos</strong></h5>
-    <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("material[" . $item['id_mp'] . "]", ((isset($model['material'][$item['id_mp']])) ? $model['material'][$item['id_mp']] : ''), ['label' => $item['nombre']]) ?>
-    <?php endforeach; ?>
+
+
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
+        Material de los Productos <br>
+    </a>
+
+
+    <div class="collapse" id="collapseExample5">
+        <div class="" style="padding-top: 10px;">
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("material[" . $item['id_mp'] . "]", ((isset($model['material'][$item['id_mp']])) ? $model['material'][$item['id_mp']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+
+
+
+
     <br>
     <?php $tmp = \app\models\MarcaProducto::find()->all() ?>
-    <h5 class="text-uppercase"><strong>Marcas de los Productos</strong></h5>
-    <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("marca[" . $item['id_msp'] . "]", ((isset($model['marca'][$item['id_msp']])) ? $model['marca'][$item['id_msp']] : ''), ['label' => $item['nombre']]) ?>
-    <?php endforeach; ?>
+
+
+
+
+
+
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample6" aria-expanded="false" aria-controls="collapseExample">
+        Marcas de los Productos <br>
+    </a>
+
+
+    <div class="collapse" id="collapseExample6">
+        <div class="" style="padding-top: 10px;">
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("marca[" . $item['id_msp'] . "]", ((isset($model['marca'][$item['id_msp']])) ? $model['marca'][$item['id_msp']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+
     <br>
+
+
     <?php $tmp = \app\models\ColoresProductos::find()->all() ?>
-    <h5 class="text-uppercase"><strong>Colores de los Productos</strong></h5>
-    <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("color[" . $item['id_cp'] . "]", ((isset($model['color'][$item['id_cp']])) ? $model['color'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
-    <?php endforeach; ?>
+
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample7" aria-expanded="false" aria-controls="collapseExample">
+        Colores de los Productos <br>
+    </a>
+
+
+    <div class="collapse" id="collapseExample7">
+        <div class="" style="padding-top: 10px;">
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("color[" . $item['id_cp'] . "]", ((isset($model['color'][$item['id_cp']])) ? $model['color'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+
+
+
+
     <br>
+
+
+
+
     <?php $tmp = \app\models\Ciudad::find()->all() ?>
-    <h5 class="text-uppercase"><strong>Ciudad</strong></h5>
-    <?php foreach ($tmp as $item): ?>
-        <?= Html::checkbox("ciudad[" . $item['idciudad'] . "]", ((isset($model['ciudad'][$item['idciudad']])) ? $model['ciudad'][$item['idciudad']] : ''), ['label' => $item['nombre']]) ?>
-    <?php endforeach; ?>
+
+
+
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample8" aria-expanded="false" aria-controls="collapseExample">
+        Ciudad  <br>
+    </a>
+
+
+    <div class="collapse" id="collapseExample8">
+        <div class="" style="padding-top: 10px;">
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("ciudad[" . $item['idciudad'] . "]", ((isset($model['ciudad'][$item['idciudad']])) ? $model['ciudad'][$item['idciudad']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <br>
+
+
+
+
+
     <div>
         <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
         <br>

@@ -12,6 +12,12 @@ $script = <<<CSS
 }
 
 
+.statistic-box.style2{
+background: #ffafbe;
+}
+
+
+
 .blog-section.with-sidebar {
     padding: 10px 0;
 }
@@ -259,6 +265,57 @@ background: #ff839a;
     padding: 5px;
     border-radius: 51px;
 }
+
+
+
+.modal-header.sns {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #ff6d89;
+    color: white;
+}
+
+
+
+button.close.sns2 {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: white;
+    border-radius: 65px;
+    padding: 0px 4px;
+    border: 0px solid;
+}
+
+.close.sns2 {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #a2a2a2;
+    text-shadow: 0 0px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: 1;
+}
+
+.btnregister.enviarsns{
+background-color: #000000;
+    padding: 5px 20px;
+    border-color: #000;
+}
+
+.modal-footer.sns3{
+border-top: 1px solid transparent;
+}
+
+.redespergil {
+    padding-left: 10px;
+    padding-top: 0px;
+    float: inherit;
+    list-style: none;
+    display: inline-block;
+    margin-bottom: 25px;
+}
 CSS;
 
 
@@ -442,23 +499,23 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                         <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                        <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: #fda4b5">
+                                    <div class="modal-header sns">
+                                        <button type="button" class="close sns2" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                        <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: white">
 
-                                            Envia un mensaje privado a  <?= $model['alias']?> <br> <span style=" color: black;   font-size: 13px;
-    font-weight: 300;">la respuesta aparecera en tus mensajes privados.
-                                </span>
+                                            Envia un mensaje a  <?= $model['alias']?>
                                         </h3>
                                     </div>
                                     <div class="modal-body">
 
+                                        <p style="color: #6b6b6b;">
+                                            Comunicate de la forma que mas te convenga con la vendedora
+                                        </p>
 
 
 
 
-
-                                        <p style="margin-top: 10px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
+                                        <p style="margin-top: 15px; margin-bottom: 5px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
 
 
                                             <?php if ($model['telefono']): ?>
@@ -467,6 +524,7 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                                     <?= $model['telefono'] ?>
 
                                                 <?php else: ?>
+                                                    <strong>No disponible</strong>
 
                                                 <?php endif; ?>
                                             <?php endif; ?>
@@ -508,7 +566,7 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
 
                                                 <?php if ($model['visibleyoutu']): ?>
                                                     <li>
-                                                        <a href="<?= $model['youtube'] ?>" target="_blank"><i
+                                                        <a href="<?= $model->usuario['youtube'] ?>" target="_blank"><i
                                                                     class="fa fa-youtube" aria-hidden="true"></i></a>
                                                     </li>
                                                 <?php else: ?>
@@ -522,7 +580,7 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                                 <?php if ($model['visibleinsta']): ?>
 
                                                     <li>
-                                                        <a href="<?= $model['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
+                                                        <a href="<?= $model-['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
                                                                                                                          aria-hidden="true"></i></a>
                                                     </li>
                                                 <?php else: ?>
@@ -530,7 +588,16 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                                 <?php endif; ?>
 
                                             <?php endif; ?>
+                                            <br>
                                         </ul>
+
+
+                                        <br>
+                                        <p style="color: #6b6b6b;">
+                                            o también mandale un mensaje privado <br> la respuesta aparecera en tus mensajes privados.
+                                        </p>
+
+
 
 
 
@@ -559,12 +626,18 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                         <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
                                         <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
 
-                                        <div align="center">  <button type="submit" class="btn btn-default btnregister" style="color: white">Enviar</button>
+                                        <div align="right">  <button type="submit" class="btn  btnregister enviarsns">Enviar</button>
                                         </div>
                                         <?php ActiveForm::end(); ?>
 
+
+                                        <br>
+
+
+
+
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer sns3">
                                         <div class="btn-group btn-group-justified " role="group" aria-label="group button">
 
                                         </div>

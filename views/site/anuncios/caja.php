@@ -3,6 +3,13 @@
 use himiklab\thumbnail\EasyThumbnailImage;
 use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Html;
+$script = <<<CSS
+
+
+CSS;
+$this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
+
+
 
 ?>
 
@@ -19,7 +26,11 @@ use yii\helpers\Html;
             );
             ?>
             <div class="hover-box box2">
-                <?= Html::a(FA::icon(FA::_SEARCH_PLUS), ['site/item', 'id' => $item['idanuncio']]) ?>
+
+
+                <a href="<?= \yii\helpers\Url::to(['site/item','id'=>$item->idanuncio])?>" class="zoom2"><?= FA::icon(FA::_SEARCH_PLUS) ?></a>
+
+                <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$item->idanuncio])?>" class="link2"><?= FA::icon(FA::_HEART) ?></a>
             </div>
 
         </div>
@@ -91,11 +102,7 @@ use yii\helpers\Html;
                         <?= $item->usuario['nombres'] ?>
                     </div>
 
-                    <div class=" fl3">
-                        <p style="    margin-bottom: -5px;  margin-top: 0;"><a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$item->idanuncio])?>"><?= FA::icon(FA::_HEART) ?></a>
-                        </p>
 
-                    </div>
 
                 </div>
 

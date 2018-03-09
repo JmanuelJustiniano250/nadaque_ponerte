@@ -11,7 +11,7 @@ $script = <<<CSS
 
 .medioas{
 background: #f6f6f6;
-    padding: 30px 30px;
+    padding: 5px 30px 10px;
     margin-bottom: 20px;
 }
 @media (min-width: 768px) {
@@ -140,7 +140,7 @@ $user = Yii::$app->session->get('user');
                 <div class="" align="center">
                     <div class="medioas col-xs-12 des" style="">
                         <div class="row">
-                            <label for="">Selecciona tu paquete</label>
+                            <label for="">Selecciona tu paquete <span class="obligatorio">*</span></label>
                             <?php
 
                             $tmp = array();
@@ -176,7 +176,7 @@ $user = Yii::$app->session->get('user');
                 <div class=" col-xs-12 des" style="">
                     <div class="row">
                         <div class="col-xs-12 des" align="center"><br>
-                            <label for="">Foto de tu prenda</label>
+                            <label for="">Foto de tu prenda <span class="obligatorio">*</span></label>
                             <?php
                             $initial = [];
                             array_push($initial, Html::img('@web/imagen/anuncios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
@@ -206,15 +206,15 @@ $user = Yii::$app->session->get('user');
             </div>
 
             <div class="medioas col-xs-12" style="">
-                <div class="row">
+                <div class="row"><br>
                     <div class="col-md-6">
-                        <label for="">Nombre de tu prenda</label>
+                        <label for="">Nombre de tu prenda <span class="obligatorio">*</span></label>
                         <?= $form->field($model, 'titulo')->label(false) ?>
                     </div>
 
                     <div class="col-md-6 col-xs-12">
 
-                        <label for="">Seleccionar categoría</label>
+                        <label for="">Seleccionar Categoria principal de tu prenda<span class="obligatorio">*</span></label>
 
                         <?php $form->field($model, 'idusuario')->hiddenInput(['value' => $user['idusuario']])->label(false); ?>
 
@@ -240,36 +240,15 @@ $user = Yii::$app->session->get('user');
             <div class="medioas col-xs-12" style="">
                 <div class="row">
                     <div class="col-xs-12" >
-                        <h3 style="    font-size: 16px;
+                        <h3 style="    color: #777777;    font-size: 16px;
     margin-bottom: 25px;
-    font-weight: 600;">Selecciona las categorias de 2do nivel</h3>
+    font-weight: 600;">Seleccionar las Categorias complementarioas de tu prenda</h3>
                     </div>
-                    <div class="col-md-6 col-xs-12">
 
-
-
-
-                        <label for="">Ciudad</label>
-                        <?= $form->field($filtro, 'idciudad')->widget(Select2::classname(), [
-
-                            'data' => \yii\helpers\ArrayHelper::map(\app\models\Ciudad::find()->all(), 'idciudad', 'nombre'),
-                            'language' => 'es',
-                            'options' => [
-                                'placeholder' => 'Ciudad',
-                                'multiple' => false,
-                            ],
-                            'pluginOptions' => [
-                                'allowClear' => true
-                            ],
-                        ])->label(false); ?>
-
-
-
-                    </div>
 
                     <div class="col-md-6 col-xs-12">
 
-                        <label>Colores</label>
+                        <label>Colores <span class="obligatorio">*</span></label>
                         <?= $form->field($filtro, 'idcolores')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\ColoresProductos::find()->all(), 'id_cp', 'nombre'),
@@ -289,7 +268,7 @@ $user = Yii::$app->session->get('user');
 
 
                     <div class="col-md-6 col-xs-12">
-                        <label>Condicion</label>
+                        <label>Condicion <span class="obligatorio">*</span></label>
                         <?= $form->field($filtro, 'idcondicion')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\CondicionProducto::find()->all(), 'id_cp', 'nombre'),
@@ -307,7 +286,7 @@ $user = Yii::$app->session->get('user');
 
 
                     <div class="col-md-6 col-xs-12">
-                        <label>Marca</label>
+                        <label>Marca <span class="obligatorio">*</span></label>
                         <?= $form->field($filtro, 'idmarca')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\MarcaProducto::find()->all(), 'id_msp', 'nombre'),
@@ -324,7 +303,7 @@ $user = Yii::$app->session->get('user');
 
                     <div class="col-md-6 col-xs-12">
 
-                        <label>Material</label>
+                        <label>Material <span class="obligatorio">*</span></label>
                         <?= $form->field($filtro, 'idmaterial')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\MaterialProducto::find()->all(), 'id_mp', 'nombre'),
@@ -344,7 +323,7 @@ $user = Yii::$app->session->get('user');
 
 
                     <div class="col-md-6 col-xs-12">
-                        <label>Talla</label>
+                        <label>Talla <span class="obligatorio">*</span></label>
                         <?= $form->field($filtro, 'idtalla')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\TallasProducto::find()->all(), 'id_tp', 'nombre'),
@@ -357,6 +336,29 @@ $user = Yii::$app->session->get('user');
                                 'allowClear' => true
                             ],
                         ])->label(false); ?>
+
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+
+
+
+
+                        <label for="">Localización de tu prenda <span class="obligatorio">*</span></label>
+                        <?= $form->field($filtro, 'idciudad')->widget(Select2::classname(), [
+
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\Ciudad::find()->all(), 'idciudad', 'nombre'),
+                            'language' => 'es',
+                            'options' => [
+                                'placeholder' => 'Ciudad',
+                                'multiple' => false,
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true
+                            ],
+                        ])->label(false); ?>
+
 
 
                     </div>
@@ -377,32 +379,32 @@ $user = Yii::$app->session->get('user');
                     <div class="col-xs-12" >
                         <h3 style="    font-size: 16px;
     margin-bottom: 25px;
-    font-weight: 600;">Haz una descripcion sobre la prenda que quieres anunciar</h3>
+    font-weight: 600;    color: #777777;">Haz una descripcion sobre la prenda que quieres anunciar</h3>
                     </div>
 
 
                     <div class=" col-md-6 col-xs-12" >
 
-                        <label>Descripcion</label>
+                        <label>Descripcion <span class="obligatorio">*</span></label>
 
 
-                        <?= $form->field($model, 'decripcion')->label(false)->widget(CKEditor::className(), [
-                            'options' => ['rows' => 6],
-                            'preset' => 'basic'
-                        ]) ?>
+
+
+
+                        <?= $form->field($model, 'decripcion')->textarea(['rows' => 6])->label(false) ?>
+
+
 
                     </div>
 
 
                     <div class=" col-md-6 col-xs-12" >
 
-                        <label>Medidas</label>
+                        <label>Medidas de la prenda (en cm)</label>
+
+                        <?= $form->field($model, 'otra_descripcion')->textarea(['rows' => 6])->label(false) ?>
 
 
-                        <?= $form->field($model, 'otra_descripcion')->label(false)->widget(CKEditor::className(), [
-                            'options' => ['rows' => 6],
-                            'preset' => 'basic'
-                        ]) ?>
 
                     </div>
                 </div>
@@ -420,7 +422,7 @@ $user = Yii::$app->session->get('user');
 
 
                     <div class="col-xs-12" >
-                        <h3 style="    font-size: 16px;
+                        <h3 style="    color: #777777;    font-size: 16px;
     margin-bottom: 25px;
     font-weight: 600;">Precios</h3>
                     </div>
@@ -430,7 +432,7 @@ $user = Yii::$app->session->get('user');
 
                     <div class="col-md-6">
 
-                        <label>Precio original</label>
+                        <label>Precio de Venta <span class="obligatorio">*</span></label>
                         <?= $form->field($model, 'precio')->label(false) ?>
                     </div>
 
@@ -448,7 +450,9 @@ $user = Yii::$app->session->get('user');
 
         </div>
 
-
+<div class="col-xs-12">
+    (<span class="obligatorio">*</span>) Campos obligatorios
+ </div>
 
 
     </div>

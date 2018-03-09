@@ -394,7 +394,7 @@ $this->registerCss($script);
                                         'dataProvider' => $provider,
                                         'itemView' => 'listadeseos',
                                         'summary' => false,
-                                        'itemOptions' => ['class' => 'item4'],
+                                        'itemOptions' => ['class' => 'item4 col-md-3 col-sm-6 col-xs-12'],
 
                                     ]);
                                     \yii\widgets\Pjax::end();

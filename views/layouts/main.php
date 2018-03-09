@@ -254,8 +254,8 @@ if($configuracion['google_analitics']) {
                         'submenuTemplate' => "\n<ul class=\" dropdown-menu \" >\n{items}\n</ul>\n",
 
                         'items' => [
-                            ['label' => 'Quienes somos', 'url' => ['site/pages', 'id' => 'quienes_somos'], 'options' => ['class' => ''],],
-                            ['label' => 'Como funciona NQP', 'url' => ['site/pages', 'id' => 'como_funciona'], 'options' => ['class' => ''],],
+                            ['label' => 'Quienes somos', 'url' => ['site/pages', 'id' => 'quienes-somos'], 'options' => ['class' => ''],],
+                            ['label' => 'Como funciona NQP', 'url' => ['site/pages', 'id' => 'como-funciona'], 'options' => ['class' => ''],],
                             ['label' => 'Condiciones de uso ', 'url' => ['site/pages', 'id' => 'condiciones'], 'options' => ['class' => ''],],
                             ['label' => 'Preguntas frecuentes', 'url' => ['site/faq'], 'options' => ['class' => ''],],
                             ['label' => 'Contacto', 'url' => ['/site/contacto'], 'options' => ['class' => ''],],
@@ -286,7 +286,8 @@ if($configuracion['google_analitics']) {
                             ['label' => 'Como comprar?', 'url' => ['/site/pages', 'id' => 'como-comprar'], 'options' => ['class' => ''],],
                             ['label' => 'Testimonios', 'url' => ['/site/tertimonios'], 'options' => ['class' => ''],],
                             ['label' => 'Videos tutoriales', 'url' => ['/site/tutoriales'], 'options' => ['class' => ''],],
-                            ['label' => 'Formas de Pago', 'url' => ['pages/formas_pago'], 'options' => ['class' => ''],],
+                            ['label' => 'Formas de Pago', 'url' => ['/site/pages', 'id' => 'formas-pago'], 'options' => ['class' => ''],],
+                            ['label' => 'Reglas de Publicación', 'url' => ['/site/pages', 'id' => 'reglas-publicacion'], 'options' => ['class' => ''],],
 
                         ],
                     ]);
