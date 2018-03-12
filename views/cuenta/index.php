@@ -86,8 +86,8 @@ $this->registerCss($script);
                             <div class="statistic-counter">
                                 <?php if ($compra): ?>
                                     <?php $tmp = \app\models\Anuncios::find()
-                                        ->joinWith(['paquete','paquete.paquete'])
-                                        ->andWhere(['<=','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->joinWith(['paquete', 'paquete.paquete'])
+                                        ->andWhere(['<=', '(fecha_aprovacion+tiempo_vida)', 'NOW()'])
                                         ->andWhere(['anuncios.idusuario' => Yii::$app->session->get('user')['idusuario']])
                                         ->distinct()
                                         ->count() ?>
@@ -131,7 +131,7 @@ $this->registerCss($script);
 
                                     <?php $tmp = \app\models\Compra::find()
                                         ->joinWith('paquete')
-                                        ->andWhere(['>','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['>', '(fecha_aprovacion+tiempo_vida)', 'NOW()'])
                                         ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
                                         ->distinct()
                                         ->count() ?>
@@ -150,7 +150,7 @@ $this->registerCss($script);
                                 <?php if ($compra): ?>
                                     <?php $tmp = \app\models\Compra::find()
                                         ->joinWith('paquete')
-                                        ->andWhere(['<=','(fecha_aprovacion+tiempo_vida)','NOW()'])
+                                        ->andWhere(['<=', '(fecha_aprovacion+tiempo_vida)', 'NOW()'])
                                         ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
                                         ->distinct()
                                         ->count() ?>
@@ -180,10 +180,10 @@ $this->registerCss($script);
                         <?php
                         $query = \app\models\Calificaciones::find()
                             ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
-                        $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
+                        $valor = ($query->sum('puntaje') / (!empty($query->count()) ? $query->count() : 1));
                         echo StarRating::widget([
                             'name' => 'rating_21',
-                            'value' => ($valor/5),
+                            'value' => ($valor / 5),
                             'pluginOptions' => [
                                 'readonly' => true,
                                 'showClear' => false,
@@ -284,15 +284,15 @@ $this->registerCss($script);
                         break;
                     case '3':
                         ?>
-                <div class="anuncios-create">
+                        <div class="anuncios-create">
 
-                        <div class="row" align="center">
+                            <div class="row" align="center">
 
-                            <div class="col-xs-12 col-sm-8" style="float: initial!important;">
+                                <div class="col-xs-12 col-sm-8" style="float: initial!important;">
                                     <?php
                                     $tabla = \app\models\Calificaciones::find()
                                         ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
-                                        ->orderBy(['fecha_creacion'=>SORT_DESC])
+                                        ->orderBy(['fecha_creacion' => SORT_DESC])
                                         ->all();
                                     $provider = new \yii\data\ArrayDataProvider([
                                         'allModels' => $tabla,
@@ -369,7 +369,7 @@ $this->registerCss($script);
                         break;
 
                     case '7':
-                        echo $this->render('mensajeria', ['model' => $model,'mensaje'=>$mensaje,'chat'=>$chat]);
+                        echo $this->render('mensajeria', ['model' => $model, 'mensaje' => $mensaje, 'chat' => $chat]);
                         break;
 
 
@@ -415,8 +415,6 @@ $this->registerCss($script);
                 }
 
                 ?>
-
-
 
 
             </div>

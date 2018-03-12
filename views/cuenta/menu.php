@@ -6,7 +6,6 @@
 /* @var $model app\models\LoginForm */
 
 use kartik\sidenav\SideNav;
-use yii\helpers\Html;
 
 $script = <<<CSS
 
@@ -61,34 +60,38 @@ $this->registerCss($script);
 
 $this->params['breadcrumbs'][] = $this->title;
 $items = array();
-array_push($items,[
+array_push($items, [
     'url' => ['cuenta/principal'],
     'label' => 'Mi Perfil',
 ]);
-array_push($items,[
+array_push($items, [
     'url' => ['cuenta/anuncios2'],
     'label' => 'Anuncios',
 ]);
 $cmensages = \app\models\Mensajes::find()
-                ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
-                ->andWhere(['tipo' => 0])
-                ->andWhere(['estado' => 0])
-                ->count();
-            
-array_push($items,[
-    
+    ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
+    ->andWhere(['tipo' => 0])
+    ->andWhere(['estado' => 0])
+    ->count();
+
+array_push($items, [
+
     'url' => ['cuenta/mensajeria'],
-    'label' => 'Mensajes ('.$cmensages.')',
+    'label' => 'Mensajes (' . $cmensages . ')',
+    'icon'=>((\app\models\Mensajes::haveNew(0,Yii::$app->session->get('user')['idusuario']))?'exclamation-sign':'')
 ]);
-array_push($items,[
+array_push($items, [
     'url' => ['/cuenta/calificaciones'],
     'label' => 'Calificaciones',
+    'icon'=>((\app\models\Calificaciones::haveNew(Yii::$app->session->get('user')['idusuario']))?'exclamation-sign':'')
+
 ]);
-array_push($items,[
+array_push($items, [
     'url' => ['/cuenta/comentarios'],
     'label' => 'Comentarios',
+    'icon'=>((\app\models\Mensajes::haveNew(1))?'exclamation-sign':'')
 ]);
-array_push($items,[
+array_push($items, [
     'url' => 'listadeseos',
     'label' => 'Mi lista de Deseos',
 ]);
@@ -97,10 +100,10 @@ array_push($items,[
     'type' => SideNav::TYPE_DEFAULT,
     'heading' => false,
     'items' => $items
-        /*[
-            'url' => ['cuenta/compras'],
-            'label' => 'Mis Compras',
-        ],*/
+    /*[
+        'url' => ['cuenta/compras'],
+        'label' => 'Mis Compras',
+    ],*/
     ,
 ]);
 ?>

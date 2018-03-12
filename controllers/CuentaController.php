@@ -80,30 +80,26 @@ class CuentaController extends Controller
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->razon = "";
             $model->file = UploadedFile::getInstance($model, 'file');
-            $name = Yii::$app->security->generateRandomString();
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                if ($model->upload($name)) {
-                    if ($model->foto) {
-                        if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
-                            unlink(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto);
-                        }
+            $model->file2 = UploadedFile::getInstance($model, 'file2');
+            $model->file3 = UploadedFile::getInstance($model, 'file3');
+            $model->file4 = UploadedFile::getInstance($model, 'file4');
+            $model->file5 = UploadedFile::getInstance($model, 'file5');
+            // form inputs are valid, do something here
+            if ($model->upload()) {
+
+            }
+            if ($model->save(false)) {
+                $modelfiltro->idanuncio = $model->idanuncio;
+                $modelfiltro->save();
+                Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido por nuestro equipo con exito y esta en proceso de aprobacion. \n Te responderemos en un maximo de 24 horas si tu anuncio es aprobado o necesitas hacerle algun cambio.', 'type' => 'success']);
+                return $this->redirect(['cuenta/anuncios2']);
+            } else {
+                if ($model->foto) {
+                    if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
+                        unlink(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto);
                     }
-                    $model->foto = $name . '.' . $model->file->extension;
                 }
-                if ($model->save(false)) {
-                    $modelfiltro->idanuncio = $model->idanuncio;
-                    $modelfiltro->save();
-                    Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido por nuestro equipo con exito y esta en proceso de aprobacion. \n Te responderemos en un maximo de 24 horas si tu anuncio es aprobado o necesitas hacerle algun cambio.', 'type' => 'success']);
-                    return $this->redirect(['cuenta/publicargaleria', 'id' => $model->idanuncio]);
-                } else {
-                    if ($model->foto) {
-                        if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
-                            unlink(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto);
-                        }
-                    }
-                    Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la creacion del anuncio, Intentelo de nuevo mas tarde']);
-                }
+                Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la creacion del anuncio, Intentelo de nuevo mas tarde']);
             }
 
         }
@@ -390,6 +386,8 @@ class CuentaController extends Controller
             return $this->redirect(['site/login']);
         }
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+        $mensajes = Calificaciones::updateAll(['estado'=>1],['idvendedor' => Yii::$app->session->get('user')['idusuario']]);
+
         return $this->render('index', ['op' => 3, 'model' => $model]);
     }
 

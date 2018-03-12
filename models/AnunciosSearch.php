@@ -74,7 +74,7 @@ class AnunciosSearch extends Anuncios
             ->andFilterWhere(['like', 'foto', $this->foto])
             ->andFilterWhere(['like', 'precio', $this->precio]);
         if (isset($params['vendedor'])) {
-            $query->andFilterWhere(['idusuario'=> $params['vendedor']]);
+            $query->andFilterWhere(['idusuario' => $params['vendedor']]);
         }
         if (isset($params['categorias'])) {
             $tmp = array();
@@ -83,8 +83,8 @@ class AnunciosSearch extends Anuncios
             $query->andFilterWhere(['IN', 'idcategoria', $tmp]);
         }
         if (isset($params['precio'])) {
-            $tmp = explode(',',$params['precio']);
-            $query->andFilterWhere(['between', 'cast(precio as unsigned)', $tmp[0],$tmp[1]]);
+            $tmp = explode(',', $params['precio']);
+            $query->andFilterWhere(['between', 'cast(precio as unsigned)', $tmp[0], $tmp[1]]);
         }
         if (isset($params['condicion']) OR isset($params['talla']) OR isset($params['material']) OR isset($params['marca']) OR isset($params['color']) OR isset($params['ciudad'])) {
             $query->innerJoinWith('anunciosFiltros');

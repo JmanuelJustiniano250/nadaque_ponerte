@@ -72,7 +72,7 @@ use yii\widgets\Pjax;
                 'template' => '<div class="btn-group btn-group-justified" role="group">{update}{delete}</div>',
                 'buttons' => [
                     'update' => function ($url, $model, $key) {
-                        if($model->estado!=2)
+                        if ($model->estado != 2)
                             return '';
                         return Html::a('<i class="fa fa-pencil"></i>', $url, ['class' => 'btn btn-info']);
                     },

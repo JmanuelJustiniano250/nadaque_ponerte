@@ -16,6 +16,7 @@ use app\models\Deseo;
 use app\models\Deseos;
 use app\models\Faq;
 use app\models\LoginWeb;
+use app\models\Mensajes;
 use app\models\Noticias;
 use app\models\NoticiasSearch;
 use app\models\Paquetes;
@@ -179,6 +180,7 @@ class SiteController extends Controller
             $data['model'] = Anuncios::findOne(['idanuncio' => $id]);
             $data['model']->visitas = (int)$data['model']->visitas + 1;
             $data['model']->save(false);
+            $mensajes = Mensajes::updateAll(['estado'=>1],['idanuncio' => $id]);
         }
 
         $data['configuracion']['titulo_pagina'] = $data['model']['titulo'];

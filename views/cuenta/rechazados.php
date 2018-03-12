@@ -45,9 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     </div>
 
-                   <!-- <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
+                    <!-- <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
                         <p class="nobor"><span>Cod. Paquete: </span>
-                            <?/*= $model['codigo'] */?> </p>
+                            <? /*= $model['codigo'] */ ?> </p>
                     </div>-->
 
                 </div>
@@ -56,20 +56,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <p class="text-center nobor">
-                        <?= $model['razon']?>
+                        <?= $model['razon'] ?>
                         <br>
 
-                        Registrado en <span> <?= \app\components\Funcions::fecha($model->paquete['fecha_pago'],true,true) ?></span>
+                        Registrado en
+                        <span> <?= \app\components\Funcions::fecha($model->paquete['fecha_pago'], true, true) ?></span>
 
 
                     </p>
 
                     <div class="text-center" align="center" style="margin-top: px;">
-                        <a href="<?= \yii\helpers\Url::to(['cuenta/create','id'=>$model->idanuncio])?>" class="registrarse" style="margin-left: 0">EDITAR MI ANUNCIO</a>
+                        <a href="<?= \yii\helpers\Url::to(['cuenta/create', 'id' => $model->idanuncio]) ?>"
+                           class="registrarse" style="margin-left: 0">EDITAR MI ANUNCIO</a>
                     </div>
-
-
-
 
 
                 </div>

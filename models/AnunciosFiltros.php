@@ -66,22 +66,27 @@ class AnunciosFiltros extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Ciudad::className(), ['idciudad' => 'idciudad']);
     }
+
     public function getColor()
     {
         return $this->hasOne(ColoresProductos::className(), ['idcolores' => 'id_cp']);
     }
+
     public function getCondicion()
     {
         return $this->hasOne(CondicionProducto::className(), ['idcondicion' => 'id_cp']);
     }
+
     public function getMarca()
     {
         return $this->hasOne(MarcaProducto::className(), ['idmarca' => 'id_msp']);
     }
+
     public function getMaterial()
     {
         return $this->hasOne(MaterialProducto::className(), ['idmaterial' => 'id_mp']);
     }
+
     public function getTalla()
     {
         return $this->hasOne(TallasProducto::className(), ['idtalla' => 'id_tp']);

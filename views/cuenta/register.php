@@ -240,8 +240,12 @@ $this->registerCss($script);
     text-align: center; font-weight: 300">FOTO (sube tu foto de perfil)</H3>
 
             <?php
-            $initial = [];
+            $initial = [];$initial2 = [];$initial3 = [];$initial4 = [];$initial5 = [];
             array_push($initial, Html::img('@web/imagen/usuarios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+            array_push($initial2, Html::img('@web/imagen/usuarios/' . $model->foto2, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+            array_push($initial3, Html::img('@web/imagen/usuarios/' . $model->foto3, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+            array_push($initial4, Html::img('@web/imagen/usuarios/' . $model->foto4, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+            array_push($initial5, Html::img('@web/imagen/usuarios/' . $model->foto5, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
             ?>
 
             <?php
@@ -264,6 +268,87 @@ $this->registerCss($script);
                 ]
             ])->label(false);
             ?>
+            <?php
+            echo $form->field($model, 'file2')->widget(\kartik\widgets\FileInput::classname(), [
+                'options' => [
+                    'multiple' => false,
+                    'accept' => 'image/*',
+                ],
+                'pluginOptions' => [
+                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
+                    'browseLabel' => '',
+                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                    'uploadExtraData' => [
+                        'id' => $model->idusuario,
+                    ],
+                    'initialPreviewFileType' => 'image',
+                    'initialPreview' => $initial2,
+                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                    'language' => 'es-ES'
+                ]
+            ])->label(false);
+            ?>
+            <?php
+            echo $form->field($model, 'file3')->widget(\kartik\widgets\FileInput::classname(), [
+                'options' => [
+                    'multiple' => false,
+                    'accept' => 'image/*',
+                ],
+                'pluginOptions' => [
+                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
+                    'browseLabel' => '',
+                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                    'uploadExtraData' => [
+                        'id' => $model->idusuario,
+                    ],
+                    'initialPreviewFileType' => 'image',
+                    'initialPreview' => $initial3,
+                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                    'language' => 'es-ES'
+                ]
+            ])->label(false);
+            ?>
+            <?php
+            echo $form->field($model, 'file4')->widget(\kartik\widgets\FileInput::classname(), [
+                'options' => [
+                    'multiple' => false,
+                    'accept' => 'image/*',
+                ],
+                'pluginOptions' => [
+                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
+                    'browseLabel' => '',
+                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                    'uploadExtraData' => [
+                        'id' => $model->idusuario,
+                    ],
+                    'initialPreviewFileType' => 'image',
+                    'initialPreview' => $initial4,
+                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                    'language' => 'es-ES'
+                ]
+            ])->label(false);
+            ?>
+            <?php
+            echo $form->field($model, 'file5')->widget(\kartik\widgets\FileInput::classname(), [
+                'options' => [
+                    'multiple' => false,
+                    'accept' => 'image/*',
+                ],
+                'pluginOptions' => [
+                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
+                    'browseLabel' => '',
+                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                    'uploadExtraData' => [
+                        'id' => $model->idusuario,
+                    ],
+                    'initialPreviewFileType' => 'image',
+                    'initialPreview' => $initial5,
+                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                    'language' => 'es-ES'
+                ]
+            ])->label(false);
+            ?>
+
         </div>
 
 
@@ -528,9 +613,6 @@ $this->registerCss($script);
                                 'Quillacollo' => 'Quillacollo',
 
 
-
-
-
                             ]
                         ) ?>
 
@@ -550,17 +632,13 @@ $this->registerCss($script);
 
 
                     </div>
-                    <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0; font-size: 11px;">Selecciona una opcion,
+                    <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0; font-size: 11px;">Selecciona
+                            una opcion,
                             <br>
 
-                        <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si quiero que mi telefono o celular sea visible en mis anuncios y perfil', '0' => 'No quiero que mi telefono o celular sea visible en mis anuncios y perfil'])->label(false) ?>
+                            <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si quiero que mi telefono o celular sea visible en mis anuncios y perfil', '0' => 'No quiero que mi telefono o celular sea visible en mis anuncios y perfil'])->label(false) ?>
 
                     </div>
-
-
-
-
-
 
 
                 </div>
@@ -651,7 +729,8 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label>
+                                <br>
 
 
                                 <?= $form->field($model, 'visiblefacebook')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
@@ -669,7 +748,8 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label>
+                                <br>
 
                                 <?= $form->field($model, 'visibletwittwe')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
@@ -691,7 +771,8 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label>
+                                <br>
                                 <?= $form->field($model, 'visibleyoutu')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
 
@@ -711,7 +792,8 @@ $this->registerCss($script);
 
                         <div class="col-sm-4 col-xs-12" style="padding-left: 0">
                             <div class="radios">
-                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label> <br>
+                                <label for="" style="margin-bottom: 0; font-size: 11px;">Visible en tu perfil</label>
+                                <br>
                                 <?= $form->field($model, 'visibleinsta')->inline()->radioList(['1' => 'Si', '0' => 'No'])->label(false) ?>
 
 
@@ -786,8 +868,8 @@ $this->registerCss($script);
     var password = document.getElementById("password")
         , confirm_password = document.getElementById("confirm_password");
 
-    function validatePassword(){
-        if(password.value != confirm_password.value) {
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
             confirm_password.setCustomValidity("Passwords Don't Match");
         } else {
             confirm_password.setCustomValidity('');
@@ -795,9 +877,9 @@ $this->registerCss($script);
     }
 
     password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;   contrasena2.setCustomValidity('');
+    confirm_password.onkeyup = validatePassword;
+    contrasena2.setCustomValidity('');
     }
-
 
 
 </script>

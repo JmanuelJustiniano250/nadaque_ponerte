@@ -1,6 +1,5 @@
 <?php
 
-use dosamigos\ckeditor\CKEditor;
 use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -178,10 +177,14 @@ $user = Yii::$app->session->get('user');
                         <div class="col-xs-12 des" align="center"><br>
                             <label for="">Foto de tu prenda <span class="obligatorio">*</span></label>
                             <?php
-                            $initial = [];
+                            $initial = [];$initial2 = [];$initial3 = [];$initial4 = [];$initial5 = [];
                             array_push($initial, Html::img('@web/imagen/anuncios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+                            array_push($initial2, Html::img('@web/imagen/anuncios/' . $model->foto2, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+                            array_push($initial3, Html::img('@web/imagen/anuncios/' . $model->foto3, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+                            array_push($initial4, Html::img('@web/imagen/anuncios/' . $model->foto4, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
+                            array_push($initial5, Html::img('@web/imagen/anuncios/' . $model->foto5, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
                             ?>
-                            <?= $form->field($model, 'file[]')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                            <?= $form->field($model, 'file')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
                                     /*'multiple' => true,*/
                                     'accept' => 'image/*',
@@ -189,6 +192,66 @@ $user = Yii::$app->session->get('user');
                                 'pluginOptions' => [
                                     'initialPreviewFileType' => 'image',
                                     'initialPreview' => $initial,
+                                    'browseLabel' => 'Escoger tu imagen (*.jpg)',
+                                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                                    'maxFileCount' => 5,
+                                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                                    "language" => "es",
+                                    'browseClass' => 'btn enviarsus',
+                                ]
+                            ]); ?><?= $form->field($model, 'file2')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                                'options' => [
+                                    /*'multiple' => true,*/
+                                    'accept' => 'image/*',
+                                ],
+                                'pluginOptions' => [
+                                    'initialPreviewFileType' => 'image',
+                                    'initialPreview' => $initial2,
+                                    'browseLabel' => 'Escoger tu imagen (*.jpg)',
+                                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                                    'maxFileCount' => 5,
+                                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                                    "language" => "es",
+                                    'browseClass' => 'btn enviarsus',
+                                ]
+                            ]); ?><?= $form->field($model, 'file3')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                                'options' => [
+                                    /*'multiple' => true,*/
+                                    'accept' => 'image/*',
+                                ],
+                                'pluginOptions' => [
+                                    'initialPreviewFileType' => 'image',
+                                    'initialPreview' => $initial3,
+                                    'browseLabel' => 'Escoger tu imagen (*.jpg)',
+                                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                                    'maxFileCount' => 5,
+                                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                                    "language" => "es",
+                                    'browseClass' => 'btn enviarsus',
+                                ]
+                            ]); ?><?= $form->field($model, 'file4')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                                'options' => [
+                                    /*'multiple' => true,*/
+                                    'accept' => 'image/*',
+                                ],
+                                'pluginOptions' => [
+                                    'initialPreviewFileType' => 'image',
+                                    'initialPreview' => $initial4,
+                                    'browseLabel' => 'Escoger tu imagen (*.jpg)',
+                                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                                    'maxFileCount' => 5,
+                                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
+                                    "language" => "es",
+                                    'browseClass' => 'btn enviarsus',
+                                ]
+                            ]); ?><?= $form->field($model, 'file5')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                                'options' => [
+                                    /*'multiple' => true,*/
+                                    'accept' => 'image/*',
+                                ],
+                                'pluginOptions' => [
+                                    'initialPreviewFileType' => 'image',
+                                    'initialPreview' => $initial5,
                                     'browseLabel' => 'Escoger tu imagen (*.jpg)',
                                     'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
                                     'maxFileCount' => 5,

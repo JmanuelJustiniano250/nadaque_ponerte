@@ -96,33 +96,33 @@ $this->registerCss($script);
 
             <div class="anuncios-create">
                 <div class="paquetesres">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <?php
-                                $tabla = \app\models\Anuncios::find()
-                                    ->andWhere(['estado' => 0])
-                                    ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
-                                    ->distinct()
-                                    ->all();
-                                $provider = new \yii\data\ArrayDataProvider([
-                                    'allModels' => $tabla,
-                                    'pagination' => [
-                                        'pageSize' => 9,
-                                    ],
-                                ]);
-                                \yii\widgets\Pjax::begin();
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
+                            $tabla = \app\models\Anuncios::find()
+                                ->andWhere(['estado' => 0])
+                                ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->distinct()
+                                ->all();
+                            $provider = new \yii\data\ArrayDataProvider([
+                                'allModels' => $tabla,
+                                'pagination' => [
+                                    'pageSize' => 9,
+                                ],
+                            ]);
+                            \yii\widgets\Pjax::begin();
 
-                                echo \yii\widgets\ListView::widget([
-                                    'dataProvider' => $provider,
-                                    'itemView' => 'aprobacion',
-                                    'summary' => false,
-                                    'itemOptions' => ['class' => 'item'],
+                            echo \yii\widgets\ListView::widget([
+                                'dataProvider' => $provider,
+                                'itemView' => 'aprobacion',
+                                'summary' => false,
+                                'itemOptions' => ['class' => 'item'],
 
-                                ]);
-                                \yii\widgets\Pjax::end();
-                                ?>
-                            </div>
+                            ]);
+                            \yii\widgets\Pjax::end();
+                            ?>
                         </div>
+                    </div>
                 </div>
             </div>
 
@@ -172,7 +172,7 @@ $this->registerCss($script);
                         <div class="col-xs-12">
                             <?php
                             $tabla = \app\models\Anuncios::find()
-                                ->andWhere(['or',['estado' => 2],['estado' => 4]])
+                                ->andWhere(['or', ['estado' => 2], ['estado' => 4]])
                                 ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
                                 ->distinct()
                                 ->all();

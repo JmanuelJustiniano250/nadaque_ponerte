@@ -41,7 +41,7 @@ class Configuracion extends \yii\db\ActiveRecord
             [['titulo_pagina'], 'string', 'max' => 500],
             [['email'], 'string', 'max' => 250],
             [['telefono', 'movil'], 'string', 'max' => 15],
-            [['direccion', 'twitter', 'facebook', 'youtube', 'instagram', 'coordenadas','google_analitics'], 'string', 'max' => 200],
+            [['direccion', 'twitter', 'facebook', 'youtube', 'instagram', 'coordenadas', 'google_analitics'], 'string', 'max' => 200],
         ];
     }
 

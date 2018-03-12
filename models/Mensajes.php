@@ -33,7 +33,7 @@ class Mensajes extends \yii\db\ActiveRecord
     {
         return [
             [['idusuario', 'detalle', 'tipo', 'estado'], 'required'],
-            [['idusuario', 'tipo', 'estado','idanuncio','idvendedor'], 'integer'],
+            [['idusuario', 'tipo', 'estado', 'idanuncio', 'idvendedor'], 'integer'],
             [['detalle'], 'string'],
             [['fecha_registro'], 'safe'],
             [['titulo'], 'string', 'max' => 250],
@@ -41,6 +41,7 @@ class Mensajes extends \yii\db\ActiveRecord
     }
 
     //tipo [0=>,1=>]
+
     /**
      * @inheritdoc
      */
@@ -63,13 +64,35 @@ class Mensajes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['idusuario' => 'idusuario']);
     }
+
     public function getVendedor()
     {
-        return $this->hasOne(Usuarios::className(), [ 'idusuario'=> 'idvendedor']);
+        return $this->hasOne(Usuarios::className(), ['idusuario' => 'idvendedor']);
     }
+
     public function getAnuncio()
     {
         return $this->hasOne(Anuncios::className(), ['idanuncio' => 'idanuncio']);
     }
 
+
+    static public function haveNew($tipo, $usuario = null, $anuncio = null)
+    {
+        $mensaje = Mensajes::find();
+        $mensaje = $mensaje->andWhere(['tipo' => $tipo]);
+        $mensaje = $mensaje->andWhere(['estado' => 0]);
+        if (!empty($usuario)) {
+            $mensaje = $mensaje->andWhere(['idvendedor' => $usuario]);
+        }
+
+        if (!empty($anuncio))
+            $mensaje = $mensaje->andWhere(['idanuncio' => $anuncio]);
+        else{
+            if($tipo==1){
+                $mensaje = $mensaje->andWhere(['!=','idanuncio' ,'0']);
+            }
+        }
+
+        return ($mensaje->count() > 0);
+    }
 }

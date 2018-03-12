@@ -9,6 +9,7 @@ namespace app\models;
  * @property int $idusuario
  * @property int $idvendedor
  * @property int $puntaje
+ * @property int $estado
  * @property string $mensaje
  * @property string $fecha_creacion
  */
@@ -28,7 +29,7 @@ class Calificaciones extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idusuario', 'idvendedor', 'puntaje'], 'integer'],
+            [['idusuario', 'idvendedor', 'puntaje','estado'], 'integer'],
             [['mensaje'], 'string'],
             [['fecha_creacion'], 'safe'],
         ];
@@ -53,8 +54,20 @@ class Calificaciones extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['idusuario' => 'idusuario']);
     }
+
     public function getVendedor()
     {
         return $this->hasOne(Usuarios::className(), ['idvendedor' => 'idusuario']);
+    }
+
+    static public function haveNew($usuario = null)
+    {
+        $mensaje = Calificaciones::find();
+        $mensaje = $mensaje->andWhere(['estado' => 0]);
+        if (!empty($usuario)) {
+            $mensaje = $mensaje->andWhere(['idvendedor' => $usuario]);
+        }
+
+        return ($mensaje->count() > 0);
     }
 }

@@ -231,49 +231,43 @@ $this->registerCss($script);
     ]); ?>
 
 
+    <div class="col-xs-12">
+        <div class="menuform">
+
+            <div class="row">
 
 
-        <div class="col-xs-12">
-            <div class="menuform">
+                <div class="col-md-6 col-xs-12">
+                    <label for="">Contraseña</label>
 
-                <div class="row">
-
-
-                    <div class="col-md-6 col-xs-12" >
-                        <label for="">Contraseña</label>
-
-                        <?= $form->field($model, 'contrasena')->textInput(['class' => 'form-control'])->input('password')->label(false) ?>
-
-
-
-                    </div>
-
-
-                    <div class="col-md-6 col-xs-12">
-                        <label for="">Repetir contraseña</label>
-
-
-                        <input type="password" id="confirm_password" class="form-control">
-
-
-                    </div>
+                    <?= $form->field($model, 'contrasena')->textInput(['class' => 'form-control'])->input('password')->label(false) ?>
 
 
                 </div>
+
+
+                <div class="col-md-6 col-xs-12">
+                    <label for="">Repetir contraseña</label>
+
+
+                    <input type="password" id="confirm_password" class="form-control">
+
+
+                </div>
+
+
             </div>
         </div>
-
-
-
-
-        <div class="col-xs-12">
-            <?= Html::submitButton('Cambiar contraseña', ['class' => 'btnregister btn btn-primary center-block']) ?>
-        </div>
-
-
     </div>
-    <?php ActiveForm::end(); ?>
 
+
+    <div class="col-xs-12">
+        <?= Html::submitButton('Cambiar contraseña', ['class' => 'btnregister btn btn-primary center-block']) ?>
+    </div>
+
+
+</div>
+<?php ActiveForm::end(); ?>
 
 
 <script type="text/javascript">

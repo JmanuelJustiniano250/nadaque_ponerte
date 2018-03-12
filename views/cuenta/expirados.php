@@ -44,9 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     </div>
 
-                   <!-- <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
+                    <!-- <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
                         <p class="nobor"><span>Cod. Paquete: 25464  </span>
-                            <?/*= $model['codigo'] */?> </p>
+                            <? /*= $model['codigo'] */ ?> </p>
 
                     </div>-->
 
@@ -59,8 +59,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <br>
 
-                        Expirado el <span> <?php $fecha_expiracion = mktime(0, 0, 0, date("m", $model->paquete['fecha_pago']), date("d", $model->paquete['fecha_pago'])+(isset($model->paquete->paquete['tiempo_vida'])?$model->paquete->paquete['tiempo_vida']:0), date("Y", $model->paquete['fecha_pago'])); ?>
-                            <?= \app\components\Funcions::fecha($fecha_expiracion,true,true) ?>
+                        Expirado el
+                        <span> <?php $fecha_expiracion = mktime(0, 0, 0, date("m", $model->paquete['fecha_pago']), date("d", $model->paquete['fecha_pago']) + (isset($model->paquete->paquete['tiempo_vida']) ? $model->paquete->paquete['tiempo_vida'] : 0), date("Y", $model->paquete['fecha_pago'])); ?>
+                            <?= \app\components\Funcions::fecha($fecha_expiracion, true, true) ?>
                         </span>
 
 
@@ -76,7 +77,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     </div>
-
 
 
 </div>

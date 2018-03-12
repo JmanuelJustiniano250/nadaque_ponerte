@@ -61,15 +61,15 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['fecha_nacimiento', 'fecha_registro', 'nombrenit', 'nit'], 'safe'],
-            [['sexo', 'estado', 'tipo', 'visiblefacebook', 'visibletwittwe' ,'visibleyoutu', 'visibleinsta', 'visibletelefono'], 'integer'],
+            [['sexo', 'estado', 'tipo', 'visiblefacebook', 'visibletwittwe', 'visibleyoutu', 'visibleinsta', 'visibletelefono'], 'integer'],
             [['nombres', 'email'], 'required'],
             [['descripcion'], 'string'],
             [['nombres', 'apellidos', 'ciudad', 'pais'], 'string', 'max' => 50],
-            [['direccion','nit'], 'string', 'max' => 200],
+            [['direccion', 'nit'], 'string', 'max' => 200],
             [['telefono', 'movil'], 'string', 'max' => 20],
-            [['email','intereses', 'ano', 'mes', 'dia'], 'string', 'max' => 250],
+            [['email', 'intereses', 'ano', 'mes', 'dia'], 'string', 'max' => 250],
             [['contrasena', 'contrasena2', 'foto', 'tallasblusas', 'tallaspantalones', 'tallaszapatos'], 'string', 'max' => 255],
-            [['alias','facebook', 'instagram', 'twitter', 'youtube'], 'string', 'max' => 100],
+            [['alias', 'facebook', 'instagram', 'twitter', 'youtube'], 'string', 'max' => 100],
             ['file', 'file', 'extensions' => 'jpg, jpeg, png', 'mimeTypes' => 'image/jpeg, image/png'],
         ];
     }

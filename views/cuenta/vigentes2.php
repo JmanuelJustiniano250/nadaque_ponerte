@@ -3,7 +3,6 @@
 use himiklab\thumbnail\EasyThumbnailImage;
 use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 
 /* @var $this yii\web\View */
@@ -58,7 +57,7 @@ use yii\helpers\Url;
 
                         <?php else: ?>
 
-                            <p class="colorwqw" >Bs. <?= $model['precio'] ?> </p>
+                            <p class="colorwqw">Bs. <?= $model['precio'] ?> </p>
 
                         <?php endif; ?>
 
@@ -98,7 +97,6 @@ use yii\helpers\Url;
                         <div class="imgrod2">
                             <?= $model->usuario['nombres'] ?>
                         </div>
-
 
 
                     </div>
