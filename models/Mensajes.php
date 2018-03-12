@@ -40,6 +40,7 @@ class Mensajes extends \yii\db\ActiveRecord
         ];
     }
 
+    //tipo [0=>,1=>]
     /**
      * @inheritdoc
      */
