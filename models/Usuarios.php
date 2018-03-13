@@ -60,7 +60,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['fecha_nacimiento', 'fecha_registro', 'nombrenit', 'nit'], 'safe'],
+            [['fecha_nacimiento', 'fecha_registro', 'nombrenit', 'nit','contrasena2'], 'safe'],
             [['sexo', 'estado', 'tipo', 'visiblefacebook', 'visibletwittwe', 'visibleyoutu', 'visibleinsta', 'visibletelefono'], 'integer'],
             [['nombres', 'email'], 'required'],
             [['descripcion'], 'string'],
@@ -71,6 +71,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             [['contrasena', 'contrasena2', 'foto', 'tallasblusas', 'tallaspantalones', 'tallaszapatos'], 'string', 'max' => 255],
             [['alias', 'facebook', 'instagram', 'twitter', 'youtube'], 'string', 'max' => 100],
             ['file', 'file', 'extensions' => 'jpg, jpeg, png', 'mimeTypes' => 'image/jpeg, image/png'],
+            ['contrasena2','compare','compareAttribute'=>'contrasena'],
         ];
     }
 

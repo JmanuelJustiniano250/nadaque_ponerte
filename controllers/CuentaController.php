@@ -136,6 +136,23 @@ class CuentaController extends Controller
             return $this->redirect(['site/login']);
         }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+        if($model->load(Yii::$app->request->post()))
+        {
+            if(!empty($model->contrasena2)) {
+                if ($model->contrasena != Yii::$app->session->get('user')['contrasena']) {
+                if (md5($model->contrasena) != Yii::$app->session->get('user')['contrasena']) {
+                    $model->contrasena = md5($model->contrasena);
+                    if($model->save(false))
+                        Yii::$app->session->setFlash('success', ['message' => 'contraseña Actualizada','type'=>'success']);
+                    else
+                        Yii::$app->session->setFlash('success', ['message' => 'Hubo un error al actualizar los datos, intentelo mas tarde']);
+                }
+                }
+            }
+            else{
+                $model->addError('contrasena2','empty');
+            }
+        }
         return $this->render('index', ['op' => 9, 'model' => $model]);
     }
 

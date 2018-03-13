@@ -98,16 +98,37 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                                     ],
 
                                     [
-                                        'class' => 'yii\grid\ActionColumn',
                                         'header' => 'Estado',
+                                        'format' => 'raw',
+                                        'value' => function ($model) {
+                                                return $model->getEstado();
+                                        },
+                                        'filter' => \kartik\widgets\Select2::widget([
+                                            'model' => $searchModel,
+                                            'attribute' => 'estado',
+                                            'data' => (new \app\models\Anuncios())->getEstado(true),
+                                            'language' => 'es',
+                                            'options' => [
+                                                'placeholder' => 'Estado',
+                                                //'multiple' => true,
+                                            ],
+                                            'pluginOptions' => [
+                                                'templateResult' => new \yii\web\JsExpression('format'),
+                                                'templateSelection' => new \yii\web\JsExpression('format'),
+                                                'escapeMarkup' => $escape,
+                                                'allowClear' => true
+                                            ],
+                                        ])
+                                    ],
+
+                                    [
+                                        'class' => 'yii\grid\ActionColumn',
+                                        'header' => 'Destacado',
                                         'template' => '<div class="btn-group btn-group-justified" role="group">{estado}</div>',
                                         'buttons' => [
                                             'estado' => function ($url, $model, $key) {
                                                 switch ($model->estado) {
-                                                    case '1':
-                                                        $model->estado = 'success';
-                                                        break;
-                                                    case '2':
+                                                   case '5':
                                                         $model->estado = 'warning';
                                                         break;
                                                     default:

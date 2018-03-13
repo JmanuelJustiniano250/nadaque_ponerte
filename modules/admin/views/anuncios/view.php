@@ -11,12 +11,15 @@ $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $url = \yii\helpers\Url::to(['anuncios/comentario','id'=>$model->idanuncio]);
 $script = <<<JS
-function rechazo() {
+function rechazo(definitivo) {
+    estado = 2;
+    if(definitivo)
+        estado = 4;
     opcion = prompt("Razón:","Datos incorrectos");
     form = new FormData;
 jQuery.ajax({
     url:'$url',
-    data: {'com':opcion,'est':2},
+    data: {'com':opcion,'est':estado},
     success:function(data) {
       location.href=document.referrer;
     }
@@ -33,7 +36,12 @@ $this->registerJs($script,\yii\web\View::POS_BEGIN);
 
         <?= Html::a('rechazar', '#', [
             'class' => 'btn btn-danger',
-            'onClick' => 'rechazo()',
+            'onClick' => 'rechazo(false)',
+        ]) ?>
+
+        <?= Html::a('rechazo-definitivo', '#', [
+            'class' => 'btn bg-maroon',
+            'onClick' => 'rechazo(true)',
         ]) ?>
 
         <?= Html::a('Aprobar', ['aprove', 'id' => $model->idanuncio], [

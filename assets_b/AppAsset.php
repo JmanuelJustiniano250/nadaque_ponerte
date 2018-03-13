@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         'css/main.css',
         'css/settings.css',
         'css/style.css',
+        'css/bootstrap-notifications.min.css',
         'css/owl.carousel.css',
         'css/owl.theme.css',
 

@@ -252,7 +252,9 @@ class Anuncios extends \yii\db\ActiveRecord
             'aprovado',
             'rechazado',
             'vencido',
-            'rechazo-definitivo'
+            'rechazo-definitivo',
+            'destacado',
+            'vendido'
         ];
         if ($all)
             return $estado;

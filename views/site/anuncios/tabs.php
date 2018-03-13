@@ -33,19 +33,19 @@
 
 
                     <div class="tab-pane active" id="destacados">
-                        <?php $productos = \app\models\Anuncios::find()->where(['enable' => '1', 'estado' => '1'])->limit(8)->all(); ?>
+                        <?php $productos = \app\models\Anuncios::find()->where(['enable' => '1', 'estado' => '5'])->limit(8)->all(); ?>
                         <?= $this->render('inicio', ['model' => $productos]); ?>
                     </div>
 
 
                     <div class="tab-pane" id="ultimos">
-                        <?php $productos = \app\models\Anuncios::find()->where(['estado' => '1'])->orderBy(['fecha_registro' => SORT_DESC])->limit(8)->all(); ?>
+                        <?php $productos = \app\models\Anuncios::find()->where(['enable' => '1','estado' => '1'])->orderBy(['fecha_registro' => SORT_DESC])->limit(8)->all(); ?>
                         <?= $this->render('inicio', ['model' => $productos]); ?>
                     </div>
 
 
                     <div class="tab-pane" id="vistos">
-                        <?php $productos = \app\models\Anuncios::find()->where(['estado' => '1'])->orderBy(['visitas' => SORT_DESC])->limit(8)->all(); ?>
+                        <?php $productos = \app\models\Anuncios::find()->where(['enable' => '1','estado' => '1'])->orderBy(['visitas' => SORT_DESC])->limit(8)->all(); ?>
                         <?= $this->render('inicio', ['model' => $productos]); ?>
                     </div>
 

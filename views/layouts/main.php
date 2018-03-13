@@ -62,14 +62,16 @@ if($configuracion['google_analitics']) {
                 ->andWhere(['tipo' => 0])
                 ->andWhere(['estado' => 0])
                 ->count();
-            $mensages = '<i class="fa fa-envelope-o" aria-hidden="true"></i>';
-            $mensages .= Html::tag('span',(int)$cmensages,['class'=>'badge des2']);
-            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] . ' '.$mensages, 'url' => ['/site/deseos/'],
+            //$mensages = Html::tag('span',(int)$cmensages,['class'=>'badge bg-red']);
+            $mensages = '<i data-count="'.((int)$cmensages).'" class="fa fa-envelope-o notification-icon"></i>';
+            //$mensages = Html::a($mensages,['/cuenta/mensajeria']);
+            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] , 'url' => ['/site/deseos/'],
                 'items' => [
                     ['label' => FA::icon(FA::_USER) . ' Mi cuenta', 'url' => ['/cuenta/principal']],
                     ['label' => FA::icon(FA::_KEY) . ' Cambiar contraseña', 'url' => ['/cuenta/changepassword']],
                     ['label' => FA::icon(FA::_SIGN_OUT) . ' Salir', 'url' => ['/site/logout/']],
                 ]];
+            $items[] = ['label' => $mensages, 'url' => ['/cuenta/mensajeria']];
         } else {
             $items[] = ['label' => FA::icon(FA::_USER) . ' Ingresar', 'url' => ['/site/login']];
             $items[] = ['label' => FA::icon(FA::_EDIT) . ' Registrate', 'url' => ['/site/register/']];

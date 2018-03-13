@@ -68,6 +68,17 @@ class Funcions extends Component
         $model->save();
 
     }
+    static public function destacado2($model)
+    {
+        $destacado = 5;
+        if ($model->estado != $destacado) {
+            $model->estado = 5;
+        } else {
+            $model->estado = 0;
+        }
+        $model->save();
+
+    }
 
 
     static public function fecha($fecha=null,$corta=true,$string=false)

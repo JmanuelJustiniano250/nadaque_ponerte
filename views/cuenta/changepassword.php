@@ -220,7 +220,7 @@ $this->registerCss($script);
 
 <div class="">
     <?php $form = ActiveForm::begin([
-        'action' => ['cuenta/cuenta'],
+    //'action' => ,
         'id' => 'login-form',
         /*'layout' => 'horizontal',
         'fieldConfig' => [
@@ -249,12 +249,9 @@ $this->registerCss($script);
                 <div class="col-md-6 col-xs-12">
                     <label for="">Repetir contraseña</label>
 
-
-                    <input type="password" id="confirm_password" class="form-control">
-
+                    <?= $form->field($model, 'contrasena2')->textInput(['class' => 'form-control'])->input('password')->label(false) ?>
 
                 </div>
-
 
             </div>
         </div>

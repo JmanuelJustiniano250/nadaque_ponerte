@@ -158,7 +158,7 @@ class AnunciosController extends Controller
     {
         if (!Yii::$app->request->isAjax)
             $this->redirect(['index']);
-        Funcions::estado(Anuncios::find()->where(['idanuncio' => $id])->one());
+        Funcions::destacado2(Anuncios::find()->where(['idanuncio' => $id])->one());
     }
 
     /**
