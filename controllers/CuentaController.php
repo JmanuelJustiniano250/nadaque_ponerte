@@ -562,6 +562,57 @@ class CuentaController extends Controller
 
     }
 
+
+
+
+    public function actionUpdate54($id = null)
+    {
+        /* if (empty(Yii::$app->session->get('user'))) {
+             return $this->redirect(['site/login']);
+         }*/
+        if (is_null($id)) {
+            $this->redirect(['cuenta/anuncios']);
+        }
+        $model = Anuncios::find()->where(['idanuncio' => $id])->one();
+        $sw =0;
+        $vendido = Yii::$app->request->get('estado');
+        if($vendido){
+            $model->estado = 6;
+            $sw =1;
+        }
+
+        $precio = Yii::$app->request->get('precio');
+        if($precio)
+        {
+            $model->precio = $precio;
+            $sw =1;
+        }
+
+        $precio_promocion= Yii::$app->request->get('precio_promocion');
+        if($precio_promocion)
+        {
+            $model->precio_promocion = $precio_promocion;
+            $sw=1;
+        }else{
+            $model->precio_promocion = '0';
+            $sw=1;
+        }
+
+        if ($sw) {
+
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', ['message' => 'Anuncio actualizado', 'type' => 'success']);
+            } else
+                Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
+
+    }
+
+
+
+
     public function actionMensaje()
     {
 

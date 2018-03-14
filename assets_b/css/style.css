@@ -6190,3 +6190,9 @@ div.bhoechie-tab-menu div.list-group>a.active, div.bhoechie-tab-menu div.list-gr
 .prendasaparte{
     margin-top: 50px;
 }
+
+
+.advanced-slider .thumbnail {
+
+    background-size: contain;
+}

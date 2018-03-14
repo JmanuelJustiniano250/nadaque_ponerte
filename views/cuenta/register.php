@@ -240,7 +240,7 @@ $this->registerCss($script);
     text-align: center; font-weight: 300">FOTO (sube tu foto de perfil)</H3>
 
             <?php
-            $initial = [];$initial2 = [];$initial3 = [];$initial4 = [];$initial5 = [];
+            $initial = [];;
             array_push($initial, Html::img('@web/imagen/usuarios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
            ?>
 
