@@ -254,7 +254,7 @@ $index = 0;
     <div class="collapse" id="collapseExample7">
         <div class="" style="padding-top: 10px;">
             <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("color[" . $item['id_cp'] . "]", ((isset($model['color'][$item['id_cp']])) ? $model['color'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
+                <?= Html::checkbox("color[" . $item['id_co'] . "]", ((isset($model['color'][$item['id_co']])) ? $model['color'][$item['id_co']] : ''), ['label' => $item['nombre']]) ?>
             <?php endforeach; ?>
         </div>
     </div>

@@ -36,7 +36,7 @@ class ColoresProductos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_cp' => 'Id Cp',
+            'id_co' => 'Id Co',
             'value' => 'Value',
             'nombre' => 'Nombre',
         ];

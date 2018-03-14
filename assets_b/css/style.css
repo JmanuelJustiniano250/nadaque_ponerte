@@ -4683,7 +4683,7 @@ footer .up-footer .footer-line p {
 
     .cajadesc {
 
-        height:195px;
+        height:185px;
     }
 
     .navbar-collapse {
@@ -4726,6 +4726,17 @@ footer .up-footer .footer-line p {
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
+
+
+    .imgquiero {
+
+        top: 50px!important;
+    }
+
+    .tituprodit {
+
+        margin-top: 50px;
+    }
     .cajadesc {
 
         height: 185px;
@@ -4872,6 +4883,12 @@ footer .up-footer .footer-line p {
 }
 
 @media (max-width: 767px) {
+
+
+    .tituprodit {
+
+        margin-top: 50px;
+    }
 
     .sendensw{
         text-align: center!important;
@@ -5671,10 +5688,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-bottom: 15px;
 }
 
-.imgquiero {
-    float: right;
-    margin-top: -100px;
-}
+
 
 .colorww {
     color: #4b4b4b;
@@ -5732,6 +5746,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 @media (min-width: 768px) {
+
+    .imgquiero {
+        float: right;
+        margin-top: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+
     .imgrod {
         float: left;
     }
@@ -6138,4 +6162,31 @@ div.bhoechie-tab-menu div.list-group>a .glyphicon, div.bhoechie-tab-menu div.lis
 div.bhoechie-tab-menu div.list-group>a.active, div.bhoechie-tab-menu div.list-group>a.active .glyphicon, div.bhoechie-tab-menu div.list-group>a.active .fa {
 
     color: #ffffff!important;
+}
+
+/*
+
+
+.panel-title > a.respet:after {
+    content: ' -';
+    font-size: 42px;
+    color: #ff6d89;
+    font-weight: 600;
+    line-height: 49px;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+.panel-title > a.respet.collapsed:after {
+    font-family: 'Raleway', sans-serif;
+    content: '+';
+    font-size: 42px;
+    color: #ff6d89;
+    font-weight: 600;
+    line-height: 49px;
+}*/
+
+.prendasaparte{
+    margin-top: 50px;
 }

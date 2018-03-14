@@ -92,31 +92,31 @@ class AnunciosSearch extends Anuncios
                 $tmp = array();
                 foreach ($params['condicion'] as $key => $item)
                     $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'idcondicion', $tmp]);
+                $query->andFilterWhere(['IN', 'id_cp', $tmp]);
             }
             if (isset($params['talla'])) {
                 $tmp = array();
                 foreach ($params['talla'] as $key => $item)
                     $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'idtalla', $tmp]);
+                $query->andFilterWhere(['IN', 'id_tp', $tmp]);
             }
             if (isset($params['material'])) {
                 $tmp = array();
                 foreach ($params['material'] as $key => $item)
                     $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'idmaterial', $tmp]);
+                $query->andFilterWhere(['IN', 'id_mp', $tmp]);
             }
             if (isset($params['marca'])) {
                 $tmp = array();
                 foreach ($params['marca'] as $key => $item)
                     $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'idmarca', $tmp]);
+                $query->andFilterWhere(['IN', 'id_msp', $tmp]);
             }
             if (isset($params['color'])) {
                 $tmp = array();
                 foreach ($params['color'] as $key => $item)
                     $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'idcolores', $tmp]);
+                $query->andFilterWhere(['IN', 'id_co', $tmp]);
             }
             if (isset($params['ciudad'])) {
                 $tmp = array();

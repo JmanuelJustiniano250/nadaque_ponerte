@@ -33,6 +33,30 @@ font-weight: 600;
 .cajadeanuncio:hover p, .cajadeanuncio:focus p, .cajadeanuncio:active p {
     color: #fd839a !important;
 }
+
+@media (min-width: 1200px){
+
+
+.cajadesc {
+    height: 205px;
+}}
+
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+
+.cajadesc {
+    height: 205px;
+}}
+
+.statistic-box.style2 .statistic-post .statistic-counter {
+    padding: 30px 0px;
+    background: transparent;
+     border-color: transparent; 
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
 CSS;
 
 
