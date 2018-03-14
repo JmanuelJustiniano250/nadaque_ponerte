@@ -73,12 +73,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
-                        <a href="" class="registrarse" style="margin-left: 0">CAMBIAR PRECIO</a>
+                        <a href="<?= \yii\helpers\Url::to(['cuenta/updateA','id'=>$model->idanuncio,'estado'=>1])?>" class="registrarse" style="margin-left: 0">CAMBIAR PRECIO</a>
                     </div>
 
 
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
-                        <a href="" class="registrarse" style="margin-left: 0">MARCAR COMO VENDIDO</a>
+                        <a href="<?= \yii\helpers\Url::to(['cuenta/updateA','id'=>$model->idanuncio,'estado'=>1])?>" class="registrarse" style="margin-left: 0">MARCAR COMO VENDIDO</a>
                     </div>
 
 

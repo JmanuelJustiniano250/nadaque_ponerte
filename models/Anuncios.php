@@ -21,6 +21,7 @@ use Yii;
  * @property string $foto4
  * @property string $foto5
  * @property string $precio
+ * @property string $precio_promocion
  * @property int $estado
  * @property int $enable
  * @property string $fecha_registro

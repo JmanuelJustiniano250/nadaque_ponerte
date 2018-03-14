@@ -562,6 +562,38 @@ class CuentaController extends Controller
 
     }
 
+    public function actionUpdateA($id)
+    {
+        $vendido = Yii::$app->request->get('estado');
+        $precio = Yii::$app->request->get('precio');
+        $precio_oferta = Yii::$app->request->get('precio-oferta');
+        $model=Anuncios::findOne(['idanuncio'=>$id]);
+        if(!empty($model)){
+            $sw=0;
+        if($vendido){
+            $model->estado=6;
+            $sw=1;
+        }
+        if(!empty($precio))
+        {
+            $model->precio=$precio;
+            $sw=1;
+        }
+        if(!empty($precio_oferta))
+        {
+            $model->precio_promocion =$precio_oferta;
+            $sw=1;
+        }
+            if ($sw==1) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
+            } else
+                Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
+        }
+        }
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
     public function actionMensaje()
     {
 
