@@ -746,7 +746,7 @@ $this->registerCss($script);
 
 
                     <div class="col-md-6">
-
+                        <label for="">NIT</label>
                         <?= $form->field($model, 'nit')->label(false) ?>
                     </div>
 
