@@ -109,6 +109,12 @@ display: none;
   
 }
 
+
+.select2-container--krajee .select2-results__option--highlighted[aria-selected] {
+    background-color: #ff6d89;
+    color: #fff;
+}
+
 .deasq{
 background: #ff839a;
 }
@@ -334,7 +340,7 @@ $user = Yii::$app->session->get('user');
             <div class="medioas col-xs-12" style="">
                 <div class="row"><br>
                     <div class="col-md-6">
-                        <label for="">Nombre de tu prenda <span class="obligatorio">*</span></label>
+                        <label for="">Titulo del anuncio <span class="obligatorio">*</span></label>
                         <?= $form->field($model, 'titulo')->label(false) ?>
                     </div>
 
