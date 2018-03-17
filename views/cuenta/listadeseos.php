@@ -54,6 +54,13 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                     <div class=" col-xs-12 dl2" style="padding-right: 0">
                         <p class="nobor">Codigo: <?= $model->anuncio['codigo'] ?> </p>
                     </div>
+
+
+                    <div class="text-center" align="center" style="margin-top: px;"><BR><br>
+                        <a href="<?= Url::to(['cuenta/update54','id'=>$model->idanuncio,'estado'=>1])?>" class="registrarse" style="margin-left: 0">QUITAR DE MI LISTA</a>
+                    </div>
+
+
                 </div>
 
             </div>
