@@ -4,6 +4,7 @@
 use himiklab\thumbnail\EasyThumbnailImage;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Url;
 
 $script = <<<CSS
@@ -111,6 +112,19 @@ button.close {
     border-radius: 65px;
     padding: 0px 4px;
     border: 0px solid;
+}
+
+.link2{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    background: #ff6d89;
+    color: white;
+    font-size: 16px;
+    width: 16%;
+    padding: 5px 4px;
+    border-radius: 73px;
+    margin-bottom: 10px;
 }
 
 .close {
@@ -224,6 +238,12 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
 
                 </a>
+
+
+                <div align="center">
+
+                <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$model->idanuncio])?>" class="link2"><?= FA::icon(FA::_HEART) ?></a>
+                </div>
 
 
             </div>
@@ -635,8 +655,8 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                                 <div class="comentarios2" style="padding-left: 10px">
                                     <p><?= $mensaje['detalle']?></p>
-                                    <br>
-                                    <p style="color: #ff6d89; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
+
+                                    <p style="color: #ff6d89; margin-bottom: 5px; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
                                 </div>
                             </div>
 
