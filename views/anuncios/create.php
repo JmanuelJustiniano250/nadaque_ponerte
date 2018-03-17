@@ -50,8 +50,8 @@ $bannersp2 = \app\models\Banners::find()
             <p class="text-center">Rellena los campos</p> <br><br>
 
 
-            <div class="col-md-12  " align="let">
-                <a href="" style="color: #a94442; font-weight: 600">Ver reglas de publicación</a>
+            <div class="col-md-12  " align="center">
+                <a href="" style="color: #ff6d89; font-weight: 600">Ver reglas de publicación</a>
                 <br>
             </div>
             <br><br>
