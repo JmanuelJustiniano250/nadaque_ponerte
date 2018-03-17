@@ -65,7 +65,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                 <div class="bderq">
                     <H3 CLASS="fec">Comprar paquete de anuncios <br> o anuncio suelto</H3><br>
                     <br>
-                    <a href="<?php echo Url::to(['vender']) ?>" class="btnregister">Compra tu anuncio </a> <br><br><br>
+                    <a href="<?php echo Url::to(['vender']) ?>" class="btnregister">Comprar </a> <br><br><br>
 
                 </div>
             </div>
@@ -73,7 +73,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
             <div class="col-sm-6 col-xs-12 " align="center">
                 <div class="bderq">
-                    <H3 CLASS="fec">Usar un anuncio de paquete <br> que ya compraste</H3><br><br>
+                    <H3 CLASS="fec">Usar un anuncio o paquete <br> que ya compraste</H3><br><br>
                     <a href="<?php echo Url::to(['cuenta/create']) ?>" class="btnregister">Publica tu anuncio </a><br><br><br>
                 </div>
             </div>
