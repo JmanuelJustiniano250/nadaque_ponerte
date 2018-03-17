@@ -5750,7 +5750,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     .imgquiero {
         float: right;
         margin-top: 0;
-        position: absolute;
+
         right: 0;
         top: 0;
     }
@@ -6115,14 +6115,15 @@ color: white;
 }
 
 .zoom2{
-    left: 35%;
+    left: 45%;
 }
 
 ul.pricing-table{
     display: inline-block;
 }
 .link2{
-    left: 55%;
+    right: 3%;
+    top: 30px!important;
 }
 .cajapaqeutepri p {
     color: #ffffff;
