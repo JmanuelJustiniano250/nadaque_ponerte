@@ -14,8 +14,17 @@ background: #f6f6f6;
     margin-bottom: 20px;
 }
 @media (min-width: 768px) {
+
+.prendasaparte .krajee-default.file-preview-frame{
+   width: 100%!important;
+}
 .des .select2-container--krajee {
    width: 50%!important;
+}
+
+
+.prendasaparte .file-preview{
+   width: 100%!important;
 }
 
 .file-preview {
@@ -100,6 +109,12 @@ display: none;
   
 }
 
+
+.select2-container--krajee .select2-results__option--highlighted[aria-selected] {
+    background-color: #ff6d89;
+    color: #fff;
+}
+
 .deasq{
 background: #ff839a;
 }
@@ -139,7 +154,7 @@ $user = Yii::$app->session->get('user');
                 <div class="" align="center">
                     <div class="medioas col-xs-12 des" style="">
                         <div class="row">
-                            <label for="">Selecciona tu paquete <span class="obligatorio">*</span></label>
+                            <label for="">Selecciona tu paquete o anuncio suelto previamente comprado <span class="obligatorio">*</span></label>
                             <?php
 
                             $tmp = array();
@@ -172,10 +187,13 @@ $user = Yii::$app->session->get('user');
             <?php endif; ?>
 
             <div class=" " align="center">
-                <div class=" col-xs-12 des" style="">
+                <div class="medioas col-xs-12 des" style="">
                     <div class="row">
-                        <div class="col-xs-12 des" align="center"><br>
-                            <label for="">Foto de tu prenda <span class="obligatorio">*</span></label>
+                        <div class="col-xs-12 des" ><br>
+
+                            <p class="text-left" style="color: #777777;  font-size: 16px;  margin-bottom: 25px;  font-weight: 600; ">Imagenes de tu prenda</p>
+
+
                             <?php
                             $initial = [];$initial2 = [];$initial3 = [];$initial4 = [];$initial5 = [];
                             array_push($initial, Html::img('@web/imagen/anuncios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
@@ -184,6 +202,13 @@ $user = Yii::$app->session->get('user');
                             array_push($initial4, Html::img('@web/imagen/anuncios/' . $model->foto4, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
                             array_push($initial5, Html::img('@web/imagen/anuncios/' . $model->foto5, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
                             ?>
+
+                          <div class="col-xs-12" align="center"><br>
+                              <label for="" style="font-size: 13px" >Foto principal de la prenda<span class="obligatorio">*</span></label>
+
+
+
+
                             <?= $form->field($model, 'file')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
                                     /*'multiple' => true,*/
@@ -199,7 +224,15 @@ $user = Yii::$app->session->get('user');
                                     "language" => "es",
                                     'browseClass' => 'btn enviarsus',
                                 ]
-                            ]); ?><?= $form->field($model, 'file2')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                            ]); ?>
+
+                          </div>
+
+                            <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center">
+                                <br>
+                                <label for="" style="font-size: 13px" >Luce tu prenda a tamaño completo<span class="obligatorio">*</span></label>
+
+                            <?= $form->field($model, 'file2')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
                                     /*'multiple' => true,*/
                                     'accept' => 'image/*',
@@ -214,7 +247,18 @@ $user = Yii::$app->session->get('user');
                                     "language" => "es",
                                     'browseClass' => 'btn enviarsus',
                                 ]
-                            ]); ?><?= $form->field($model, 'file3')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                            ]); ?>
+
+                            </div>
+
+                            <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center"><br>
+
+                                <label for="" style="font-size: 13px" >Muestra la parte trasera <span class="obligatorio">*</span></label>
+
+
+
+
+                                <?= $form->field($model, 'file3')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
                                     /*'multiple' => true,*/
                                     'accept' => 'image/*',
@@ -229,7 +273,14 @@ $user = Yii::$app->session->get('user');
                                     "language" => "es",
                                     'browseClass' => 'btn enviarsus',
                                 ]
-                            ]); ?><?= $form->field($model, 'file4')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                            ]); ?>
+
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center"><br>
+
+                                <label for="" style="font-size: 13px" >Ahora un vistazo a la etiqueta<span class="obligatorio">*</span></label>
+
+                            <?= $form->field($model, 'file4')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
                                     /*'multiple' => true,*/
                                     'accept' => 'image/*',
@@ -244,7 +295,16 @@ $user = Yii::$app->session->get('user');
                                     "language" => "es",
                                     'browseClass' => 'btn enviarsus',
                                 ]
-                            ]); ?><?= $form->field($model, 'file5')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
+                            ]); ?>
+                            </div>
+
+
+
+                            <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center"><br>
+
+                                <label for="" style="font-size: 13px" >Defectos o manchas de la prenda<span class="obligatorio">*</span></label>
+
+                            <?= $form->field($model, 'file5')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
                                     /*'multiple' => true,*/
                                     'accept' => 'image/*',
@@ -261,6 +321,15 @@ $user = Yii::$app->session->get('user');
                                 ]
                             ]); ?>
 
+                            </div>
+
+
+
+
+
+
+
+
                             <br>
                         </div>
 
@@ -271,7 +340,7 @@ $user = Yii::$app->session->get('user');
             <div class="medioas col-xs-12" style="">
                 <div class="row"><br>
                     <div class="col-md-6">
-                        <label for="">Nombre de tu prenda <span class="obligatorio">*</span></label>
+                        <label for="">Titulo del anuncio <span class="obligatorio">*</span></label>
                         <?= $form->field($model, 'titulo')->label(false) ?>
                     </div>
 
@@ -312,9 +381,9 @@ $user = Yii::$app->session->get('user');
                     <div class="col-md-6 col-xs-12">
 
                         <label>Colores <span class="obligatorio">*</span></label>
-                        <?= $form->field($filtro, 'idcolores')->widget(Select2::classname(), [
+                        <?= $form->field($filtro, 'id_co')->widget(Select2::classname(), [
 
-                            'data' => \yii\helpers\ArrayHelper::map(\app\models\ColoresProductos::find()->all(), 'id_cp', 'nombre'),
+                            'data' => \yii\helpers\ArrayHelper::map(\app\models\ColoresProductos::find()->all(), 'id_co', 'nombre'),
                             'language' => 'es',
                             'options' => [
                                 'placeholder' => 'Colores',
@@ -332,7 +401,7 @@ $user = Yii::$app->session->get('user');
 
                     <div class="col-md-6 col-xs-12">
                         <label>Condicion <span class="obligatorio">*</span></label>
-                        <?= $form->field($filtro, 'idcondicion')->widget(Select2::classname(), [
+                        <?= $form->field($filtro, 'id_cp')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\CondicionProducto::find()->all(), 'id_cp', 'nombre'),
                             'language' => 'es',
@@ -350,7 +419,7 @@ $user = Yii::$app->session->get('user');
 
                     <div class="col-md-6 col-xs-12">
                         <label>Marca <span class="obligatorio">*</span></label>
-                        <?= $form->field($filtro, 'idmarca')->widget(Select2::classname(), [
+                        <?= $form->field($filtro, 'id_msp')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\MarcaProducto::find()->all(), 'id_msp', 'nombre'),
                             'language' => 'es',
@@ -367,7 +436,7 @@ $user = Yii::$app->session->get('user');
                     <div class="col-md-6 col-xs-12">
 
                         <label>Material <span class="obligatorio">*</span></label>
-                        <?= $form->field($filtro, 'idmaterial')->widget(Select2::classname(), [
+                        <?= $form->field($filtro, 'id_mp')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\MaterialProducto::find()->all(), 'id_mp', 'nombre'),
                             'language' => 'es',
@@ -387,7 +456,7 @@ $user = Yii::$app->session->get('user');
 
                     <div class="col-md-6 col-xs-12">
                         <label>Talla <span class="obligatorio">*</span></label>
-                        <?= $form->field($filtro, 'idtalla')->widget(Select2::classname(), [
+                        <?= $form->field($filtro, 'id_tp')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\TallasProducto::find()->all(), 'id_tp', 'nombre'),
                             'language' => 'es',

@@ -4,6 +4,7 @@
 use himiklab\thumbnail\EasyThumbnailImage;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Url;
 
 $script = <<<CSS
@@ -113,6 +114,19 @@ button.close {
     border: 0px solid;
 }
 
+.link2{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    background: #ff6d89;
+    color: white;
+    font-size: 16px;
+    width: 16%;
+    padding: 5px 4px;
+    border-radius: 73px;
+    margin-bottom: 10px;
+}
+
 .close {
     float: right;
     font-size: 21px;
@@ -154,27 +168,60 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
             <div class="advanced-slider highslide-gallery" id="responsive-slider" align="center"
                  style="border:none !important">
                 <ul class="slides">
-                    <?php if (empty($model->anunciosGalerias)) {
-                        echo Html::tag(
-                            'li',
-                            Html::a(
-                                Html::img('@web/imagen/anuncios/' . $model['foto'], ['class' => 'image'])
-                            ) .
-                            Html::img('@web/imagen/anuncios/' . $model['foto'], ['class' => 'thumbnail']),
-                            ['class' => 'slide']
-                        );
-                    } else {
-                        foreach ($model->anunciosGalerias as $item) {
-                            echo Html::tag(
-                                'li',
-                                Html::a(
-                                    Html::img('@web/imagen/anuncios/' . $item['foto'], ['class' => 'image'])
-                                ) .
-                                Html::img('@web/imagen/anuncios/' . $item['foto'], ['class' => 'thumbnail']),
-                                ['class' => 'slide']
-                            );
-                        }
-                    } ?>
+
+
+                    <li class="slide">
+                       <?php echo Html::a(
+                        Html::img('@web/imagen/anuncios/' . $model['foto'], ['class' => 'image'])
+                        ) ?>
+                        <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto']) ?>"/>
+                    </li>
+
+
+
+                    <li class="slide">
+                        <?php echo Html::a(
+                                Html::img('@web/imagen/anuncios/' . $model['foto2'], ['class' => 'image'])
+                        ) ?>
+                        <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto2']) ?>"/>
+                    </li>
+
+
+
+                    <li class="slide">
+                        <?php echo Html::a(
+                            Html::img('@web/imagen/anuncios/' . $model['foto3'], ['class' => 'image'])
+                        ) ?>
+                        <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto3']) ?>"/>
+                    </li>
+
+
+
+                    <li class="slide">
+                        <?php echo Html::a(
+                            Html::img('@web/imagen/anuncios/' . $model['foto4'], ['class' => 'image'])
+                        ) ?>
+                        <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto4']) ?>"/>
+                    </li>
+
+
+
+                    <li class="slide">
+                        <?php echo Html::a(
+                            Html::img('@web/imagen/anuncios/' . $model['foto5'], ['class' => 'image'])
+                        ) ?>
+                        <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto5']) ?>"/>
+                    </li>
+
+
+
+
+
+
+
+
+
+
                 </ul>
             </div><!--fin galeria-->
 
@@ -182,12 +229,33 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
 
         <div class="col-md-5 col-xs-12">
+
             <h4 class="tituprodit"><?= $model['titulo'] ?></h4>
+
+            <div class="imgquiero">
+
+                <a href="" data-toggle="modal" data-target="#squarespaceModal">
+                    <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
+
+                </a>
+
+
+                <div align="center">
+
+                <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$model->idanuncio])?>" class="link2"><?= FA::icon(FA::_HEART) ?></a>
+                </div>
+
+
+            </div>
             <p style="font-weight: 600">Cod. <?= $model['codigo'] ?></p>
             <br>
             <p><span class="colorww">Categoria </span>: <?= $model->categoria['nombre'] ?></p>
             <!--<p><span class="colorww">Sub categoria </span>: Jean</p>-->
             <!--<p><span class="colorww">Condición :</span>Nuevo con etiqueta</p>-->
+
+
+
+
 
             <?php if ($model['precio_promocion']): ?>
 
@@ -203,13 +271,6 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
             <?php endif; ?>
 
-            <div class="imgquiero">
-
-
-                <a href="" data-toggle="modal" data-target="#squarespaceModal">
-                    <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
-
-                </a>
 
 
                 <!-- Modal del enviar mensaje -->
@@ -370,8 +431,6 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         </div>
                     </div>
                 </div>
-
-            </div>
 
 
             <div class="linecir"></div>
@@ -596,8 +655,8 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                                 <div class="comentarios2" style="padding-left: 10px">
                                     <p><?= $mensaje['detalle']?></p>
-                                    <br>
-                                    <p style="color: #ff6d89; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
+
+                                    <p style="color: #ff6d89; margin-bottom: 5px; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
                                 </div>
                             </div>
 

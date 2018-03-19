@@ -1,6 +1,9 @@
 <?php
 
 use himiklab\thumbnail\EasyThumbnailImage;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 
 /* @var $this yii\web\View */
@@ -73,12 +76,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
-                        <a href="<?= \yii\helpers\Url::to(['cuenta/updateA','id'=>$model->idanuncio,'estado'=>1])?>" class="registrarse" style="margin-left: 0">CAMBIAR PRECIO</a>
+
+                        <a href="" class="registrarse" data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 0">
+                            CAMBIAR PRECIO
+                        </a>
+
+
                     </div>
 
 
+
+
+
+
+
+
+
+
+
+
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
-                        <a href="<?= \yii\helpers\Url::to(['cuenta/updateA','id'=>$model->idanuncio,'estado'=>1])?>" class="registrarse" style="margin-left: 0">MARCAR COMO VENDIDO</a>
+                        <a href="" class="registrarse" style="margin-left: 0">MARCAR COMO VENDIDO</a>
                     </div>
 
 
@@ -91,4 +109,61 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 
+</div>
+
+
+
+
+
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: black">
+
+                  Cambia el precio
+                </h3>
+            </div>
+            <div class="modal-body">
+
+
+                <!-- content goes here -->
+
+
+                <?php $form = ActiveForm::begin([
+                    'action' => ['/cuenta/update54','id'=> $model->idanuncio],
+                    'id' => 'login-form',
+                    'method'=>'get'
+                    /*'layout' => 'horizontal',
+                    'fieldConfig' => [
+                        'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
+                        'labelOptions' => ['class' => 'col-md-4 control-label'],
+                    ],*/
+                ]); ?>
+
+                <div class="">
+                <span style="font-weight: 600; color: #fda4b5; margin-left: 0" >Precio original: </span><br>
+                <?= Html::input('text','precio',$model->precio,['class'=>'form-control']) ?>
+                <span style="font-weight: 600; color: #fda4b5; margin-left: 0" >Precio oferta: </span> <br>
+                <?= Html::input('text','precio_promocion',$model->precio_promocion,['class'=>'form-control']) ?>
+                <br>
+                </div>
+                <div align="center">  <button type="submit" class="btn btn-default btnregister enviarsns">Cambiar precio</button>
+                </div>
+                <?php ActiveForm::end(); ?>
+
+
+                <br>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified " role="group" aria-label="group button">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

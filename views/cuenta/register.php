@@ -240,13 +240,9 @@ $this->registerCss($script);
     text-align: center; font-weight: 300">FOTO (sube tu foto de perfil)</H3>
 
             <?php
-            $initial = [];$initial2 = [];$initial3 = [];$initial4 = [];$initial5 = [];
+            $initial = [];;
             array_push($initial, Html::img('@web/imagen/usuarios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-            array_push($initial2, Html::img('@web/imagen/usuarios/' . $model->foto2, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-            array_push($initial3, Html::img('@web/imagen/usuarios/' . $model->foto3, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-            array_push($initial4, Html::img('@web/imagen/usuarios/' . $model->foto4, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-            array_push($initial5, Html::img('@web/imagen/usuarios/' . $model->foto5, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-            ?>
+           ?>
 
             <?php
             echo $form->field($model, 'file')->widget(\kartik\widgets\FileInput::classname(), [
@@ -263,86 +259,6 @@ $this->registerCss($script);
                     ],
                     'initialPreviewFileType' => 'image',
                     'initialPreview' => $initial,
-                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
-                    'language' => 'es-ES'
-                ]
-            ])->label(false);
-            ?>
-            <?php
-            echo $form->field($model, 'file2')->widget(\kartik\widgets\FileInput::classname(), [
-                'options' => [
-                    'multiple' => false,
-                    'accept' => 'image/*',
-                ],
-                'pluginOptions' => [
-                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
-                    'browseLabel' => '',
-                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-                    'uploadExtraData' => [
-                        'id' => $model->idusuario,
-                    ],
-                    'initialPreviewFileType' => 'image',
-                    'initialPreview' => $initial2,
-                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
-                    'language' => 'es-ES'
-                ]
-            ])->label(false);
-            ?>
-            <?php
-            echo $form->field($model, 'file3')->widget(\kartik\widgets\FileInput::classname(), [
-                'options' => [
-                    'multiple' => false,
-                    'accept' => 'image/*',
-                ],
-                'pluginOptions' => [
-                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
-                    'browseLabel' => '',
-                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-                    'uploadExtraData' => [
-                        'id' => $model->idusuario,
-                    ],
-                    'initialPreviewFileType' => 'image',
-                    'initialPreview' => $initial3,
-                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
-                    'language' => 'es-ES'
-                ]
-            ])->label(false);
-            ?>
-            <?php
-            echo $form->field($model, 'file4')->widget(\kartik\widgets\FileInput::classname(), [
-                'options' => [
-                    'multiple' => false,
-                    'accept' => 'image/*',
-                ],
-                'pluginOptions' => [
-                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
-                    'browseLabel' => '',
-                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-                    'uploadExtraData' => [
-                        'id' => $model->idusuario,
-                    ],
-                    'initialPreviewFileType' => 'image',
-                    'initialPreview' => $initial4,
-                    'allowedFileExtensions' => ['jpg', 'png', 'gif'],
-                    'language' => 'es-ES'
-                ]
-            ])->label(false);
-            ?>
-            <?php
-            echo $form->field($model, 'file5')->widget(\kartik\widgets\FileInput::classname(), [
-                'options' => [
-                    'multiple' => false,
-                    'accept' => 'image/*',
-                ],
-                'pluginOptions' => [
-                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
-                    'browseLabel' => '',
-                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-                    'uploadExtraData' => [
-                        'id' => $model->idusuario,
-                    ],
-                    'initialPreviewFileType' => 'image',
-                    'initialPreview' => $initial5,
                     'allowedFileExtensions' => ['jpg', 'png', 'gif'],
                     'language' => 'es-ES'
                 ]
@@ -830,7 +746,7 @@ $this->registerCss($script);
 
 
                     <div class="col-md-6">
-
+                        <label for="">NIT</label>
                         <?= $form->field($model, 'nit')->label(false) ?>
                     </div>
 

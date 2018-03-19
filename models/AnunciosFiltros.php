@@ -31,7 +31,7 @@ class AnunciosFiltros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idanuncio', 'idciudad', 'idcolores', 'idcondicion', 'idmarca', 'idmaterial', 'idtalla'], 'integer'],
+            [['idanuncio',  'id_cp', 'id_co', 'id_msp', 'id_mp', 'id_tp'  ], 'integer'],
             [['fecha_creacion'], 'safe'],
         ];
     }
@@ -69,27 +69,27 @@ class AnunciosFiltros extends \yii\db\ActiveRecord
 
     public function getColor()
     {
-        return $this->hasOne(ColoresProductos::className(), ['idcolores' => 'id_cp']);
+        return $this->hasOne(ColoresProductos::className(), ['id_co' => 'id_co']);
     }
 
     public function getCondicion()
     {
-        return $this->hasOne(CondicionProducto::className(), ['idcondicion' => 'id_cp']);
+        return $this->hasOne(CondicionProducto::className(), ['id_cp' => 'id_cp']);
     }
 
     public function getMarca()
     {
-        return $this->hasOne(MarcaProducto::className(), ['idmarca' => 'id_msp']);
+        return $this->hasOne(MarcaProducto::className(), ['id_msp' => 'id_msp']);
     }
 
     public function getMaterial()
     {
-        return $this->hasOne(MaterialProducto::className(), ['idmaterial' => 'id_mp']);
+        return $this->hasOne(MaterialProducto::className(), ['id_mp' => 'id_mp']);
     }
 
     public function getTalla()
     {
-        return $this->hasOne(TallasProducto::className(), ['idtalla' => 'id_tp']);
+        return $this->hasOne(TallasProducto::className(), ['id_tp' => 'id_tp']);
     }
 
 }

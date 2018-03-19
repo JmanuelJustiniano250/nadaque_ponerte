@@ -180,14 +180,14 @@ class Anuncios extends \yii\db\ActiveRecord
     public function upload($name=null)
     {
         if ($this->validate(['file','file2','file3','file4','file5'])) {
-            $path = Yii::getAlias('@webroot') . '/imagen/anuncios/';
+            $pathp = Yii::getAlias('@webroot') . '/imagen/anuncios/';
 
-            if (!is_dir($path)) {
-                mkdir($path, 0755, true);
+            if (!is_dir($pathp)) {
+                mkdir($pathp, 0755, true);
             }
             $name = Yii::$app->security->generateRandomString();
             if (!empty($this->file)) {
-                $path = $path . $name . '.' . $this->file->extension;
+                $path = $pathp . $name . '.' . $this->file->extension;
                 if ($this->file->saveAs($path))
                     if ($this->foto) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto)) {
@@ -196,49 +196,53 @@ class Anuncios extends \yii\db\ActiveRecord
                     }
                     $this->foto = $name . '.' . $this->file->extension;
             }
-            $name = Yii::$app->security->generateRandomString();
+
+            $name2 = Yii::$app->security->generateRandomString();
             if (!empty($this->file2)) {
-                $path = $path . $name . '.' . $this->file2->extension;
+                $path = $pathp . $name2 . '.' . $this->file2->extension;
                 if ($this->file2->saveAs($path))
                     if ($this->foto2) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto2)) {
                             unlink(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto2);
                         }
                     }
-                $this->foto2 = $name . '.' . $this->file2->extension;
+                $this->foto2 = $name2 . '.' . $this->file2->extension;
             }
-            $name = Yii::$app->security->generateRandomString();
+
+            $name3 = Yii::$app->security->generateRandomString();
             if (!empty($this->file3)) {
-                $path = $path . $name . '.' . $this->file3->extension;
+                $path = $pathp . $name3 . '.' . $this->file3->extension;
                 if ($this->file3->saveAs($path))
                     if ($this->foto3) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto3)) {
                             unlink(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto3);
                         }
                     }
-                $this->foto3 = $name . '.' . $this->file3->extension;
+                $this->foto3 = $name3 . '.' . $this->file3->extension;
             }
-            $name = Yii::$app->security->generateRandomString();
+
+            $name4 = Yii::$app->security->generateRandomString();
             if (!empty($this->file4)) {
-                $path = $path . $name . '.' . $this->file4->extension;
+                $path = $pathp . $name4 . '.' . $this->file4->extension;
                 if ($this->file4->saveAs($path))
                     if ($this->foto4) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto4)) {
                             unlink(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto4);
                         }
                     }
-                $this->foto4 = $name . '.' . $this->file4->extension;
+                $this->foto4 = $name4 . '.' . $this->file4->extension;
             }
-            $name = Yii::$app->security->generateRandomString();
+
+            $name5 = Yii::$app->security->generateRandomString();
             if (!empty($this->file5)) {
-                $path = $path . $name . '.' . $this->file5->extension;
+                $path = $pathp . $name5 . '.' . $this->file5->extension;
                 if ($this->file5->saveAs($path))
                     if ($this->foto5) {
                         if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto5)) {
                             unlink(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto5);
                         }
                     }
-                $this->foto5 = $name . '.' . $this->file5->extension;
+                $this->foto5 = $name5 . '.' . $this->file5->extension;
             }
 
             return true;
