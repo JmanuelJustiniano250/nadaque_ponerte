@@ -66,6 +66,13 @@ padding-left: 20px;
 padding-top: 10px;
 }
 
+div.bhoechie-tab-menu div.list-group>a {
+    margin-bottom: 0;
+    cursor: inherit;
+}
+
+
+
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 display: none;
 }

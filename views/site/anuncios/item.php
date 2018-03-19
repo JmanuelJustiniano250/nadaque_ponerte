@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 
 use himiklab\thumbnail\EasyThumbnailImage;
+use kartik\widgets\StarRating;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use rmrevin\yii\fontawesome\FA;
@@ -245,11 +246,20 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                 <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$model->idanuncio])?>" class="link2"><?= FA::icon(FA::_HEART) ?></a>
                 </div>
 
+                <div align="center">
+                    <a href="" data-toggle="modal" class="btonhreg" data-target="#squarespaceModaljuntar">
+
+                        Como me puedo juntar</a> <br>
+
+                </div>
+
+
+
 
             </div>
             <p style="font-weight: 600">Cod. <?= $model['codigo'] ?></p>
             <br>
-            <p><span class="colorww">Categoria </span>: <?= $model->categoria['nombre'] ?></p>
+            <p><span class="colorww">Categoría </span>: <?= $model->categoria['nombre'] ?></p>
             <!--<p><span class="colorww">Sub categoria </span>: Jean</p>-->
             <!--<p><span class="colorww">Condición :</span>Nuevo con etiqueta</p>-->
 
@@ -276,7 +286,8 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                 <!-- Modal del enviar mensaje -->
 
                 <!-- line modal -->
-                <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+
+            <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -386,7 +397,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
 
                                 <?php $form = ActiveForm::begin([
-                                    'action' => ['/cuenta/mensaje'],
+                                    'action' => ['/cuenta/mensaje2'],
                                     'id' => 'login-form',
                                     /*'layout' => 'horizontal',
                                     'fieldConfig' => [
@@ -470,7 +481,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                 <ul class="nav nav-tabs descr" id="myTab">
                     <li class="active">
                         <a href="#desc" data-toggle="tab">
-                            <p>DESCRIPCION</p>
+                            <p>DESCRIPCIÓN</p>
                         </a>
                     </li>
 
@@ -535,7 +546,9 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
     text-align: center;
     font-weight: 600; text-align: center">
                             ¡Calificame!
-                        </a></div>
+                        </a>
+
+                        </div>
                         <!-- line modal -->
                         <div class="modal fade" id="califModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -581,9 +594,33 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                 </div>
                             </div>
                         </div>
+
+                        <div align="center">
+
+                        <?php
+                        $query = \app\models\Calificaciones::find()
+                            ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+                        $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
+                        echo StarRating::widget([
+                            'name' => 'rating_21',
+                            'value' => ($valor/5),
+                            'pluginOptions' => [
+                                'readonly' => true,
+                                'showClear' => false,
+                                'showCaption' => false,
+                            ],
+                        ]); ?>
+                        <?php
+
+                            ?>
+
+                        </div>
+
                     <?php endif;?>
 
                 </div>
+
+
 
 
                 <a class="moreven btn center-block" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Perfil de la vendedora</a>
@@ -616,7 +653,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                 <div class="submit-area" align="left"><br>
                     <input type="submit" name="enviar" id="" class="btnregister" style="text-transform: none"
-                           value="Dejar Mensaje">
+                           value="Dejar Comentario">
                 </div>
 
                 <?php ActiveForm::end(); ?> <br><br>
@@ -673,6 +710,68 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 </div>
 
 <br><br>
+
+
+
+<div class="modal fade" id="squarespaceModaljuntar" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600;  text-transform: uppercase">
+
+                    Como me puedo juntar
+                </h3>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="col-xs-12">
+
+
+                    <h4 style="font-weight: 600">Opción 1: Júntate en su casa o tu casa</h4>
+
+                    <p>
+                        Sabemos que en un mundo soñado todas tus amigas comprarían tus prendas a la venta, y tú comprarías sus prendas, pero resulta que no tienen los mismos gustos, y peor aún no son de la misma talla . Por ello a través de los anuncios de Nada que Ponerte, mujeres que no conoces aún, pueden ser tus compradoras, ¡y tú también comprar sus prendas tesoro!
+                        <br> Espera…pero ¿cómo me puedo juntar con alguien que no conozco para comprar o vender una prenda o accesorio?
+                    </p>
+
+
+                    <h4 style="font-weight: 600">Opción 2: Júntate en un lugar neutral</h4>
+
+                    <p>
+                        Ni tu casa ni mi casa, juntémonos en un café! O donde se les ocurra pero con la condición que se sientan cómodas, seguras siempre y que haya en ese lugar escogido un espacio adecuado donde pueda probarse la compradora, si así amerita la prenda. Consejo: Sigue siempre tu intuición y no arriesgues tu seguridad.
+                    </p>
+
+                    <h4 style="font-weight: 600">Opción 3: Júntate en nuestras oficinas!</h4>
+
+                    <p>
+                        Nuestro equipo estará más que feliz de recibir a todas esas amantes de los tesoros escondidos en armarios, te esperamos con una oficina que está equipada con un probador, unos sillones cómodos y ¡un espejito mágico!.
+                        <br>  No es obligatorio, pero preferimos que nos avises con anterioridad el día y la hora que te juntarás en nuestra oficina con tu compradora/vendedora, así podemos esperarlas con cafecito o lo que se nos ocurra .
+                        <br> Nuestros horarios de atención son martes a viernes de 14:00 a 20:00 y sábado de 9:30 a 13:00.
+                        <br><br>Si tienes alguna duda ¡contáctanos¡
+
+                    </p>
+
+                </div>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified " role="group" aria-label="group button">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <?php
 $script = <<<JS
   $('#responsive-slider').advancedSlider({width: 740,

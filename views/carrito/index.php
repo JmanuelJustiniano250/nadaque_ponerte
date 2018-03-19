@@ -29,7 +29,7 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
                             <div align="center"><strong>Producto</strong></div>
                         </td>
                         <td class="pad20">
-                            <div align="center"><strong>Descripcion</strong></div>
+                            <div align="center"><strong>Descripción</strong></div>
                         </td>
                         <td class="pad20">
                             <div align="center"><strong>Cantidad</strong></div>
@@ -75,7 +75,7 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
 
             <div class="panel-body">
                 <div class="col-md-12">
-                    <strong>Cantidad Articulos</strong>
+                    <strong>Cantidad Artículos</strong>
                     <div class="pull-right">
                         <span>
                 <?= Yii::$app->cart->getCount() ?>

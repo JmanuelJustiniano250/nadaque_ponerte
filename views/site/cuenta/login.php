@@ -57,7 +57,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
 
                     <div class="col-xs-12">
-                        <?= Html::a('No estas registrado? Registrate aqui!', ['site/register'], ['class' => 'btn plomo-1t']) ?>
+                        <?= Html::a('No estas registrado? Regístrate aqui!', ['site/register'], ['class' => 'btn plomo-1t']) ?>
                     </div>
                 </div>
             </div>

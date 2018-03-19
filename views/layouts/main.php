@@ -74,7 +74,7 @@ if($configuracion['google_analitics']) {
             $items[] = ['label' => $mensages, 'url' => ['/cuenta/mensajeria']];
         } else {
             $items[] = ['label' => FA::icon(FA::_USER) . ' Ingresar', 'url' => ['/site/login']];
-            $items[] = ['label' => FA::icon(FA::_EDIT) . ' Registrate', 'url' => ['/site/register/']];
+            $items[] = ['label' => FA::icon(FA::_EDIT) . ' Regístrate', 'url' => ['/site/register/']];
         }
         $items[] = ['label' => FA::icon(FA::_QUESTION_CIRCLE_O) . ' FAQ', 'url' => ['/site/faq']];
 
@@ -166,10 +166,10 @@ if($configuracion['google_analitics']) {
                     'items' => [
                         ['label' => 'VER ANUNCIOS', 'url' => ['/site/comprar']],
                         ['label' => 'ANUNCIAR ' . FA::icon(FA::_CAMERA), 'url' => ['/site/opciones']],
-                        ['label' => '¿COMO FUNCIONA?', 'url' => ['/site/pages', 'id' => 'como-funciona']],
+                        ['label' => '¿CÓMO FUNCIONA?', 'url' => ['/site/pages', 'id' => 'como-funciona']],
                         ['label' => "<img class='logover'  src='" . Yii::$app->request->baseUrl . "/assets_b/images/logo" . ".png' alt='Image Missing'>", 'url' => ['/site/index'], 'options' => ['class' => 'hidden-xs hidden-sm logovera'],],
 
-                        ['label' => '¿QUIENES SOMOS?', 'url' => ['/site/pages', 'id' => 'quienes-somos']],
+                        ['label' => '¿QUIÉNES SOMOS?', 'url' => ['/site/pages', 'id' => 'quienes-somos']],
                         ['label' => 'NOTICIAS', 'template' => '<a href="{url}" id="servicio-menu" data-toggle="dropdown">{label}</a>', 'options' => ['class' => 'dropdown'], 'url' => '#', 'items' => $items_p2],
                         ['label' => 'CONTACTO', 'url' => ['/site/contacto']],
                     ],
@@ -257,8 +257,8 @@ if($configuracion['google_analitics']) {
                         'submenuTemplate' => "\n<ul class=\" dropdown-menu \" >\n{items}\n</ul>\n",
 
                         'items' => [
-                            ['label' => 'Quienes somos', 'url' => ['site/pages', 'id' => 'quienes-somos'], 'options' => ['class' => ''],],
-                            ['label' => 'Como funciona NQP', 'url' => ['site/pages', 'id' => 'como-funciona'], 'options' => ['class' => ''],],
+                            ['label' => 'Quiénes somos', 'url' => ['site/pages', 'id' => 'quienes-somos'], 'options' => ['class' => ''],],
+                            ['label' => 'Cómo funciona NQP', 'url' => ['site/pages', 'id' => 'como-funciona'], 'options' => ['class' => ''],],
                             ['label' => 'Condiciones de uso ', 'url' => ['site/pages', 'id' => 'condiciones'], 'options' => ['class' => ''],],
                             ['label' => 'Preguntas frecuentes', 'url' => ['site/faq'], 'options' => ['class' => ''],],
                             ['label' => 'Contacto', 'url' => ['/site/contacto'], 'options' => ['class' => ''],],
@@ -285,12 +285,12 @@ if($configuracion['google_analitics']) {
                         'submenuTemplate' => "\n<ul class=\" dropdown-menu \" >\n{items}\n</ul>\n",
 
                         'items' => [
-                            ['label' => 'Como vender?', 'url' => ['/site/pages', 'id' => 'como-vender'], 'options' => ['class' => ''],],
-                            ['label' => 'Como comprar?', 'url' => ['/site/pages', 'id' => 'como-comprar'], 'options' => ['class' => ''],],
+                            ['label' => 'Cómo vender?', 'url' => ['/site/pages', 'id' => 'como-vender'], 'options' => ['class' => ''],],
+                            ['label' => 'Cómo comprar?', 'url' => ['/site/pages', 'id' => 'como-comprar'], 'options' => ['class' => ''],],
                             ['label' => 'Testimonios', 'url' => ['/site/tertimonios'], 'options' => ['class' => ''],],
                             ['label' => 'Videos tutoriales', 'url' => ['/site/tutoriales'], 'options' => ['class' => ''],],
-                            ['label' => 'Formas de Pago', 'url' => ['/site/pages', 'id' => 'formas-pago'], 'options' => ['class' => ''],],
-                            ['label' => 'Reglas de Publicación', 'url' => ['/site/pages', 'id' => 'reglas-publicacion'], 'options' => ['class' => ''],],
+                            ['label' => 'Formas de pago', 'url' => ['/site/pages', 'id' => 'formas-pago'], 'options' => ['class' => ''],],
+                            ['label' => 'Reglas de publicación', 'url' => ['/site/pages', 'id' => 'reglas-publicacion'], 'options' => ['class' => ''],],
 
                         ],
                     ]);

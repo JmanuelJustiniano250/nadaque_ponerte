@@ -52,7 +52,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
     <div class="title-section white">
         <div class="container">
-            <h1 style="font-size: 25px;">Selecciona una opcion para crear tu anuncio
+            <h1 style="font-size: 25px;">Selecciona una opción para crear tu anuncio
             </h1>
         </div>
     </div>

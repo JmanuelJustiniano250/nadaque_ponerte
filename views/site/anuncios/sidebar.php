@@ -109,7 +109,7 @@ $index = 0;
 
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Categoria <br>
+        Categoria  <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span>  <br>
     </a>
 
 
@@ -132,7 +132,7 @@ $index = 0;
 
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-        Rango de precio <br>
+        Rango de precio <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 
@@ -159,7 +159,7 @@ $index = 0;
     <?php $tmp = \app\models\CondicionProducto::find()->all() ?>
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-        Condicion del Producto <br>
+        Condicion del Producto <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 
@@ -180,7 +180,7 @@ $index = 0;
 
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
-        Tallas de los Productos <br>
+        Tallas de los Productos  <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 
@@ -201,7 +201,7 @@ $index = 0;
 
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
-        Material de los Productos <br>
+        Material de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 
@@ -227,7 +227,7 @@ $index = 0;
 
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample6" aria-expanded="false" aria-controls="collapseExample">
-        Marcas de los Productos <br>
+        Marcas de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 
@@ -247,7 +247,7 @@ $index = 0;
 
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample7" aria-expanded="false" aria-controls="collapseExample">
-        Colores de los Productos <br>
+        Colores de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 
@@ -273,7 +273,7 @@ $index = 0;
 
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample8" aria-expanded="false" aria-controls="collapseExample">
-        Ciudad  <br>
+        Ciudad <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 

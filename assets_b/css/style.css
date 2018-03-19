@@ -3285,8 +3285,8 @@ ul.team-social li a:hover i {
     padding-bottom: 0px;
     padding-top: 20px;
 
-    background: rgba(85, 11, 86, 0.63);
-    border-bottom: 0px solid #e6eaed;
+    background: #ffafbe;
+    border-bottom: 0px solid #ffafbe;
 }
 
 .statistic-box.style2 .statistic-post {
@@ -3297,8 +3297,8 @@ ul.team-social li a:hover i {
 
 .statistic-box.style2 .statistic-post .statistic-counter {
     padding: 30px 0px;
-    background: rgb(147, 100, 148);
-    border: 1px solid rgb(147, 100, 148);
+    background: #ffafbe;
+    border: 1px solid #ffafbe;
     margin-bottom: 30px;
     overflow: hidden;
 }
@@ -6196,4 +6196,35 @@ div.bhoechie-tab-menu div.list-group>a.active, div.bhoechie-tab-menu div.list-gr
 .advanced-slider .thumbnail {
 
     background-size: contain;
+}
+
+.lignsop{
+    padding-left: 5px;
+}
+
+.lignsop li{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    list-style: decimal;
+    margin-bottom: 10px;
+}
+
+.lignsop img{
+
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    max-width: 100%;
+    margin-top: 15px;
+}
+
+.btonhreg{
+    color: #ff6d89;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btonhreg:hover, .btonhreg:focus, .btonhreg:active{
+    color: #efa1b0;
+    text-decoration: none;
 }
