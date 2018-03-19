@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         echo StarRating::widget([
             'name' => 'rating_21',
-            'value' => $model['puntaje'] / 5,
+            'value' => $model['puntaje'],
             'pluginOptions' => [
                 'readonly' => true,
                 'showClear' => false,

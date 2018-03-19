@@ -601,9 +601,12 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         $query = \app\models\Calificaciones::find()
                             ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
                         $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
+                        $valor2 = ($query->count('idusuario'));
+                       
+
                         echo StarRating::widget([
                             'name' => 'rating_21',
-                            'value' => ($valor/5),
+                            'value' => ($valor),
                             'pluginOptions' => [
                                 'readonly' => true,
                                 'showClear' => false,

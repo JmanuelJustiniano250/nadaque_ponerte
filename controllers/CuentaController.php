@@ -422,7 +422,7 @@ class CuentaController extends Controller
             if ($model->idusuario != $model->idvendedor) {
                 $model->puntaje = round($model->puntaje);
                 if ($model->save()) {
-                    Yii::$app->session->setFlash('success', ['message' => 'calificacion Realizada', 'type' => 'success']);
+                    Yii::$app->session->setFlash('success', ['message' => 'Calificación Realizada', 'type' => 'success']);
                 } else {
                     Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la actualizacion, Intentelo de nuevo mas tarde']);
                 }
