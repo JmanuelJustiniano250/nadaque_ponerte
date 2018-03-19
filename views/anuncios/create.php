@@ -51,7 +51,7 @@ $bannersp2 = \app\models\Banners::find()
 
 
             <div class="col-md-12  " align="center">
-                <a href="" style="color: #ff6d89; font-weight: 600">Ver reglas de publicación</a>
+                <a href="<?= Url::to(['site/pages?id=reglas-publicacion']) ?>" target="_blank" style="color: #ff6d89; font-weight: 600">Ver reglas de publicación</a>
                 <br>
             </div>
             <br><br>

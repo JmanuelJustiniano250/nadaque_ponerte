@@ -10,6 +10,14 @@ use yii\widgets\ActiveForm;
 
 $script = <<<CSS
 
+.desactivadow{
+pointer-events: none;   cursor: default;   opacity: 0.5;
+}
+
+.activadow{
+pointer-events: initial;   cursor: auto;   opacity: 1;
+}
+
 .modal-header {
     padding: 15px;
     border-bottom: 1px solid #e5e5e5;
@@ -634,8 +642,19 @@ $user = Yii::$app->session->get('user');
 
     </div>
 
-    <div class=" text-center">
-        <?= Html::submitButton('Anuncio listo, Publicar', ['class' => 'btn enviarsus ']) ?>
+
+
+
+<div class="col-xs-12" align="center">
+    <label for="" style="font-size: 12px;">Aceptar reglas de publicacion </label> <br>
+    <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
+    <br><br>
+</div>
+
+
+
+    <div class=" text-center col-xs-12">
+        <?= Html::submitButton('Anuncio listo, Publicar', ['class' => 'btn enviarsus desactivadow' , 'id'=> 'content']) ?> <br><br><br>
     </div>
     <br>
     <br>
@@ -718,3 +737,22 @@ $user = Yii::$app->session->get('user');
     </div>
 </div>
 
+
+
+<script type="text/javascript">
+    function showContent() {
+        element = document.getElementById("content");
+        check = document.getElementById("check");
+        if (check.checked) {
+
+            $("#content").addClass("activadow");
+            $("#content").removeClass("desactivadow");
+        }
+        else {
+
+
+            $("#content").addClass("desactivadow");
+            $("#content").removeClass("activadow");
+        }
+    }
+</script>

@@ -4,6 +4,21 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 
+$script = <<<CSS
+.desactivadow{
+pointer-events: none;   cursor: default;   opacity: 0.5;
+}
+
+.activadow{
+pointer-events: initial;   cursor: auto;   opacity: 1;
+}
+CSS;
+$this->registerCss($script);
+
+
+
+
+
 $this->registerCssFile('@web/assets_b/web/css/easy-responsive-tabs.css', ['media' => 'screen', '']);
 $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' => \app\assets_b\AppAsset::className(), 'position' => \yii\web\View::POS_END]);
 
@@ -13,7 +28,7 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
 <div id="mainbody">
 
     <h1 class="text-center">Carrito</h1> <br><br>
-    <div class="row top-spacing4 bottom-spacing3">
+    <div class=" top-spacing4 bottom-spacing3">
 
         <div class="col-md-7 col-lg-6 col-lg-offset-1">
 
@@ -95,17 +110,36 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
                 <div class="col-md-12 text-center">
                     <div class="" role="group" aria-label="...">
 
+
+                        <div class="col-xs-12">
+                            <label for="" style="font-size: 12px;">Aceptar condiciones de uso de paquetes</label> <br>
+                            <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
+                            <br>
+                        </div>
+
+
+
+
+
                         <?php
                         if (empty(Yii::$app->session->get('user'))) {
                             echo Html::a('REALIZAR PAGO', Url::to(['site/login']), ['class' => 'btn enviarsus btnpag', 'data-target' => '#squarespaceModal']);
                         } else {
-                            echo Html::a('REALIZAR PAGO', Url::to(['pasos', 'pasos' => '1']), ['class' => 'btn enviarsus btnpag']);
+                            echo Html::a('REALIZAR PAGO', Url::to(['pasos', 'pasos' => '1']), ['class' => 'btn enviarsus btnpag desactivadow', 'style' => '', 'id'=> 'content']);
                         }
                         ?>
                     </div>
                     <br>
+
+
+
+
+
+
+
+
                     <a href="<?= Url::to(Yii::$app->request->referrer); ?>" class="cea " style="    color: #ff6d89;
-    font-weight: 600;"><span style="font-size: 1.5em;"><i
+    font-weight: 600;  "><span style="font-size: 1.5em;"><i
                                     class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;
                     </span> Continuar comprando </a>
 
@@ -124,6 +158,26 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
 
 </div>
 <br><br><br>
+
+
+<script type="text/javascript">
+    function showContent() {
+        element = document.getElementById("content");
+        check = document.getElementById("check");
+        if (check.checked) {
+
+            $("#content").addClass("activadow");
+            $("#content").removeClass("desactivadow");
+        }
+        else {
+
+
+            $("#content").addClass("desactivadow");
+            $("#content").removeClass("activadow");
+        }
+    }
+</script>
+
 
 <?php
 $script = <<<JS
