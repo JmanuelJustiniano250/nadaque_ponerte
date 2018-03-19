@@ -122,7 +122,7 @@ button.close {
     background: #ff6d89;
     color: white;
     font-size: 16px;
-    width: 16%;
+    width: 12%;
     padding: 5px 4px;
     border-radius: 73px;
     margin-bottom: 10px;
@@ -236,7 +236,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
             <div class="imgquiero">
 
                 <a href="" data-toggle="modal" data-target="#squarespaceModal">
-                    <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="">
+                    <img src="<?= Url::to('@web/assets_b/images/quiero.jpg') ?>" alt="" style="max-width: 100%; margin: 0 auto; display: block">
 
                 </a>
 
@@ -602,7 +602,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                             ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
                         $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
                         $valor2 = ($query->count('idusuario'));
-                       
+
 
                         echo StarRating::widget([
                             'name' => 'rating_21',
