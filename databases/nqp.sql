@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
+-- version 4.3.8
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2018 at 05:20 PM
--- Server version: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.0.27-1+ubuntu16.04.1+deb.sury.org+1
+-- Generation Time: Mar 21, 2018 at 02:52 PM
+-- Server version: 5.5.51-38.2
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `nqp`
+-- Database: `marca_nqp`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrador`
 --
 
-CREATE TABLE `administrador` (
+CREATE TABLE IF NOT EXISTS `administrador` (
   `idamin` int(11) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `usuario` varchar(50) DEFAULT '',
@@ -35,7 +35,7 @@ CREATE TABLE `administrador` (
   `tipo` int(11) DEFAULT '0',
   `authKey` varchar(255) DEFAULT '',
   `accessToken` varchar(255) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `administrador`
@@ -50,7 +50,7 @@ INSERT INTO `administrador` (`idamin`, `fecha_registro`, `usuario`, `contrasena`
 -- Table structure for table `anuncios`
 --
 
-CREATE TABLE `anuncios` (
+CREATE TABLE IF NOT EXISTS `anuncios` (
   `idanuncio` int(11) NOT NULL,
   `idcategoria` int(11) DEFAULT '0',
   `idusuario` int(11) DEFAULT '0',
@@ -73,39 +73,38 @@ CREATE TABLE `anuncios` (
   `foto3` varchar(255) DEFAULT '',
   `foto4` varchar(255) DEFAULT '',
   `foto5` varchar(255) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `anuncios`
 --
 
 INSERT INTO `anuncios` (`idanuncio`, `idcategoria`, `idusuario`, `titulo`, `decripcion`, `otra_descripcion`, `codigo`, `foto`, `precio`, `precio_promocion`, `estado`, `enable`, `fecha_registro`, `fecha_aprobado`, `idcompra`, `razon`, `visitas`, `vendido`, `foto2`, `foto3`, `foto4`, `foto5`) VALUES
-(1, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '550', 2, 0, '2018-01-01 20:07:05', NULL, 1, 'Datos incorrectos', 8, 0, '', '', '', ''),
-(2, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 3, 0, '', '', '', ''),
+(1, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '550', 2, 0, '2018-01-01 20:07:05', NULL, 1, '', 8, 0, '', '', '', ''),
+(2, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 7, 0, '', '', '', ''),
 (3, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 0, 0, '', '', '', ''),
 (4, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 0, 0, '', '', '', ''),
 (5, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 0, 0, '', '', '', ''),
 (6, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 0, 0, '', '', '', ''),
 (7, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 0, 0, '', '', '', ''),
 (8, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 1, 0, '', '', '', ''),
-(9, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 0, 0, '', '', '', ''),
+(9, 0, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\n\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', '00001', 'anuncio1.jpg', '1', '', 1, 0, '2018-01-01 20:07:05', NULL, 1, '', 9, 0, '', '', '', ''),
 (10, 16, 1, 'asd', '<p>asd</p>\r\n', '<p>asd</p>\r\n', NULL, 'tIOu81j7vgfSa7Grvb8mrTNVQPMVDsC8.png', '123', '', 1, 0, '2018-01-08 07:58:10', NULL, 1, '', 2, 0, '', '', '', ''),
 (11, 15, 1, 'asd', '<p>asd</p>\r\n', '<p>asd</p>\r\n', NULL, 'R0jepITBRiHCSGNLljfDB6yQTkIjPwQT.jpg', '3.2', '', 1, 0, '2018-01-08 22:44:05', NULL, 1, '', 7, 0, '', '', '', ''),
-(12, 31, 2, 'Bikini de tela hermosa', '', '', NULL, 'A6spa8YkEsgqtZwTg3svogyqCfz8tXCt.jpg', '100', '90', 1, 0, '2018-01-11 02:48:08', NULL, 1, '', 7, 0, '', '', '', ''),
+(12, 31, 2, 'Bikini de tela hermosa', '', '', NULL, 'A6spa8YkEsgqtZwTg3svogyqCfz8tXCt.jpg', '100', '90', 1, 0, '2018-01-11 02:48:08', NULL, 1, '', 13, 0, '', '', '', ''),
 (13, 31, 2, 'vcvcvcvcv', '<p>vvvcvc</p>\r\n', '', NULL, NULL, '100', '90', 0, 0, '2018-01-11 02:50:52', NULL, 1, '', 0, 0, '', '', '', ''),
 (14, 16, 3, 'cvvl,vx,vxvx 2', '<p>dvxvxvx 2 1</p>\r\n', '<p>cvvxv 2 1</p>\r\n', NULL, '5yLtKXQS8l4WiAXK-JoCi4OcCO8rL860.jpg', '100', '90', 0, 0, '2018-01-14 14:05:47', NULL, 2, '', 0, 0, '', '', '', ''),
 (15, 15, 5, 'Pantalon 25', '<p>sdwdwdssss</p>\r\n', '<p>wdwdwdwdssssa2222</p>\r\n', NULL, 'nzs3xlUebpdR_0hBirPqm_UENeartf3C.png', '233', '', 0, 0, '2018-02-05 01:26:43', NULL, 5, '', 0, 0, '', '', '', ''),
-(16, 14, 5, 'asdasd', '<p>asdas</p>\r\n', '<p>asdasd</p>\r\n', NULL, NULL, '123', '', 1, 0, '2018-02-04 20:30:51', NULL, 5, '', 5, 0, '', '', '', ''),
 (17, 14, 5, 'qqqq', '<p>asss</p>\r\n', '<p>ss</p>\r\n', NULL, '78A-GXvjoGccQJMtnaQTr5arLaRvjHD3.jpg', '123', '', 1, 0, '2018-02-05 01:34:00', NULL, 6, '', 72, 0, '', '', '', ''),
-(18, 14, 1, 'asd', '<p>adsf</p>\r\n', '<p>adsfasdf</p>\r\n', NULL, NULL, '123', '', 1, 0, '2018-02-23 08:33:36', NULL, 3, '', 9, 0, '', '', '', ''),
 (19, 14, 1, 'test de prenda', '<p>testes</p>\r\n', '<p>tests</p>\r\n', NULL, NULL, '123', '123', 0, 0, '2018-03-04 02:11:15', NULL, 2, '', 0, 0, '', '', '', ''),
 (20, 14, 1, 'test de prenda', '<p>testes</p>\r\n', '<p>tests</p>\r\n', NULL, NULL, '123', '123', 0, 0, '2018-03-04 02:28:46', NULL, 2, '', 0, 0, '', '', '', ''),
 (21, 14, 1, 'test de prenda', '<p>testes</p>\r\n', '<p>tests</p>\r\n', NULL, NULL, '123', '123', 0, 0, '2018-03-04 02:32:00', NULL, 2, '', 0, 0, '', '', '', ''),
-(22, NULL, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\r\n\r\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\r\n\r\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', NULL, NULL, '1', '550', 0, 0, '2018-03-12 07:25:48', NULL, 0, '', 0, 0, 'JB6UQu4LFuALC8rt2djAwZuD9UZ0MWkh.jpg', 'yR7GH8veGQjakC5sr-ajR228yOQU8pd3.jpg', '', ''),
-(24, 15, 5, 'asdasdasdasdasdasdasdasdasdasdasdasd', 'ddd', 'asdasd', NULL, 'ZHGSDkC2fe47tiBuwUfddSVzhych1sCN.jpg', '22', '545', 1, 0, '2018-03-14 20:41:05', NULL, 6, '', 37, 0, 'raXTQ67FgvaYPkcdchRYWjxyrmUiZGJ2.jpg', 'HobunYLfwyxQ9TPaCA4ky-3DRFmXkbmg.jpg', 'pICuhOyccQkz8tx1h5OhxO3jxpOOCY5s.jpg', 'AKFUgAZ0ee_j-v0kf8GtkTWM3lhBjBCu.jpg'),
-(25, 17, 5, 'prenda nueva', 'dasdasd', 'asdasdasd', NULL, 'C0rPauCgUPK2tEdWX6iPufMtlrSoE5Lv.jpg', '22', '33', 0, 0, '2018-03-15 00:17:32', NULL, 6, '', 0, 0, 'ufA_z08x1lsJjqC1j31XJk-CtasKhVO7.jpg', 'DicpNipjUZHYvfpZFYnNf9rP8TDb3hol.jpg', 'j2jLUbDpYwg0lpM5IPxSezFMyo9IGgys.jpg', 'XZ1XAjyneoL9eETHyLdriE4CRB7JUyIx.jpg'),
-(26, 17, 5, 'prenda nueva', 'dasdasd', 'asdasdasd', NULL, 'cZHz0tUQv0hLCF8C8_RVf9gWU9Ukzebp.jpg', '22', '33', 0, 0, '2018-03-15 00:19:17', NULL, 6, '', 0, 0, '4f_RRlZDMgx_iGp--vaaFT-M5Sg7hUrH.jpg', '2XJEYkeXVHHC6KTgTjQJz7lRrkJ88_jN.jpg', 'm-s88y2eFHYx_QXyI1H732UvwHeGiSX8.jpg', '1CaiU2YB0JC3AvfkoOYyudTGlY2QaAXZ.jpg'),
-(27, 17, 5, 'prenda nueva', 'dasdasd', 'asdasdasd', NULL, 'nxwZRgqTDktuVBnWbuGKjrzbLWAibsuT.jpg', '22', '33', 1, 0, '2018-03-15 00:19:42', NULL, 6, '', 2, 0, 'nUl82HhZfFMDOoYX3Jc2N_BMJaIPH-md.jpg', 'TDOUdximkMi-Bc9_SmnFhTfetsxjTwRj.jpg', 'UsOZQY6XUnkja4WTdd27n5M9VUlw21Xg.jpg', 'Yrni1Pq4VmQX7fA6hC_fWb5h1ZHZ1NL2.jpg');
+(22, NULL, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\r\n\r\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper at urna eget placerat. In luctus ipsum quis diam pharetra tincidunt. In malesuada augue a lectus tincidunt, ac suscipit augue dictum. Ut cursus molestie ex quis condimentum. Curabitur vestibulum eu tortor eu interdum. Aliquam viverra quis massa quis pretium.\r\n\r\nSuspendisse sed nibh consectetur, placerat eros a, egestas urna. Vestibulum quis posuere libero, ac suscipit libero. Nam nec lacinia justo, ut commodo nibh. Aliquam at sodales mauris. Curabitur ut tellus quam. Maecenas vitae tempus turpis, vel tempor purus. Praesent porttitor risus sed enim ullamcorper pretium. Vivamus nec auctor enim. Donec eu leo vitae quam imperdiet convallis sed sit amet magna. Morbi rutrum arcu eget turpis suscipit finibus. Nulla facilisi. Pellentesque id sem at tortor convallis condimentum eget eget mi. Donec finibus dapibus volutpat. Morbi sagittis dui et diam lacinia, eu dictum mauris consequat. Fusce faucibus leo ex, sit amet consectetur purus vulputate fringilla.', NULL, NULL, '1', '550', 4, 0, '2018-03-12 07:25:48', NULL, 0, '', 0, 0, 'JB6UQu4LFuALC8rt2djAwZuD9UZ0MWkh.jpg', 'yR7GH8veGQjakC5sr-ajR228yOQU8pd3.jpg', '', ''),
+(24, 15, 5, 'prenda nueva', 'ddd', 'asdasd', NULL, 'ZHGSDkC2fe47tiBuwUfddSVzhych1sCN.jpg', '22', '545', 1, 0, '2018-03-14 20:41:05', NULL, 6, '', 50, 0, 'raXTQ67FgvaYPkcdchRYWjxyrmUiZGJ2.jpg', 'HobunYLfwyxQ9TPaCA4ky-3DRFmXkbmg.jpg', 'pICuhOyccQkz8tx1h5OhxO3jxpOOCY5s.jpg', 'AKFUgAZ0ee_j-v0kf8GtkTWM3lhBjBCu.jpg'),
+(28, 17, 5, 'Chaqueta', 'Dscripcion de esta chaqueta', 'Medidas de la chaqueta', NULL, 'Kb9ohhGi24pDDjoSeOb6vW0frDa7BoEV.jpg', '33', '44', 1, 0, '2018-03-14 20:31:07', NULL, 6, '', 42, 0, 'flfKkSq32kdZ7Fuzavd57Y9r36tMMsS8.jpg', 'pEn3fHONen_xMO-UtvNvW_diy82EORWW.jpg', 'y2pCHxI1FoqekYqA1SnY4YLhtUDDo-lC.jpg', 'kBblA8jglcxoIGUm5FJFcTd-it7zhCuP.jpg'),
+(29, 16, 1, 'polera blanca manga corta', 'oikwer LIND de cuello en v tipo lino', 'fbfbdfb cm', NULL, '0Xv9kwKBJ8Afo2auZVNzSOCU9ychCkDR.jpg', '200', '', 0, 0, '2018-03-14 22:56:49', NULL, 3, '', 0, 0, '3jGRo1NGx-2F38lTmIPrj9lywdX8URjc.jpg', '', '', ''),
+(30, 17, 3, 'lindxoa', 'HTEHEHEH', '555', NULL, 'q7-oHDdJFD6ST5iUu0UF1SYn0Mkz595S.jpg', '100', '0', 6, 0, '2018-03-14 23:08:36', NULL, 8, 'foto borrosa', 23, 0, 'Nz5DYghV908DlpMn47oaz-DhZJsYKC8N.jpg', '', '', ''),
+(31, 16, 3, 'jdfjdnvjdnvjdn', 'sdvdvsd', '', NULL, '53fUGmwU7iQwIqozBoKxkoFytYtvSFEW.jpg', '100', '', 0, 0, '2018-03-16 17:25:39', NULL, 9, '', 0, 0, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -113,7 +112,7 @@ INSERT INTO `anuncios` (`idanuncio`, `idcategoria`, `idusuario`, `titulo`, `decr
 -- Table structure for table `anuncios_filtros`
 --
 
-CREATE TABLE `anuncios_filtros` (
+CREATE TABLE IF NOT EXISTS `anuncios_filtros` (
   `idfiltro` int(11) NOT NULL,
   `idanuncio` int(11) DEFAULT NULL,
   `idciudad` int(11) DEFAULT '0',
@@ -123,7 +122,7 @@ CREATE TABLE `anuncios_filtros` (
   `id_mp` int(11) DEFAULT '0',
   `id_tp` int(11) DEFAULT '0',
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `anuncios_filtros`
@@ -135,7 +134,11 @@ INSERT INTO `anuncios_filtros` (`idfiltro`, `idanuncio`, `idciudad`, `id_co`, `i
 (3, 22, NULL, NULL, NULL, NULL, NULL, NULL, '2018-03-12 03:26:34'),
 (4, 23, 1, 1, 1, 1, 1, 1, '2018-03-14 15:57:43'),
 (5, 24, 1, 1, 1, 1, 1, 1, '2018-03-14 16:41:05'),
-(6, 27, 0, 1, 1, 1, 1, 1, '2018-03-14 20:19:42');
+(6, 27, 0, 1, 1, 1, 1, 1, '2018-03-14 20:19:42'),
+(7, 28, 0, 1, 1, 1, 1, 1, '2018-03-14 20:31:07'),
+(8, 29, 0, 1, 1, 1, 1, 1, '2018-03-14 22:56:49'),
+(9, 30, 0, 1, 1, 1, 1, 1, '2018-03-14 23:08:36'),
+(10, 31, 0, 1, 1, 1, 1, 1, '2018-03-16 17:25:39');
 
 -- --------------------------------------------------------
 
@@ -143,12 +146,12 @@ INSERT INTO `anuncios_filtros` (`idfiltro`, `idanuncio`, `idciudad`, `id_co`, `i
 -- Table structure for table `anuncios_galeria`
 --
 
-CREATE TABLE `anuncios_galeria` (
+CREATE TABLE IF NOT EXISTS `anuncios_galeria` (
   `idgaleria` int(11) NOT NULL,
   `foto` varchar(250) DEFAULT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idanuncio` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `anuncios_galeria`
@@ -179,7 +182,7 @@ INSERT INTO `anuncios_galeria` (`idgaleria`, `foto`, `fecha_registro`, `idanunci
 -- Table structure for table `anuncios_visitas`
 --
 
-CREATE TABLE `anuncios_visitas` (
+CREATE TABLE IF NOT EXISTS `anuncios_visitas` (
   `idvisita` int(11) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idanuncio` int(11) DEFAULT '0'
@@ -191,7 +194,7 @@ CREATE TABLE `anuncios_visitas` (
 -- Table structure for table `banners`
 --
 
-CREATE TABLE `banners` (
+CREATE TABLE IF NOT EXISTS `banners` (
   `idbanner` int(11) NOT NULL,
   `titulo` varchar(50) DEFAULT '',
   `idcategoria` int(11) DEFAULT '0',
@@ -201,7 +204,7 @@ CREATE TABLE `banners` (
   `url` varchar(250) DEFAULT '',
   `fecha_regisro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `banners`
@@ -228,7 +231,7 @@ INSERT INTO `banners` (`idbanner`, `titulo`, `idcategoria`, `foto`, `descripcion
 -- Table structure for table `calificaciones`
 --
 
-CREATE TABLE `calificaciones` (
+CREATE TABLE IF NOT EXISTS `calificaciones` (
   `idcalificacion` int(11) NOT NULL,
   `idusuario` int(11) DEFAULT NULL,
   `idvendedor` int(11) DEFAULT NULL,
@@ -236,7 +239,7 @@ CREATE TABLE `calificaciones` (
   `mensaje` text,
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `calificaciones`
@@ -244,7 +247,12 @@ CREATE TABLE `calificaciones` (
 
 INSERT INTO `calificaciones` (`idcalificacion`, `idusuario`, `idvendedor`, `puntaje`, `mensaje`, `fecha_creacion`, `estado`) VALUES
 (1, 1, 5, 3, 'good job', '2018-02-26 06:14:48', 1),
-(2, 1, 1, 3, 'asd', '2018-02-26 06:20:42', 1);
+(2, 1, 1, 3, 'asd', '2018-02-26 06:20:42', 1),
+(3, 3, 5, 4, '', '2018-03-14 23:53:16', 1),
+(4, 3, 5, 5, '', '2018-03-14 23:54:23', 1),
+(5, 5, 3, 3, 'Probando', '2018-03-19 19:03:59', 1),
+(6, 5, 3, 5, 'aa', '2018-03-19 19:04:32', 1),
+(7, 3, 2, 5, 'ssfnf', '2018-03-20 02:04:45', 0);
 
 -- --------------------------------------------------------
 
@@ -252,7 +260,7 @@ INSERT INTO `calificaciones` (`idcalificacion`, `idusuario`, `idvendedor`, `punt
 -- Table structure for table `categorias`
 --
 
-CREATE TABLE `categorias` (
+CREATE TABLE IF NOT EXISTS `categorias` (
   `idcategoria` int(11) NOT NULL,
   `nombre` varchar(200) DEFAULT NULL,
   `imagen` varchar(250) NOT NULL DEFAULT '',
@@ -261,7 +269,7 @@ CREATE TABLE `categorias` (
   `estado` int(11) DEFAULT '0',
   `idpadre` int(11) DEFAULT '0',
   `idmodulo` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categorias`
@@ -301,11 +309,11 @@ INSERT INTO `categorias` (`idcategoria`, `nombre`, `imagen`, `alias`, `fecha_reg
 -- Table structure for table `ciudad`
 --
 
-CREATE TABLE `ciudad` (
+CREATE TABLE IF NOT EXISTS `ciudad` (
   `idciudad` int(11) NOT NULL,
   `value` varchar(10) DEFAULT '',
   `nombre` varchar(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ciudad`
@@ -320,11 +328,11 @@ INSERT INTO `ciudad` (`idciudad`, `value`, `nombre`) VALUES
 -- Table structure for table `colores_productos`
 --
 
-CREATE TABLE `colores_productos` (
+CREATE TABLE IF NOT EXISTS `colores_productos` (
   `id_co` int(11) NOT NULL,
   `value` varchar(10) DEFAULT '',
   `nombre` varchar(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `colores_productos`
@@ -339,7 +347,7 @@ INSERT INTO `colores_productos` (`id_co`, `value`, `nombre`) VALUES
 -- Table structure for table `compra`
 --
 
-CREATE TABLE `compra` (
+CREATE TABLE IF NOT EXISTS `compra` (
   `idcompra` int(11) NOT NULL,
   `idusuario` int(11) DEFAULT '0',
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -352,7 +360,7 @@ CREATE TABLE `compra` (
   `tipo_pago` int(11) DEFAULT '0',
   `session` varchar(255) DEFAULT '0',
   `fecha_pago` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `compra`
@@ -364,7 +372,10 @@ INSERT INTO `compra` (`idcompra`, `idusuario`, `fecha_registro`, `idpaquete`, `f
 (4, 2, '2018-01-11 02:45:40', 1, NULL, 0, 1, 'efdfdf', '21122', 0, 'Fr_ibaYHH9BkFfWu9b4641a12d2497bbdb729d0e530f983f', NULL),
 (5, 5, '2018-01-11 19:13:04', 1, NULL, 0, 1, 'ddfdf', '44', 0, 'Kwm4-EeBJPe78rvZa8b748b94aae4cbd3e28ce1997b14d41', NULL),
 (6, 5, '2018-01-12 19:28:43', 2, NULL, 0, 1, 'xvxvxv', '55566', 0, 'OkPlx_Mp3ggZ0s2La8b748b94aae4cbd3e28ce1997b14d41', NULL),
-(7, 1, '2018-03-04 16:04:15', 1, NULL, 0, 1, '', '', 0, 'rqRP8-se9bILyciN9b4641a12d2497bbdb729d0e530f983f', '2018-03-04 20:04:15');
+(7, 1, '2018-03-04 16:04:15', 1, NULL, 0, 1, '', '', 0, 'rqRP8-se9bILyciN9b4641a12d2497bbdb729d0e530f983f', '2018-03-04 20:04:15'),
+(8, 3, '2018-03-14 23:06:24', 1, NULL, 0, 1, '', '', 0, 'FvSM3jQsZztugRu99b4641a12d2497bbdb729d0e530f983f', '2018-03-14 23:06:24'),
+(9, 3, '2018-03-15 16:27:55', 1, NULL, 0, 1, '', '', 0, 'adXVJAbLY8O6tbfv9b4641a12d2497bbdb729d0e530f983f', '2018-03-15 16:27:55'),
+(10, 3, '2018-03-16 15:13:54', 1, NULL, 0, 1, '', '', 0, '34J2aJCcaSO2tXeP9b4641a12d2497bbdb729d0e530f983f', '2018-03-16 15:13:54');
 
 -- --------------------------------------------------------
 
@@ -372,11 +383,11 @@ INSERT INTO `compra` (`idcompra`, `idusuario`, `fecha_registro`, `idpaquete`, `f
 -- Table structure for table `condicion_producto`
 --
 
-CREATE TABLE `condicion_producto` (
+CREATE TABLE IF NOT EXISTS `condicion_producto` (
   `id_cp` int(11) NOT NULL,
   `value` varchar(10) DEFAULT '',
   `nombre` varchar(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `condicion_producto`
@@ -391,7 +402,7 @@ INSERT INTO `condicion_producto` (`id_cp`, `value`, `nombre`) VALUES
 -- Table structure for table `configuracion`
 --
 
-CREATE TABLE `configuracion` (
+CREATE TABLE IF NOT EXISTS `configuracion` (
   `idconfiguracion` int(11) NOT NULL,
   `titulo_pagina` varchar(500) DEFAULT '',
   `resumen_pagina` text,
@@ -407,14 +418,14 @@ CREATE TABLE `configuracion` (
   `coordenadas` varchar(200) DEFAULT '',
   `cron` int(11) NOT NULL DEFAULT '0',
   `google_analitics` varchar(20) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `configuracion`
 --
 
 INSERT INTO `configuracion` (`idconfiguracion`, `titulo_pagina`, `resumen_pagina`, `meta_palabrasclaves`, `email`, `telefono`, `movil`, `direccion`, `twitter`, `facebook`, `youtube`, `instagram`, `coordenadas`, `cron`, `google_analitics`) VALUES
-(1, 'NADA QUE PONERTE', '', 'NADA QUE PONERTE', 'marialaura@nadaqueponerte.com', '3325667', '76314443', 'Calle Cochabamba 777', '', '', '', '', '-17.816915, -63.210866', 0, '');
+(1, 'NADA QUE PONERTE', '', 'NADA QUE PONERTE', 'marialaura@nadaqueponerte.com', '3325667', '76314443', 'Calle Cochabamba 777', '', '', '', '', '-17.793508, -63.171525', 0, '');
 
 -- --------------------------------------------------------
 
@@ -422,14 +433,14 @@ INSERT INTO `configuracion` (`idconfiguracion`, `titulo_pagina`, `resumen_pagina
 -- Table structure for table `contenido`
 --
 
-CREATE TABLE `contenido` (
+CREATE TABLE IF NOT EXISTS `contenido` (
   `idcontenido` int(11) NOT NULL,
   `idcategoria` int(11) DEFAULT NULL,
   `titulo` varchar(50) DEFAULT '',
   `contenido` text,
   `fecha_modificacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contenido`
@@ -447,19 +458,21 @@ INSERT INTO `contenido` (`idcontenido`, `idcategoria`, `titulo`, `contenido`, `f
 -- Table structure for table `deseo`
 --
 
-CREATE TABLE `deseo` (
+CREATE TABLE IF NOT EXISTS `deseo` (
   `iddeseo` int(11) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idanuncio` int(11) DEFAULT '0',
   `idusuario` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `deseo`
 --
 
 INSERT INTO `deseo` (`iddeseo`, `fecha_registro`, `idanuncio`, `idusuario`) VALUES
-(1, '2018-03-06 06:15:23', 18, 1);
+(1, '2018-03-06 06:15:23', 18, 1),
+(2, '2018-03-20 01:54:37', 30, 3),
+(3, '2018-03-20 02:03:02', 12, 3);
 
 -- --------------------------------------------------------
 
@@ -467,13 +480,13 @@ INSERT INTO `deseo` (`iddeseo`, `fecha_registro`, `idanuncio`, `idusuario`) VALU
 -- Table structure for table `faq`
 --
 
-CREATE TABLE `faq` (
+CREATE TABLE IF NOT EXISTS `faq` (
   `idfaq` int(11) NOT NULL,
   `titulo` varchar(100) DEFAULT '',
   `contenido` text,
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `faq`
@@ -490,11 +503,11 @@ INSERT INTO `faq` (`idfaq`, `titulo`, `contenido`, `fecha_creacion`, `estado`) V
 -- Table structure for table `marca_producto`
 --
 
-CREATE TABLE `marca_producto` (
+CREATE TABLE IF NOT EXISTS `marca_producto` (
   `id_msp` int(11) NOT NULL,
   `value` varchar(10) DEFAULT '',
   `nombre` varchar(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marca_producto`
@@ -509,11 +522,11 @@ INSERT INTO `marca_producto` (`id_msp`, `value`, `nombre`) VALUES
 -- Table structure for table `material_producto`
 --
 
-CREATE TABLE `material_producto` (
+CREATE TABLE IF NOT EXISTS `material_producto` (
   `id_mp` int(11) NOT NULL,
   `value` varchar(10) DEFAULT '',
   `nombre` varchar(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `material_producto`
@@ -528,7 +541,7 @@ INSERT INTO `material_producto` (`id_mp`, `value`, `nombre`) VALUES
 -- Table structure for table `mensajes`
 --
 
-CREATE TABLE `mensajes` (
+CREATE TABLE IF NOT EXISTS `mensajes` (
   `idmensaje` int(10) NOT NULL,
   `idusuario` int(10) NOT NULL,
   `titulo` varchar(250) NOT NULL DEFAULT '',
@@ -538,7 +551,7 @@ CREATE TABLE `mensajes` (
   `estado` int(10) NOT NULL,
   `idanuncio` int(11) DEFAULT '0',
   `idvendedor` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mensajes`
@@ -553,7 +566,9 @@ INSERT INTO `mensajes` (`idmensaje`, `idusuario`, `titulo`, `detalle`, `fecha_re
 (7, 1, '', 'mensaje', '2018-02-23 04:18:29', 0, 1, 0, 2),
 (8, 1, '', 'hola?\r\n', '2018-02-23 04:29:24', 0, 1, 0, 5),
 (9, 1, '', 'hola\r\n', '2018-02-26 02:26:22', 0, 1, 0, 2),
-(10, 1, '', 'hola', '2018-03-12 02:18:21', 1, 0, 2, 0);
+(10, 1, '', 'hola', '2018-03-12 02:18:21', 1, 1, 2, 0),
+(11, 1, '', 'http://dev.marcaymercado.com/nada_que_ponerte/item?id=28\r\n', '2018-03-14 17:39:53', 0, 1, 0, 5),
+(12, 1, '', '5262626', '2018-03-14 18:49:08', 0, 1, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -561,14 +576,14 @@ INSERT INTO `mensajes` (`idmensaje`, `idusuario`, `titulo`, `detalle`, `fecha_re
 -- Table structure for table `modulos`
 --
 
-CREATE TABLE `modulos` (
+CREATE TABLE IF NOT EXISTS `modulos` (
   `idmodulo` int(11) NOT NULL,
   `nombre` varchar(200) DEFAULT NULL,
   `alias` varchar(200) DEFAULT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int(11) DEFAULT '0',
   `icono` varchar(50) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modulos`
@@ -595,12 +610,12 @@ INSERT INTO `modulos` (`idmodulo`, `nombre`, `alias`, `fecha_registro`, `estado`
 -- Table structure for table `newsletter`
 --
 
-CREATE TABLE `newsletter` (
+CREATE TABLE IF NOT EXISTS `newsletter` (
   `idnews` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT '',
   `email` varchar(200) DEFAULT '',
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `newsletter`
@@ -615,7 +630,7 @@ INSERT INTO `newsletter` (`idnews`, `nombre`, `email`, `fecha_registro`) VALUES
 -- Table structure for table `noticias`
 --
 
-CREATE TABLE `noticias` (
+CREATE TABLE IF NOT EXISTS `noticias` (
   `idnoticia` int(11) NOT NULL,
   `idcategoria` int(11) DEFAULT '0',
   `fecha_noticia` timestamp NULL DEFAULT NULL,
@@ -628,7 +643,7 @@ CREATE TABLE `noticias` (
   `estado` int(11) DEFAULT '0',
   `destacado` char(1) NOT NULL DEFAULT '0',
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `noticias`
@@ -649,12 +664,12 @@ INSERT INTO `noticias` (`idnoticia`, `idcategoria`, `fecha_noticia`, `fuente`, `
 -- Table structure for table `noticias_galeria`
 --
 
-CREATE TABLE `noticias_galeria` (
+CREATE TABLE IF NOT EXISTS `noticias_galeria` (
   `idgaleria` int(11) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `foto` varchar(250) DEFAULT '',
   `idnoticia` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `noticias_galeria`
@@ -670,7 +685,7 @@ INSERT INTO `noticias_galeria` (`idgaleria`, `fecha_registro`, `foto`, `idnotici
 -- Table structure for table `notificaciones`
 --
 
-CREATE TABLE `notificaciones` (
+CREATE TABLE IF NOT EXISTS `notificaciones` (
   `idnotificaciones` int(11) NOT NULL,
   `texto` text,
   `fecha_modificacion` timestamp NULL DEFAULT NULL,
@@ -685,7 +700,7 @@ CREATE TABLE `notificaciones` (
 -- Table structure for table `paquetes`
 --
 
-CREATE TABLE `paquetes` (
+CREATE TABLE IF NOT EXISTS `paquetes` (
   `idpaquete` int(11) NOT NULL,
   `codig` varchar(100) NOT NULL DEFAULT '',
   `nombre` varchar(200) DEFAULT NULL,
@@ -695,7 +710,7 @@ CREATE TABLE `paquetes` (
   `nro_anuncios` int(11) DEFAULT '0',
   `tiempo_vida` int(11) DEFAULT '0',
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `paquetes`
@@ -711,7 +726,7 @@ INSERT INTO `paquetes` (`idpaquete`, `codig`, `nombre`, `precio`, `descripcion`,
 -- Table structure for table `promociones`
 --
 
-CREATE TABLE `promociones` (
+CREATE TABLE IF NOT EXISTS `promociones` (
   `idpromocion` int(11) NOT NULL,
   `codigo` varchar(200) DEFAULT NULL,
   `nro_usos` int(11) DEFAULT '0',
@@ -721,7 +736,7 @@ CREATE TABLE `promociones` (
   `idadministrator` int(11) DEFAULT NULL,
   `idpaquete` int(11) DEFAULT NULL,
   `precio` double DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `promociones`
@@ -737,7 +752,7 @@ INSERT INTO `promociones` (`idpromocion`, `codigo`, `nro_usos`, `estado`, `fecha
 -- Table structure for table `promociones_usos`
 --
 
-CREATE TABLE `promociones_usos` (
+CREATE TABLE IF NOT EXISTS `promociones_usos` (
   `idpuso` int(11) NOT NULL,
   `idusuario` int(11) DEFAULT NULL,
   `idpromocion` int(11) DEFAULT NULL,
@@ -750,11 +765,11 @@ CREATE TABLE `promociones_usos` (
 -- Table structure for table `tallas_producto`
 --
 
-CREATE TABLE `tallas_producto` (
+CREATE TABLE IF NOT EXISTS `tallas_producto` (
   `id_tp` int(11) NOT NULL,
   `value` varchar(10) DEFAULT '',
   `nombre` varchar(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tallas_producto`
@@ -769,7 +784,7 @@ INSERT INTO `tallas_producto` (`id_tp`, `value`, `nombre`) VALUES
 -- Table structure for table `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `idusuario` int(11) NOT NULL,
   `nombres` varchar(50) DEFAULT '',
   `apellidos` varchar(50) DEFAULT '',
@@ -806,7 +821,7 @@ CREATE TABLE `usuarios` (
   `mes` varchar(20) NOT NULL DEFAULT '',
   `dia` varchar(20) NOT NULL DEFAULT '',
   `visibletelefono` int(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usuarios`
@@ -814,9 +829,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`idusuario`, `nombres`, `apellidos`, `fecha_nacimiento`, `fecha_registro`, `direccion`, `telefono`, `movil`, `ciudad`, `pais`, `email`, `sexo`, `estado`, `tipo`, `contrasena`, `alias`, `foto`, `descripcion`, `facebook`, `twitter`, `youtube`, `instagram`, `visiblefacebook`, `visibletwittwe`, `visibleyoutu`, `visibleinsta`, `intereses`, `nombrenit`, `nit`, `tallasblusas`, `tallaspantalones`, `tallaszapatos`, `ano`, `mes`, `dia`, `visibletelefono`) VALUES
 (1, 'helier', 'cortez', '2018-01-01', '2018-01-01 04:00:00', 'los lotes', '123456', '1234567', 'santa cruz', 'bolivia', 'hdnymib@gmail.com', 0, 1, 1, 'e10adc3949ba59abbe56e057f20f883e', 'test', 'XvZf4_eED7TB_vnw4Y57itDtgbSMOrfF.jpg', 'orem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum semper sagittis. Quisque vel urna in diam viverra gravida. Donec vel sagittis ante, et feugiat metus.', '', '', '', '', 1, 1, 1, 1, '', '', '', '', '', '', '', '', '', 1),
-(3, 'maria laura', 'aguilera', '1986-02-08', '2018-01-11 06:00:00', 'calle cochabamba 777 edif mystic depto 2C', '76314443', '76314443', 'santa cruz de la sierra', 'Bolivia', 'mlaguileraf@hotmail.com', 1, 1, 1, '41906b5855bcdbc8d3f425bd133e31b5', 'Maria laura', NULL, 'vdkvndknv', '', '', '', '', 1, 1, 1, 1, '', '', '', '', '', '', '', '', '', 1),
+(3, 'maria laura', 'aguilera', '1986-02-08', '2018-01-11 06:00:00', 'calle cochabamba 777 edif mystic depto 2C', '76314443', '76314443', 'Santa-Cruz', 'Bolivia', 'mlaguileraf@hotmail.com', 1, 1, 1, 'a31f41f125ab8569594a74d62dd9f52c', 'Maria laura', '3ADYBPP3FjJXWFV_5WLeOVpUtSiHvdDu.jpg', 'vdkvndknv', '', '', '', '', 1, 1, 1, 1, '', '', '', 'L-(8-10-US)', 'XXS-(0-US)', '33-BR/5-US/22.8-cm', '2018', '1', '1', 1),
 (4, 'Carlos Hugo', 'Calvi', '1998-09-11', '2018-01-19 18:21:14', 'B/ Estación Argentina Nº 3430', '', '79852022', 'Santa Cruz', 'Bolivia', 'chcalvi@outlook.com', 0, 1, 0, '515c7571504469f7dd78ba10bf3d1c55', NULL, NULL, NULL, '', '', '', '', 1, 1, 1, 1, '', '', '', '', '', '', '', '', '', 1),
-(5, 'Jose Manuel Justiniano Rios', 'prueba', '1991-10-15', '2018-01-25 06:00:00', 'barrio santa ana', '76303932', '1221', 'Santa Cruz', 'prueba', 'jose_manuel3000@hotmail.com', 0, 1, 1, '1f66585f9f129d1c75416ff89e72813d', 'acadeima12', 'wMi2vFsWRDksLmKd8G5l--TgHnLU9sQe.png', 'sjdklasdlñasdlkjbasd', 'https://www.facebook.com/mjustiniano2', 'https://www.facebook.com/mjustiniano2', 'https://www.facebook.com/mjustiniano2', '', 1, 1, 0, 0, 'Me gusta el futblo', '', '', 'XL-(10-12-US)', '5XL-(20-US)', '42-BR/11-US/27.3-cm', '', '1', '1', 0),
+(5, 'Jose Manuel Justiniano Rios', 'prueba', '1991-10-15', '2018-01-25 06:00:00', 'barrio santa ana', '76303932', '1221', 'Santa-Cruz', 'prueba', 'jose_manuel3000@hotmail.com', 0, 1, 1, '1f66585f9f129d1c75416ff89e72813d', 'acadeima12', 'wMi2vFsWRDksLmKd8G5l--TgHnLU9sQe.png', 'sjdklasdlñasdlkjbasd', 'https://www.facebook.com/mjustiniano2', 'https://www.facebook.com/mjustiniano2', 'https://www.facebook.com/mjustiniano2', '', 1, 1, 0, 0, 'Me gusta el futblo', '', '', 'XL-(10-12-US)', '5XL-(20-US)', '42-BR/11-US/27.3-cm', '2018', '1', '1', 0),
 (6, 'Lucas alderete Rios', '', NULL, '2018-02-05 23:35:34', 'Barrio lel', '75025066', '123456', 'Santa cruz', 'Bolivia', 'lucas@gmail.com', 0, 1, 0, 'c408745602ca9f18b0ce8e2a45fac88e', 'Lucqui', NULL, NULL, '', '', '', '', 1, 1, 1, 1, '', '', '', '', '', '', '', '', '', 1);
 
 --
@@ -1005,22 +1020,22 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `idamin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idamin` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `idanuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idanuncio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `anuncios_filtros`
 --
 ALTER TABLE `anuncios_filtros`
-  MODIFY `idfiltro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idfiltro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `anuncios_galeria`
 --
 ALTER TABLE `anuncios_galeria`
-  MODIFY `idgaleria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idgaleria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `anuncios_visitas`
 --
@@ -1030,92 +1045,92 @@ ALTER TABLE `anuncios_visitas`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `idbanner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idbanner` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `calificaciones`
 --
 ALTER TABLE `calificaciones`
-  MODIFY `idcalificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idcalificacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `ciudad`
 --
 ALTER TABLE `ciudad`
-  MODIFY `idciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idciudad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `colores_productos`
 --
 ALTER TABLE `colores_productos`
-  MODIFY `id_co` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_co` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idcompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idcompra` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `condicion_producto`
 --
 ALTER TABLE `condicion_producto`
-  MODIFY `id_cp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cp` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `configuracion`
 --
 ALTER TABLE `configuracion`
-  MODIFY `idconfiguracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idconfiguracion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `contenido`
 --
 ALTER TABLE `contenido`
-  MODIFY `idcontenido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idcontenido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `deseo`
 --
 ALTER TABLE `deseo`
-  MODIFY `iddeseo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iddeseo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
-  MODIFY `idfaq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idfaq` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `marca_producto`
 --
 ALTER TABLE `marca_producto`
-  MODIFY `id_msp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_msp` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `material_producto`
 --
 ALTER TABLE `material_producto`
-  MODIFY `id_mp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_mp` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `idmensaje` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idmensaje` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `modulos`
 --
 ALTER TABLE `modulos`
-  MODIFY `idmodulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idmodulo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `newsletter`
 --
 ALTER TABLE `newsletter`
-  MODIFY `idnews` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idnews` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `idnoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idnoticia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `noticias_galeria`
 --
 ALTER TABLE `noticias_galeria`
-  MODIFY `idgaleria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idgaleria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `notificaciones`
 --
@@ -1125,12 +1140,12 @@ ALTER TABLE `notificaciones`
 -- AUTO_INCREMENT for table `paquetes`
 --
 ALTER TABLE `paquetes`
-  MODIFY `idpaquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idpaquete` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `promociones`
 --
 ALTER TABLE `promociones`
-  MODIFY `idpromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idpromocion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `promociones_usos`
 --
@@ -1140,12 +1155,12 @@ ALTER TABLE `promociones_usos`
 -- AUTO_INCREMENT for table `tallas_producto`
 --
 ALTER TABLE `tallas_producto`
-  MODIFY `id_tp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tp` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
