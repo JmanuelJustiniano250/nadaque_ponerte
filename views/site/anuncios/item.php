@@ -9,15 +9,8 @@ use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Url;
 
 $script = <<<CSS
-.nav-tabs.descr li {
-    border-top: 0px solid #3a3d41;
-    margin: 0;
-    /* width: 25%; */
-    transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    margin-right: 0px;}
+
+.privatemen { border-color: #e5e5e5;   background: #f7f7f7;   padding: 15px; }  .nav-tabs.descr li {  border-top: 0px solid #3a3d41;   margin: 0;   /* width: 25%; */   transition: all 0.2s ease-in-out;   -moz-transition: all 0.2s ease-in-out;    -webkit-transition: all 0.2s ease-in-out;   -o-transition: all 0.2s ease-in-out;   margin-right: 0px;} .privatemen::placeholder { color: #a5a5a5!important;  }
 
 .nav-tabs.descr > li.active > a, .nav-tabs.descr > li.active > a:hover, .nav-tabs.descr > li.active > a:focus {
     color: white!important;
@@ -50,15 +43,7 @@ $script = <<<CSS
     margin: 0 0 10px;
 }
 
-.btnregister{ border: 0px solid; padding:10px 18px}
-.tab-content.desce .tab-pane {
-    padding: 15px 0px;
-   
-}
-
-.rating-md {
-    font-size: 1.5em;
-}
+.btnregister{ border: 0px solid; padding:10px 18px} .tab-content.desce .tab-pane {  padding: 15px 0px;  } .rating-md { font-size: 1.5em; }
 
 .rating-container .caption {
     margin-left: 5px;
@@ -231,32 +216,13 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
         <div class="col-md-5 col-xs-12">
 
+            <div class="col-sm-6 col-xs-12" style="padding-left: 0;">
+
+
             <h4 class="tituprodit"><?= $model['titulo'] ?></h4>
 
-            <div class="imgquiero">
-
-                <a href="" data-toggle="modal" data-target="#squarespaceModal">
-                    <img src="<?= Url::to('@web/assets_b/images/quiero.jpg') ?>" alt="" style="max-width: 100%; margin: 0 auto; display: block">
-
-                </a>
 
 
-                <div align="center">
-
-                <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$model->idanuncio])?>" class="link2"><?= FA::icon(FA::_HEART) ?></a>
-                </div>
-
-                <div align="center">
-                    <a href="" data-toggle="modal" class="btonhreg" data-target="#squarespaceModaljuntar">
-
-                        Como me puedo juntar</a> <br>
-
-                </div>
-
-
-
-
-            </div>
             <p style="font-weight: 600">Cod. <?= $model['codigo'] ?></p>
             <br>
             <p><span class="colorww">Categoría </span>: <?= $model->categoria['nombre'] ?></p>
@@ -283,6 +249,12 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
 
 
+
+
+
+
+
+
                 <!-- Modal del enviar mensaje -->
 
                 <!-- line modal -->
@@ -294,13 +266,13 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                                 <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: white">
 
-                                    Envia un mensaje a  <?= $model->usuario['alias']?>
+                                   Ponte en contacto con  <?= $model->usuario['alias']?>
                                 </h3>
                             </div>
                             <div class="modal-body">
 
                                     <p style="color: #6b6b6b;">
-                                        Comunicate de la forma que mas te convenga con la vendedora
+                                        Comunicate de la forma que mas te convenga con la vendedora:
                                     </p>
 
 
@@ -385,10 +357,10 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                                 <br>
                                 <p style="color: #6b6b6b;">
-                                   o también mandale un mensaje privado <br> la respuesta aparecera en tus mensajes privados.
+                                   O bien mándale un mensaje privado, la respuesta aparecera en tu mensajeria.
                                 </p>
 
-
+                                <br>
 
 
 
@@ -417,7 +389,11 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                 <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
                                 <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
 
-                              <div align="right">  <button type="submit" class="btn btn-default btnregister enviarsns">Enviar</button>
+                              <div align="right">
+
+                                  <a class="" style="color: #ff6d89; padding-right: 20px; text-decoration: underline;font-family: 'Raleway', sans-serif;" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Perfil de la vendedora</a>
+
+                                  <button type="submit" class="btn btn-default btnregister enviarsns">Enviar</button>
                               </div>
                                 <?php ActiveForm::end(); ?>
 
@@ -426,10 +402,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
 
 
-                                    <div align="right">
 
-                                        <a class="" style="color: #ff6d89; text-decoration: underline;font-family: 'Raleway', sans-serif;" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Perfil de la vendedora</a>
-                                    </div>
 
 
 
@@ -443,6 +416,51 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     </div>
                 </div>
 
+
+            </div>
+
+
+
+            <div class="col-sm-6 col-xs-12" style="padding-left: 0;">
+
+                <div class="">
+
+                    <div align="right" class="lefte">
+
+                        <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$model->idanuncio])?>" class="link3"><?= FA::icon(FA::_HEART) ?></a>
+                    </div>
+
+                    <br>
+
+                    <div class="imagennsope">
+
+                    <a href="" data-toggle="modal" data-target="#squarespaceModal">
+                        <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="" style="max-width: 100%; margin: 0 auto; display: block" class="lefte">
+
+                    </a>
+
+                    </div>
+
+
+                    <div align="right" class="lefte"><br>
+                        <a href="" data-toggle="modal" class="btonhreg" data-target="#squarespaceModaljuntar">
+
+                            ¿Como me puedo juntar?</a> <br>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
 
             <div class="linecir"></div>
 
@@ -502,6 +520,11 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                 </div>
             </div>
+
+            </div>
+
+
+
 
 
         </div>

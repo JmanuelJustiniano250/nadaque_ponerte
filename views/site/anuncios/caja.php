@@ -4,7 +4,10 @@ use himiklab\thumbnail\EasyThumbnailImage;
 use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Html;
 $script = <<<CSS
-
+@media (min-width: 1200px){
+.cajadesc {
+    height: 165px;
+}}
 
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
