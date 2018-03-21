@@ -21,7 +21,7 @@ Html::tag('div',
     Html::tag('h3', $model['titulo'], ['class' => 'text-center']) .
     Html::tag('div',
         Html::tag('p',
-            'Codigo: ' . $model['codigo'],
+            'Código: ' . $model['codigo'],
             ['class' => 'nobor']
         ),
         ['class' => 'col-xs-12 dl2', 'style' => 'padding-right: 0']

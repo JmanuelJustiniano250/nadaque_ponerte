@@ -94,7 +94,7 @@ class CarritoController extends Controller
         }
 
         if ($model->estado == 1) {
-            Yii::$app->session->setFlash('mensaje', ['message' => 'Gracias por su Compra', 'type' => 'success']);
+            Yii::$app->session->setFlash('mensaje', ['message' => 'Gracias por tu compra, en breve te llegará un correo confirmando la correcta recepción del pago', 'type' => 'success']);
             //Yii::$app->session->setFlash('mensaje',['message'=>$res,'type'=>'success']);
             $pasos = 'final';
         }
@@ -155,7 +155,7 @@ class CarritoController extends Controller
                                     $tmp->saveInventario();
                                     //$model->send(Yii::$app->session->get('user')['email']);
                                 }
-                                Yii::$app->session->setFlash('mensaje', ['message' => 'Gracias por su Compra', 'type' => 'success']);
+                                Yii::$app->session->setFlash('mensaje', ['message' => 'Gracias por tu compra, en breve te llegará un correo confirmando la correcta recepción del pago', 'type' => 'success']);
                                 return $this->redirect(Url::to(['carrito/pasos', 'pasos' => 'final']));
                             } else {
                                 Yii::$app->session->setFlash('mensaje', ['message' => $tmp->error($res)]);
@@ -173,7 +173,7 @@ class CarritoController extends Controller
                                 $tmp->saveInventario();
                                 $model->reserva(Yii::$app->session->get('user')['email']);
                             }
-                            Yii::$app->session->setFlash('mensaje', ['message' => 'Gracias por su Compra', 'type' => 'success']);
+                            Yii::$app->session->setFlash('mensaje', ['message' => 'Gracias por tu compra, en breve te llegará un correo confirmando la correcta recepción del pago', 'type' => 'success']);
                             return $this->redirect(Url::to(['carrito/pasos', 'pasos' => 'final']));
                         } else {
                             Yii::$app->session->setFlash('mensaje', ['message' => $tmp->mensaje]);

@@ -1,9 +1,21 @@
 <?php
-
+use yii\helpers\Url;
 $script = <<<CSS
 .form-group {
     margin-bottom: 0;
 }
+
+.btnregister {
+    color: #fff;
+    background-color: #ff6d89;
+    border-color: #ff6d89;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    padding: 5px 10px;
+    /* margin-top: 8px; */
+}
+
 
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
@@ -31,6 +43,13 @@ $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' =
                         </div>
                     <?php else: ?>
                         <h1 class="text-center">Gracias por tu compra <?= $model->getTipo($model->tipo_pago) ?></h1>
+
+                        <div align="center"><br><br>
+
+                            <a href="<?php echo Url::to(['cuenta/create']) ?>" class="btnregister">Crea tu anuncio </a><br><br>
+
+                        </div>
+
                         <?php if ($model->tipo_pago == 2): ?>
                             <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 text-center">
                                 <div class="well well-lg">

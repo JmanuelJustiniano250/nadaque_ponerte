@@ -148,13 +148,13 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
                         'labelOptions' => ['class' => 'col-md-4 control-label'],
                     ],*/
                 ]); ?>
-                <?= $form->field($modmess, 'detalle')->textarea(['class' => 'form-control cajadesct', 'placeholder' => 'Dejanos tus consultas y comentarios'])->label(false) ?>
+                <?= $form->field($modmess, 'detalle')->textarea(['class' => 'form-control cajadesct', 'placeholder' => 'Responde aquí tu mensaje'])->label(false) ?>
                 <?= $form->field($modmess, 'idvendedor')->hiddenInput()->label(false) ?>
                 <?= $form->field($modmess, 'tipo')->hiddenInput()->label(false) ?>
 
                 <div class="submit-area" align="left"><br>
                     <input type="submit" name="enviar" id="" class="btnregister" style="text-transform: none"
-                           value="Dejar Mensaje">
+                           value="Mandar Mensaje">
                 </div>
 
                 <?php ActiveForm::end(); ?>

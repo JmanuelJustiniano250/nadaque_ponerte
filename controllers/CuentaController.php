@@ -91,7 +91,7 @@ class CuentaController extends Controller
             if ($model->save(false)) {
                 $modelfiltro->idanuncio = $model->idanuncio;
                 $modelfiltro->save();
-                Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido por nuestro equipo con exito y esta en proceso de aprobacion. \n Te responderemos en un maximo de 24 horas si tu anuncio es aprobado o necesitas hacerle algun cambio.', 'type' => 'success']);
+                Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido con éxito y está en proceso de aprobación. Te responderemos por correo máximo en 24 horas si tu anuncio está aprobado o necesitas hacerle algún cambio.', 'type' => 'success']);
                 return $this->redirect(['cuenta/anuncios2']);
             } else {
                 if ($model->foto) {
@@ -269,7 +269,7 @@ class CuentaController extends Controller
                 if ($model->save()) {
 
 
-                    Yii::$app->session->setFlash('success', ['message' => 'actualizacion Realizada', 'type' => 'success']);
+                    Yii::$app->session->setFlash('success', ['message' => 'Actualización Realizada', 'type' => 'success']);
                 } else {
                     Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la actualizacion, Intentelo de nuevo mas tarde']);
                 }
@@ -422,7 +422,7 @@ class CuentaController extends Controller
             if ($model->idusuario != $model->idvendedor) {
                 $model->puntaje = round($model->puntaje);
                 if ($model->save()) {
-                    Yii::$app->session->setFlash('success', ['message' => 'calificacion Realizada', 'type' => 'success']);
+                    Yii::$app->session->setFlash('success', ['message' => 'Calificación Realizada', 'type' => 'success']);
                 } else {
                     Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la actualizacion, Intentelo de nuevo mas tarde']);
                 }
@@ -613,6 +613,32 @@ class CuentaController extends Controller
         }
         return $this->redirect(Yii::$app->request->referrer);
     }
+
+
+
+    public function actionMensaje2()
+    {
+
+        if (empty(Yii::$app->session->get('user'))) {
+            return $this->goHome();
+        }
+
+        $model = new Mensajes();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->idusuario = Yii::$app->session->get('user')['idusuario'];
+            $model->fecha_registro = date('Y-m-d H:i:s');
+            $model->estado = 0;
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', ['message' => 'Mensaje enviado', 'type' => 'success']);
+            } else
+                Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
+        }
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+
+
+
 
     public function actionPublicargaleria()
     {

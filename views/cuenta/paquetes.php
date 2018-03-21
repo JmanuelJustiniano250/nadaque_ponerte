@@ -54,9 +54,10 @@ $provider = new \yii\data\ArrayDataProvider([
                         'value' => function ($model) {
                             return Html::tag(
                                 'p',
-                                'Codigo del Paquete ' . Html::tag(
+                                'Código del Paquete ' . Html::tag(
                                     'span',
                                     $model['codigo']
+
                                 )
                             );
                         },
@@ -78,7 +79,7 @@ $provider = new \yii\data\ArrayDataProvider([
                         'value' => function ($model) {
                             return Html::tag(
                                 'p',
-                                'Fecha de expiracion ' . Html::tag(
+                                'Fecha de expiración ' . Html::tag(
                                     'span',
                                     ((is_integer($model['fecha_expiracion'])) ? \app\components\Funcions::fecha(date('Y-m-d H:i:s', $model['fecha_expiracion']), true, true) : $model['fecha_expiracion'])
 

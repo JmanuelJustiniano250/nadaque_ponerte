@@ -2,12 +2,55 @@
 
 use kartik\widgets\Select2;
 use yii\helpers\Html;
+
+use yii\helpers\Url;
+
 use yii\widgets\ActiveForm;
 
 
 $script = <<<CSS
 
+.desactivadow{
+pointer-events: none;   cursor: default;   opacity: 0.5;
+}
 
+.activadow{
+pointer-events: initial;   cursor: auto;   opacity: 1;
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #ff6d89;
+    color: white;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #a2a2a2;
+    text-shadow: 0 0px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: 1;
+}
+
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: white;
+    border-radius: 65px;
+    padding: 0px 4px;
+    border: 0px solid;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 0px solid #e5e5e5;
+}
 .medioas{
 background: #f6f6f6;
     padding: 5px 30px 10px;
@@ -191,7 +234,13 @@ $user = Yii::$app->session->get('user');
                     <div class="row">
                         <div class="col-xs-12 des" ><br>
 
-                            <p class="text-left" style="color: #777777;  font-size: 16px;  margin-bottom: 25px;  font-weight: 600; ">Imagenes de tu prenda</p>
+                            <p class="text-left" style="color: #777777;  font-size: 16px;  margin-bottom: 20px;  font-weight: 600; ">Imágenes de tu prenda</p>
+
+                            <div align="left">
+                                <a href="" data-toggle="modal" class="btonhreg" data-target="#squarespaceModal">
+                                    Como sacar buenas fotografias</a> <br>
+
+                            </div>
 
 
                             <?php
@@ -204,7 +253,11 @@ $user = Yii::$app->session->get('user');
                             ?>
 
                           <div class="col-xs-12" align="center"><br>
-                              <label for="" style="font-size: 13px" >Foto principal de la prenda<span class="obligatorio">*</span></label>
+
+
+                              <br>
+                              
+                              
 
 
 
@@ -230,7 +283,7 @@ $user = Yii::$app->session->get('user');
 
                             <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center">
                                 <br>
-                                <label for="" style="font-size: 13px" >Luce tu prenda a tamaño completo<span class="obligatorio">*</span></label>
+                                <label for="" style="font-size: 13px; height: 40px;" >Foto trasera de la prenda<span class="obligatorio">*</span></label>
 
                             <?= $form->field($model, 'file2')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
@@ -253,7 +306,7 @@ $user = Yii::$app->session->get('user');
 
                             <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center"><br>
 
-                                <label for="" style="font-size: 13px" >Muestra la parte trasera <span class="obligatorio">*</span></label>
+                                <label for="" style="font-size: 13px; height: 40px;" >Foto detalle de la prenda <span class="obligatorio">*</span></label>
 
 
 
@@ -278,7 +331,7 @@ $user = Yii::$app->session->get('user');
                             </div>
                             <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center"><br>
 
-                                <label for="" style="font-size: 13px" >Ahora un vistazo a la etiqueta<span class="obligatorio">*</span></label>
+                                <label for="" style="font-size: 13px; height: 40px;" >Foto detalle de la prenda (puede ser etiqueta)<span class="obligatorio">*</span></label>
 
                             <?= $form->field($model, 'file4')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
@@ -302,7 +355,7 @@ $user = Yii::$app->session->get('user');
 
                             <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center"><br>
 
-                                <label for="" style="font-size: 13px" >Defectos o manchas de la prenda<span class="obligatorio">*</span></label>
+                                <label for="" style="font-size: 13px; height: 40px;" >Foto detalle de la prenda (puede ser algún defecto si tuviera)<span class="obligatorio">*</span></label>
 
                             <?= $form->field($model, 'file5')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
@@ -340,13 +393,13 @@ $user = Yii::$app->session->get('user');
             <div class="medioas col-xs-12" style="">
                 <div class="row"><br>
                     <div class="col-md-6">
-                        <label for="">Titulo del anuncio <span class="obligatorio">*</span></label>
+                        <label for="">Título del anuncio <span class="obligatorio">*</span></label>
                         <?= $form->field($model, 'titulo')->label(false) ?>
                     </div>
 
                     <div class="col-md-6 col-xs-12">
 
-                        <label for="">Seleccionar Categoria principal de tu prenda<span class="obligatorio">*</span></label>
+                        <label for="">Seleccionar Categoría principal de tu prenda o accesorio<span class="obligatorio">*</span></label>
 
                         <?php $form->field($model, 'idusuario')->hiddenInput(['value' => $user['idusuario']])->label(false); ?>
 
@@ -374,7 +427,7 @@ $user = Yii::$app->session->get('user');
                     <div class="col-xs-12" >
                         <h3 style="    color: #777777;    font-size: 16px;
     margin-bottom: 25px;
-    font-weight: 600;">Seleccionar las Categorias complementarioas de tu prenda</h3>
+    font-weight: 600;">Seleccionar las Categorías complementarioas de tu prenda</h3>
                     </div>
 
 
@@ -400,7 +453,7 @@ $user = Yii::$app->session->get('user');
 
 
                     <div class="col-md-6 col-xs-12">
-                        <label>Condicion <span class="obligatorio">*</span></label>
+                        <label>Condición <span class="obligatorio">*</span></label>
                         <?= $form->field($filtro, 'id_cp')->widget(Select2::classname(), [
 
                             'data' => \yii\helpers\ArrayHelper::map(\app\models\CondicionProducto::find()->all(), 'id_cp', 'nombre'),
@@ -511,13 +564,13 @@ $user = Yii::$app->session->get('user');
                     <div class="col-xs-12" >
                         <h3 style="    font-size: 16px;
     margin-bottom: 25px;
-    font-weight: 600;    color: #777777;">Haz una descripcion sobre la prenda que quieres anunciar</h3>
+    font-weight: 600;    color: #777777;">Haz una descripción sobre la prenda que quieres anunciar</h3>
                     </div>
 
 
                     <div class=" col-md-6 col-xs-12" >
 
-                        <label>Descripcion <span class="obligatorio">*</span></label>
+                        <label>Descripción <span class="obligatorio">*</span></label>
 
 
 
@@ -589,9 +642,117 @@ $user = Yii::$app->session->get('user');
 
     </div>
 
-    <div class=" text-center">
-        <?= Html::submitButton('Anuncio listo, Publicar', ['class' => 'btn enviarsus ']) ?>
+
+
+
+<div class="col-xs-12" align="center">
+    <label for="" style="font-size: 12px;">Aceptar reglas de publicacion </label> <br>
+    <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
+    <br><br>
+</div>
+
+
+
+    <div class=" text-center col-xs-12">
+        <?= Html::submitButton('Anuncio listo, Publicar', ['class' => 'btn enviarsus desactivadow' , 'id'=> 'content']) ?> <br><br><br>
     </div>
     <br>
     <br>
 <?php ActiveForm::end(); ?>
+
+
+
+
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; ">
+
+                    COMO SACAR BUENAS FOTOGRAFÍAS
+                </h3>
+            </div>
+            <div class="modal-body">
+
+
+               <div class="col-xs-12"><p>
+                    Las buenas fotos son clave si quieres conquistar a tus compradoras y vender rápido. Mira a continuación algunos consejos fáciles para hacer fotos geniales,
+                    no necesitas ser fotógrafo profesional, simplemente toma tu celular y pon a prueba nuestros consejos.
+                </p>
+
+
+
+                <ul class="lignsop">
+                    <li>
+                        Saca tus fotos durante el día aprovechando la luz natural, esta hace que tu ropa/accesorios se vean con los colores más nítidos y se aprecien mejor los detalles.
+
+
+                        <img src="<?php echo Url::to(['assets_b/images/prenda1.jpg']) ?>" alt="" class="imgcenter">
+                    </li>
+
+                    <li>
+                        Usa fondos lisos y de un solo color, mejor si es blanco, ejemplo una pared.
+                        <img src="<?php echo Url::to(['assets_b/images/prenda2.jpg']) ?>" alt="" class="imgcenter">
+                    </li>
+                    <li>
+                        Si es necesario, lava, plancha o arregla tu producto antes de la foto, ocúpate de que se vea lo mejor posible.
+                        <img src="<?php echo Url::to(['assets_b/images/prenda3.jpg']) ?>" alt="" class="imgcenter">
+                    </li>
+                    <li>
+                        ¡Haz de modelo! Bueno no la ponemos tan difícil, puedes pedirle a alguien el favor…siempre una prenda se ve mejor puesta que colgada, además mostrarás como queda en la figura. 
+                    </li>
+                    <li>
+                        Puedes sacarte fotos en el espejo, pero no uses flash ya que este se refleja y la foto no resulta buena nunca. 
+
+                    </li>
+                    <li>
+                        Saca siempre fotos verticales, no horizontales ni inclinadas.
+                    </li>
+                    <li>
+                        Siempre piensa al terminar la foto diciendo, ¿se ve tan bien que yo misma lo compraría? 
+                    </li>
+
+                </ul>
+
+
+            <p>Con seguridad sacaras muy buenas fotos siguiendo estos consejos con tu propio celular, como ya te dijimos, no necesitas ser fotógrafo profesional ¡ni contratar a uno!
+            </p>
+
+
+
+               </div>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified " role="group" aria-label="group button">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    function showContent() {
+        element = document.getElementById("content");
+        check = document.getElementById("check");
+        if (check.checked) {
+
+            $("#content").addClass("activadow");
+            $("#content").removeClass("desactivadow");
+        }
+        else {
+
+
+            $("#content").addClass("desactivadow");
+            $("#content").removeClass("activadow");
+        }
+    }
+</script>

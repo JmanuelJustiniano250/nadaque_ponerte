@@ -298,7 +298,7 @@ $this->registerCss($script);
                     </div>
 
                     <div class="col-md-6 col-xs-12">
-                        <label for=""> Correo electrónico (opcional)</label>
+                        <label for=""> Correo electrónico (alterno)</label>
 
                         <?= $form->field($model, 'email')->label(false) ?>
                     </div>
@@ -549,10 +549,10 @@ $this->registerCss($script);
 
                     </div>
                     <div class="col-md-6 col-xs-12"><br> <label for="" style="margin-bottom: 0; font-size: 11px;">Selecciona
-                            una opcion,
+                            una opción,
                             <br>
 
-                            <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Si quiero que mi telefono o celular sea visible en mis anuncios y perfil', '0' => 'No quiero que mi telefono o celular sea visible en mis anuncios y perfil'])->label(false) ?>
+                            <?= $form->field($model, 'visibletelefono')->inline()->radioList(['1' => 'Sí quiero que mi telefono o celular sea visible en mis anuncios y perfil', '0' => 'No quiero que mi telefono o celular sea visible en mis anuncios y perfil'])->label(false) ?>
 
                     </div>
 

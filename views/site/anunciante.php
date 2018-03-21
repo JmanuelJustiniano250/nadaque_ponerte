@@ -389,7 +389,7 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                         $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
                         echo StarRating::widget([
                             'name' => 'rating_21',
-                            'value' => ($valor/5),
+                            'value' => ($valor),
                             'pluginOptions' => [
                                 'readonly' => true,
                                 'showClear' => false,
