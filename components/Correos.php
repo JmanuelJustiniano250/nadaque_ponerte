@@ -120,6 +120,166 @@ class Correos extends Component
         return false;
     }
 
+    static public function nuevoAnuncio($model)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Nuevo anuncio');
+        $mensaje .= Html::tag('h5', 'se registro un nuevo anuncio');
+        $mensaje .= Html::tag('p', 'sigue el link para ver tu anuncio <a target="_blank" href="'.Url::to(['site/vender'],true).'">clic aquí</a>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Nuevo anuncio')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
+    static public function nuevoMensaje($model)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Nuevo Mensaje');
+        $mensaje .= Html::tag('h5', 'se registro un nuevo mensaje');
+        $mensaje .= Html::tag('p', 'sigue el link para ver tu mensaje <a target="_blank" href="'.Url::to(['cuenta/mensajeria'],true).'">clic aquí</a>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Nuevo Mensaje')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
+    static public function nuevoComentario($model)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Nuevo Comentario');
+        $mensaje .= Html::tag('h5', 'se registro un nuevo cometario');
+        $mensaje .= Html::tag('p', 'sigue el link para ver tu comentario <a target="_blank" href="'.Url::to(['cuenta/comentarios'],true).'">clic aquí</a>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Nuevo Mensaje')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
+    static public function nuevaCalificacion($model)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Nueva Calificacion');
+        $mensaje .= Html::tag('h5', 'se registro una nueva calificacion');
+        $mensaje .= Html::tag('p', 'sigue el link para ver tu calificacion <a target="_blank" href="'.Url::to(['cuenta/calificaciones'],true).'">clic aquí</a>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Nueva Calificacion')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
+    static public function anuncioAcepado($model,$id)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Anuncio Aceptado');
+        $mensaje .= Html::tag('h5', 'Su anuncio fue aceptado');
+        $mensaje .= Html::tag('p', 'sigue el link para ver tu anuncio <a target="_blank" href="'.Url::to(['site/item','id'=>$id],true).'">clic aquí</a>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Anuncio aceptado')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
+    static public function anuncioRechazado($model,$anuncio)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Anuncio Rechazado');
+        $mensaje .= Html::tag('h5', 'tu anuncio fue rechazado por:<br><strong>'.$anuncio->razon.'</strong>');
+        $mensaje .= Html::tag('p', 'para editar tu anuncio sigue el siguiente link <a target="_blank" href="'.Url::to(['cuenta/create','id'=>$anuncio->idanuncio],true).'">clic aquí</a>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Estado de anuncio')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
+    static public function anuncioRechazadoDefinitivo($model,$anuncio)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Anuncio Rechazado Definitivo');
+        $mensaje .= Html::tag('h5', 'tu anuncio fue rechazado definitivamente por:<br><strong>'.$anuncio->razon.'</strong>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Estado de anuncio')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
     public function contact($model)
     {
         $conf = Configuracion::find()->one();

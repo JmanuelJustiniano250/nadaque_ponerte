@@ -251,12 +251,8 @@ $this->registerCss($script);
                     'accept' => 'image/*',
                 ],
                 'pluginOptions' => [
-                    'uploadUrl' => \yii\helpers\Url::to(['upload']),
                     'browseLabel' => '',
                     'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-                    'uploadExtraData' => [
-                        'id' => $model->idusuario,
-                    ],
                     'initialPreviewFileType' => 'image',
                     'initialPreview' => $initial,
                     'allowedFileExtensions' => ['jpg', 'png', 'gif'],

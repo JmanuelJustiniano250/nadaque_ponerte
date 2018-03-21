@@ -264,13 +264,23 @@ class CuentaController extends Controller
         /* $model->fecha_nacimiento =  date($model['ano'].'-'.$model['mes'].'-'.$model['dia']);*/
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
+                $model->file = UploadedFile::getInstance($model, 'file');
+                $name = Yii::$app->security->generateRandomString();
+                if ($model->upload($name)) {
+                    $tmp = $model->foto;
+                    $model->foto = $name . '.' . $model->file->extension;
+
+                }
                 if ($model->contrasena != Yii::$app->session->get('user')['contrasena'])
                     $model->contrasena = md5($model->contrasena);
-                if ($model->save()) {
+                if ($model->save(false)) {
 
-
+                    if (file_exists("../" . Yii::$app->basePath . "/imagen/usuarios/" . $tmp)) {
+                        unlink("../" . Yii::$app->basePath . "/imagen/usuarios/" . $tmp);
+                    }
                     Yii::$app->session->setFlash('success', ['message' => 'Actualización Realizada', 'type' => 'success']);
                 } else {
+                    unlink("../" . Yii::$app->basePath . "/imagen/usuarios/" . $model->foto);
                     Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la actualizacion, Intentelo de nuevo mas tarde']);
                 }
             }
@@ -422,6 +432,7 @@ class CuentaController extends Controller
             if ($model->idusuario != $model->idvendedor) {
                 $model->puntaje = round($model->puntaje);
                 if ($model->save()) {
+                    Correos::nuevaCalificacion(Yii::$app->session->get('user'));
                     Yii::$app->session->setFlash('success', ['message' => 'Calificación Realizada', 'type' => 'success']);
                 } else {
                     Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la actualizacion, Intentelo de nuevo mas tarde']);
@@ -607,6 +618,7 @@ class CuentaController extends Controller
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->estado = 0;
             if ($model->save()) {
+                    Correos::nuevoComentario(Yii::$app->session->get('user'));
                 Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
             } else
                 Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
@@ -629,6 +641,7 @@ class CuentaController extends Controller
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->estado = 0;
             if ($model->save()) {
+                    Correos::nuevoMensaje(Yii::$app->session->get('user'));
                 Yii::$app->session->setFlash('success', ['message' => 'Mensaje enviado', 'type' => 'success']);
             } else
                 Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);

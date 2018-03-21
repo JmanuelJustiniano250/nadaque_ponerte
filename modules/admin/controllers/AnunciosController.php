@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\components\Correos;
 use app\components\Funcions;
 use app\models\Anuncios;
 use app\models\AnunciosSearch;
@@ -119,7 +120,12 @@ class AnunciosController extends Controller
         if (Yii::$app->request->isAjax) {
             $model->razon = Yii::$app->request->get('com');
             $model->estado = Yii::$app->request->get('est');
-            $model->save(false);
+            if ($model->save(false)) {
+                if ($model->estado == 2)
+                    Correos::anuncioRechazado($model->usuario, $model);
+                if ($model->estado == 4)
+                    Correos::anuncioRechazadoDefinitivo($model->usuario, $model);
+            }
             return true;
         }
         return false;
@@ -142,7 +148,8 @@ class AnunciosController extends Controller
     {
         $model = $this->findModel($id);
         $model->estado = 1;
-        $model->save();
+        if($model->save())
+            Correos::anuncioAcepado($model->usuario,$id);
         return $this->redirect(['index']);
     }
 

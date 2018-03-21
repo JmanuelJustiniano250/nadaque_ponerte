@@ -287,8 +287,8 @@ if($configuracion['google_analitics']) {
                         'items' => [
                             ['label' => 'Cómo vender?', 'url' => ['/site/pages', 'id' => 'como-vender'], 'options' => ['class' => ''],],
                             ['label' => 'Cómo comprar?', 'url' => ['/site/pages', 'id' => 'como-comprar'], 'options' => ['class' => ''],],
-                            ['label' => 'Testimonios', 'url' => ['/site/tertimonios'], 'options' => ['class' => ''],],
-                            ['label' => 'Videos tutoriales', 'url' => ['/site/tutoriales'], 'options' => ['class' => ''],],
+                            ['label' => 'Testimonios', 'url' => ['/site/pages', 'id' => 'testimonios'], 'options' => ['class' => ''],],
+                            ['label' => 'Videos tutoriales', 'url' => ['/site/pages', 'id' => 'tutoriales'], 'options' => ['class' => ''],],
                             ['label' => 'Formas de pago', 'url' => ['/site/pages', 'id' => 'formas-pago'], 'options' => ['class' => ''],],
                             ['label' => 'Reglas de publicación', 'url' => ['/site/pages', 'id' => 'reglas-publicacion'], 'options' => ['class' => ''],],
 
