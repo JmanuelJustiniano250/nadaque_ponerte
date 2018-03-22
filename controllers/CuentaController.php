@@ -473,6 +473,7 @@ class CuentaController extends Controller
         $mensajes = Mensajes::find()
             ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
             ->andWhere(['tipo' => 0])
+            ->orderBy(['idmensaje' => SORT_DESC])
             ->distinct('idvendedor')
             ->select('idvendedor')
             ->all();

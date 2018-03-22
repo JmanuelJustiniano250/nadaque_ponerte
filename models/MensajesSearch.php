@@ -68,7 +68,7 @@ class MensajesSearch extends Mensajes
 
         $query->andFilterWhere(['like', 'titulo', $this->titulo])
             ->andFilterWhere(['like', 'detalle', $this->detalle]);
-
+        $query->orderBy(['idmensaje'=>SORT_DESC]);
         return $dataProvider;
     }
 }
