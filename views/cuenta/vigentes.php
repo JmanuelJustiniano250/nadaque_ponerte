@@ -3,7 +3,6 @@
 use himiklab\thumbnail\EasyThumbnailImage;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 
 /* @var $this yii\web\View */
@@ -96,8 +95,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
-                        <a href="" class="registrarse" style="margin-left: 0">MARCAR COMO VENDIDO</a>
-                    </div>
+                        <?= Html::a('MARCAR COMO VENDIDO', ['cuenta/updateA', 'id' => $model->idanuncio,'estado'=>1], [
+                            'class' => 'registrarse',
+                            'style'=>'margin-left: 0',
+                            'data' => [
+                                'confirm' => 'Esta seguro?',
+                            ],
+                        ]) ?>                    </div>
 
 
                     </p>
@@ -132,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <?php $form = ActiveForm::begin([
-                    'action' => ['/cuenta/update54','id'=> $model->idanuncio],
+                    'action' => ['/cuenta/updateA','id'=> $model->idanuncio],
                     'id' => 'login-form',
                     'method'=>'get'
                     /*'layout' => 'horizontal',
