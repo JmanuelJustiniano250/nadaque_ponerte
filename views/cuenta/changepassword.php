@@ -219,6 +219,7 @@ $this->registerCss($script);
 
 
 <div class="">
+    <?php $model->contrasena =""?>
     <?php $form = ActiveForm::begin([
     //'action' => ,
         'id' => 'login-form',
