@@ -1,6 +1,8 @@
 <?php
 
+use kartik\widgets\FileInput;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -9,7 +11,7 @@ use yii\widgets\DetailView;
 $this->title = $model->idanuncio;
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$url = \yii\helpers\Url::to(['anuncios/comentario','id'=>$model->idanuncio]);
+$url = Url::to(['anuncios/comentario','id'=>$model->idanuncio]);
 $script = <<<JS
 function rechazo(definitivo) {
     estado = 2;
@@ -63,24 +65,45 @@ $this->registerJs($script,\yii\web\View::POS_BEGIN);
                         'model' => $model,
                         'attributes' => [
                             'idanuncio',
-                            'idcategoria',
+                    [
+                        'label' => 'Categoria',
+                        'value' => $model->categoria->nombre,
+                    ],
                             'decripcion:html',
                             'otra_descripcion:html',
                             'codigo',
-                            'foto',
                             'precio',
-                            'estado',
-                            'enable',
+                            [
+                                'label' => 'estado',
+                                'value' => $model->getEstado(),
+                            ],
                             'fecha_registro',
                         ],
                     ]) ?>
+                    <?= FileInput::widget([
+                    'name' => 'images[]',
+                    'options'=>[
+                    'multiple'=>true
+                    ],
+                    'pluginOptions' => [
+                    'initialPreview'=>[
+                        Url::to(['imagen/anuncios/'.$model->foto]),
+                        Url::to(['imagen/anuncios/'.$model->foto2]),
+                        Url::to(['imagen/anuncios/'.$model->foto3]),
+                        Url::to(['imagen/anuncios/'.$model->foto4]),
+                        Url::to(['imagen/anuncios/'.$model->foto5]),
+                    ],
+                    'initialPreviewAsData'=>true,
+                    'overwriteInitial'=>false,
+                    'maxFileSize'=>2800,
+                        'showCaption' => false,
+                        'showRemove' => false,
+                        'showUpload' => false,
+                        'showBrowse' => false,
 
-                    <?php
-                    foreach ($model->anunciosGalerias as $item) {
-                        echo Html::tag('div', Html::img('@web/imagen/anuncios/' . $item['foto'], ['class' => 'img-thumbnail']), ['class' => 'col-md-2 col-sm-4 col-xs-6']);
-                    }
-                    ?>
-
+                    ]
+                    ]);
+?>
                 </div>
             </div>
         </div>
