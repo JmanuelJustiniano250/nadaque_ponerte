@@ -1,6 +1,7 @@
 <?php
 
 use himiklab\thumbnail\EasyThumbnailImage;
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 $script = <<<CSS
@@ -24,7 +25,7 @@ color: white;
    
 }
 CSS;
-$this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
+$this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
 
 
 ?>
@@ -56,8 +57,14 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                     </div>
 
 
-                    <div class="text-center" align="center" style="margin-top: px;"><BR><br>
-                        <a href="<?= Url::to(['cuenta/update54','id'=>$model->idanuncio,'estado'=>1])?>" class="registrarse" style="margin-left: 0">QUITAR DE MI LISTA</a>
+                    <div class="text-center" align="center" style="margin-top: 0px;"><BR><br>
+                        <?= Html::a('QUITAR DE MI LISTA', ['cuenta/listadel', 'id' => $model->iddeseo,'estado'=>1], [
+                            'class' => 'registrarse',
+                            'style'=>'margin-left: 0',
+                            'data' => [
+                                'confirm' => 'Esta seguro?',
+                            ],
+                        ]) ?>
                     </div>
 
 

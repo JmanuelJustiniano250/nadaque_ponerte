@@ -10,6 +10,7 @@ use app\models\AnunciosSearch;
 use app\models\Calificaciones;
 use app\models\CompraSearch;
 use app\models\ContactForm;
+use app\models\Deseo;
 use app\models\Forget;
 use app\models\Mensajes;
 use app\models\Newsletter;
@@ -29,7 +30,7 @@ class CuentaController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'principal', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos', 'mensajeria', 'update', 'mensaje'],
+                'only' => ['create', 'principal', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos','listadel', 'mensajeria', 'update', 'mensaje'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -460,6 +461,15 @@ class CuentaController extends Controller
          }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         return $this->render('index', ['op' => 8, 'model' => $model]);
+    }
+    public function actionListadel($id)
+    {
+        /* if (empty(Yii::$app->session->get('user'))) {
+             return $this->redirect(['site/login']);
+         }*/
+        $model = Deseo::findOne(['iddeseo'=>$id]);
+        $model->delete();
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
 
