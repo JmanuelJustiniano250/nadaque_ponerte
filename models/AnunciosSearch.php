@@ -82,6 +82,12 @@ class AnunciosSearch extends Anuncios
                 $tmp[] = $key;
             $query->andFilterWhere(['IN', 'idcategoria', $tmp]);
         }
+        if (isset($params['subcategorias'])) {
+            $tmp = array();
+            foreach ($params['subcategorias'] as $key => $item)
+                $tmp[] = $key;
+            $query->andFilterWhere(['IN', 'idsubcategoria', $tmp]);
+        }
         if (isset($params['precio'])) {
             $tmp = explode(',', $params['precio']);
             $query->andFilterWhere(['between', 'cast(precio as unsigned)', $tmp[0], $tmp[1]]);

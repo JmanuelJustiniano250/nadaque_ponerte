@@ -10,6 +10,7 @@ use Yii;
  *
  * @property int $idanuncio
  * @property int $idcategoria
+ * @property int $idsubcategoria
  * @property int $idusuario
  * @property string $titulo
  * @property string $decripcion
@@ -63,7 +64,8 @@ class Anuncios extends \yii\db\ActiveRecord
     {
         return [
             [['idcompra'], 'required'],
-            [['idcategoria', 'idusuario', 'estado', 'enable', 'idcompra', 'visitas', 'vendido'], 'integer'],
+            [['idcompra','decripcion','titulo','foto','precio','idcategoria',], 'required','on'=>'create'],
+            [['idcategoria','idsubcategoria', 'idusuario', 'estado', 'enable', 'idcompra', 'visitas', 'vendido'], 'integer'],
             [['decripcion', 'otra_descripcion', 'razon'], 'string'],
             [['fecha_registro', 'fecha_aprobado', 'filtro'], 'safe'],
             [['titulo'], 'string', 'max' => 200],
@@ -86,6 +88,7 @@ class Anuncios extends \yii\db\ActiveRecord
         return [
             'idanuncio' => 'Idanuncio',
             'idcategoria' => 'Categoria',
+            'idsubcategoria' => 'Sub-Categoria',
             'idusuario' => 'Usuario',
             'titulo' => 'Titulo',
             'decripcion' => 'Decripcion',
@@ -115,6 +118,14 @@ class Anuncios extends \yii\db\ActiveRecord
     public function getCategoria()
     {
         return $this->hasOne(Categorias::className(), ['idcategoria' => 'idcategoria']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSubCategoria()
+    {
+        return $this->hasOne(Categorias::className(), ['idcategoria' => 'idsubcategoria']);
     }
 
     /**

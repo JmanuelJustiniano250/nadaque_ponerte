@@ -31,6 +31,7 @@ class AnunciosFiltros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id_cp', 'id_co', 'id_msp', 'id_mp', 'id_tp'], 'required','on'=>'create'],
             [['idanuncio', 'id_cp', 'id_co', 'id_msp', 'id_mp', 'id_tp'], 'integer'],
             [['fecha_creacion'], 'safe'],
         ];

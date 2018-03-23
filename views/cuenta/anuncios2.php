@@ -126,6 +126,7 @@ $this->registerCss($script);
                             $tabla = \app\models\Anuncios::find()
                                 ->andWhere(['estado' => 0])
                                 ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->orderBy(['idanuncio'=>SORT_DESC])
                                 ->distinct()
                                 ->all();
                             $provider = new \yii\data\ArrayDataProvider([
@@ -162,6 +163,7 @@ $this->registerCss($script);
                             $tabla = \app\models\Anuncios::find()
                                 ->andWhere(['estado' => 1])
                                 ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->orderBy(['idanuncio'=>SORT_DESC])
                                 ->distinct()
                                 ->all();
                             $provider = new \yii\data\ArrayDataProvider([
@@ -198,6 +200,7 @@ $this->registerCss($script);
                             $tabla = \app\models\Anuncios::find()
                                 ->andWhere(['or', ['estado' => 2], ['estado' => 4]])
                                 ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->orderBy(['idanuncio'=>SORT_DESC])
                                 ->distinct()
                                 ->all();
                             $provider = new \yii\data\ArrayDataProvider([
@@ -233,6 +236,7 @@ $this->registerCss($script);
                             $tabla = \app\models\Anuncios::find()
                                 ->andWhere(['estado' => 3])
                                 ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+                                ->orderBy(['idanuncio'=>SORT_DESC])
                                 ->distinct()
                                 ->all();
                             $provider = new \yii\data\ArrayDataProvider([

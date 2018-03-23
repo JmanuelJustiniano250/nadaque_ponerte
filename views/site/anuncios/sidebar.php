@@ -118,11 +118,23 @@ $index = 0;
     <div class="collapse" id="collapseExample">
         <div class="" style="padding-top: 10px;">
             <?php $tmp = \app\models\Categorias::findAll(['estado' => 1, 'idPadre' => $padre]) ?>
+            <?php $pos = 0?>
             <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("categorias[" . $item['idcategoria'] . "]", ((isset($model['categorias'][$item['idcategoria']])) ? $model['categorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
+                <?= Html::radio("categorias[" . $item['idcategoria'] . "]", ((isset($model['categorias'][$item['idcategoria']])) ? $model['categorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
+                <?php if(isset($model['categorias'][$item['idcategoria']])){$pos=$item['idcategoria'];}?>
             <?php endforeach; ?>
 
         </div>
+        <?php if($pos!=0):?>
+        <h5 class="text-uppercase"><strong>Sub-categorias</strong></h5>
+        <div class="" style="padding-top: 10px;">
+            <?php $tmp = \app\models\Categorias::findAll([ 'idPadre' => $pos]) ?>
+            <?php foreach ($tmp as $item): ?>
+                <?= Html::checkbox("subcategorias[" . $item['idcategoria'] . "]", ((isset($model['subcategorias'][$item['idcategoria']])) ? $model['subcategorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
+            <?php endforeach; ?>
+
+        </div>
+        <?php endif; ?>
     </div>
 
 

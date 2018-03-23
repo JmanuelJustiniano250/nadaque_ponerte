@@ -8,6 +8,7 @@ use app\models\AnunciosFiltros;
 use app\models\AnunciosGaleria;
 use app\models\AnunciosSearch;
 use app\models\Calificaciones;
+use app\models\Categorias;
 use app\models\CompraSearch;
 use app\models\ContactForm;
 use app\models\Deseo;
@@ -18,6 +19,7 @@ use app\models\Usuarios;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 
@@ -81,8 +83,9 @@ class CuentaController extends Controller
         }*/
 
         $model = new Anuncios();
+        $model->scenario='create';
         $modelfiltro = new AnunciosFiltros();
-
+        $modelfiltro->scenario='create';
 
         if ($model->load(Yii::$app->request->post()) && $modelfiltro->load(Yii::$app->request->post())) {
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
@@ -97,18 +100,20 @@ class CuentaController extends Controller
             if ($model->upload()) {
 
             }
-            if ($model->save(false)) {
-                $modelfiltro->idanuncio = $model->idanuncio;
-                $modelfiltro->save();
-                Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido con éxito y está en proceso de aprobación. Te responderemos por correo máximo en 24 horas si tu anuncio está aprobado o necesitas hacerle algún cambio.', 'type' => 'success']);
-                return $this->redirect(['cuenta/anuncios2']);
-            } else {
-                if ($model->foto) {
-                    if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
-                        unlink(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto);
+            if($model->validate() && $modelfiltro->validate()) {
+                if ($model->save(false)) {
+                    $modelfiltro->idanuncio = $model->idanuncio;
+                    $modelfiltro->save();
+                    Yii::$app->session->setFlash('success', ['message' => 'Tu anuncio ha sido recibido con éxito y está en proceso de aprobación. Te responderemos por correo máximo en 24 horas si tu anuncio está aprobado o necesitas hacerle algún cambio.', 'type' => 'success']);
+                    return $this->redirect(['cuenta/anuncios2']);
+                } else {
+                    if ($model->foto) {
+                        if (file_exists(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto)) {
+                            unlink(Yii::$app->basePath . "/imagen/anuncios/" . $model->foto);
+                        }
                     }
+                    Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la creacion del anuncio, Intentelo de nuevo mas tarde']);
                 }
-                Yii::$app->session->setFlash('success', ['message' => 'Hubo un error en la creacion del anuncio, Intentelo de nuevo mas tarde']);
             }
 
         }
@@ -694,5 +699,32 @@ class CuentaController extends Controller
         }
 
 
+    }
+
+    public function actionSubcat()
+    {
+
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $id = end($_POST['depdrop_parents']);
+            $list = Categorias::findAll([ 'idpadre' => $id]);
+            // $li = ArrayHelper::map($model, 'idcategoria', 'nombre');
+            // the getSubCatList function will query the database based on the
+            if ($id != null && count($list) > 0) {
+                $selected = '';
+                foreach ($list as $i => $account) {
+                    $out[] = ['id' => $account['idcategoria'], 'name' => $account['nombre']];
+                    if ($i == 0) {
+                        $selected = $account['idcategoria'];
+                    }
+                }
+                // Shows how you can preselect a value
+                echo Json::encode(['output' => $out, 'selected' => $selected]);
+                return;
+            }
+            echo Json::encode(['output' => $out, 'selected' => '']);
+            return;
+        }
+        echo Json::encode(['output'=>'', 'selected'=>'']);
     }
 }

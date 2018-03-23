@@ -282,7 +282,7 @@ $cats = $categoria->categorias;
         foreach ($cats as $item) {
 
 
-            $sub = $item->categorias;
+            $sub = [];
             if (count($sub) > 0) {
                 $values = [];
                 foreach ($sub as $value) {

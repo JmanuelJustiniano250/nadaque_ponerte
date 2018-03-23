@@ -1,10 +1,10 @@
 <?php
 
+use kartik\widgets\DepDrop;
 use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-
 
 $script = <<<CSS
 
@@ -394,19 +394,35 @@ $user = Yii::$app->session->get('user');
 
                     <?php $form->field($model, 'idusuario')->hiddenInput(['value' => $user['idusuario']])->label(false); ?>
 
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <?= $form->field($model, 'idcategoria')->label(false)->widget(Select2::classname(), [
 
-                    <?= $form->field($model, 'idcategoria')->label(false)->widget(Select2::classname(), [
+                                'data' => \yii\helpers\ArrayHelper::map(\app\models\Categorias::findOne(['alias' => 'anuncios'])->categorias, 'idcategoria', 'nombre'),
+                                'language' => 'es',
+                                'options' => [
+                                    'id'=>'cat-id',
+                                    'placeholder' => 'Categorias',
+                                    //'multiple' => true,
+                                ],
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ]) ?>
+                        </div>
+                        <div class="col-xs-6">
+                            <?= $form->field($model, 'idsubcategoria')->label(false)->widget(DepDrop::classname(), [
+                                'select2Options' => ['pluginOptions' => ['allowClear' => true]],
+                                'type' => DepDrop::TYPE_SELECT2,
+                                'pluginOptions' => [
+                                    'depends' => ['cat-id'],
+                                    'placeholder' => 'Sub-Categorias',
+                                    'url' => \yii\helpers\Url::to(['/cuenta/subcat'])
+                                ]
+                            ]);?>
+                        </div>
+                    </div>
 
-                        'data' => \yii\helpers\ArrayHelper::map(\app\models\Categorias::findOne(['alias' => 'anuncios'])->categorias, 'idcategoria', 'nombre'),
-                        'language' => 'es',
-                        'options' => [
-                            'placeholder' => 'Categorias',
-                            //'multiple' => true,
-                        ],
-                        'pluginOptions' => [
-                            'allowClear' => true
-                        ],
-                    ]) ?>
                 </div>
 
             </div>
