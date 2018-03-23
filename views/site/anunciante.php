@@ -853,6 +853,7 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                     $tabla = \app\models\Anuncios::find()
                         ->andWhere(['estado' => 1])
                         ->andWhere(['idusuario' => $model->idusuario])
+                        ->orderBy(['idanuncio'=>SORT_DESC])
                         ->distinct()
                         ->all();
                     $provider = new \yii\data\ArrayDataProvider([
