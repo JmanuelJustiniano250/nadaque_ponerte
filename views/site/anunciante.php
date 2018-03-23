@@ -770,7 +770,7 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
             $provider = new \yii\data\ArrayDataProvider([
                 'allModels' => $tabla,
                 'pagination' => [
-                    'pageSize' => 9,
+                    'pageSize' => 6,
                 ],
             ]);
             \yii\widgets\Pjax::begin();
