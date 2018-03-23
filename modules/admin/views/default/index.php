@@ -4,12 +4,6 @@
 
 $this->title = 'Marca&Mercado';
 ?>
-
-<section class="content-header">
-    <h1 class="text-center">
-        Bienvenidos al Administrador de M&M
-    </h1>
-</section>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>

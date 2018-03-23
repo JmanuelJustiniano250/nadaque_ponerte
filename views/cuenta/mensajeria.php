@@ -58,11 +58,11 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
                     <span style="color: #ff839a; font-weight: 600;     font-size: 18px;"> <?php /*= $item->usuario['alias'] */ ?> </span>
                 </a>
             --><?php /*else:*/ ?>
-            <a href="<?= \yii\helpers\Url::to(['cuenta/mensajeria', 'id' => $item['idvendedor']]) ?>"
-               class="list-group-item imagenusario <?= ((Yii::$app->request->get('id') == $item['idvendedor']) ? 'active' : '') ?>">
+            <a href="<?= \yii\helpers\Url::to(['cuenta/mensajeria', 'id' => $item['idusuario']]) ?>"
+               class="list-group-item imagenusario <?= ((Yii::$app->request->get('id') == $item['idusuario']) ? 'active' : '') ?>">
                 <?=
                 EasyThumbnailImage::thumbnailImg(
-                    Yii::getAlias('@webroot/imagen/usuarios/' . $item->vendedor['foto']),
+                    Yii::getAlias('@webroot/imagen/usuarios/' . $item['foto']),
                     45,
                     45,
                     EasyThumbnailImage::THUMBNAIL_OUTBOUND,
@@ -70,7 +70,15 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
                 );
                 ?>
 
-                <span style="color: #ff839a; font-weight: 600;     font-size: 18px;"> <?= $item->vendedor['alias'] ?> </span>
+                <span style="color: #ff839a; font-weight: 600;     font-size: 18px;"> <?= $item['alias'] ?>
+                <?php
+                $cnt = \app\models\Mensajes::find()
+                    ->where(['idusuario'=>$item['idusuario'],'estado'=>0,'idvendedor'=>Yii::$app->session->get('user')['idusuario']])
+                    ->count();
+                if($cnt >0)
+                    echo "<span class=\"badge \" style='background-color: red;'>{$cnt}</span>";
+                    ?>
+                </span>
             </a>
             <?php /*endif;*/ ?>
         <?php endforeach; ?>

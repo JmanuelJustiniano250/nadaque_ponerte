@@ -17,6 +17,7 @@ use app\models\Newsletter;
 use app\models\Usuarios;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 
@@ -480,13 +481,22 @@ class CuentaController extends Controller
         }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         /* if($model['tipo']){*/
-        $mensajes = Mensajes::find()
-            ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
+        $mensajestmp = Mensajes::find()
+            ->andWhere(['or',
+                    ['idusuario' => Yii::$app->session->get('user')['idusuario']],
+                    ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
+            ])
             ->andWhere(['tipo' => 0])
-            ->orderBy(['idmensaje' => SORT_DESC])
-            ->distinct('idvendedor')
-            ->select('idvendedor')
+            //->orderBy(['idmensaje' => SORT_DESC])
+            ->distinct('idusuario')
+            ->select(['idusuario','idvendedor'])
             ->all();
+        $mensajes = Usuarios::find()->where(['and',
+            ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp,'idusuario')],
+            ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp,'idvendedor')]
+            ])
+        ->distinct('idusuario')
+        ->all();
         /* $chat = Mensajes::find()
              ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
              ->andWhere(['idusuario' => Yii::$app->request->get('id')])
@@ -510,8 +520,7 @@ class CuentaController extends Controller
                         ['idusuario' => Yii::$app->request->get('id')],
                         ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
                     ]
-                ]
-            )
+                ])
             ->andWhere(['tipo' => 0])
             ->orderBy(['fecha_registro' => SORT_ASC])
             ->all();
