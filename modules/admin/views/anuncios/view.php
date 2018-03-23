@@ -87,11 +87,11 @@ $this->registerJs($script, \yii\web\View::POS_BEGIN);
                         ],
                         'pluginOptions' => [
                             'initialPreview' => [
-                                Url::to(['imagen/anuncios/' . $model->foto]),
-                                Url::to(['imagen/anuncios/' . $model->foto2]),
-                                Url::to(['imagen/anuncios/' . $model->foto3]),
-                                Url::to(['imagen/anuncios/' . $model->foto4]),
-                                Url::to(['imagen/anuncios/' . $model->foto5]),
+                                Url::to(['../imagen/anuncios/' . $model->foto]),
+                                Url::to(['../imagen/anuncios/' . $model->foto2]),
+                                Url::to(['../imagen/anuncios/' . $model->foto3]),
+                                Url::to(['../imagen/anuncios/' . $model->foto4]),
+                                Url::to(['../imagen/anuncios/' . $model->foto5]),
                             ],
                             'initialPreviewAsData' => true,
                             'overwriteInitial' => false,

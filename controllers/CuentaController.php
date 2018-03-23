@@ -669,7 +669,7 @@ class CuentaController extends Controller
             $model->estado = 0;
             if ($model->save()) {
                 Correos::nuevoMensaje(Yii::$app->session->get('user'));
-                Yii::$app->session->setFlash('success', ['message' => 'Mensaje enviado', 'type' => 'success']);
+                Yii::$app->session->setFlash('success', ['message' => 'Mensaje privado enviado', 'type' => 'success']);
             } else
                 Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
         }
