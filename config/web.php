@@ -33,6 +33,7 @@ $config = [
             //'useMemcached' => true,
         ],
         'user' => [
+            'class' => 'yii\web\User',
             'identityClass' => 'app\models\Usuarios',
             'enableAutoLogin' => false,
             'loginUrl' => ['site/login'],

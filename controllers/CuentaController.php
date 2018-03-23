@@ -31,7 +31,7 @@ class CuentaController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'principal', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos','listadel', 'mensajeria', 'update', 'mensaje'],
+                'only' => ['create', 'principal', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos', 'listadel', 'mensajeria', 'update','updateA', 'mensaje', 'mensaje2'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -58,7 +58,14 @@ class CuentaController extends Controller
             ],
         ];
     }
-
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        Yii::$app->user->returnUrl = Yii::$app->request->referrer;
+        return parent::beforeAction($action);
+    }
     /**
      * Displays homepage.
      *
@@ -66,7 +73,7 @@ class CuentaController extends Controller
      */
 
 
-    public function actionCreate($id=null)
+    public function actionCreate($id = null)
     {
 
         /*if (empty(Yii::$app->session->get('user'))) {
@@ -106,12 +113,11 @@ class CuentaController extends Controller
 
         }
 
-        if(!is_null($id))
-        {
-            $model = Anuncios::find()->where(['idanuncio'=>$id])->one();
-            $modelfiltro = AnunciosFiltros::find()->where(['idanuncio'=>$id])->one();
-            if(empty($modelfiltro))
-                $modelfiltro= new AnunciosFiltros();
+        if (!is_null($id)) {
+            $model = Anuncios::find()->where(['idanuncio' => $id])->one();
+            $modelfiltro = AnunciosFiltros::find()->where(['idanuncio' => $id])->one();
+            if (empty($modelfiltro))
+                $modelfiltro = new AnunciosFiltros();
         }
 
         return $this->render('../anuncios/create', [
@@ -138,21 +144,19 @@ class CuentaController extends Controller
             return $this->redirect(['site/login']);
         }*/
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
-        if($model->load(Yii::$app->request->post()))
-        {
-            if(!empty($model->contrasena2)) {
+        if ($model->load(Yii::$app->request->post())) {
+            if (!empty($model->contrasena2)) {
                 if ($model->contrasena != Yii::$app->session->get('user')['contrasena']) {
-                if (md5($model->contrasena) != Yii::$app->session->get('user')['contrasena']) {
-                    $model->contrasena = md5($model->contrasena);
-                    if($model->save(false))
-                        Yii::$app->session->setFlash('success', ['message' => 'contraseña Actualizada','type'=>'success']);
-                    else
-                        Yii::$app->session->setFlash('success', ['message' => 'Hubo un error al actualizar los datos, intentelo mas tarde']);
+                    if (md5($model->contrasena) != Yii::$app->session->get('user')['contrasena']) {
+                        $model->contrasena = md5($model->contrasena);
+                        if ($model->save(false))
+                            Yii::$app->session->setFlash('success', ['message' => 'contraseña Actualizada', 'type' => 'success']);
+                        else
+                            Yii::$app->session->setFlash('success', ['message' => 'Hubo un error al actualizar los datos, intentelo mas tarde']);
+                    }
                 }
-                }
-            }
-            else{
-                $model->addError('contrasena2','empty');
+            } else {
+                $model->addError('contrasena2', 'empty');
             }
         }
         return $this->render('index', ['op' => 9, 'model' => $model]);
@@ -415,7 +419,7 @@ class CuentaController extends Controller
             return $this->redirect(['site/login']);
         }
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
-        $mensajes = Calificaciones::updateAll(['estado'=>1],['idvendedor' => Yii::$app->session->get('user')['idusuario']]);
+        $mensajes = Calificaciones::updateAll(['estado' => 1], ['idvendedor' => Yii::$app->session->get('user')['idusuario']]);
 
         return $this->render('index', ['op' => 3, 'model' => $model]);
     }
@@ -463,12 +467,13 @@ class CuentaController extends Controller
         $model = Usuarios::findOne(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
         return $this->render('index', ['op' => 8, 'model' => $model]);
     }
+
     public function actionListadel($id)
     {
         /* if (empty(Yii::$app->session->get('user'))) {
              return $this->redirect(['site/login']);
          }*/
-        $model = Deseo::findOne(['iddeseo'=>$id]);
+        $model = Deseo::findOne(['iddeseo' => $id]);
         $model->delete();
         return $this->redirect(Yii::$app->request->referrer);
     }
@@ -483,20 +488,20 @@ class CuentaController extends Controller
         /* if($model['tipo']){*/
         $mensajestmp = Mensajes::find()
             ->andWhere(['or',
-                    ['idusuario' => Yii::$app->session->get('user')['idusuario']],
-                    ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
+                ['idusuario' => Yii::$app->session->get('user')['idusuario']],
+                ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
             ])
             ->andWhere(['tipo' => 0])
             //->orderBy(['idmensaje' => SORT_DESC])
             ->distinct('idusuario')
-            ->select(['idusuario','idvendedor'])
+            ->select(['idusuario', 'idvendedor'])
             ->all();
         $mensajes = Usuarios::find()->where(['and',
-            ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp,'idusuario')],
-            ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp,'idvendedor')]
-            ])
-        ->distinct('idusuario')
-        ->all();
+            ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp, 'idusuario')],
+            ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp, 'idvendedor')]
+        ])
+            ->distinct('idusuario')
+            ->all();
         /* $chat = Mensajes::find()
              ->andWhere(['idvendedor' => Yii::$app->session->get('user')['idusuario']])
              ->andWhere(['idusuario' => Yii::$app->request->get('id')])
@@ -511,24 +516,24 @@ class CuentaController extends Controller
             ->all();*/
         $chat = Mensajes::find()
             ->andWhere(['or',
-                    ['and',
-                        ['idvendedor' => Yii::$app->request->get('id')],
-                        ['idusuario' => Yii::$app->session->get('user')['idusuario']]
-                    ]
-                    ,
-                    ['and',
-                        ['idusuario' => Yii::$app->request->get('id')],
-                        ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
-                    ]
-                ])
+                ['and',
+                    ['idvendedor' => Yii::$app->request->get('id')],
+                    ['idusuario' => Yii::$app->session->get('user')['idusuario']]
+                ]
+                ,
+                ['and',
+                    ['idusuario' => Yii::$app->request->get('id')],
+                    ['idvendedor' => Yii::$app->session->get('user')['idusuario']]
+                ]
+            ])
             ->andWhere(['tipo' => 0])
             ->orderBy(['fecha_registro' => SORT_ASC])
             ->all();
-        Mensajes::updateAll(['estado'=>1],['and',
+        Mensajes::updateAll(['estado' => 1], ['and',
             ['and',
                 ['idvendedor' => Yii::$app->session->get('user')['idusuario']],
                 ['tipo' => 0]
-            ],['estado' => 0]]);
+            ], ['estado' => 0]]);
         // }
 
         return $this->render('index', ['op' => 7, 'model' => $model, 'mensaje' => $mensajes, 'chat' => $chat]);
@@ -598,29 +603,27 @@ class CuentaController extends Controller
         $vendido = Yii::$app->request->get('estado');
         $precio = Yii::$app->request->get('precio');
         $precio_oferta = Yii::$app->request->get('precio-oferta');
-        $model=Anuncios::findOne(['idanuncio'=>$id]);
-        if(!empty($model)){
-            $sw=0;
-        if($vendido){
-            $model->estado=6;
-            $sw=1;
-        }
-        if(!empty($precio))
-        {
-            $model->precio=$precio;
-            $sw=1;
-        }
-        if(!empty($precio_oferta))
-        {
-            $model->precio_promocion =$precio_oferta;
-            $sw=1;
-        }
-            if ($sw==1) {
-            if ($model->save()) {
-                Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
-            } else
-                Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
-        }
+        $model = Anuncios::findOne(['idanuncio' => $id]);
+        if (!empty($model)) {
+            $sw = 0;
+            if ($vendido) {
+                $model->estado = 6;
+                $sw = 1;
+            }
+            if (!empty($precio)) {
+                $model->precio = $precio;
+                $sw = 1;
+            }
+            if (!empty($precio_oferta)) {
+                $model->precio_promocion = $precio_oferta;
+                $sw = 1;
+            }
+            if ($sw == 1) {
+                if ($model->save()) {
+                    Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
+                } else
+                    Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
+            }
         }
         return $this->redirect(Yii::$app->request->referrer);
     }
@@ -638,14 +641,13 @@ class CuentaController extends Controller
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->estado = 0;
             if ($model->save()) {
-                    Correos::nuevoComentario(Yii::$app->session->get('user'));
+                Correos::nuevoComentario(Yii::$app->session->get('user'));
                 Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
             } else
                 Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
         }
         return $this->redirect(Yii::$app->request->referrer);
     }
-
 
 
     public function actionMensaje2()
@@ -661,16 +663,13 @@ class CuentaController extends Controller
             $model->fecha_registro = date('Y-m-d H:i:s');
             $model->estado = 0;
             if ($model->save()) {
-                    Correos::nuevoMensaje(Yii::$app->session->get('user'));
+                Correos::nuevoMensaje(Yii::$app->session->get('user'));
                 Yii::$app->session->setFlash('success', ['message' => 'Mensaje enviado', 'type' => 'success']);
             } else
                 Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
         }
         return $this->redirect(Yii::$app->request->referrer);
     }
-
-
-
 
 
     public function actionPublicargaleria()
@@ -693,7 +692,6 @@ class CuentaController extends Controller
         } else {
             return $this->render('../site/anuncios/galeria', ['model' => new AnunciosGaleria(), 'id' => $id]);
         }
-
 
 
     }

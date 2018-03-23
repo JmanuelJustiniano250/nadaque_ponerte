@@ -2,8 +2,8 @@
 
 use himiklab\thumbnail\EasyThumbnailImage;
 use kartik\widgets\StarRating;
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 $script = <<<CSS
 .krajee-default.file-preview-frame .kv-file-content {
@@ -344,8 +344,6 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                     <div class="col-sm-4 col-xs-12">
 
 
-
-
                     </div>
 
 
@@ -386,7 +384,7 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                         <?php
                         $query = \app\models\Calificaciones::find()
                             ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
-                        $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
+                        $valor = ($query->sum('puntaje') / (!empty($query->count()) ? $query->count() : 1));
                         echo StarRating::widget([
                             'name' => 'rating_21',
                             'value' => ($valor),
@@ -397,25 +395,28 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                             ],
                         ]); ?>
                         <?php
-                        $us= '';
-                        if(isset(Yii::$app->session->get('user')['idusuario']))
-                            $us =Yii::$app->session->get('user')['idusuario'];
-                        if($model->idusuario != $us):
-                        ?>
+                        $us = '';
+                        if (isset(Yii::$app->session->get('user')['idusuario']))
+                            $us = Yii::$app->session->get('user')['idusuario'];
+                        if ($model->idusuario != $us):
+                            ?>
 
                             <a href="" data-toggle="modal" class="calsiw" data-target="#califModal">
                                 ¡Calificame!
                             </a>
 
 
-                        <div style="border-bottom: 0px solid white;    margin: 0px 30px ">
+                            <div style="border-bottom: 0px solid white;    margin: 0px 30px ">
 
                                 <!-- line modal -->
-                                <div class="modal fade" id="califModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                <div class="modal fade" id="califModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="modalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                                <button type="button" class="close" data-dismiss="modal"><span
+                                                            aria-hidden="true">×</span><span
+                                                            class="sr-only">Close</span></button>
                                                 <h3 class="modal-title" id="lineModalLabel">Calificame</h3>
                                             </div>
                                             <div class="modal-body">
@@ -436,16 +437,19 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                                     ],*/
                                                 ]); ?>
                                                 <?= $form->field($modelcal, 'puntaje')->label(false)->widget(\kartik\widgets\StarRating::classname()); ?>
-                                                <?= $form->field($modelcal,'mensaje')->textarea(['class'=>'form-control','placeholder'=>'Escribe un comentario acerca de mi','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
-                                                <?= $form->field($modelcal,'idvendedor')->hiddenInput()->label(false)?>
+                                                <?= $form->field($modelcal, 'mensaje')->textarea(['class' => 'form-control', 'placeholder' => 'Escribe un comentario acerca de mi', 'style' => "width: 100%", 'rows' => "5"])->label(false) ?>
+                                                <?= $form->field($modelcal, 'idvendedor')->hiddenInput()->label(false) ?>
 
-                                                <button type="submit" class="btn btn-default btnregister" style="color: white">Calificar</button>
+                                                <button type="submit" class="btn btn-default btnregister"
+                                                        style="color: white">Calificar
+                                                </button>
 
                                                 <?php ActiveForm::end(); ?>
 
                                             </div>
                                             <div class="modal-footer">
-                                                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                                <div class="btn-group btn-group-justified" role="group"
+                                                     aria-label="group button">
 
                                                 </div>
                                             </div>
@@ -453,8 +457,8 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                     </div>
                                 </div>
 
-                        </div>
-                        <?php endif;?>
+                            </div>
+                        <?php endif; ?>
 
                     </div>
 
@@ -466,44 +470,35 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                     </div>
 
 
-                    <div class="col-sm-4 col-xs-12 sendensw" style="margin-top: 5px;" >
+                    <div class="col-sm-4 col-xs-12 sendensw" style="margin-top: 5px;">
                         <a href="" data-toggle="modal" data-target="#squarespaceModal" style="margin-top: 20px;">
-                            <i class="fa fa-envelope dedasdw" aria-hidden="true"></i><span class="calsiw" style="font-size: 15px;"> Enviar mensaje</span>
+                            <i class="fa fa-envelope dedasdw" aria-hidden="true"></i><span class="calsiw"
+                                                                                           style="font-size: 15px;"> Enviar mensaje</span>
 
                         </a>
-
-
 
 
                     </div>
 
 
-
-
-
-
-
-
-
-
-
                     <div class="imgquiero">
-
-
-
 
 
                         <!-- Modal del enviar mensaje -->
 
                         <!-- line modal -->
-                        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog"
+                             aria-labelledby="modalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header sns">
-                                        <button type="button" class="close sns2" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                        <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: white">
+                                        <button type="button" class="close sns2" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                        </button>
+                                        <h3 class="modal-title" id="lineModalLabel"
+                                            style=" font-size: 16px; font-weight: 600; color: white">
 
-                                            Envia un mensaje a  <?= $model['alias']?>
+                                            Envia un mensaje a <?= $model['alias'] ?>
                                         </h3>
                                     </div>
                                     <div class="modal-body">
@@ -513,9 +508,8 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                         </p>
 
 
-
-
-                                        <p style="margin-top: 15px; margin-bottom: 5px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
+                                        <p style="margin-top: 15px; margin-bottom: 5px;"><span
+                                                    style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
 
 
                                             <?php if ($model['telefono']): ?>
@@ -529,8 +523,6 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         </p>
-
-
 
 
                                         <span style="font-weight: 600; color: #fda4b5">Redes Sociales: </span>
@@ -580,8 +572,9 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                                 <?php if ($model['visibleinsta']): ?>
 
                                                     <li>
-                                                        <a href="<?= $model-['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
-                                                                                                                         aria-hidden="true"></i></a>
+                                                        <a href="<?= $model - ['instagram'] ?>" target="_blank"><i
+                                                                    class="fa fa-instagram"
+                                                                    aria-hidden="true"></i></a>
                                                     </li>
                                                 <?php else: ?>
 
@@ -594,12 +587,9 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
 
                                         <br>
                                         <p style="color: #6b6b6b;">
-                                            o también mandale un mensaje privado <br> la respuesta aparecera en tus mensajes privados.
+                                            o también mandale un mensaje privado <br> la respuesta aparecera en tus
+                                            mensajes privados.
                                         </p>
-
-
-
-
 
 
                                         <!-- content goes here -->
@@ -616,17 +606,18 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                         ]); ?>
 
 
-                                        <?php $modmess= new \app\models\Mensajes();?>
-                                        <?php $modmess->idvendedor = $model->idusuario;?>
-                                        <?php $modmess->tipo = 0;?>
+                                        <?php $modmess = new \app\models\Mensajes(); ?>
+                                        <?php $modmess->idvendedor = $model->idusuario; ?>
+                                        <?php $modmess->tipo = 0; ?>
 
 
 
-                                        <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control privatemen','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
-                                        <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
-                                        <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
+                                        <?= $form->field($modmess, 'detalle')->textarea(['class' => 'form-control privatemen', 'placeholder' => 'Escribe el mensaje y el nombre de la prenda', 'style' => "width: 100%", 'rows' => "5"])->label(false) ?>
+                                        <?= $form->field($modmess, 'idvendedor')->hiddenInput()->label(false) ?>
+                                        <?= $form->field($modmess, 'tipo')->hiddenInput()->label(false) ?>
 
-                                        <div align="right">  <button type="submit" class="btn  btnregister enviarsns">Enviar</button>
+                                        <div align="right">
+                                            <button type="submit" class="btn  btnregister enviarsns">Enviar</button>
                                         </div>
                                         <?php ActiveForm::end(); ?>
 
@@ -634,11 +625,10 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                                         <br>
 
 
-
-
                                     </div>
                                     <div class="modal-footer sns3">
-                                        <div class="btn-group btn-group-justified " role="group" aria-label="group button">
+                                        <div class="btn-group btn-group-justified " role="group"
+                                             aria-label="group button">
 
                                         </div>
                                     </div>
@@ -649,13 +639,9 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                     </div>
 
 
-
-
                 </div>
             </div>
         </div>
-
-
 
 
     </div>
@@ -664,20 +650,19 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
 </div>
 
 
-
 <div class="container">
     <div class="row">
 
         <br><br>
         <div class=" col-sm-6 col-xs-12">
 
-                <div class="menuform">
+            <div class="menuform">
 
-                    <p class="caption">
-                        <?= $model['descripcion'] ?>
-                    </p>
+                <p class="caption">
+                    <?= $model['descripcion'] ?>
+                </p>
 
-                </div>
+            </div>
 
 
             <div class="menuform">
@@ -689,21 +674,20 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
                 </p>
 
 
-                <?php if ($model['visibletelefono']):?>
+                <?php if ($model['visibletelefono']): ?>
 
-                        <p>
-                            <strong style="    padding-right: 15px;">Número de Celular:</strong>
-                            <?= $model['telefono'] ?>
-                        </p>
+                    <p>
+                        <strong style="    padding-right: 15px;">Número de Celular:</strong>
+                        <?= $model['telefono'] ?>
+                    </p>
 
 
-                <?php endif;?>
+                <?php endif; ?>
 
                 <p>
                     <strong style="    padding-right: 15px;">Ciudad:</strong>
                     <?= $model['ciudad'] ?>
                 </p>
-
 
 
                 <ul class="redespergil">
@@ -772,71 +756,57 @@ array_push($initial, Html::img('@web/imagen/usuario/' . $model->foto, ['class' =
         <div class=" col-sm-6 col-xs-12">
 
 
+            <?php
+            $modelcoent = \app\models\Usuarios::findOne(['idusuario' => $model->idusuario]);
 
 
-<?php
-$modelcoent = \app\models\Usuarios::findOne(['idusuario' => $model->idusuario]);
+            ?>
 
+            <?php
+            $tabla = \app\models\Calificaciones::find()
+                ->andWhere(['idvendedor' => $model->idusuario])
+                ->orderBy(['fecha_creacion' => SORT_DESC])
+                ->all();
+            $provider = new \yii\data\ArrayDataProvider([
+                'allModels' => $tabla,
+                'pagination' => [
+                    'pageSize' => 9,
+                ],
+            ]);
+            \yii\widgets\Pjax::begin();
 
- ?>
+            echo \yii\widgets\ListView::widget([
+                'dataProvider' => $provider,
 
-                        <?php
-                        $tabla = \app\models\Calificaciones::find()
-                            ->andWhere(['idvendedor' => $model->idusuario])
-                            ->orderBy(['fecha_creacion'=>SORT_DESC])
-                            ->all();
-                        $provider = new \yii\data\ArrayDataProvider([
-                            'allModels' => $tabla,
-                            'pagination' => [
-                                'pageSize' => 9,
-                            ],
-                        ]);
-                        \yii\widgets\Pjax::begin();
+                'itemView' => '../cuenta/calificaciones',
+                'summary' => false,
+                'itemOptions' => ['class' => 'item4'],
 
-                        echo \yii\widgets\ListView::widget([
-                            'dataProvider' => $provider,
-
-                            'itemView' => '../cuenta/calificaciones',
-                            'summary' => false,
-                            'itemOptions' => ['class' => 'item4'],
-
-                        ]);
-                        \yii\widgets\Pjax::end();
-                        ?>
-
-
-
-
-
-
-
-
-
-
-                    </div>
-
+            ]);
+            \yii\widgets\Pjax::end();
+            ?>
 
 
         </div>
 
 
+    </div>
 
 
+    <div class="col-xs-12">
 
-        <div class="col-xs-12">
-
-            <div class="anuncios-index">
+        <div class="anuncios-index">
 
 
-                <div align="center">
+            <div align="center">
 
                 <ul class="nav nav-tabs" id="myTab">
-                   <!-- <li class="active">
-                        <a href="#trendy" data-toggle="tab">
-
-                            <h2>Anuncios Vendidos</h2>
-                        </a>
-                    </li>-->
+                    <!-- <li class="active">
+                         <a href="#trendy" data-toggle="tab">
+ 
+                             <h2>Anuncios Vendidos</h2>
+                         </a>
+                     </li>-->
                     <li class="active">
                         <a href="#planning" data-toggle="tab">
 
@@ -846,69 +816,61 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => $model->idusuario]);
                     </li>
 
 
-
-
                 </ul>
-                </div>
+            </div>
 
-                <div class="tab-content">
-                    <!--<div class="tab-pane active" id="trendy">
+            <div class="tab-content">
+                <!--<div class="tab-pane active" id="trendy">
 
                         <?php
-/*                        $tabla = \app\models\Anuncios::find()
-                            ->andWhere(['estado' => 1])
-                            ->andWhere(['idusuario' => $model->idusuario])
-                            ->distinct()
-                            ->all();
-                        $provider = new \yii\data\ArrayDataProvider([
-                            'allModels' => $tabla,
-                            'pagination' => [
-                                'pageSize' => 9,
-                            ],
-                        ]);
-                        \yii\widgets\Pjax::begin();
-
-                        echo \yii\widgets\ListView::widget([
-                            'dataProvider' => $provider,
-                            'itemView' => '../cuenta/vigentes2',
-                            'summary' => false,
-                            'itemOptions' => ['class' => 'item2'],
-                        ]);
-                        \yii\widgets\Pjax::end();
-                        */?>
+                /*                        $tabla = \app\models\Anuncios::find()
+                                            ->andWhere(['estado' => 1])
+                                            ->andWhere(['idusuario' => $model->idusuario])
+                                            ->distinct()
+                                            ->all();
+                                        $provider = new \yii\data\ArrayDataProvider([
+                                            'allModels' => $tabla,
+                                            'pagination' => [
+                                                'pageSize' => 9,
+                                            ],
+                                        ]);
+                                        \yii\widgets\Pjax::begin();
+                
+                                        echo \yii\widgets\ListView::widget([
+                                            'dataProvider' => $provider,
+                                            'itemView' => '../cuenta/vigentes2',
+                                            'summary' => false,
+                                            'itemOptions' => ['class' => 'item2'],
+                                        ]);
+                                        \yii\widgets\Pjax::end();
+                                        */ ?>
                     </div>-->
 
 
-                    <div class="tab-pane active" id="planning">
+                <div class="tab-pane active" id="planning">
 
-                        <?php
-                        $tabla = \app\models\Anuncios::find()
-                            ->andWhere(['estado' => 1])
-                            ->andWhere(['idusuario' => $model->idusuario])
+                    <?php
+                    $tabla = \app\models\Anuncios::find()
+                        ->andWhere(['estado' => 1])
+                        ->andWhere(['idusuario' => $model->idusuario])
+                        ->distinct()
+                        ->all();
+                    $provider = new \yii\data\ArrayDataProvider([
+                        'allModels' => $tabla,
+                        'pagination' => [
+                            'pageSize' => 9,
+                        ],
+                    ]);
+                    \yii\widgets\Pjax::begin();
 
-                            ->distinct()
-                            ->all();
-                        $provider = new \yii\data\ArrayDataProvider([
-                            'allModels' => $tabla,
-                            'pagination' => [
-                                'pageSize' => 9,
-                            ],
-                        ]);
-                        \yii\widgets\Pjax::begin();
-
-                        echo \yii\widgets\ListView::widget([
-                            'dataProvider' => $provider,
-                            'itemView' => '../cuenta/vigentes2',
-                            'summary' => false,
-                            'itemOptions' => ['class' => 'item2'],
-                        ]);
-                        \yii\widgets\Pjax::end();
-                        ?>
-
-                    </div>
-
-
-
+                    echo \yii\widgets\ListView::widget([
+                        'dataProvider' => $provider,
+                        'itemView' => '../cuenta/vigentes2',
+                        'summary' => false,
+                        'itemOptions' => ['class' => 'item2'],
+                    ]);
+                    \yii\widgets\Pjax::end();
+                    ?>
 
                 </div>
 
@@ -919,31 +881,9 @@ $modelcoent = \app\models\Usuarios::findOne(['idusuario' => $model->idusuario]);
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
+
+
+</div>
 </div>
 

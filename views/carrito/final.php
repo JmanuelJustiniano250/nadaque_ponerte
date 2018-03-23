@@ -1,5 +1,7 @@
 <?php
+
 use yii\helpers\Url;
+
 $script = <<<CSS
 .form-group {
     margin-bottom: 0;
@@ -46,7 +48,8 @@ $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' =
 
                         <div align="center"><br><br>
 
-                            <a href="<?php echo Url::to(['cuenta/create']) ?>" class="btnregister">Crea tu anuncio </a><br><br>
+                            <a href="<?php echo Url::to(['cuenta/create']) ?>" class="btnregister">Crea tu
+                                anuncio </a><br><br>
 
                         </div>
 

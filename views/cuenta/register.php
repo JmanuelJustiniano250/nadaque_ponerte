@@ -242,7 +242,7 @@ $this->registerCss($script);
             <?php
             $initial = [];;
             array_push($initial, Html::img('@web/imagen/usuarios/' . $model->foto, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
-           ?>
+            ?>
 
             <?php
             echo $form->field($model, 'file')->widget(\kartik\widgets\FileInput::classname(), [

@@ -2,7 +2,7 @@
 
 use himiklab\thumbnail\EasyThumbnailImage;
 use rmrevin\yii\fontawesome\FA;
-use yii\helpers\Html;
+
 $script = <<<CSS
 @media (min-width: 1200px){
 .cajadesc {
@@ -11,7 +11,6 @@ $script = <<<CSS
 
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
-
 
 
 ?>
@@ -31,9 +30,11 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
             <div class="hover-box box2">
 
 
-                <a href="<?= \yii\helpers\Url::to(['site/item','id'=>$item->idanuncio])?>" class="zoom2"><?= FA::icon(FA::_SEARCH_PLUS) ?></a>
+                <a href="<?= \yii\helpers\Url::to(['site/item', 'id' => $item->idanuncio]) ?>"
+                   class="zoom2"><?= FA::icon(FA::_SEARCH_PLUS) ?></a>
 
-                <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$item->idanuncio])?>" class="link2"><?= FA::icon(FA::_HEART) ?></a>
+                <a href="<?= \yii\helpers\Url::to(['site/deseosadd', 'id' => $item->idanuncio]) ?>"
+                   class="link2"><?= FA::icon(FA::_HEART) ?></a>
             </div>
 
         </div>
@@ -50,7 +51,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
 
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
-            <p><?= (isset($item->anunciosFiltros->talla['value'])) ? ('Talla: ' . $item->anunciosFiltros->talla['value']) : '' ?></p>
+                    <p><?= (isset($item->anunciosFiltros->talla['value'])) ? ('Talla: ' . $item->anunciosFiltros->talla['value']) : '' ?></p>
                     <p><?= (isset($item->anunciosFiltros->marca['nombre'])) ? $item->anunciosFiltros->marca['nombre'] : '' ?></p>
                     <p><?= (isset($item->anunciosFiltros->condicion['nombre'])) ? $item->anunciosFiltros->condicion['nombre'] : '' ?></p>
                 </div>
@@ -67,7 +68,7 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
                     <?php else: ?>
 
-                        <p class="colorwqw" >Bs. <?= $item['precio'] ?> </p>
+                        <p class="colorwqw">Bs. <?= $item['precio'] ?> </p>
 
                     <?php endif; ?>
 
@@ -107,7 +108,6 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                     <div class="imgrod2">
                         <?= $item->usuario['nombres'] ?>
                     </div>
-
 
 
                 </div>

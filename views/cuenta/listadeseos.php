@@ -58,9 +58,9 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
 
 
                     <div class="text-center" align="center" style="margin-top: 0px;"><BR><br>
-                        <?= Html::a('QUITAR DE MI LISTA', ['cuenta/listadel', 'id' => $model->iddeseo,'estado'=>1], [
+                        <?= Html::a('QUITAR DE MI LISTA', ['cuenta/listadel', 'id' => $model->iddeseo, 'estado' => 1], [
                             'class' => 'registrarse',
-                            'style'=>'margin-left: 0',
+                            'style' => 'margin-left: 0',
                             'data' => [
                                 'confirm' => 'Esta seguro?',
                             ],

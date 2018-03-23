@@ -40,7 +40,7 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                         <?php Pjax::begin(['id' => 'table']); ?>
                         <?php foreach ($tablas as $item): ?>
                             <div class="col-sm-6 col-md-4">
-                                <h2><?= $item['titulo']?></h2>
+                                <h2><?= $item['titulo'] ?></h2>
                                 <?= $this->render('_form', ['model' => $item['model']]); ?>
                                 <div class="table-responsive">
                                     <?= GridView::widget([
@@ -56,7 +56,7 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                                                 'template' => '<div class="btn-group" role="group">{delete}</div>',
                                                 'buttons' => [
                                                     'delete' => function ($url, $model, $key) {
-                                                        return Html::a('<i class="fa fa-trash"></i>', ['delete','model'=>$model->className(),'id'=>$key], ['class' => 'btn btn-danger', 'data' => [
+                                                        return Html::a('<i class="fa fa-trash"></i>', ['delete', 'model' => $model->className(), 'id' => $key], ['class' => 'btn btn-danger', 'data' => [
                                                             'confirm' => 'Esta seguro?.'
                                                         ], "title" => "Eliminar"]);
                                                     },

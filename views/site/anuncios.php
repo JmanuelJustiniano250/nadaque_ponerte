@@ -15,7 +15,7 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
 <div class="container">
     <div class="row">
 
-        <?php \yii\widgets\Pjax::begin()?>
+        <?php \yii\widgets\Pjax::begin() ?>
 
         <div class="col-md-3 col-xs-12">
 
@@ -45,7 +45,7 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
                 </div>
             </div>
         </div>
-        <?php \yii\widgets\Pjax::end()?>
+        <?php \yii\widgets\Pjax::end() ?>
 
     </div>
 </div>

@@ -54,7 +54,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['vender','logout','perfil','deseosadd'],
+                'only' => ['vender', 'logout', 'perfil', 'deseosadd'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -67,6 +67,7 @@ class SiteController extends Controller
 
         ];
     }
+
     /*
      * pagina principal
      */
@@ -155,7 +156,7 @@ class SiteController extends Controller
         $data['modelSearch'] = new AnunciosSearch();
         $datos = Yii::$app->request->queryParams;
         if (!empty($datos['cat']))
-            $datos['categorias'] = [$datos['cat']=>'categoria'];
+            $datos['categorias'] = [$datos['cat'] => 'categoria'];
         if (empty($datos['precio']))
             $datos['precio'] = Anuncios::find()->min('cast(precio as unsigned)') . ',' . Anuncios::find()->max('cast(precio as unsigned)');
         $datos['precios']['min'] = Anuncios::find()->min('cast(precio as unsigned)');
@@ -180,7 +181,7 @@ class SiteController extends Controller
             $data['model'] = Anuncios::findOne(['idanuncio' => $id]);
             $data['model']->visitas = (int)$data['model']->visitas + 1;
             $data['model']->save(false);
-            $mensajes = Mensajes::updateAll(['estado'=>1],['idanuncio' => $id]);
+            $mensajes = Mensajes::updateAll(['estado' => 1], ['idanuncio' => $id]);
         }
 
         $data['configuracion']['titulo_pagina'] = $data['model']['titulo'];
@@ -341,7 +342,7 @@ class SiteController extends Controller
 
         $model = new LoginWeb();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->goBack(Yii::$app->request->referrer);
         }
         /*else{
             Yii::$app->user->setReturnUrl(Yii::$app->request->referrer);
@@ -463,7 +464,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
         $model = new Deseo();
-        if(!empty($id)) {
+        if (!empty($id)) {
             $model->idanuncio = $id;
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
             $model->fecha_registro = date('Y-m-d H:i:s');
@@ -484,15 +485,13 @@ class SiteController extends Controller
 
     public function actionPerfil($id = null)
     {
-        $model = Usuarios::find()->where(['estado'=>1,'idusuario'=>$id])->one();
+        $model = Usuarios::find()->where(['estado' => 1, 'idusuario' => $id])->one();
         $calificacion = new Calificaciones();
-        if(empty($model))
-        {
+        if (empty($model)) {
             $model = new Usuarios();
         }
-        return $this->render('anunciante',['model'=>$model]);
+        return $this->render('anunciante', ['model' => $model]);
     }
-
 
 
     public function actionOpciones()

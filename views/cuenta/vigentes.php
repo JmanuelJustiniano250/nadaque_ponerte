@@ -76,7 +76,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
 
-                        <a href="" class="registrarse" data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 0">
+                        <a href="" class="registrarse" data-toggle="modal" data-target="#squarespaceModal"
+                           style="margin-left: 0">
                             CAMBIAR PRECIO
                         </a>
 
@@ -84,20 +85,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
 
 
-
-
-
-
-
-
-
-
-
-
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
-                        <?= Html::a('MARCAR COMO VENDIDO', ['cuenta/updateA', 'id' => $model->idanuncio,'estado'=>1], [
+                        <?= Html::a('MARCAR COMO VENDIDO', ['cuenta/updateA', 'id' => $model->idanuncio, 'estado' => 1], [
                             'class' => 'registrarse',
-                            'style'=>'margin-left: 0',
+                            'style' => 'margin-left: 0',
                             'data' => [
                                 'confirm' => 'Esta seguro?',
                             ],
@@ -116,17 +107,16 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 
-
-
-
-<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                            class="sr-only">Close</span></button>
                 <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: black">
 
-                  Cambia el precio
+                    Cambia el precio
                 </h3>
             </div>
             <div class="modal-body">
@@ -136,9 +126,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <?php $form = ActiveForm::begin([
-                    'action' => ['/cuenta/updateA','id'=> $model->idanuncio],
+                    'action' => ['/cuenta/updateA', 'id' => $model->idanuncio],
                     'id' => 'login-form',
-                    'method'=>'get'
+                    'method' => 'get'
                     /*'layout' => 'horizontal',
                     'fieldConfig' => [
                         'template' => "{label}\n<div class=\"col-md-8\">{input}</div>\n<div class=\"col-md-8\">{error}</div>",
@@ -147,19 +137,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]); ?>
 
                 <div class="">
-                <span style="font-weight: 600; color: #fda4b5; margin-left: 0" >Precio original: </span><br>
-                <?= Html::input('text','precio',$model->precio,['class'=>'form-control']) ?>
-                <span style="font-weight: 600; color: #fda4b5; margin-left: 0" >Precio oferta: </span> <br>
-                <?= Html::input('text','precio_promocion',$model->precio_promocion,['class'=>'form-control']) ?>
-                <br>
+                    <span style="font-weight: 600; color: #fda4b5; margin-left: 0">Precio original: </span><br>
+                    <?= Html::input('text', 'precio', $model->precio, ['class' => 'form-control']) ?>
+                    <span style="font-weight: 600; color: #fda4b5; margin-left: 0">Precio oferta: </span> <br>
+                    <?= Html::input('text', 'precio_promocion', $model->precio_promocion, ['class' => 'form-control']) ?>
+                    <br>
                 </div>
-                <div align="center">  <button type="submit" class="btn btn-default btnregister enviarsns">Cambiar precio</button>
+                <div align="center">
+                    <button type="submit" class="btn btn-default btnregister enviarsns">Cambiar precio</button>
                 </div>
                 <?php ActiveForm::end(); ?>
 
 
                 <br>
-
 
 
             </div>

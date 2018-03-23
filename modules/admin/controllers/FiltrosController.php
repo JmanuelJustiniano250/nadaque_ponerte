@@ -65,34 +65,34 @@ class FiltrosController extends Controller
     {
         $tablas = array();
         array_push($tablas, [
-            'data'=>new ActiveDataProvider(['query' => Ciudad::find()]),
-            'titulo'=>'Ciudad',
-            'model'=>new Ciudad(),
+            'data' => new ActiveDataProvider(['query' => Ciudad::find()]),
+            'titulo' => 'Ciudad',
+            'model' => new Ciudad(),
         ]);
         array_push($tablas, [
-            'data'=>new ActiveDataProvider(['query' => ColoresProductos::find()]),
-            'titulo'=>'Colores',
-            'model'=>new ColoresProductos(),
+            'data' => new ActiveDataProvider(['query' => ColoresProductos::find()]),
+            'titulo' => 'Colores',
+            'model' => new ColoresProductos(),
         ]);
         array_push($tablas, [
-            'data'=>new ActiveDataProvider(['query' => CondicionProducto::find()]),
-            'titulo'=>'Condiciones',
-            'model'=>new CondicionProducto(),
+            'data' => new ActiveDataProvider(['query' => CondicionProducto::find()]),
+            'titulo' => 'Condiciones',
+            'model' => new CondicionProducto(),
         ]);
         array_push($tablas, [
-            'data'=>new ActiveDataProvider(['query' => MarcaProducto::find()]),
-            'titulo'=>'Marcas',
-            'model'=>new MarcaProducto(),
+            'data' => new ActiveDataProvider(['query' => MarcaProducto::find()]),
+            'titulo' => 'Marcas',
+            'model' => new MarcaProducto(),
         ]);
         array_push($tablas, [
-            'data'=>new ActiveDataProvider(['query' => MaterialProducto::find()]),
-            'titulo'=>'Materiales',
-            'model'=>new MaterialProducto(),
+            'data' => new ActiveDataProvider(['query' => MaterialProducto::find()]),
+            'titulo' => 'Materiales',
+            'model' => new MaterialProducto(),
         ]);
         array_push($tablas, [
-            'data'=>new ActiveDataProvider(['query' => TallasProducto::find()]),
-            'titulo'=>'Tallas',
-            'model'=>new TallasProducto(),
+            'data' => new ActiveDataProvider(['query' => TallasProducto::find()]),
+            'titulo' => 'Tallas',
+            'model' => new TallasProducto(),
         ]);
 
         return $this->render('index', [
@@ -122,10 +122,10 @@ class FiltrosController extends Controller
 
         $modelc = new Ciudad();
         $modelcp = new ColoresProductos();
-        $modelcnp= new CondicionProducto();
-        $modelmp=new MarcaProducto();
-        $modelmlp =new MaterialProducto();
-        $modeltp=new TallasProducto();
+        $modelcnp = new CondicionProducto();
+        $modelmp = new MarcaProducto();
+        $modelmlp = new MaterialProducto();
+        $modeltp = new TallasProducto();
         if ($modelc->load(Yii::$app->request->post())) {
             $modelc->save();
         }
@@ -175,11 +175,10 @@ class FiltrosController extends Controller
     public function actionDelete($id)
     {
         $model = Yii::$app->request->get('model');
-        if(!empty($model)){
+        if (!empty($model)) {
             $item = $model::findOne($id);
             $item->delete();
         }
-
 
 
         return $this->redirect(['index']);

@@ -68,6 +68,7 @@ class Funcions extends Component
         $model->save();
 
     }
+
     static public function destacado2($model)
     {
         $destacado = 5;
@@ -81,7 +82,7 @@ class Funcions extends Component
     }
 
 
-    static public function fecha($fecha=null,$corta=true,$string=false)
+    static public function fecha($fecha = null, $corta = true, $string = false)
     {
         Yii::$app->formatter->locale = 'es-ES';
         if (is_null($fecha)) {
@@ -101,9 +102,9 @@ class Funcions extends Component
             $date['anio'] = Yii::$app->formatter->asDate($fecha, 'Y');
             $date['hora'] = Yii::$app->formatter->asDate($fecha, 'H:m');
         }
-        if(!$string)
-        return $date;
-        return $date['dia'].' '.$date['mes'].' '.$date['anio'];
+        if (!$string)
+            return $date;
+        return $date['dia'] . ' ' . $date['mes'] . ' ' . $date['anio'];
     }
 
 

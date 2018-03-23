@@ -1,7 +1,6 @@
 <?php
 
 use rmrevin\yii\fontawesome\FA;
-use yii\helpers\Html;
 use yii\helpers\Url;
 
 $script = <<<CSS

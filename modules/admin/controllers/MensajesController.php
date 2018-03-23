@@ -57,7 +57,7 @@ class MensajesController extends Controller
     {
         $searchModel = new MensajesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->query->andWhere(['tipo'=>1]);
+        $dataProvider->query->andWhere(['tipo' => 1]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

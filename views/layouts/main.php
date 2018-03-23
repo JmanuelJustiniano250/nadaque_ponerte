@@ -31,7 +31,7 @@ $configuracion = \app\models\Configuracion::find()->one();
 $model = New \app\models\SuscribeForm();
 ?>
 <!--
-<?php/*
+<?php /*
 if($configuracion['google_analitics']) {
     echo GoogleAnalytics::widget([
         'id'=>$configuracion['google_analitics'],
@@ -63,9 +63,9 @@ if($configuracion['google_analitics']) {
                 ->andWhere(['estado' => 0])
                 ->count();
             //$mensages = Html::tag('span',(int)$cmensages,['class'=>'badge bg-red']);
-            $mensages = '<i data-count="'.((int)$cmensages).'" class="fa fa-envelope-o notification-icon"></i>';
+            $mensages = '<i data-count="' . ((int)$cmensages) . '" class="fa fa-envelope-o notification-icon"></i>';
             //$mensages = Html::a($mensages,['/cuenta/mensajeria']);
-            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'] , 'url' => ['/site/deseos/'],
+            $items[] = ['label' => FA::icon(FA::_USER) . ' ' . $user['nombres'], 'url' => ['/site/deseos/'],
                 'items' => [
                     ['label' => FA::icon(FA::_USER) . ' Mi cuenta', 'url' => ['/cuenta/principal']],
                     ['label' => FA::icon(FA::_KEY) . ' Cambiar contraseña', 'url' => ['/cuenta/changepassword']],
@@ -197,34 +197,34 @@ if($configuracion['google_analitics']) {
 
 <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
 
-<div class="newslatter">
+    <div class="newslatter">
 
-    <div class="container">
-        <div class="row">
+        <div class="container">
+            <div class="row">
 
 
-            <div class="col-md-5 col-xs-12">
-                <?= FA::icon(FA::_ENVELOPE_O)->pullRight()->size('2x') ?>
-                <p><span>SUSCRIBETE AQUÍ PARA SIEMPRE ENTERARTE DE NUESTRAS NOVEDADES Y OFERTAS.</span></p>
-            </div>
-            <div class="col-md-7 col-xs-12">
-
-                <?php $model = new \app\models\Newsletter(); ?>
-                <?php $form = ActiveForm::begin(['options' => ['class' => 'newslrwe'], 'action' => ['cuenta/suscribe'], 'method' => 'post']); ?>
-                <div class="col-md-9 col-xs-12">
-                    <?= $form->field($model, 'email')->label(false)->input('email')->textInput(['class' => 'form-control', 'placeholder' => 'MAIL']) ?>
-
+                <div class="col-md-5 col-xs-12">
+                    <?= FA::icon(FA::_ENVELOPE_O)->pullRight()->size('2x') ?>
+                    <p><span>SUSCRIBETE AQUÍ PARA SIEMPRE ENTERARTE DE NUESTRAS NOVEDADES Y OFERTAS.</span></p>
                 </div>
-                <div class="col-md-3 col-xs-12">
-                    <input type="submit" name="enviar" class="btn enviarsus" value="ENVIAR">
-                </div>
-                <?php ActiveForm::end(); ?>
-            </div>
+                <div class="col-md-7 col-xs-12">
 
+                    <?php $model = new \app\models\Newsletter(); ?>
+                    <?php $form = ActiveForm::begin(['options' => ['class' => 'newslrwe'], 'action' => ['cuenta/suscribe'], 'method' => 'post']); ?>
+                    <div class="col-md-9 col-xs-12">
+                        <?= $form->field($model, 'email')->label(false)->input('email')->textInput(['class' => 'form-control', 'placeholder' => 'MAIL']) ?>
+
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <input type="submit" name="enviar" class="btn enviarsus" value="ENVIAR">
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                </div>
+
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </div>
 <div id="footer">
     <div class="container">
@@ -378,9 +378,9 @@ if($configuracion['google_analitics']) {
     </div>
 </div>
 
-	<a href="#0" class="cd-top" title="Go to top">Top</a>
-	
-	
+<a href="#0" class="cd-top" title="Go to top">Top</a>
+
+
 <?php foreach (Yii::$app->session->getAllFlashes() as $message): ?>
     <?php /*= \kartik\widgets\Growl::widget([
         'type' => (!empty($message['type'])) ? $message['type'] : 'danger',

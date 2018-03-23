@@ -80,8 +80,9 @@ $index = 0;
     <div>
         <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
         <br>
-        <a class="" href="<?= \yii\helpers\Url::to(['comprar'])?>" style="color: #000;  font-size: 11px;   font-weight: 600;  ">
-    quitar filtros </a>
+        <a class="" href="<?= \yii\helpers\Url::to(['comprar']) ?>"
+           style="color: #000;  font-size: 11px;   font-weight: 600;  ">
+            quitar filtros </a>
     </div>
     <br>
     <?php
@@ -98,7 +99,7 @@ $index = 0;
     ]);
     ?>
     <br>
-    
+
     <?php if (!isset($categorias)) {
         $categorias = array();
     } ?>
@@ -108,10 +109,10 @@ $index = 0;
     <h5 class="text-uppercase"><strong></strong></h5>
 
 
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Categoria  <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span>  <br>
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+       aria-controls="collapseExample">
+        Categoria <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
-
 
 
     <div class="collapse" id="collapseExample">
@@ -125,13 +126,11 @@ $index = 0;
     </div>
 
 
-
-
-
     <br>
 
 
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false"
+       aria-controls="collapseExample">
         Rango de precio <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
@@ -158,7 +157,8 @@ $index = 0;
     <br>
     <?php $tmp = \app\models\CondicionProducto::find()->all() ?>
 
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false"
+       aria-controls="collapseExample">
         Condicion del Producto <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
@@ -173,14 +173,14 @@ $index = 0;
     </div>
 
 
-
     <br>
 
     <?php $tmp = \app\models\TallasProducto::find()->all() ?>
 
 
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
-        Tallas de los Productos  <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false"
+       aria-controls="collapseExample">
+        Tallas de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
 
@@ -195,12 +195,11 @@ $index = 0;
     <br>
 
 
-
     <?php $tmp = \app\models\MaterialProducto::find()->all() ?>
 
 
-
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample5" aria-expanded="false"
+       aria-controls="collapseExample">
         Material de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
@@ -214,19 +213,12 @@ $index = 0;
     </div>
 
 
-
-
-
     <br>
     <?php $tmp = \app\models\MarcaProducto::find()->all() ?>
 
 
-
-
-
-
-
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample6" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample6" aria-expanded="false"
+       aria-controls="collapseExample">
         Marcas de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
@@ -246,7 +238,8 @@ $index = 0;
     <?php $tmp = \app\models\ColoresProductos::find()->all() ?>
 
 
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample7" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample7" aria-expanded="false"
+       aria-controls="collapseExample">
         Colores de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
@@ -260,19 +253,14 @@ $index = 0;
     </div>
 
 
-
-
-
     <br>
-
-
 
 
     <?php $tmp = \app\models\Ciudad::find()->all() ?>
 
 
-
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample8" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample8" aria-expanded="false"
+       aria-controls="collapseExample">
         Ciudad <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
     </a>
 
@@ -286,22 +274,15 @@ $index = 0;
     </div>
 
 
-
-
-
-
-
     <br>
-
-
-
 
 
     <div>
         <button type="submit" href="" class="text-center registrarse btn" style="margin-left: 0">FILTRAR</button>
         <br>
-        <a class="" href="<?= \yii\helpers\Url::to(['comprar'])?>" style="color: #000;    font-size: 11px;    font-weight: 600;">
-    quitar filtros </a>
+        <a class="" href="<?= \yii\helpers\Url::to(['comprar']) ?>"
+           style="color: #000;    font-size: 11px;    font-weight: 600;">
+            quitar filtros </a>
     </div>
     <br><br>
 

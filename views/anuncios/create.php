@@ -31,7 +31,7 @@ $bannersp2 = \app\models\Banners::find()
 
 
                                 <li>
-                                    <img alt="" src="<?= Url::to('@web/imagen/banners/' . $row_bannerp3['foto']) ?>" />
+                                    <img alt="" src="<?= Url::to('@web/imagen/banners/' . $row_bannerp3['foto']) ?>"/>
                                 </li>
 
                             <?php endforeach; ?>
@@ -45,17 +45,16 @@ $bannersp2 = \app\models\Banners::find()
             <br><br>
 
 
-
             <h1 class="text-center" style="font-weight: 600"><?= Html::encode($this->title) ?></h1>
             <p class="text-center">Rellena los campos</p> <br><br>
 
 
             <div class="col-md-12  " align="center">
-                <a href="<?= Url::to(['site/pages?id=reglas-publicacion']) ?>" target="_blank" style="color: #ff6d89; font-weight: 600">Ver reglas de publicación</a>
+                <a href="<?= Url::to(['site/pages?id=reglas-publicacion']) ?>" target="_blank"
+                   style="color: #ff6d89; font-weight: 600">Ver reglas de publicación</a>
                 <br>
             </div>
             <br><br>
-
 
 
             <?= $this->render('_form', [
@@ -67,5 +66,4 @@ $bannersp2 = \app\models\Banners::find()
 </div>
 
 
-
-<?= $this->registerJsFile('@web/assets_b/js/jquery.flexslider.js');?>
+<?= $this->registerJsFile('@web/assets_b/js/jquery.flexslider.js'); ?>

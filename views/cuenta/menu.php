@@ -78,18 +78,18 @@ array_push($items, [
 
     'url' => ['cuenta/mensajeria'],
     'label' => 'Mensajes (' . $cmensages . ')',
-    'icon'=>((\app\models\Mensajes::haveNew(0,Yii::$app->session->get('user')['idusuario']))?'exclamation-sign':'')
+    'icon' => ((\app\models\Mensajes::haveNew(0, Yii::$app->session->get('user')['idusuario'])) ? 'exclamation-sign' : '')
 ]);
 array_push($items, [
     'url' => ['/cuenta/calificaciones'],
     'label' => 'Calificaciones',
-    'icon'=>((\app\models\Calificaciones::haveNew(Yii::$app->session->get('user')['idusuario']))?'exclamation-sign':'')
+    'icon' => ((\app\models\Calificaciones::haveNew(Yii::$app->session->get('user')['idusuario'])) ? 'exclamation-sign' : '')
 
 ]);
 array_push($items, [
     'url' => ['/cuenta/comentarios'],
     'label' => 'Comentarios',
-    'icon'=>((\app\models\Mensajes::haveNew(1))?'exclamation-sign':'')
+    'icon' => ((\app\models\Mensajes::haveNew(1)) ? 'exclamation-sign' : '')
 ]);
 array_push($items, [
     'url' => 'listadeseos',

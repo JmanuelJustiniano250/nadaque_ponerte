@@ -3,9 +3,9 @@
 
 use himiklab\thumbnail\EasyThumbnailImage;
 use kartik\widgets\StarRating;
+use rmrevin\yii\fontawesome\FA;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use rmrevin\yii\fontawesome\FA;
 use yii\helpers\Url;
 
 $script = <<<CSS
@@ -157,21 +157,19 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
 
                     <li class="slide">
-                       <?php echo Html::a(
-                        Html::img('@web/imagen/anuncios/' . $model['foto'], ['class' => 'image'])
+                        <?php echo Html::a(
+                            Html::img('@web/imagen/anuncios/' . $model['foto'], ['class' => 'image'])
                         ) ?>
                         <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto']) ?>"/>
                     </li>
 
 
-
                     <li class="slide">
                         <?php echo Html::a(
-                                Html::img('@web/imagen/anuncios/' . $model['foto2'], ['class' => 'image'])
+                            Html::img('@web/imagen/anuncios/' . $model['foto2'], ['class' => 'image'])
                         ) ?>
                         <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto2']) ?>"/>
                     </li>
-
 
 
                     <li class="slide">
@@ -182,7 +180,6 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     </li>
 
 
-
                     <li class="slide">
                         <?php echo Html::a(
                             Html::img('@web/imagen/anuncios/' . $model['foto4'], ['class' => 'image'])
@@ -191,21 +188,12 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     </li>
 
 
-
                     <li class="slide">
                         <?php echo Html::a(
                             Html::img('@web/imagen/anuncios/' . $model['foto5'], ['class' => 'image'])
                         ) ?>
                         <img class="thumbnail" src="<?= Url::to('@web/imagen/anuncios/' . $model['foto5']) ?>"/>
                     </li>
-
-
-
-
-
-
-
-
 
 
                 </ul>
@@ -219,66 +207,57 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
             <div class="col-sm-6 col-xs-12" style="padding-left: 0;">
 
 
-            <h4 class="tituprodit"><?= $model['titulo'] ?></h4>
+                <h4 class="tituprodit"><?= $model['titulo'] ?></h4>
 
 
-
-            <p style="font-weight: 600">Cod. <?= $model['codigo'] ?></p>
-            <br>
-            <p><span class="colorww">Categoría </span>: <?= $model->categoria['nombre'] ?></p>
-            <!--<p><span class="colorww">Sub categoria </span>: Jean</p>-->
-            <!--<p><span class="colorww">Condición :</span>Nuevo con etiqueta</p>-->
-
+                <p style="font-weight: 600">Cod. <?= $model['codigo'] ?></p>
+                <br>
+                <p><span class="colorww">Categoría </span>: <?= $model->categoria['nombre'] ?></p>
+                <!--<p><span class="colorww">Sub categoria </span>: Jean</p>-->
+                <!--<p><span class="colorww">Condición :</span>Nuevo con etiqueta</p>-->
 
 
+                <?php if ($model['precio_promocion']): ?>
 
-
-            <?php if ($model['precio_promocion']): ?>
-
-                <p class="colortemp" style="font-size: 22px; font-weight: 600">
-                    Bs. <?= $model['precio_promocion'] ?>  </p>
-                <p class="colortemp" style="font-size: 11px;
+                    <p class="colortemp" style="font-size: 22px; font-weight: 600">
+                        Bs. <?= $model['precio_promocion'] ?>  </p>
+                    <p class="colortemp" style="font-size: 11px;
     text-decoration: line-through;
     font-weight: 300;">Bs.<?= $model['precio'] ?></p>
 
-            <?php else: ?>
+                <?php else: ?>
 
-                <p class="colortemp" style="font-size: 22px; font-weight: 600">Bs. <?= $model['precio'] ?> </p>
+                    <p class="colortemp" style="font-size: 22px; font-weight: 600">Bs. <?= $model['precio'] ?> </p>
 
-            <?php endif; ?>
-
-
-
-
-
-
-
+                <?php endif; ?>
 
 
                 <!-- Modal del enviar mensaje -->
 
                 <!-- line modal -->
 
-            <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600; color: white">
+                                <button type="button" class="close" data-dismiss="modal"><span
+                                            aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                <h3 class="modal-title" id="lineModalLabel"
+                                    style=" font-size: 16px; font-weight: 600; color: white">
 
-                                   Ponte en contacto con  <?= $model->usuario['alias']?>
+                                    Ponte en contacto con <?= $model->usuario['alias'] ?>
                                 </h3>
                             </div>
                             <div class="modal-body">
 
-                                    <p style="color: #6b6b6b;">
-                                        Comunicate de la forma que mas te convenga con la vendedora:
-                                    </p>
+                                <p style="color: #6b6b6b;">
+                                    Comunicate de la forma que mas te convenga con la vendedora:
+                                </p>
 
 
-
-
-                                <p style="margin-top: 15px; margin-bottom: 5px;">  <span style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
+                                <p style="margin-top: 15px; margin-bottom: 5px;"><span
+                                            style="font-weight: 600; color: #fda4b5">Número de telefono : </span>
 
 
                                     <?php if ($model->usuario['telefono']): ?>
@@ -292,8 +271,6 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </p>
-
-
 
 
                                 <span style="font-weight: 600; color: #fda4b5">Redes Sociales: </span>
@@ -343,8 +320,9 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                         <?php if ($model->usuario['visibleinsta']): ?>
 
                                             <li>
-                                                <a href="<?= $model->usuario['instagram'] ?>" target="_blank"><i class="fa fa-instagram"
-                                                                                                                 aria-hidden="true"></i></a>
+                                                <a href="<?= $model->usuario['instagram'] ?>" target="_blank"><i
+                                                            class="fa fa-instagram"
+                                                            aria-hidden="true"></i></a>
                                             </li>
                                         <?php else: ?>
 
@@ -357,12 +335,10 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                                 <br>
                                 <p style="color: #6b6b6b;">
-                                   O bien mándale un mensaje privado, la respuesta aparecera en tu mensajeria.
+                                    O bien mándale un mensaje privado, la respuesta aparecera en tu mensajeria.
                                 </p>
 
                                 <br>
-
-
 
 
                                 <!-- content goes here -->
@@ -379,31 +355,29 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                 ]); ?>
 
 
-                                <?php $modmess= new \app\models\Mensajes();?>
-                                <?php $modmess->idvendedor = $model->idusuario;?>
-                                <?php $modmess->tipo = 0;?>
+                                <?php $modmess = new \app\models\Mensajes(); ?>
+                                <?php $modmess->idvendedor = $model->idusuario; ?>
+                                <?php $modmess->tipo = 0; ?>
 
 
 
-                                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control privatemen','placeholder'=>'Escribe el mensaje y el nombre de la prenda','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
-                                <?= $form->field($modmess,'idvendedor')->hiddenInput()->label(false)?>
-                                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
+                                <?= $form->field($modmess, 'detalle')->textarea(['class' => 'form-control privatemen', 'placeholder' => 'Escribe el mensaje y el nombre de la prenda', 'style' => "width: 100%", 'rows' => "5"])->label(false) ?>
+                                <?= $form->field($modmess, 'idvendedor')->hiddenInput()->label(false) ?>
+                                <?= $form->field($modmess, 'tipo')->hiddenInput()->label(false) ?>
 
-                              <div align="right">
+                                <div align="right">
 
-                                  <a class="" style="color: #ff6d89; padding-right: 20px; text-decoration: underline;font-family: 'Raleway', sans-serif;" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Perfil de la vendedora</a>
+                                    <a class=""
+                                       style="color: #ff6d89; padding-right: 20px; text-decoration: underline;font-family: 'Raleway', sans-serif;"
+                                       href="<?= Url::to(['site/perfil', 'id' => $model->idusuario]) ?>">Perfil de la
+                                        vendedora</a>
 
-                                  <button type="submit" class="btn btn-default btnregister enviarsns">Enviar</button>
-                              </div>
+                                    <button type="submit" class="btn btn-default btnregister enviarsns">Enviar</button>
+                                </div>
                                 <?php ActiveForm::end(); ?>
 
 
                                 <br>
-
-
-
-
-
 
 
                             </div>
@@ -420,24 +394,25 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
             </div>
 
 
-
             <div class="col-sm-6 col-xs-12" style="padding-left: 0;">
 
                 <div class="">
 
                     <div align="right" class="lefte">
 
-                        <a href="<?= \yii\helpers\Url::to(['site/deseosadd','id'=>$model->idanuncio])?>" class="link3"><?= FA::icon(FA::_HEART) ?></a>
+                        <a href="<?= \yii\helpers\Url::to(['site/deseosadd', 'id' => $model->idanuncio]) ?>"
+                           class="link3"><?= FA::icon(FA::_HEART) ?></a>
                     </div>
 
                     <br>
 
                     <div class="imagennsope">
 
-                    <a href="" data-toggle="modal" data-target="#squarespaceModal">
-                        <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt="" style="max-width: 100%; margin: 0 auto; display: block" class="lefte">
+                        <a href="" data-toggle="modal" data-target="#squarespaceModal">
+                            <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt=""
+                                 style="max-width: 100%; margin: 0 auto; display: block" class="lefte">
 
-                    </a>
+                        </a>
 
                     </div>
 
@@ -450,81 +425,74 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     </div>
 
 
-
-
                 </div>
 
 
             </div>
-
-
 
 
             <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
 
-            <div class="linecir"></div>
+                <div class="linecir"></div>
 
-            <p><?= (isset($model->anunciosFiltros->condicion['value'])) ? (Html::tag('span', 'Condicion: ', ['class' => 'colorww']) . $model->anunciosFiltros->condicion['value']) : '' ?></p>
-            <p><?= (isset($model->anunciosFiltros->talla['value'])) ? (Html::tag('span', 'Talla: ', ['class' => 'colorww']) . $model->anunciosFiltros->talla['value']) : '' ?></p>
-            <p><?= (isset($model->anunciosFiltros->color['value'])) ? (Html::tag('span', 'Color: ', ['class' => 'colorww']) . $model->anunciosFiltros->color['value']) : '' ?></p>
-            <p><?= (isset($model->anunciosFiltros->material['value'])) ? (Html::tag('span', 'Material: ', ['class' => 'colorww']) . $model->anunciosFiltros->material['value']) : '' ?></p>
-            <p><?= (isset($model->anunciosFiltros->marca['value'])) ? (Html::tag('span', 'Marca: ', ['class' => 'colorww']) . $model->anunciosFiltros->marca['value']) : '' ?></p>
-            <p><?= (isset($model->anunciosFiltros->ciudad['value'])) ? (Html::tag('span', 'Ciudad: ', ['class' => 'colorww']) . $model->anunciosFiltros->ciudad['value']) : '' ?></p>
-            <!--<p><span class="colorww">Talla </span>: M</p>
-            <p><span class="colorww">Color </span>: Celeste</p>
-            <p><span class="colorww">Material :</span>Jeans</p>
-            <p><span class="colorww">Marca :</span>Sin marca </p>
-            <p><span class="colorww">Ciudad :</span>Santa Cruz</p>-->
-            <br>
-            <div class="text">
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <script type="text/javascript"
-                        src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53e2c6583afe0ece"></script>
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="sociales top-spacing3 bottom-spacing3">
+                <p><?= (isset($model->anunciosFiltros->condicion['value'])) ? (Html::tag('span', 'Condicion: ', ['class' => 'colorww']) . $model->anunciosFiltros->condicion['value']) : '' ?></p>
+                <p><?= (isset($model->anunciosFiltros->talla['value'])) ? (Html::tag('span', 'Talla: ', ['class' => 'colorww']) . $model->anunciosFiltros->talla['value']) : '' ?></p>
+                <p><?= (isset($model->anunciosFiltros->color['value'])) ? (Html::tag('span', 'Color: ', ['class' => 'colorww']) . $model->anunciosFiltros->color['value']) : '' ?></p>
+                <p><?= (isset($model->anunciosFiltros->material['value'])) ? (Html::tag('span', 'Material: ', ['class' => 'colorww']) . $model->anunciosFiltros->material['value']) : '' ?></p>
+                <p><?= (isset($model->anunciosFiltros->marca['value'])) ? (Html::tag('span', 'Marca: ', ['class' => 'colorww']) . $model->anunciosFiltros->marca['value']) : '' ?></p>
+                <p><?= (isset($model->anunciosFiltros->ciudad['value'])) ? (Html::tag('span', 'Ciudad: ', ['class' => 'colorww']) . $model->anunciosFiltros->ciudad['value']) : '' ?></p>
+                <!--<p><span class="colorww">Talla </span>: M</p>
+                <p><span class="colorww">Color </span>: Celeste</p>
+                <p><span class="colorww">Material :</span>Jeans</p>
+                <p><span class="colorww">Marca :</span>Sin marca </p>
+                <p><span class="colorww">Ciudad :</span>Santa Cruz</p>-->
+                <br>
+                <div class="text">
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
                     <script type="text/javascript"
-                            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54f678625eb57483"
-                            async="async"></script>
+                            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53e2c6583afe0ece"></script>
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <div class="addthis_native_toolbox"></div>
-                </div>
-
-
-            </div>
-
-            <div class="shortcodes-elem">
-
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs descr" id="myTab">
-                    <li class="active">
-                        <a href="#desc" data-toggle="tab">
-                            <p>DESCRIPCIÓN</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#medidas" data-toggle="tab">
-                            <p>MEDIDAS</p>
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="tab-content desce">
-                    <div class="tab-pane active" id="desc">
-                        <?= $model['decripcion'] ?>
-                    </div>
-                    <div class="tab-pane" id="medidas">
-                        <?= $model['otra_descripcion'] ?>
+                    <div class="sociales top-spacing3 bottom-spacing3">
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <script type="text/javascript"
+                                src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54f678625eb57483"
+                                async="async"></script>
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_native_toolbox"></div>
                     </div>
 
+
                 </div>
-            </div>
+
+                <div class="shortcodes-elem">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs descr" id="myTab">
+                        <li class="active">
+                            <a href="#desc" data-toggle="tab">
+                                <p>DESCRIPCIÓN</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#medidas" data-toggle="tab">
+                                <p>MEDIDAS</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content desce">
+                        <div class="tab-pane active" id="desc">
+                            <?= $model['decripcion'] ?>
+                        </div>
+                        <div class="tab-pane" id="medidas">
+                            <?= $model['otra_descripcion'] ?>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
-
-
-
 
 
         </div>
@@ -550,34 +518,36 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     </strong></p>
 
 
-
                 <p class="text-center" style="color: #929292; font-weight: 600">
                     <?= \app\models\Anuncios::find()->where(['idusuario' => $model->idusuario, 'estado' => 1])->count() ?>
                     prendas
                 </p>
                 <div style="border-bottom: 1px solid white;  border-bottom-style: dashed;  margin: 0px 30px ">
                     <?php
-                    $us= '';
-                    if(isset(Yii::$app->session->get('user')['idusuario']))
-                        $us =Yii::$app->session->get('user')['idusuario'];
-                    if($model->idusuario != $us):
+                    $us = '';
+                    if (isset(Yii::$app->session->get('user')['idusuario']))
+                        $us = Yii::$app->session->get('user')['idusuario'];
+                    if ($model->idusuario != $us):
                         ?>
 
                         <div align="center">
 
-                        <a href="" data-toggle="modal" class="calsiw" data-target="#califModal" style="color: #929292;
+                            <a href="" data-toggle="modal" class="calsiw" data-target="#califModal" style="color: #929292;
     text-align: center;
     font-weight: 600; text-align: center">
-                            ¡Calificame!
-                        </a>
+                                ¡Calificame!
+                            </a>
 
                         </div>
                         <!-- line modal -->
-                        <div class="modal fade" id="califModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                        <div class="modal fade" id="califModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                        <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                        </button>
                                         <h3 class="modal-title text-center" id="lineModalLabel">Calificame</h3>
                                     </div>
                                     <div class="modal-body">
@@ -598,19 +568,22 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                             ],*/
                                         ]); ?>
                                         <?= $form->field($modelcal, 'puntaje')->label(false)->widget(\kartik\widgets\StarRating::classname()); ?>
-                                        <?= $form->field($modelcal,'mensaje')->textarea(['class'=>'form-control','placeholder'=>'Escribe un comentario acerca de mi','style'=>"width: 100%",'rows'=>"5"])->label(false)?>
-                                        <?= $form->field($modelcal,'idvendedor')->hiddenInput()->label(false)?>
+                                        <?= $form->field($modelcal, 'mensaje')->textarea(['class' => 'form-control', 'placeholder' => 'Escribe un comentario acerca de mi', 'style' => "width: 100%", 'rows' => "5"])->label(false) ?>
+                                        <?= $form->field($modelcal, 'idvendedor')->hiddenInput()->label(false) ?>
 
 
                                         <div align="center">
-                                        <button type="submit" class="btn btn-default btnregister" style="color: white">Calificar</button>
+                                            <button type="submit" class="btn btn-default btnregister"
+                                                    style="color: white">Calificar
+                                            </button>
                                         </div>
 
                                         <?php ActiveForm::end(); ?>
 
                                     </div>
                                     <div class="modal-footer">
-                                        <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                        <div class="btn-group btn-group-justified" role="group"
+                                             aria-label="group button">
 
                                         </div>
                                     </div>
@@ -620,36 +593,35 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                         <div align="center">
 
-                        <?php
-                        $query = \app\models\Calificaciones::find()
-                            ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
-                        $valor = ($query->sum('puntaje')/(!empty($query->count())?$query->count():1));
-                        $valor2 = ($query->count('idusuario'));
+                            <?php
+                            $query = \app\models\Calificaciones::find()
+                                ->where(['idusuario' => Yii::$app->session->get('user')['idusuario']]);
+                            $valor = ($query->sum('puntaje') / (!empty($query->count()) ? $query->count() : 1));
+                            $valor2 = ($query->count('idusuario'));
 
 
-                        echo StarRating::widget([
-                            'name' => 'rating_21',
-                            'value' => ($valor),
-                            'pluginOptions' => [
-                                'readonly' => true,
-                                'showClear' => false,
-                                'showCaption' => false,
-                            ],
-                        ]); ?>
-                        <?php
+                            echo StarRating::widget([
+                                'name' => 'rating_21',
+                                'value' => ($valor),
+                                'pluginOptions' => [
+                                    'readonly' => true,
+                                    'showClear' => false,
+                                    'showCaption' => false,
+                                ],
+                            ]); ?>
+                            <?php
 
                             ?>
 
                         </div>
 
-                    <?php endif;?>
+                    <?php endif; ?>
 
                 </div>
 
 
-
-
-                <a class="moreven btn center-block" href="<?=Url::to(['site/perfil','id'=> $model->idusuario])?>">Perfil de la vendedora</a>
+                <a class="moreven btn center-block" href="<?= Url::to(['site/perfil', 'id' => $model->idusuario]) ?>">Perfil
+                    de la vendedora</a>
 
             </div>
 
@@ -657,13 +629,13 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
         <hr>
         <br><br><br>
-        <?php if(!empty(Yii::$app->session->get('user'))):?>
+        <?php if (!empty(Yii::$app->session->get('user'))): ?>
             <div class="col-xs-12">
                 <h3>Comentarios</h3>
                 <br><br>
-                <?php $modmess= new \app\models\Mensajes();?>
-                <?php $modmess->idanuncio = $model->idanuncio;?>
-                <?php $modmess->tipo = 1;?>
+                <?php $modmess = new \app\models\Mensajes(); ?>
+                <?php $modmess->idanuncio = $model->idanuncio; ?>
+                <?php $modmess->tipo = 1; ?>
                 <?php $form = ActiveForm::begin([
                     'action' => ['/cuenta/mensaje'],
                     'id' => 'login-form',
@@ -673,9 +645,9 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         'labelOptions' => ['class' => 'col-md-4 control-label'],
                     ],*/
                 ]); ?>
-                <?= $form->field($modmess,'detalle')->textarea(['class'=>'form-control cajadesct','placeholder'=>'Deja tu comentario o duda aqui para la vendedora ej: mas caracteristicas, medidas, tipo de envio o lo que desees para estar segura de la compra'])->label(false)?>
-                <?= $form->field($modmess,'idanuncio')->hiddenInput()->label(false)?>
-                <?= $form->field($modmess,'tipo')->hiddenInput()->label(false)?>
+                <?= $form->field($modmess, 'detalle')->textarea(['class' => 'form-control cajadesct', 'placeholder' => 'Deja tu comentario o duda aqui para la vendedora ej: mas caracteristicas, medidas, tipo de envio o lo que desees para estar segura de la compra'])->label(false) ?>
+                <?= $form->field($modmess, 'idanuncio')->hiddenInput()->label(false) ?>
+                <?= $form->field($modmess, 'tipo')->hiddenInput()->label(false) ?>
 
                 <div class="submit-area" align="left"><br>
                     <input type="submit" name="enviar" id="" class="btnregister" style="text-transform: none"
@@ -688,11 +660,11 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     <div class="col-xs-12" style="padding-left: 0; padding-right: 0">
 
 
-                        <?php if ($mensaje->usuario['idusuario'] == $model->idusuario) :?>
+                        <?php if ($mensaje->usuario['idusuario'] == $model->idusuario) : ?>
                             <div class="col-md-1"></div>
                         <?php else: ?>
 
-                        <?php  endif; ?>
+                        <?php endif; ?>
 
                         <div class="col-md-11 col-xs-12">
 
@@ -706,7 +678,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                     <span><?= $mensaje->usuario['nombres'] ?> </span>
                                     <?=
                                     EasyThumbnailImage::thumbnailImg(
-                                        Yii::getAlias('@webroot/imagen/usuarios/'. $mensaje->usuario['foto']) ,
+                                        Yii::getAlias('@webroot/imagen/usuarios/' . $mensaje->usuario['foto']),
                                         45,
                                         45,
                                         EasyThumbnailImage::THUMBNAIL_OUTBOUND,
@@ -717,9 +689,10 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                 </div>
 
                                 <div class="comentarios2" style="padding-left: 10px">
-                                    <p><?= $mensaje['detalle']?></p>
+                                    <p><?= $mensaje['detalle'] ?></p>
 
-                                    <p style="color: #ff6d89; margin-bottom: 5px; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']); echo $date['dia'].' '.$date['mes'].' '.$date['anio'].' '.date('H:m',strtotime($mensaje['fecha_registro']))?></p>
+                                    <p style="color: #ff6d89; margin-bottom: 5px; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']);
+                                        echo $date['dia'] . ' ' . $date['mes'] . ' ' . $date['anio'] . ' ' . date('H:m', strtotime($mensaje['fecha_registro'])) ?></p>
                                 </div>
                             </div>
 
@@ -730,7 +703,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
             </div>
             <br>
-        <?php endif;?>
+        <?php endif; ?>
     </div>
 
 </div>
@@ -738,13 +711,15 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 <br><br>
 
 
-
-<div class="modal fade" id="squarespaceModaljuntar" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="squarespaceModaljuntar" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel" style=" font-size: 16px; font-weight: 600;  text-transform: uppercase">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                            class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="lineModalLabel"
+                    style=" font-size: 16px; font-weight: 600;  text-transform: uppercase">
 
                     Como me puedo juntar
                 </h3>
@@ -758,31 +733,40 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     <h4 style="font-weight: 600">Opción 1: Júntate en su casa o tu casa</h4>
 
                     <p>
-                        Sabemos que en un mundo soñado todas tus amigas comprarían tus prendas a la venta, y tú comprarías sus prendas, pero resulta que no tienen los mismos gustos, y peor aún no son de la misma talla . Por ello a través de los anuncios de Nada que Ponerte, mujeres que no conoces aún, pueden ser tus compradoras, ¡y tú también comprar sus prendas tesoro!
-                        <br> Espera…pero ¿cómo me puedo juntar con alguien que no conozco para comprar o vender una prenda o accesorio?
+                        Sabemos que en un mundo soñado todas tus amigas comprarían tus prendas a la venta, y tú
+                        comprarías sus prendas, pero resulta que no tienen los mismos gustos, y peor aún no son de la
+                        misma talla . Por ello a través de los anuncios de Nada que Ponerte, mujeres que no conoces
+                        aún, pueden ser tus compradoras, ¡y tú también comprar sus prendas tesoro!
+                        <br> Espera…pero ¿cómo me puedo juntar con alguien que no conozco para comprar o vender una
+                        prenda o accesorio?
                     </p>
 
 
                     <h4 style="font-weight: 600">Opción 2: Júntate en un lugar neutral</h4>
 
                     <p>
-                        Ni tu casa ni mi casa, juntémonos en un café! O donde se les ocurra pero con la condición que se sientan cómodas, seguras siempre y que haya en ese lugar escogido un espacio adecuado donde pueda probarse la compradora, si así amerita la prenda. Consejo: Sigue siempre tu intuición y no arriesgues tu seguridad.
+                        Ni tu casa ni mi casa, juntémonos en un café! O donde se les ocurra pero con la condición que se
+                        sientan cómodas, seguras siempre y que haya en ese lugar escogido un espacio adecuado donde
+                        pueda probarse la compradora, si así amerita la prenda. Consejo: Sigue siempre tu intuición y no
+                        arriesgues tu seguridad.
                     </p>
 
                     <h4 style="font-weight: 600">Opción 3: Júntate en nuestras oficinas!</h4>
 
                     <p>
-                        Nuestro equipo estará más que feliz de recibir a todas esas amantes de los tesoros escondidos en armarios, te esperamos con una oficina que está equipada con un probador, unos sillones cómodos y ¡un espejito mágico!.
-                        <br>  No es obligatorio, pero preferimos que nos avises con anterioridad el día y la hora que te juntarás en nuestra oficina con tu compradora/vendedora, así podemos esperarlas con cafecito o lo que se nos ocurra .
-                        <br> Nuestros horarios de atención son martes a viernes de 14:00 a 20:00 y sábado de 9:30 a 13:00.
+                        Nuestro equipo estará más que feliz de recibir a todas esas amantes de los tesoros escondidos en
+                        armarios, te esperamos con una oficina que está equipada con un probador, unos sillones cómodos
+                        y ¡un espejito mágico!.
+                        <br> No es obligatorio, pero preferimos que nos avises con anterioridad el día y la hora que te
+                        juntarás en nuestra oficina con tu compradora/vendedora, así podemos esperarlas con cafecito o
+                        lo que se nos ocurra .
+                        <br> Nuestros horarios de atención son martes a viernes de 14:00 a 20:00 y sábado de 9:30 a
+                        13:00.
                         <br><br>Si tienes alguna duda ¡contáctanos¡
 
                     </p>
 
                 </div>
-
-
-
 
 
             </div>
@@ -794,8 +778,6 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
         </div>
     </div>
 </div>
-
-
 
 
 <?php

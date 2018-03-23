@@ -114,6 +114,7 @@ class AnunciosController extends Controller
             ]);
         }
     }
+
     public function actionComentario($id)
     {
         $model = $this->findModel($id);
@@ -148,8 +149,8 @@ class AnunciosController extends Controller
     {
         $model = $this->findModel($id);
         $model->estado = 1;
-        if($model->save())
-            Correos::anuncioAcepado($model->usuario,$id);
+        if ($model->save())
+            Correos::anuncioAcepado($model->usuario, $id);
         return $this->redirect(['index']);
     }
 

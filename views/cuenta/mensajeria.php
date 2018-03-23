@@ -71,12 +71,12 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::className()]);
                 ?>
 
                 <span style="color: #ff839a; font-weight: 600;     font-size: 18px;"> <?= $item['alias'] ?>
-                <?php
-                $cnt = \app\models\Mensajes::find()
-                    ->where(['idusuario'=>$item['idusuario'],'estado'=>0,'idvendedor'=>Yii::$app->session->get('user')['idusuario']])
-                    ->count();
-                if($cnt >0)
-                    echo "<span class=\"badge \" style='background-color: red;'>{$cnt}</span>";
+                    <?php
+                    $cnt = \app\models\Mensajes::find()
+                        ->where(['idusuario' => $item['idusuario'], 'estado' => 0, 'idvendedor' => Yii::$app->session->get('user')['idusuario']])
+                        ->count();
+                    if ($cnt > 0)
+                        echo "<span class=\"badge \" style='background-color: red;'>{$cnt}</span>";
                     ?>
                 </span>
             </a>

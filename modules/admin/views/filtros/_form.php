@@ -18,9 +18,9 @@ use yii\helpers\Html;
 
 
     <div class="form-group">
-            <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
-            <?= Html::submitButton(\rmrevin\yii\fontawesome\FA::icon(\rmrevin\yii\fontawesome\FA::_PLUS), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+        <?= Html::submitButton(\rmrevin\yii\fontawesome\FA::icon(\rmrevin\yii\fontawesome\FA::_PLUS), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
 

@@ -29,8 +29,8 @@ use yii\helpers\Url;
 
                     <div class="col-sm-4">
                         <br>
-                        <a href="<?= Url::to(Yii::$app->request->referrer); ?>" class="btn btn-link"  style="    color: #ff6d89;
-    font-weight: 600;" >
+                        <a href="<?= Url::to(Yii::$app->request->referrer); ?>" class="btn btn-link" style="    color: #ff6d89;
+    font-weight: 600;">
                             <span style="font-size: 1.5em;">
                                 <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;
                     </span>Volver atras </a>

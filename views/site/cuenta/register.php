@@ -40,11 +40,13 @@ $this->registerCss($script);
             style="font-weight: 600;  font-size: 30px;   margin-bottom: 24px;  margin-top: -5px;"><?= ($model->isNewRecord) ? 'Crear una cuenta' : 'Datos de cuenta' ?></h2>
 
         <p style="text-align: center; ">
-            Proporciona a continuación un correo electrónico que utilices con frecuencia, luego sigue el link que se te enviará ahí para completar el registro en nuestra plataforma.
+            Proporciona a continuación un correo electrónico que utilices con frecuencia, luego sigue el link que se te
+            enviará ahí para completar el registro en nuestra plataforma.
             <br>
             Ese correo proporcionado lo usarás para iniciar sesión cuando nos visites.
 
-        <br> <div class="blog-box">
+            <br>
+        <div class="blog-box">
             <div class="well2" style="padding: 40px 25px; padding-bottom: 5px;">
                 <?php $form = ActiveForm::begin([
                     'id' => 'login-form',
@@ -57,10 +59,10 @@ $this->registerCss($script);
                 ]); ?>
                 <div class="row" align="center">
                     <div class="col-sm-6">
-                        <?= $form->field($model, 'email')->textInput([ 'placeholder' => 'Correo electronico', 'required' => true])->label(false) ?>
+                        <?= $form->field($model, 'email')->textInput(['placeholder' => 'Correo electronico', 'required' => true])->label(false) ?>
                     </div>
                     <div class="col-md-6">
-                        <?= $form->field($model, 'nombres')->textInput([ 'placeholder' => 'Nombre Completo', 'required' => true])->label(false) ?>
+                        <?= $form->field($model, 'nombres')->textInput(['placeholder' => 'Nombre Completo', 'required' => true])->label(false) ?>
                     </div>
 
                 </div>

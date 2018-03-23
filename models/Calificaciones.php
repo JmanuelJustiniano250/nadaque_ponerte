@@ -29,7 +29,7 @@ class Calificaciones extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idusuario', 'idvendedor', 'puntaje','estado'], 'integer'],
+            [['idusuario', 'idvendedor', 'puntaje', 'estado'], 'integer'],
             [['mensaje'], 'string'],
             [['fecha_creacion'], 'safe'],
         ];

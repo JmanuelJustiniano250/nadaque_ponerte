@@ -23,7 +23,6 @@ use yii\helpers\Url;
     }
 
 
-
 </style>
 
 <br><br>
@@ -36,7 +35,7 @@ use yii\helpers\Url;
 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <!-- Main content -->
-<div class="col-xs-12 col-lg-10 col-lg-offset-1" >
+<div class="col-xs-12 col-lg-10 col-lg-offset-1">
     <?php
     $initial = [];
     $config = [];
@@ -77,7 +76,7 @@ use yii\helpers\Url;
 
     <div style="" class="col-xs-12" align="center">
 
-        <?//= Html::submitButton('Anuncio listo, Publicar', ['class' => 'btn enviarsus ']) ?>
+        <? //= Html::submitButton('Anuncio listo, Publicar', ['class' => 'btn enviarsus ']) ?>
         <br><br><br>
 
     </div>

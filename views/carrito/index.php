@@ -16,9 +16,6 @@ CSS;
 $this->registerCss($script);
 
 
-
-
-
 $this->registerCssFile('@web/assets_b/web/css/easy-responsive-tabs.css', ['media' => 'screen', '']);
 $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' => \app\assets_b\AppAsset::className(), 'position' => \yii\web\View::POS_END]);
 
@@ -113,29 +110,21 @@ echo $this->render('../site/widgets/metatags', ['model' => \app\models\Configura
 
                         <div class="col-xs-12">
                             <label for="" style="font-size: 12px;">Aceptar condiciones de uso de paquetes</label> <br>
-                            <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
+                            <input type="checkbox" name="check" id="check" value="1"
+                                   onchange="javascript:showContent()"/>
                             <br>
                         </div>
-
-
-
 
 
                         <?php
                         if (empty(Yii::$app->session->get('user'))) {
                             echo Html::a('REALIZAR PAGO', Url::to(['site/login']), ['class' => 'btn enviarsus btnpag', 'data-target' => '#squarespaceModal']);
                         } else {
-                            echo Html::a('REALIZAR PAGO', Url::to(['pasos', 'pasos' => '1']), ['class' => 'btn enviarsus btnpag desactivadow', 'style' => '', 'id'=> 'content']);
+                            echo Html::a('REALIZAR PAGO', Url::to(['pasos', 'pasos' => '1']), ['class' => 'btn enviarsus btnpag desactivadow', 'style' => '', 'id' => 'content']);
                         }
                         ?>
                     </div>
                     <br>
-
-
-
-
-
-
 
 
                     <a href="<?= Url::to(Yii::$app->request->referrer); ?>" class="cea " style="    color: #ff6d89;

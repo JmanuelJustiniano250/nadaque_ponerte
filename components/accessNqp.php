@@ -2,7 +2,8 @@
 
 namespace app\components;
 
-class accessNqp extends \yii\filters\AccessRule {
+class accessNqp extends \yii\filters\AccessRule
+{
 
     /**
      * @inheritdoc

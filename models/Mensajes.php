@@ -85,9 +85,9 @@ class Mensajes extends \yii\db\ActiveRecord
 
         if (!empty($anuncio))
             $mensaje = $mensaje->andWhere(['idanuncio' => $anuncio]);
-        else{
-            if($tipo==1){
-                $mensaje = $mensaje->andWhere(['!=','idanuncio' ,'0']);
+        else {
+            if ($tipo == 1) {
+                $mensaje = $mensaje->andWhere(['!=', 'idanuncio', '0']);
             }
         }
 

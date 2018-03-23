@@ -11,7 +11,7 @@ use yii\widgets\DetailView;
 $this->title = $model->idanuncio;
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$url = Url::to(['anuncios/comentario','id'=>$model->idanuncio]);
+$url = Url::to(['anuncios/comentario', 'id' => $model->idanuncio]);
 $script = <<<JS
 function rechazo(definitivo) {
     estado = 2;
@@ -28,7 +28,7 @@ jQuery.ajax({
 });  
 }
 JS;
-$this->registerJs($script,\yii\web\View::POS_BEGIN);
+$this->registerJs($script, \yii\web\View::POS_BEGIN);
 ?>
 
 <section class="content-header">
@@ -65,10 +65,10 @@ $this->registerJs($script,\yii\web\View::POS_BEGIN);
                         'model' => $model,
                         'attributes' => [
                             'idanuncio',
-                    [
-                        'label' => 'Categoria',
-                        'value' => $model->categoria->nombre,
-                    ],
+                            [
+                                'label' => 'Categoria',
+                                'value' => $model->categoria->nombre,
+                            ],
                             'decripcion:html',
                             'otra_descripcion:html',
                             'codigo',
@@ -81,29 +81,29 @@ $this->registerJs($script,\yii\web\View::POS_BEGIN);
                         ],
                     ]) ?>
                     <?= FileInput::widget([
-                    'name' => 'images[]',
-                    'options'=>[
-                    'multiple'=>true
-                    ],
-                    'pluginOptions' => [
-                    'initialPreview'=>[
-                        Url::to(['imagen/anuncios/'.$model->foto]),
-                        Url::to(['imagen/anuncios/'.$model->foto2]),
-                        Url::to(['imagen/anuncios/'.$model->foto3]),
-                        Url::to(['imagen/anuncios/'.$model->foto4]),
-                        Url::to(['imagen/anuncios/'.$model->foto5]),
-                    ],
-                    'initialPreviewAsData'=>true,
-                    'overwriteInitial'=>false,
-                    'maxFileSize'=>2800,
-                        'showCaption' => false,
-                        'showRemove' => false,
-                        'showUpload' => false,
-                        'showBrowse' => false,
+                        'name' => 'images[]',
+                        'options' => [
+                            'multiple' => true
+                        ],
+                        'pluginOptions' => [
+                            'initialPreview' => [
+                                Url::to(['imagen/anuncios/' . $model->foto]),
+                                Url::to(['imagen/anuncios/' . $model->foto2]),
+                                Url::to(['imagen/anuncios/' . $model->foto3]),
+                                Url::to(['imagen/anuncios/' . $model->foto4]),
+                                Url::to(['imagen/anuncios/' . $model->foto5]),
+                            ],
+                            'initialPreviewAsData' => true,
+                            'overwriteInitial' => false,
+                            'maxFileSize' => 2800,
+                            'showCaption' => false,
+                            'showRemove' => false,
+                            'showUpload' => false,
+                            'showBrowse' => false,
 
-                    ]
+                        ]
                     ]);
-?>
+                    ?>
                 </div>
             </div>
         </div>

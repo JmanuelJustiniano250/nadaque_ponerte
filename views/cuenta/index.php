@@ -65,13 +65,13 @@ $this->registerCss($script);
 
             <div class="container">
                 <div class="row">
-                   <div class="col-sm-4 col-xs-12" align="center">
+                    <div class="col-sm-4 col-xs-12" align="center">
 
                         <!--<div class="statistic-post">
                             <div class="statistic-counter">
-                                <?php// if ($compra): ?>
-                                    <?php// $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
-                                    <p><span class="timer" data-from="0" data-to="<?//= $tmp ?>"><?//= $tmp ?></span></p>
+                                <?php // if ($compra): ?>
+                                    <?php // $tmp = \app\models\Anuncios::find()->where(['estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->count() ?>
+                                    <p><span class="timer" data-from="0" data-to="<? //= $tmp ?>"><? //= $tmp ?></span></p>
                                     <p>ANUNCIOS EN LINEA</p>
 
                                 <?php //else: ?>

@@ -101,7 +101,7 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                                         'header' => 'Estado',
                                         'format' => 'raw',
                                         'value' => function ($model) {
-                                                return $model->getEstado();
+                                            return $model->getEstado();
                                         },
                                         'filter' => \kartik\widgets\Select2::widget([
                                             'model' => $searchModel,
@@ -128,7 +128,7 @@ $this->registerJs($format, \yii\web\View::POS_HEAD);
                                         'buttons' => [
                                             'estado' => function ($url, $model, $key) {
                                                 switch ($model->estado) {
-                                                   case '5':
+                                                    case '5':
                                                         $model->estado = 'warning';
                                                         break;
                                                     default:

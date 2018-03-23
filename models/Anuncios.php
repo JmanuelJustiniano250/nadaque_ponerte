@@ -63,17 +63,17 @@ class Anuncios extends \yii\db\ActiveRecord
     {
         return [
             [['idcompra'], 'required'],
-            [['idcategoria', 'idusuario', 'estado', 'enable', 'idcompra', 'visitas','vendido'], 'integer'],
+            [['idcategoria', 'idusuario', 'estado', 'enable', 'idcompra', 'visitas', 'vendido'], 'integer'],
             [['decripcion', 'otra_descripcion', 'razon'], 'string'],
             [['fecha_registro', 'fecha_aprobado', 'filtro'], 'safe'],
             [['titulo'], 'string', 'max' => 200],
             [['codigo'], 'string', 'max' => 20],
-            [['foto','foto2','foto3','foto4','foto5'], 'string', 'max' => 250],
+            [['foto', 'foto2', 'foto3', 'foto4', 'foto5'], 'string', 'max' => 250],
             [['precio', 'precio_promocion'], 'string', 'max' => 10],
             [['idcategoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::className(), 'targetAttribute' => ['idcategoria' => 'idcategoria']],
             [['idcompra'], 'exist', 'skipOnError' => true, 'targetClass' => Compra::className(), 'targetAttribute' => ['idcompra' => 'idcompra']],
             [['idusuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['idusuario' => 'idusuario']],
-            [['file','file2','file3','file4','file5'], 'file', 'extensions' => 'jpg, jpeg, png', 'mimeTypes' => 'image/jpeg, image/png'],
+            [['file', 'file2', 'file3', 'file4', 'file5'], 'file', 'extensions' => 'jpg, jpeg, png', 'mimeTypes' => 'image/jpeg, image/png'],
 
         ];
     }
@@ -177,9 +177,9 @@ class Anuncios extends \yii\db\ActiveRecord
         return $this->hasMany(Mensajes::className(), ['idanuncio' => 'idanuncio']);
     }
 
-    public function upload($name=null)
+    public function upload($name = null)
     {
-        if ($this->validate(['file','file2','file3','file4','file5'])) {
+        if ($this->validate(['file', 'file2', 'file3', 'file4', 'file5'])) {
             $pathp = Yii::getAlias('@webroot') . '/imagen/anuncios/';
 
             if (!is_dir($pathp)) {
@@ -194,7 +194,7 @@ class Anuncios extends \yii\db\ActiveRecord
                             unlink(Yii::$app->basePath . "/imagen/anuncios/" . $this->foto);
                         }
                     }
-                    $this->foto = $name . '.' . $this->file->extension;
+                $this->foto = $name . '.' . $this->file->extension;
             }
 
             $name2 = Yii::$app->security->generateRandomString();

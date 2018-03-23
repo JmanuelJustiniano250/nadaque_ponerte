@@ -54,51 +54,43 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
             <h1 class="text-center">Preguntas Frecuentes</h1> <br>
 
 
-
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
 
 
-
-
-                <?php foreach ($model as $item): ?>
-                   <!--- <div class="accord-elem">
+                    <?php foreach ($model as $item): ?>
+                        <!--- <div class="accord-elem">
                         <div class="accord-title">
-                            <h2><?//= $item['titulo'] ?></h2>
+                            <h2><? //= $item['titulo'] ?></h2>
                             <a class="accord-link" href="#"></a>
                         </div>
                         <div class="accord-content">
-                            <?//= $item['contenido'] ?>
+                            <? //= $item['contenido'] ?>
                         </div>
                     </div>-->
 
 
-                    <div class="panel-heading" role="tab" id="headingOne<?= $item['idfaq'] ?>">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" class="respet" data-parent="#accordion" href="#collapseOne<?= $item['idfaq'] ?>" aria-expanded="true" aria-controls="collapseOne">
-                                <?= $item['titulo'] ?>
-                            </a>
-                        </h4>
-                    </div>
+                        <div class="panel-heading" role="tab" id="headingOne<?= $item['idfaq'] ?>">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" class="respet" data-parent="#accordion"
+                                   href="#collapseOne<?= $item['idfaq'] ?>" aria-expanded="true"
+                                   aria-controls="collapseOne">
+                                    <?= $item['titulo'] ?>
+                                </a>
+                            </h4>
+                        </div>
 
 
+                        <div id="collapseOne<?= $item['idfaq'] ?>" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingOne<?= $item['idfaq'] ?>">
+                            <div class="panel-body">
+                                <?= $item['contenido'] ?>
 
-                    <div id="collapseOne<?= $item['idfaq'] ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne<?= $item['idfaq'] ?>">
-                        <div class="panel-body">
-                            <?= $item['contenido'] ?>
-
-                         </div>
-                    </div>
-
-
-
-                <?php endforeach; ?>
+                            </div>
+                        </div>
 
 
-
-
-
-
+                    <?php endforeach; ?>
 
 
                 </div>
