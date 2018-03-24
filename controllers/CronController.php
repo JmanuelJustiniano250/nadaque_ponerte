@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Correos;
 use app\models\Anuncios;
 use app\models\Compra;
 use Yii;
@@ -60,6 +61,9 @@ class CronController extends Controller
             //$fecha_aviso2 = mktime(0,0,0,$fecha_aprobado_m,($fecha_aprobado_d+$tiempo_dias-2),$fecha_aprobado_y);
             if (date('Ymd', $fecha_ahora) == date('Ymd', $fecha_vencimiento)) {
                 ///aqui codigo para enviar correos para anuncios vencidos
+                $user = $item->usuario;
+                if(!empty($user))
+                    Correos::anuncioVencido($user,$item);
             }
 
             if ($fecha_ahora > $fecha_vencimiento) {

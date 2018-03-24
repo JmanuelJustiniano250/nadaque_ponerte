@@ -27,6 +27,7 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\UploadedFile;
+use yii2tech\crontab\CronTab;
 
 
 class SiteController extends Controller
@@ -74,7 +75,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $data['configuracion'] = Configuracion::find()->one();
-        /* if ($data['configuracion']['cron'] == 0) {
+         if ($data['configuracion']['cron'] == 0) {
              //activa por defecto el cron mejorar si es posible o ponerlo para activar o desactivar manualmente
              $cronTab = new CronTab();
              $cronTab->mergeFilter = Yii::$app->basePath . '/yii'; // filter all invocation of Yii console
@@ -87,7 +88,7 @@ class SiteController extends Controller
              $cronTab->apply();
              $data['configuracion']->cron = 1;
              $data['configuracion']->save();
-         }*/
+         }
 
         return $this->render('index', $data);
     }

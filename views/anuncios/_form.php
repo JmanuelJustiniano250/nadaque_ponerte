@@ -194,7 +194,7 @@ $user = Yii::$app->session->get('user');
                         <?php
 
                         $tmp = array();
-                        $tmp_model = \app\models\Compra::find()->where(['paquetes.estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->joinWith(['paquete'])->distinct()->all();
+                        $tmp_model = \app\models\Compra::find()->where(['paquetes.estado' => 1, 'estado' => 1, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->joinWith(['paquete'])->distinct()->all();
                         foreach ($tmp_model as $item) {
                             $cant = \app\models\Anuncios::find()->where(['idcompra' => $item->idcompra, 'idusuario' => Yii::$app->session->get('user')['idusuario']])->distinct()->count();
                             if ($item->paquete->nro_anuncios > $cant)

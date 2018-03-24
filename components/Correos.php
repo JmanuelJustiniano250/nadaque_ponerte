@@ -280,6 +280,28 @@ class Correos extends Component
         return false;
     }
 
+    static public function anuncioVencido($model, $compra)
+    {
+        $conf = Configuracion::find()->one();
+        $mensaje = Html::tag('h1', 'Paquete Vencido');
+        $mensaje .= Html::tag('h5', 'tu paquete de anuncio ha vencido te invitamos a comprar uno nuevo <a href="'.Url::to(['/site/opciones'],true).'">Pulse aqui</a>');
+
+        if ($model->validate()) {
+
+            Yii::$app->mailer->compose('layouts/template2', [
+                'config' => $conf,
+                'content' => $mensaje,
+            ])
+                ->setTo($model->email)
+                ->setFrom([$conf['email'] => $conf['titulo_pagina']])
+                ->setSubject($conf->titulo_pagina . ' - Estado de anuncio')
+                ->send();
+
+            return true;
+        }
+        return false;
+    }
+
     public function contact($model)
     {
         $conf = Configuracion::find()->one();
