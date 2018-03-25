@@ -15,7 +15,6 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
 <div class="container">
     <div class="row">
 
-        <?php \yii\widgets\Pjax::begin() ?>
 
         <div class="col-md-3 col-xs-12">
 
@@ -34,7 +33,7 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
 
 
         <div class="col-md-9 col-xs-12">
-
+            <?php \yii\widgets\Pjax::begin() ?>
             <?= $this->render('anuncios/lista', ['model' => $data->getModels()]); ?>
             <div class="row">
                 <div class="col-xs-12" align="center">
@@ -44,8 +43,8 @@ $this->render('widgets/metatags', ['model' => $configuracion]);
                     ]); ?>
                 </div>
             </div>
+            <?php \yii\widgets\Pjax::end() ?>
         </div>
-        <?php \yii\widgets\Pjax::end() ?>
 
     </div>
 </div>

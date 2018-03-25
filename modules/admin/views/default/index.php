@@ -1,5 +1,8 @@
 <?php
 
+use himiklab\thumbnail\EasyThumbnailImage;
+use yii\helpers\Html;
+
 /* @var $this yii\web\View */
 
 $this->title = 'Marca&Mercado';
@@ -79,25 +82,13 @@ $this->title = 'Marca&Mercado';
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Monthly Recap Report</h3>
+                    <h3 class="box-title">Reporte Mensual</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i>
                         </button>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-wrench"></i></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                        </button>
+
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -105,7 +96,7 @@ $this->title = 'Marca&Mercado';
                     <div class="row">
                         <div class="col-md-8">
                             <p class="text-center">
-                                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                                <strong>Ventas: 1 Jan, 2014 - 30 Jul, 2014</strong>
                             </p>
 
                             <div class="chart">
@@ -224,67 +215,40 @@ $this->title = 'Marca&Mercado';
                     <!-- USERS LIST -->
                     <div class="box box-danger">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Latest Members</h3>
+                            <h3 class="box-title">Ultimos Registros</h3>
 
                             <div class="box-tools pull-right">
-                                <span class="label label-danger">8 New Members</span>
+                                <span class="label label-danger">8 Ultimos usuarios</span>
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                             class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                            class="fa fa-times"></i>
                                 </button>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body no-padding">
                             <ul class="users-list clearfix">
-                                <li>
-                                    <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Alexander Pierce</a>
-                                    <span class="users-list-date">Today</span>
-                                </li>
-                                <li>
-                                    <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Norman</a>
-                                    <span class="users-list-date">Yesterday</span>
-                                </li>
-                                <li>
-                                    <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Jane</a>
-                                    <span class="users-list-date">12 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">John</a>
-                                    <span class="users-list-date">12 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="dist/img/user2-160x160.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Alexander</a>
-                                    <span class="users-list-date">13 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Sarah</a>
-                                    <span class="users-list-date">14 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Nora</a>
-                                    <span class="users-list-date">15 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Nadia</a>
-                                    <span class="users-list-date">15 Jan</span>
-                                </li>
+                                <?php
+                                $usuarios = \app\models\Usuarios::find()->where(['estado'=>1])->orderBy(['idusuario'=>SORT_DESC])->limit(10)->all();
+                                foreach ($usuarios as $usuario) {
+                                    echo Html::tag('li',
+                                        EasyThumbnailImage::thumbnailImg(
+                                            Yii::getAlias('@webroot/imagen/usuarios/') . $usuario->foto,
+                                            128,
+                                            128,
+                                            EasyThumbnailImage::THUMBNAIL_OUTBOUND,
+                                            ['style' => 'margin: 0 auto;', 'class' => 'img-responsive']
+                                        ) .
+                                        Html::a($usuario->alias, ['/usuarios/view', 'id' => $usuario->idusuario], ['class' => 'users-list-name']) .
+                                        Html::tag('span', \app\components\Funcions::fecha($usuario->fecha_registro, true, true), ['class' => 'users-list-date'])
+                                    );
+                                }
+                                ?>
                             </ul>
                             <!-- /.users-list -->
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer text-center">
-                            <a href="javascript:void(0)" class="uppercase">View All Users</a>
+                            <?= Html::a('Ver todos los usuarios',['/usuarios/'],['class'=>'uppercase'])?>
                         </div>
                         <!-- /.box-footer -->
                     </div>
