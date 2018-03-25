@@ -157,7 +157,7 @@ class SiteController extends Controller
         $data['modelSearch'] = new AnunciosSearch();
         $datos = Yii::$app->request->queryParams;
         if (!empty($datos['cat']))
-            $datos['categorias'] = [$datos['cat'] => 'categoria'];
+            $datos['categorias'] = $datos['cat'];
         if (empty($datos['precio']))
             $datos['precio'] = Anuncios::find()->min('cast(precio as unsigned)') . ',' . Anuncios::find()->max('cast(precio as unsigned)');
         $datos['precios']['min'] = Anuncios::find()->min('cast(precio as unsigned)');

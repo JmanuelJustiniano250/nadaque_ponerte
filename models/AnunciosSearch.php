@@ -78,15 +78,19 @@ class AnunciosSearch extends Anuncios
         }
         if (isset($params['categorias'])) {
             $tmp = array();
-            foreach ($params['categorias'] as $key => $item)
-                $tmp[] = $key;
+            if(is_array($params['categorias'])) {
+                foreach ($params['categorias'] as $key => $item)
+                    $tmp[] = $key;
+            }
+            else
+                $tmp[] = $params['categorias'];
             $query->andFilterWhere(['IN', 'idcategoria', $tmp]);
         }
         if (isset($params['subcategorias'])) {
-            $tmp = array();
-            foreach ($params['subcategorias'] as $key => $item)
-                $tmp[] = $key;
-            $query->andFilterWhere(['IN', 'idsubcategoria', $tmp]);
+            //$tmp = array();
+            //foreach ($params['subcategorias'] as $key => $item)
+            //   $tmp[] = $key;
+            $query->andFilterWhere(['IN', 'idsubcategoria', $params['subcategorias']]);
         }
         if (isset($params['precio'])) {
             $tmp = explode(',', $params['precio']);
@@ -95,40 +99,40 @@ class AnunciosSearch extends Anuncios
         if (isset($params['condicion']) OR isset($params['talla']) OR isset($params['material']) OR isset($params['marca']) OR isset($params['color']) OR isset($params['ciudad'])) {
             $query->innerJoinWith('anunciosFiltros');
             if (isset($params['condicion'])) {
-                $tmp = array();
-                foreach ($params['condicion'] as $key => $item)
-                    $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'id_cp', $tmp]);
+                //$tmp = array();
+                //foreach ($params['condicion'] as $key => $item)
+                //    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'id_cp', $params['condicion']]);
             }
             if (isset($params['talla'])) {
-                $tmp = array();
-                foreach ($params['talla'] as $key => $item)
-                    $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'id_tp', $tmp]);
+                //$tmp = array();
+                //foreach ($params['talla'] as $key => $item)
+                //    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'id_tp', $params['talla']]);
             }
             if (isset($params['material'])) {
-                $tmp = array();
-                foreach ($params['material'] as $key => $item)
-                    $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'id_mp', $tmp]);
+                //$tmp = array();
+                //foreach ($params['material'] as $key => $item)
+                //    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'id_mp', $params['material']]);
             }
             if (isset($params['marca'])) {
-                $tmp = array();
-                foreach ($params['marca'] as $key => $item)
-                    $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'id_msp', $tmp]);
+                //$tmp = array();
+                //foreach ($params['marca'] as $key => $item)
+                //    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'id_msp', $params['marca']]);
             }
             if (isset($params['color'])) {
-                $tmp = array();
-                foreach ($params['color'] as $key => $item)
-                    $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'id_co', $tmp]);
+                //$tmp = array();
+                //foreach ($params['color'] as $key => $item)
+                //    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'id_co', $params['color']]);
             }
             if (isset($params['ciudad'])) {
-                $tmp = array();
-                foreach ($params['ciudad'] as $key => $item)
-                    $tmp[] = $key;
-                $query->andFilterWhere(['IN', 'idciudad', $tmp]);
+                //$tmp = array();
+                //foreach ($params['ciudad'] as $key => $item)
+                //    $tmp[] = $key;
+                $query->andFilterWhere(['IN', 'idciudad', $params['ciudad']]);
             }
         }
         /*if (isset($params['filtro'])) {

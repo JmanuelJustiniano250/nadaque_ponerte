@@ -2,6 +2,7 @@
 
 use kartik\slider\Slider;
 use kartik\widgets\Select2;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -90,7 +91,7 @@ $index = 0;
         'name' => 'vendedor',
         'value' => ((isset($model['vendedor'])) ? $model['vendedor'] : ''),
         'language' => 'es',
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\Usuarios::find()->where(['estado' => 1, 'tipo' => 1])->all(), 'idusuario', 'nombres'),
+        'data' => ArrayHelper::map(\app\models\Usuarios::find()->where(['estado' => 1, 'tipo' => 1])->all(), 'idusuario', 'nombres'),
         'theme' => Select2::THEME_BOOTSTRAP,
         'options' => ['placeholder' => 'Buscar por vendedor(a)'],
         'pluginOptions' => [
@@ -119,20 +120,19 @@ $index = 0;
         <div class="" style="padding-top: 10px;">
             <?php $tmp = \app\models\Categorias::findAll(['estado' => 1, 'idPadre' => $padre]) ?>
             <?php $pos = 0?>
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::radio("categorias[" . $item['idcategoria'] . "]", ((isset($model['categorias'][$item['idcategoria']])) ? $model['categorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
+            <?= Html::radioList("categorias", isset($model['categorias'])?$model['categorias']:'' , ArrayHelper::map($tmp,'idcategoria','nombre')) ?>
+            <?php if(isset($model['categorias'])){$pos=$model['categorias'];}?>
+            <?php /* foreach ($tmp as $item): ?>
+                <?php //= Html::radio("categorias", ((isset($model['categorias'][$item['idcategoria']])) ? true : false), ['label' => $item['nombre']]) ?>
                 <?php if(isset($model['categorias'][$item['idcategoria']])){$pos=$item['idcategoria'];}?>
-            <?php endforeach; ?>
+            <?php endforeach;*/ ?>
 
         </div>
         <?php if($pos!=0):?>
         <h5 class="text-uppercase"><strong>Sub-categorias</strong></h5>
         <div class="" style="padding-top: 10px;">
             <?php $tmp = \app\models\Categorias::findAll([ 'idPadre' => $pos]) ?>
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("subcategorias[" . $item['idcategoria'] . "]", ((isset($model['subcategorias'][$item['idcategoria']])) ? $model['subcategorias'][$item['idcategoria']] : ''), ['label' => $item['nombre']]) ?>
-            <?php endforeach; ?>
-
+            <?= Html::checkboxList("subcategorias", (isset($model['subcategorias']) ? $model['subcategorias'] : ''), ArrayHelper::map($tmp,'idcategoria','nombre')) ?>
         </div>
         <?php endif; ?>
     </div>
@@ -177,9 +177,9 @@ $index = 0;
 
     <div class="collapse" id="collapseExample3">
         <div class="" style="padding-top: 10px;">
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("condicion[" . $item['id_cp'] . "]", ((isset($model['condicion'][$item['id_cp']])) ? $model['condicion'][$item['id_cp']] : ''), ['label' => $item['nombre']]) ?>
-            <?php endforeach; ?>
+            <?php // foreach ($tmp as $item): ?>
+                <?= Html::checkboxList("condicion", ((isset($model['condicion'])) ? $model['condicion'] : ''), ArrayHelper::map($tmp,'id_cp','nombre') ) ?>
+            <?php // endforeach; ?>
 
         </div>
     </div>
@@ -198,9 +198,7 @@ $index = 0;
 
     <div class="collapse" id="collapseExample4">
         <div class="" style="padding-top: 10px;">
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("talla[" . $item['id_tp'] . "]", ((isset($model['talla'][$item['id_tp']])) ? $model['talla'][$item['id_tp']] : ''), ['label' => $item['nombre']]) ?>
-            <?php endforeach; ?>
+            <?= Html::checkboxList("talla", ((isset($model['talla'])) ? $model['talla'] : ''), ArrayHelper::map($tmp,'id_tp','nombre')) ?>
         </div>
     </div>
 
@@ -218,9 +216,7 @@ $index = 0;
 
     <div class="collapse" id="collapseExample5">
         <div class="" style="padding-top: 10px;">
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("material[" . $item['id_mp'] . "]", ((isset($model['material'][$item['id_mp']])) ? $model['material'][$item['id_mp']] : ''), ['label' => $item['nombre']]) ?>
-            <?php endforeach; ?>
+            <?= Html::checkboxList("material", ((isset($model['material'])) ? $model['material'] : ''),ArrayHelper::map($tmp,'id_mp','nombre')) ?>
         </div>
     </div>
 
@@ -237,9 +233,7 @@ $index = 0;
 
     <div class="collapse" id="collapseExample6">
         <div class="" style="padding-top: 10px;">
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("marca[" . $item['id_msp'] . "]", ((isset($model['marca'][$item['id_msp']])) ? $model['marca'][$item['id_msp']] : ''), ['label' => $item['nombre']]) ?>
-            <?php endforeach; ?>
+                <?= Html::checkboxList("marca", ((isset($model['marca'])) ? $model['marca'] : ''), ArrayHelper::map($tmp,'id_msp','nombre')) ?>
         </div>
     </div>
 
@@ -258,9 +252,7 @@ $index = 0;
 
     <div class="collapse" id="collapseExample7">
         <div class="" style="padding-top: 10px;">
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("color[" . $item['id_co'] . "]", ((isset($model['color'][$item['id_co']])) ? $model['color'][$item['id_co']] : ''), ['label' => $item['nombre']]) ?>
-            <?php endforeach; ?>
+                <?= Html::checkboxList("color", ((isset($model['color'])) ? $model['color'] : ''),ArrayHelper::map($tmp,'id_co','nombre')) ?>
         </div>
     </div>
 
@@ -279,9 +271,7 @@ $index = 0;
 
     <div class="collapse" id="collapseExample8">
         <div class="" style="padding-top: 10px;">
-            <?php foreach ($tmp as $item): ?>
-                <?= Html::checkbox("ciudad[" . $item['idciudad'] . "]", ((isset($model['ciudad'][$item['idciudad']])) ? $model['ciudad'][$item['idciudad']] : ''), ['label' => $item['nombre']]) ?>
-            <?php endforeach; ?>
+                <?= Html::checkboxList("ciudad", ((isset($model['ciudad'])) ? $model['ciudad'] : ''), ArrayHelper::map($tmp,'idciudad','nombre')) ?>
         </div>
     </div>
 
