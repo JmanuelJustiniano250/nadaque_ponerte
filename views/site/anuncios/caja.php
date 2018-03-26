@@ -51,13 +51,13 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
 
 
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
-                    <p><?= (isset($item->anunciosFiltros->talla['value'])) ? ('Talla: ' . $item->anunciosFiltros->talla['value']) : '' ?></p>
+                    <p><?= (isset($item->anunciosFiltros->talla['value'])) ? $item->anunciosFiltros->talla['value'] : '' ?></p>
                     <p><?= (isset($item->anunciosFiltros->marca['nombre'])) ? $item->anunciosFiltros->marca['nombre'] : '' ?></p>
                     <p><?= (isset($item->anunciosFiltros->condicion['nombre'])) ? $item->anunciosFiltros->condicion['nombre'] : '' ?></p>
                 </div>
 
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
-                    <p>Codigo: <?= $item['codigo'] ?></p>
+                    <p>Código: <?= $item['codigo'] ?></p>
 
                     <?php if ($item['precio_promocion']): ?>
 

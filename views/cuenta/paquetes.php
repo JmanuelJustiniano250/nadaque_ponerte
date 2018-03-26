@@ -9,11 +9,15 @@ $this->title = 'Crear Anuncios';
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $compras = \app\models\Compra::find()
-    ->andWhere(['>=', 'estado', 1])
+    ->andwhere(['>=', 'estado', 1])
+    ->orderBy(['idcompra' => SORT_DESC])
     ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
     ->distinct()
+
     ->all();
 $tabla = array();
+
+
 foreach ($compras as $item) {
     $row = array();
     $row['codigo'] = $item->paquete['codig'];

@@ -501,6 +501,8 @@ class CuentaController extends Controller
             ->distinct('idusuario')
             ->select(['idusuario', 'idvendedor'])
             ->all();
+
+
         $mensajes = Usuarios::find()->where(['and',
             ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp, 'idusuario')],
             ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp, 'idvendedor')]
@@ -603,7 +605,7 @@ class CuentaController extends Controller
 
     }
 
-    public function actionUpdateA($id)
+    public function actionupdateA($id)
     {
         $vendido = Yii::$app->request->get('estado');
         $precio = Yii::$app->request->get('precio');
@@ -625,7 +627,7 @@ class CuentaController extends Controller
             }
             if ($sw == 1) {
                 if ($model->save()) {
-                    Yii::$app->session->setFlash('success', ['message' => 'Comentario enviado', 'type' => 'success']);
+                    Yii::$app->session->setFlash('success', ['message' => 'Precio cambiado', 'type' => 'success']);
                 } else
                     Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
             }

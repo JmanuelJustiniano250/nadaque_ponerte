@@ -34,6 +34,10 @@ pointer-events: initial;   cursor: auto;   opacity: 1;
     opacity: 1;
 }
 
+.field-anuncios-titulo .help-block{
+display: block!important;
+}
+
 button.close {
     -webkit-appearance: none;
     padding: 0;
@@ -51,7 +55,7 @@ button.close {
 }
 .medioas{
 background: #f6f6f6;
-    padding: 5px 30px 10px;
+    padding: 5px 20px 10px;
     margin-bottom: 20px;
 }
 @media (min-width: 768px) {
@@ -115,7 +119,7 @@ label {
     font-weight: 600;
     color: #777777;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .file-preview .fileinput-remove{
 display: none;
@@ -227,15 +231,23 @@ $user = Yii::$app->session->get('user');
                 <div class="row">
                     <div class="col-xs-12 des"><br>
 
-                        <p class="text-left"
-                           style="color: #777777;  font-size: 16px;  margin-bottom: 20px;  font-weight: 600; ">Imágenes
+
+                        <div class="ldoow2">
+                        <p class="text-center"
+                           style="color: #777777;  font-size: 16px;  margin-bottom: 5px;  font-weight: 600; ">Imágenes
                             de tu prenda</p>
 
+
+
                         <div align="left">
-                            <a href="" data-toggle="modal" class="btonhreg" data-target="#squarespaceModal">
-                                Como sacar buenas fotografias</a> <br>
+                            <a style="font-weight: 300" href="" data-toggle="modal" class="btonhreg" data-target="#squarespaceModal">
+                                Como sacar buenas fotografias</a>
+
+                            <br>
 
                         </div>
+                        </div>
+
 
 
                         <?php
@@ -251,11 +263,12 @@ $user = Yii::$app->session->get('user');
                         array_push($initial5, Html::img('@web/imagen/anuncios/' . $model->foto5, ['class' => 'kv-preview-data krajee-init-preview file-preview-image', 'style' => 'max-height:160px']));
                         ?>
 
-                        <div class="col-xs-12" align="center"><br>
+                        <div class="col-xs-12 lienen23" align="center">
 
 
-                            <br>
 
+                            <label for="" style="font-size: 13px; height: 40px;"><br>Foto Principal<span
+                                        class="obligatorio">*</span></label>
 
                             <?= $form->field($model, 'file')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
                                 'options' => [
@@ -278,7 +291,7 @@ $user = Yii::$app->session->get('user');
 
                         <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center">
                             <br>
-                            <label for="" style="font-size: 13px; height: 40px;">Foto trasera de la prenda<span
+                            <label for="" style="font-size: 13px; height: 40px;"> <br>Foto trasera de la prenda<span
                                         class="obligatorio">*</span></label>
 
                             <?= $form->field($model, 'file2')->label(false)->widget(\kartik\widgets\FileInput::classname(), [
@@ -302,7 +315,7 @@ $user = Yii::$app->session->get('user');
 
                         <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 prendasaparte" align="center"><br>
 
-                            <label for="" style="font-size: 13px; height: 40px;">Foto detalle de la prenda <span
+                            <label for="" style="font-size: 13px; height: 40px;"> <br>Foto detalle de la prenda <span
                                         class="obligatorio">*</span></label>
 
 
@@ -389,7 +402,7 @@ $user = Yii::$app->session->get('user');
 
                 <div class="col-md-6 col-xs-12">
 
-                    <label for="">Seleccionar Categoría principal de tu prenda o accesorio<span
+                    <label for="">Seleccionar Categoría y Sub-Categoría de tu prenda o accesorio<span
                                 class="obligatorio">*</span></label>
 
                     <?php $form->field($model, 'idusuario')->hiddenInput(['value' => $user['idusuario']])->label(false); ?>
@@ -434,7 +447,7 @@ $user = Yii::$app->session->get('user');
                 <div class="col-xs-12">
                     <h3 style="    color: #777777;    font-size: 16px;
     margin-bottom: 25px;
-    font-weight: 600;">Seleccionar las Categorías complementarioas de tu prenda</h3>
+    font-weight: 600;">Seleccionar las Categorías complementarias de tu prenda</h3>
                 </div>
 
 
@@ -630,10 +643,22 @@ $user = Yii::$app->session->get('user');
 
 
 <div class="col-xs-12" align="center">
-    <label for="" style="font-size: 12px;">Aceptar reglas de publicacion </label> <br>
     <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()"/>
-    <br><br>
+    <a href="<?= Url::to(['/site/pages', 'id' => 'reglas-publicacion']) ?>" target="_blank" class="tardetncon" style="font-size: 12px; margin-bottom: 10px;"> Aceptar Reglas de publicación </a>
+
+
+
 </div>
+
+
+
+<div class="col-xs-12" align="center">
+
+    <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()"/>
+
+
+    <a href="<?= Url::to(['/site/pages', 'id' => 'condiciones']) ?>" target="_blank" class="tardetncon" style="font-size: 12px; margin-bottom: 10px;" >Aceptar condiciones de uso</a>
+
 
 
 <div class=" text-center col-xs-12">

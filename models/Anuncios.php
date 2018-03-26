@@ -68,7 +68,7 @@ class Anuncios extends \yii\db\ActiveRecord
             [['idcategoria','idsubcategoria', 'idusuario', 'estado', 'enable', 'idcompra', 'visitas', 'vendido'], 'integer'],
             [['decripcion', 'otra_descripcion', 'razon'], 'string'],
             [['fecha_registro', 'fecha_aprobado', 'filtro'], 'safe'],
-            [['titulo'], 'string', 'max' => 200],
+            [['titulo'], 'string', 'max' => 50],
             [['codigo'], 'string', 'max' => 20],
             [['foto', 'foto2', 'foto3', 'foto4', 'foto5'], 'string', 'max' => 250],
             [['precio', 'precio_promocion'], 'string', 'max' => 10],

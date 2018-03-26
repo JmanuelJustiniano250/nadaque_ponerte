@@ -12,6 +12,12 @@ $this->title = 'Calificaciones
 $this->params['breadcrumbs'][] = ['label' => 'Anuncios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+$meses2 = array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+$meses = array('', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic');
+$dia = date("d", strtotime($model['fecha_creacion']));
+$mes = date("m", strtotime($model['fecha_creacion']));
+$año = date("Y", strtotime($model['fecha_creacion']));
+
 
 ?>
 
@@ -41,6 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'showCaption' => false,
             ],
         ]); ?>
+        <p style="padding-left: 5px; text-align: center">
+            <?= $dia ?>-<?= $mes ?>-<?= $año ?>
+
+
+        </p>
     </div>
 
 
@@ -50,6 +61,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <p><?= $model['mensaje'] ?>
         </p>
+
+
+
+
 
 
     </div>

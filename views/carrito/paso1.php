@@ -38,7 +38,7 @@ use yii\helpers\Url;
 
                     <div class="col-sm-8">
                         <br>
-                        <?= Html::submitButton('Siguiente', ['class' => 'btn enviarsus', 'name' => 'contact-button ', 'style' => 'width:50%']) ?>
+                        <?= Html::submitButton('Continuar para el pago', ['class' => 'btn enviarsus', 'name' => 'contact-button ', 'style' => 'width:50%']) ?>
 
                     </div>
 

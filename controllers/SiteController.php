@@ -461,9 +461,12 @@ class SiteController extends Controller
 
     public function actionDeseosadd($id)
     {
+
+
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+
         $model = new Deseo();
         if (!empty($id)) {
             $model->idanuncio = $id;
@@ -474,7 +477,11 @@ class SiteController extends Controller
             else
                 Yii::$app->session->setFlash('error', ['message' => 'Hubo un error, intentelo mas tarde']);
         }
+
         return $this->redirect(Yii::$app->request->referrer);
+        //return $this->redirect(['site/comprar']);
+
+
     }
 
 

@@ -49,7 +49,7 @@ $this->registerjsFile('@web/assets_b/web/js/easyResponsiveTabs.js', ['depends' =
                         <div align="center"><br><br>
 
                             <a href="<?php echo Url::to(['cuenta/create']) ?>" class="btnregister">Crea tu
-                                anuncio </a><br><br>
+                                anuncio ahora</a><br><br>
 
                         </div>
 

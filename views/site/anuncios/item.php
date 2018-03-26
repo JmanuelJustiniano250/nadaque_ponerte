@@ -12,10 +12,12 @@ $script = <<<CSS
 
 .privatemen { border-color: #e5e5e5;   background: #f7f7f7;   padding: 15px; }  .nav-tabs.descr li {  border-top: 0px solid #3a3d41;   margin: 0;   /* width: 25%; */   transition: all 0.2s ease-in-out;   -moz-transition: all 0.2s ease-in-out;    -webkit-transition: all 0.2s ease-in-out;   -o-transition: all 0.2s ease-in-out;   margin-right: 0px;} .privatemen::placeholder { color: #a5a5a5!important;  }
 
+.
+.comentraio::placeholder { color: #ccc!important;  }
 .nav-tabs.descr > li.active > a, .nav-tabs.descr > li.active > a:hover, .nav-tabs.descr > li.active > a:focus {
-    color: white!important;
-    background: #ff5a96!important;
-    border: 1px solid #ff5a96!important;
+       color: white!important;
+    background: #ff6d89!important;
+    border: 1px solid #ff6d89!important;
 }
 
 .nav-tabs.descr li.active a p {
@@ -204,15 +206,24 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
         <div class="col-md-5 col-xs-12">
 
+
+            <div class="col-xs-12" style="padding-left: 0;">
+
+                <div class="titulodeprnedaitem">
+                    <h4 class="tituprodit"><?= $model['titulo'] ?></h4>
+
+
+                </div>
+            </div>
+
             <div class="col-sm-6 col-xs-12" style="padding-left: 0;">
-
-
-                <h4 class="tituprodit"><?= $model['titulo'] ?></h4>
 
 
                 <p style="font-weight: 600">Cod. <?= $model['codigo'] ?></p>
                 <br>
-                <p><span class="colorww">Categoría </span>: <?= $model->categoria['nombre'] ?></p>
+                <p><span class="colorww">Categoría </span>: <?= $model->categoria['nombre'] ?>  </p>
+
+
                 <!--<p><span class="colorww">Sub categoria </span>: Jean</p>-->
                 <!--<p><span class="colorww">Condición :</span>Nuevo con etiqueta</p>-->
 
@@ -221,7 +232,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                     <p class="colortemp" style="font-size: 22px; font-weight: 600">
                         Bs. <?= $model['precio_promocion'] ?>  </p>
-                    <p class="colortemp" style="font-size: 11px;
+                    <p class="colortemp" style="font-size: 15px;
     text-decoration: line-through;
     font-weight: 300;">Bs.<?= $model['precio'] ?></p>
 
@@ -252,7 +263,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                             <div class="modal-body">
 
                                 <p style="color: #6b6b6b;">
-                                    Comunicate de la forma que mas te convenga con la vendedora:
+                                    Comunícate de la forma que mas te convenga con la vendedora:
                                 </p>
 
 
@@ -335,7 +346,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                                 <br>
                                 <p style="color: #6b6b6b;">
-                                    O bien mándale un mensaje privado, la respuesta aparecera en tu mensajeria.
+                                    O bien mándale un mensaje privado, la respuesta aparecera en tu mensajería.
                                 </p>
 
                                 <br>
@@ -398,13 +409,6 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                 <div class="">
 
-                    <div align="right" class="lefte">
-
-                        <a href="<?= \yii\helpers\Url::to(['site/deseosadd', 'id' => $model->idanuncio]) ?>"
-                           class="link3"><?= FA::icon(FA::_HEART) ?></a>
-                    </div>
-
-                    <br>
 
                     <div class="imagennsope">
 
@@ -417,13 +421,38 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                     </div>
 
 
-                    <div align="right" class="lefte"><br>
-                        <a href="" data-toggle="modal" class="btonhreg" data-target="#squarespaceModaljuntar">
 
-                            ¿Como me puedo juntar?</a> <br>
+                    <div align="right" class="lefte"><br>
+
+                        <a href="<?= \yii\helpers\Url::to(['site/deseosadd', 'id' => $model->idanuncio]) ?>"
+                           class="link3"><?= FA::icon(FA::_HEART) ?></a>
+                    </div>
+
+
+
+                    <div class="col-xs-12" style="padding-left: 0; padding-right:0 ">
+
+                    <div align="right" class="lefte modalesw"><br><br><br>
+                        <a href="" data-toggle="modal" class="btonhreg " data-target="#squarespaceModaljuntar"
+                           style="font-weight: 300; font-size: 11px">
+
+                            ¿Cómo me puedo juntar?</a>
+
 
                     </div>
 
+
+                    <div align="right" class="lefte modalesw">
+
+
+                        <a href="" data-toggle="modal" class="btonhreg " data-target="#squarespaceModalmedidas"
+                           style="font-weight: 300; font-size: 11px">
+
+                            ¿Cómo tomar mis medidas?</a>
+
+
+                    </div>
+                    </div>
 
                 </div>
 
@@ -435,7 +464,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                 <div class="linecir"></div>
 
-                <p><?= (isset($model->anunciosFiltros->condicion['value'])) ? (Html::tag('span', 'Condicion: ', ['class' => 'colorww']) . $model->anunciosFiltros->condicion['value']) : '' ?></p>
+                <p><?= (isset($model->anunciosFiltros->condicion['value'])) ? (Html::tag('span', 'Condición: ', ['class' => 'colorww']) . $model->anunciosFiltros->condicion['value']) : '' ?></p>
                 <p><?= (isset($model->anunciosFiltros->talla['value'])) ? (Html::tag('span', 'Talla: ', ['class' => 'colorww']) . $model->anunciosFiltros->talla['value']) : '' ?></p>
                 <p><?= (isset($model->anunciosFiltros->color['value'])) ? (Html::tag('span', 'Color: ', ['class' => 'colorww']) . $model->anunciosFiltros->color['value']) : '' ?></p>
                 <p><?= (isset($model->anunciosFiltros->material['value'])) ? (Html::tag('span', 'Material: ', ['class' => 'colorww']) . $model->anunciosFiltros->material['value']) : '' ?></p>
@@ -514,7 +543,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                 </div>
 
                 <p class="text-center pnmbreven">
-                    <strong><?= $model->usuario['nombres'] ?>
+                    <strong style="color: black"><?= $model->usuario['nombres'] ?>
                     </strong></p>
 
 
@@ -645,7 +674,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                         'labelOptions' => ['class' => 'col-md-4 control-label'],
                     ],*/
                 ]); ?>
-                <?= $form->field($modmess, 'detalle')->textarea(['class' => 'form-control cajadesct', 'placeholder' => 'Deja tu comentario o duda aqui para la vendedora ej: mas caracteristicas, medidas, tipo de envio o lo que desees para estar segura de la compra'])->label(false) ?>
+                <?= $form->field($modmess, 'detalle')->textarea(['class' => 'form-control cajadesct comentraio', 'placeholder' => 'Deja tu comentario o duda aquí para la vendedora ej: mas características, medidas, tipo de envío o lo que desees para conocer más del anuncio'])->label(false) ?>
                 <?= $form->field($modmess, 'idanuncio')->hiddenInput()->label(false) ?>
                 <?= $form->field($modmess, 'tipo')->hiddenInput()->label(false) ?>
 
@@ -766,6 +795,93 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                     </p>
 
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified " role="group" aria-label="group button">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="squarespaceModalmedidas" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                            class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="lineModalLabel"
+                    style=" font-size: 16px; font-weight: 600;  text-transform: uppercase">
+
+                    Cómo tomar mis medidas
+                </h3>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="col-xs-12">
+
+
+                  <p>Es necesario que puedas medirte para saber si las prendas pueden o no quedarte bien,
+                      recuerda que existen diferentes cortes y telas que pueden quedar a un cuerpo y a otro no.
+                  </p>
+
+
+                    <ul class="lignsop">
+                        <li>
+                            Con una cinta de medir flexible podrás tomar todas las medidas de tu cuerpo.
+
+
+
+                        </li>
+
+                        <li>
+                            <span style="font-weight: 600">
+                               Busto:
+                            </span> Envuélvete la cinta alrededor de la parte más ancha de tu busto, no tiene que estar flojo pero tampoco apretado.
+                       </li>
+                        <li>
+                              <span style="font-weight: 600">
+                            Cintura:   </span> Envuélvete la cinta por la parte más angosta de tu cintura, por lo general en la línea del ombligo, sin estar flojo ni apretado.
+
+                        </li>
+                        <li>
+                              <span style="font-weight: 600">
+                            Espalda:   </span> En la espalda, justo debajo de las axilas pasa la cinta métrica para obtener el ancho de tu espalda, es el punto más ancho.
+                        </li>
+                        <li>
+                              <span style="font-weight: 600">
+                            Cadera:   </span>Párate con tus piernas media separadas, y mide la parte más ancha de la cadera incluyendo los glúteos. Algunas mujeres tienen la parte más ancha en los muslos, pero no es allí de donde debes sacar la medida.
+                        </li>
+
+                    </ul>
+
+                    <br>
+
+                    <p class="text-center" style="font-weight: 600">
+                            Medidas adicionales que pueden servirte:
+                    </p>
+
+                    <p>
+
+                        Para hacerte una idea si una prenda te quedaría como quieres, debes saber ciertas medidas específicas en tu cuerpo, aquí te van:
+
+
+                        <br><br>
+                      <span style="font-weight: 600">Largo de blusa:  </span> <br>
+                        Se toma desde el nacimiento del hombro, pasando por la parte más sobresaliente del busto dejándolo caer libremente hasta donde sería el largo de la blusa que usarías.
+                        <br> <span style="font-weight: 600">  Largo de espalda para blusa: </span>  <br>
+                        Se toma desde el nacimiento del hombro hasta el largo de la prenda deseada. La mayoría de las veces es diferente al largo de la parte delantera.
+                        <br>  <span style="font-weight: 600">  Largo de falda: </span>  <br>
+                        Se toma la medida en tu cuerpo desde donde quieras que sea la parte superior de la falta (cintura, semi cadera, cadera) hasta donde sería el largo de la falda que usarías.
+
+                    </p>
                 </div>
 
 
