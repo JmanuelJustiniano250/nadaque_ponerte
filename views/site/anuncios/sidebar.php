@@ -28,7 +28,12 @@ label {
     border: 1px solid #bababa;
 }
 
-
+.btn:active, .btn.active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, .125);
+}
 
 
 .slider.slider-horizontal .slider-track {
@@ -38,6 +43,14 @@ label {
     top: 50%;
     left: 0;
 }
+
+
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+    background-color: #757575;
+    color: #fff;
+}
+
+
 .slider.slider-horizontal {
     width: 150px;
     height: 20px;
@@ -110,13 +123,13 @@ $index = 0;
     <h5 class="text-uppercase"><strong></strong></h5>
 
 
-    <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+    <a class="btn  botoncollape" role="button" data-toggle="collapse"  href="#collapseExample" aria-expanded="false"
        aria-controls="collapseExample">
-        Categoria <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+        Categoria <span style="    font-size: 11px;   padding-left: 5px;">(Ver -) </span> <br>
     </a>
 
 
-    <div class="collapse" id="collapseExample">
+    <div class="collapse in" id="collapseExample">
         <div class="" style="padding-top: 10px;">
             <?php $tmp = \app\models\Categorias::findAll(['estado' => 1, 'idPadre' => $padre]) ?>
             <?php $pos = 0?>
@@ -135,6 +148,9 @@ $index = 0;
             <?= Html::checkboxList("subcategorias", (isset($model['subcategorias']) ? $model['subcategorias'] : ''), ArrayHelper::map($tmp,'idcategoria','nombre')) ?>
         </div>
         <?php endif; ?>
+
+
+
     </div>
 
 
@@ -143,11 +159,11 @@ $index = 0;
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false"
        aria-controls="collapseExample">
-        Rango de precio <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+        Rango de precio <span style="    font-size: 11px;   padding-left: 5px;">(Ver - ) </span> <br>
     </a>
 
 
-    <div class="collapse" id="collapseExample2">
+    <div class="collapse in" id="collapseExample2">
         <div class="" style="padding-top: 10px;">
             <?php echo '<b class="badge">' . $model['precios']['min'] . ' Bs</b> ' . Slider::widget([
                     'name' => 'precio',
@@ -171,11 +187,11 @@ $index = 0;
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false"
        aria-controls="collapseExample">
-        Condicion del Producto <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+        Condicion del Producto <span style="    font-size: 11px;   padding-left: 5px;">(Ver - ) </span> <br>
     </a>
 
 
-    <div class="collapse" id="collapseExample3">
+    <div class="collapse in" id="collapseExample3">
         <div class="" style="padding-top: 10px;">
             <?php // foreach ($tmp as $item): ?>
                 <?= Html::checkboxList("condicion", ((isset($model['condicion'])) ? $model['condicion'] : ''), ArrayHelper::map($tmp,'id_cp','nombre') ) ?>
@@ -192,11 +208,11 @@ $index = 0;
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false"
        aria-controls="collapseExample">
-        Tallas de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+        Tallas de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver - ) </span> <br>
     </a>
 
 
-    <div class="collapse" id="collapseExample4">
+    <div class="collapse in" id="collapseExample4">
         <div class="" style="padding-top: 10px;">
             <?= Html::checkboxList("talla", ((isset($model['talla'])) ? $model['talla'] : ''), ArrayHelper::map($tmp,'id_tp','nombre')) ?>
         </div>
@@ -210,11 +226,11 @@ $index = 0;
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample5" aria-expanded="false"
        aria-controls="collapseExample">
-        Material de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+        Material de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver - ) </span> <br>
     </a>
 
 
-    <div class="collapse" id="collapseExample5">
+    <div class="collapse in" id="collapseExample5">
         <div class="" style="padding-top: 10px;">
             <?= Html::checkboxList("material", ((isset($model['material'])) ? $model['material'] : ''),ArrayHelper::map($tmp,'id_mp','nombre')) ?>
         </div>
@@ -227,11 +243,11 @@ $index = 0;
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample6" aria-expanded="false"
        aria-controls="collapseExample">
-        Marcas de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+        Marcas de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver - ) </span> <br>
     </a>
 
 
-    <div class="collapse" id="collapseExample6">
+    <div class="collapse in" id="collapseExample6">
         <div class="" style="padding-top: 10px;">
                 <?= Html::checkboxList("marca", ((isset($model['marca'])) ? $model['marca'] : ''), ArrayHelper::map($tmp,'id_msp','nombre')) ?>
         </div>
@@ -246,11 +262,11 @@ $index = 0;
 
     <a class="btn  botoncollape" role="button" data-toggle="collapse" href="#collapseExample7" aria-expanded="false"
        aria-controls="collapseExample">
-        Colores de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver +) </span> <br>
+        Colores de los Productos <span style="    font-size: 11px;   padding-left: 5px;">(Ver - ) </span> <br>
     </a>
 
 
-    <div class="collapse" id="collapseExample7">
+    <div class="collapse in" id="collapseExample7">
         <div class="" style="padding-top: 10px;">
                 <?= Html::checkboxList("color", ((isset($model['color'])) ? $model['color'] : ''),ArrayHelper::map($tmp,'id_co','nombre')) ?>
         </div>
@@ -269,7 +285,7 @@ $index = 0;
     </a>
 
 
-    <div class="collapse" id="collapseExample8">
+    <div class="collapse in" id="collapseExample8">
         <div class="" style="padding-top: 10px;">
                 <?= Html::checkboxList("ciudad", ((isset($model['ciudad'])) ? $model['ciudad'] : ''), ArrayHelper::map($tmp,'idciudad','nombre')) ?>
         </div>

@@ -43,7 +43,7 @@ $noticias = \app\models\Noticias::find()
     </div>
 
     <div align="center"><br>
-        <a href="<?= Url::to(['noticias']) ?>" class="btnregister" style="padding: 10px 20px">VER TODAS LAS ENTRADAS DEL
+        <a href="<?= Url::to(['noticias']) ?>" class="btnregister regisnoti" style="padding: 10px 20px">VER TODAS LAS ENTRADAS DEL
             BLOG</a>
     </div>
     <br>

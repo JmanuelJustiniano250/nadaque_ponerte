@@ -5913,6 +5913,32 @@ p.aliasestrela {
     color: #adadad;
 }
 
+
+
+
+
+
+
+
+.btnregister.regisnoti {
+    color: #fff;
+    background-color: #4e4b4b;
+    border-color: #ff6d89;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+.btnregister.regisnoti:hover, .btnregister.regisnoti:focus, .btnregister.regisnoti:active {
+    color: #fff;
+    background-color: rgba(255, 109, 137, 0.72) !important;
+    border-color: rgba(255, 109, 137, 0.72) !important;
+}
+
+
+
+
+
 .btnregister {
     color: #fff;
     background-color: #ff6d89;
@@ -6104,7 +6130,7 @@ p.nobor {
     overflow: hidden;
     text-indent: 100%;
     white-space: nowrap;
-    background: rgb(255, 109, 137) url(../images/cd-top-arrow.svg) no-repeat center 50%;
+    background: #4e4b4b url(../images/cd-top-arrow.svg) no-repeat center 50%;
     visibility: hidden;
     opacity: 0;
     -webkit-transition: opacity .3s 0s, visibility 0s .3s;

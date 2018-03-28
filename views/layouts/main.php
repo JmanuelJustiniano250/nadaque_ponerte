@@ -260,7 +260,10 @@ if($configuracion['google_analitics']) {
                             ['label' => 'Quiénes somos', 'url' => ['site/pages', 'id' => 'quienes-somos'], 'options' => ['class' => ''],],
                             ['label' => 'Cómo funciona NQP', 'url' => ['site/pages', 'id' => 'como-funciona'], 'options' => ['class' => ''],],
                             ['label' => 'Condiciones de uso ', 'url' => ['site/pages', 'id' => 'condiciones'], 'options' => ['class' => ''],],
+                            ['label' => 'Reglas de publicación', 'url' => ['/site/pages', 'id' => 'reglas-publicacion'], 'options' => ['class' => ''],],
+
                             ['label' => 'Preguntas frecuentes', 'url' => ['site/faq'], 'options' => ['class' => ''],],
+                            ['label' => 'Formas de pago', 'url' => ['/site/pages', 'id' => 'formas-pago'], 'options' => ['class' => ''],],
                             ['label' => 'Contacto', 'url' => ['/site/contacto'], 'options' => ['class' => ''],],
 
                         ],
@@ -289,14 +292,11 @@ if($configuracion['google_analitics']) {
                             ['label' => 'Cómo comprar?', 'url' => ['/site/pages', 'id' => 'como-comprar'], 'options' => ['class' => ''],],
                             ['label' => 'Testimonios', 'url' => ['/site/pages', 'id' => 'testimonios'], 'options' => ['class' => ''],],
                             ['label' => 'Videos tutoriales', 'url' => ['/site/pages', 'id' => 'tutoriales'], 'options' => ['class' => ''],],
-                            ['label' => 'Formas de pago', 'url' => ['/site/pages', 'id' => 'formas-pago'], 'options' => ['class' => ''],],
-                            ['label' => 'Reglas de publicación', 'url' => ['/site/pages', 'id' => 'reglas-publicacion'], 'options' => ['class' => ''],],
-
-                        ],
+                      ],
                     ]);
                     ?>
 
-                    <a href="" class="text-center registrarse ">REGÍSTRATE</a>
+                    <a href="<?= Url::to(['site/register']) ?>" class="text-center registrarse ">REGÍSTRATE</a>
 
                 </div>
 

@@ -658,10 +658,10 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
         <hr>
         <br><br><br>
-        <?php if (!empty(Yii::$app->session->get('user'))): ?>
+
             <div class="col-xs-12">
                 <h3>Comentarios</h3>
-                <br><br>
+
                 <?php $modmess = new \app\models\Mensajes(); ?>
                 <?php $modmess->idanuncio = $model->idanuncio; ?>
                 <?php $modmess->tipo = 1; ?>
@@ -699,9 +699,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                             <div class="<?= (($mensaje->usuario['idusuario'] == $model->idusuario) ? 'anunciantes' : 'cajausuario') ?>">
 
-                                <div class="cahas">
-                                    <?= Html::img('@web/assets_b/images/chats.png') ?>
-                                </div>
+
 
                                 <div class="imagenusario" align="right">
                                     <span><?= $mensaje->usuario['nombres'] ?> </span>
@@ -711,16 +709,16 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
                                         45,
                                         45,
                                         EasyThumbnailImage::THUMBNAIL_OUTBOUND,
-                                        ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: -25px;', 'class' => 'img-responsive']
+                                        ['style' => ' border-radius: 40px; margin-top: 0px; display: inline-block;     margin-top: 5px;', 'class' => 'img-responsive']
                                     );
                                     ?>
 
                                 </div>
 
-                                <div class="comentarios2" style="padding-left: 10px">
+                                <div class="comentarios2" style="padding-left: 10px; margin-top: -35px;">
                                     <p><?= $mensaje['detalle'] ?></p>
 
-                                    <p style="color: #ff6d89; margin-bottom: 5px; font-weight: 600"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']);
+                                    <p style="     font-size: 12px; color: #ff6d89; margin-bottom: 5px; font-weight: 300"><?php $date = \app\components\Funcions::fecha($mensaje['fecha_registro']);
                                         echo $date['dia'] . ' ' . $date['mes'] . ' ' . $date['anio'] . ' ' . date('H:m', strtotime($mensaje['fecha_registro'])) ?></p>
                                 </div>
                             </div>
@@ -732,7 +730,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
             </div>
             <br>
-        <?php endif; ?>
+
     </div>
 
 </div>

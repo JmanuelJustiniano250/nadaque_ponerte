@@ -25,7 +25,7 @@ foreach ($compras as $item) {
     $row['nro_anuncios'] = $item->paquete['nro_anuncios'];
     $row['nro_anuncios_restantes'] = $item->paquete['nro_anuncios'] - \app\models\Anuncios::find()->where(['idcompra' => $item['idcompra']])->count();
     if (empty($item['fecha_pago'])) {
-        $row['fecha_expiracion'] = 'aun no se cancelo el pago';
+        $row['fecha_expiracion'] = 'Ya expirado';
         $row['fecha_pago'] = 0;
 
     } else {

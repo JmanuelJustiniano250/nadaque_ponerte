@@ -264,7 +264,7 @@ $cats = $categoria->categorias;
 ?>
 
     <h5 class="menu-left sidebarpr text-uppercase"><!--<?//= $categoria['nombre'] ?>--> CATEGORÍAS</h5>
-    <a class="menu-left sidebarpcat " href="<?= Url::to(['comprar']) ?>" style="color: #505050">
+    <a class="menu-left sidebarpcat " href="<?= Url::to(['comprar']) ?>" style="color: #505050;     font-family: 'Raleway', sans-serif;">
         <!--<?//= $categoria['nombre'] ?>--> Todos los productos</a>
 
 
