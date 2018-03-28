@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <div class="text-center" align="center" style="margin-top: px;"><BR>
-                        <?= Html::a('MARCAR COMO VENDIDO', ['cuenta/updateA', 'id' => $model->idanuncio, 'estado' => 1], [
+                        <?= Html::a('MARCAR COMO VENDIDO', ['cuenta/updatea', 'id' => $model->idanuncio, 'estado' => 1], [
                             'class' => 'registrarse',
                             'style' => 'margin-left: 0',
                             'data' => [
@@ -126,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <?php $form = ActiveForm::begin([
-                    'action' => ['/cuenta/updateA', 'id' => $model->idanuncio],
+                    'action' => ['/cuenta/updatea', 'id' => $model->idanuncio],
                     'id' => 'login-form',
                     'method' => 'get'
                     /*'layout' => 'horizontal',

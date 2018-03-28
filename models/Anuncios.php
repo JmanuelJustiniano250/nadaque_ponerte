@@ -64,7 +64,7 @@ class Anuncios extends \yii\db\ActiveRecord
     {
         return [
             [['idcompra'], 'required'],
-            [['idcompra','decripcion','titulo','foto','precio','idcategoria',], 'required','on'=>'create'],
+            [['idcompra','decripcion','titulo','file','precio','idcategoria',], 'required','on'=>'create'],
             [['idcategoria','idsubcategoria', 'idusuario', 'estado', 'enable', 'idcompra', 'visitas', 'vendido'], 'integer'],
             [['decripcion', 'otra_descripcion', 'razon'], 'string'],
             [['fecha_registro', 'fecha_aprobado', 'filtro'], 'safe'],

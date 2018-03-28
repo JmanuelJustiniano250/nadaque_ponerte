@@ -238,7 +238,7 @@ $this->title = 'Marca&Mercado';
                                             EasyThumbnailImage::THUMBNAIL_OUTBOUND,
                                             ['style' => 'margin: 0 auto;', 'class' => 'img-responsive']
                                         ) .
-                                        Html::a($usuario->alias, ['/usuarios/view', 'id' => $usuario->idusuario], ['class' => 'users-list-name']) .
+                                        Html::a($usuario->alias, ['/admin/usuarios/view', 'id' => $usuario->idusuario], ['class' => 'users-list-name']) .
                                         Html::tag('span', \app\components\Funcions::fecha($usuario->fecha_registro, true, true), ['class' => 'users-list-date'])
                                     );
                                 }
@@ -248,7 +248,7 @@ $this->title = 'Marca&Mercado';
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer text-center">
-                            <?= Html::a('Ver todos los usuarios',['/usuarios/'],['class'=>'uppercase'])?>
+                            <?= Html::a('Ver todos los usuarios',['/admin/usuarios/'],['class'=>'uppercase'])?>
                         </div>
                         <!-- /.box-footer -->
                     </div>

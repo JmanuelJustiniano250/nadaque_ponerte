@@ -63,12 +63,23 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+
                 ],
             ],
 
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        $tmp = Yii::$app->request->referrer;
+        if($tmp != Url::to(['site/login'],true))
+            Yii::$app->user->returnUrl = $tmp;
+        return parent::beforeAction($action);
+    }
     /*
      * pagina principal
      */
@@ -343,7 +354,7 @@ class SiteController extends Controller
 
         $model = new LoginWeb();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack(Yii::$app->request->referrer);
+            return $this->goBack();
         }
         /*else{
             Yii::$app->user->setReturnUrl(Yii::$app->request->referrer);

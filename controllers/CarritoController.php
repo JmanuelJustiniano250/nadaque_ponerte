@@ -7,6 +7,7 @@ use app\components\TigoMoney;
 use app\models\Compra;
 use app\models\Configuracion;
 use app\models\Paquetes;
+use app\models\Usuarios;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -109,13 +110,19 @@ class CarritoController extends Controller
         }
         switch ($pasos) {
             case '1':
+                $user = Usuarios::findOne(['idusuario'=>Yii::$app->session->get('user')['idusuario']]);
+                if (empty($model->nit_factura))
+                    $model->nit_factura = $user['nit'];
+                if (empty($model->nombre_factura))
+                    $model->nombre_factura = $user['nombrenit'];
+
                 if ($model->load(Yii::$app->request->post())) {
-                    $model->idusuario = Yii::$app->session->get('user')['idusuario'];
+                    $model->idusuario = $user['idusuario'];
                     $model->session = Yii::$app->session->get('cart');
                     $model->estado = 0;
-                    if ($model->nit_factura)
+                    if (empty($model->nit_factura))
                         $model->nit_factura = Yii::$app->session->get('user')['nit'];
-                    if ($model->nombre_factura)
+                    if (empty($model->nombre_factura))
                         $model->nombre_factura = Yii::$app->session->get('user')['nombrenit'];
 
                     if (Yii::$app->cart->getCost() == 0) {

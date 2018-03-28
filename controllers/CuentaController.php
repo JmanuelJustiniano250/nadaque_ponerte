@@ -20,6 +20,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 
@@ -33,7 +34,7 @@ class CuentaController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'principal', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos', 'listadel', 'mensajeria', 'update','updateA', 'mensaje', 'mensaje2'],
+                'only' => ['create', 'principal', 'register', 'cuenta', 'anuncios', 'anuncios2', 'compras', 'calificaciones', 'calificar', 'comentarios', 'listadeseos', 'listadel', 'mensajeria', 'update', 'updateA', 'mensaje', 'mensaje2'],
                 'rules' => [
                     // allow authenticated users
                     [
@@ -60,14 +61,18 @@ class CuentaController extends Controller
             ],
         ];
     }
+
     /**
      * @inheritdoc
      */
     public function beforeAction($action)
     {
-        Yii::$app->user->returnUrl = Yii::$app->request->referrer;
+        $tmp = Yii::$app->request->referrer;
+        if ($tmp != Url::to(['site/login'], true))
+            Yii::$app->user->returnUrl = $tmp;
         return parent::beforeAction($action);
     }
+
     /**
      * Displays homepage.
      *
@@ -83,9 +88,9 @@ class CuentaController extends Controller
         }*/
 
         $model = new Anuncios();
-        $model->scenario='create';
+        $model->scenario = 'create';
         $modelfiltro = new AnunciosFiltros();
-        $modelfiltro->scenario='create';
+        $modelfiltro->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post()) && $modelfiltro->load(Yii::$app->request->post())) {
             $model->idusuario = Yii::$app->session->get('user')['idusuario'];
@@ -97,10 +102,9 @@ class CuentaController extends Controller
             $model->file4 = UploadedFile::getInstance($model, 'file4');
             $model->file5 = UploadedFile::getInstance($model, 'file5');
             // form inputs are valid, do something here
-            if ($model->upload()) {
 
-            }
-            if($model->validate() && $modelfiltro->validate()) {
+            if ($model->validate() && $modelfiltro->validate()) {
+                $model->upload();
                 if ($model->save(false)) {
                     $modelfiltro->idanuncio = $model->idanuncio;
                     $modelfiltro->save();
@@ -277,6 +281,7 @@ class CuentaController extends Controller
             if ($model->validate()) {
                 $model->file = UploadedFile::getInstance($model, 'file');
                 $name = Yii::$app->security->generateRandomString();
+                $tmp ="";
                 if ($model->upload($name)) {
                     $tmp = $model->foto;
                     $model->foto = $name . '.' . $model->file->extension;
@@ -285,9 +290,10 @@ class CuentaController extends Controller
                 if ($model->contrasena != Yii::$app->session->get('user')['contrasena'])
                     $model->contrasena = md5($model->contrasena);
                 if ($model->save(false)) {
-
-                    if (file_exists("../" . Yii::$app->basePath . "/imagen/usuarios/" . $tmp)) {
-                        unlink("../" . Yii::$app->basePath . "/imagen/usuarios/" . $tmp);
+                    if(!empty($tmp)) {
+                        if (file_exists("../" . Yii::$app->basePath . "/imagen/usuarios/" . $tmp)) {
+                            unlink("../" . Yii::$app->basePath . "/imagen/usuarios/" . $tmp);
+                        }
                     }
                     Yii::$app->session->setFlash('success', ['message' => 'Actualización Realizada', 'type' => 'success']);
                 } else {
@@ -503,9 +509,10 @@ class CuentaController extends Controller
             ->all();
 
 
-        $mensajes = Usuarios::find()->where(['and',
+        $mensajes = Usuarios::find()->where(['and', ['and',
             ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp, 'idusuario')],
             ['IN', 'idusuario', ArrayHelper::getColumn($mensajestmp, 'idvendedor')]
+        ], ['!=', 'idusuario', Yii::$app->session->get('user')['idusuario']]
         ])
             ->distinct('idusuario')
             ->all();
@@ -536,12 +543,17 @@ class CuentaController extends Controller
             ->andWhere(['tipo' => 0])
             ->orderBy(['fecha_registro' => SORT_ASC])
             ->all();
-        Mensajes::updateAll(['estado' => 1], ['and',
-            ['and',
-                ['idvendedor' => Yii::$app->session->get('user')['idusuario']],
-                ['tipo' => 0]
-            ], ['estado' => 0]]);
-        // }
+        if (!empty(Yii::$app->request->get('id'))) {
+            Mensajes::updateAll(['estado' => 1],
+                ['and',
+                    ['and',
+                        ['and',
+                            ['idvendedor' => Yii::$app->session->get('user')['idusuario']],
+                            ['tipo' => 0]
+                        ], ['estado' => 0]
+                    ], ['idusuario' => Yii::$app->request->get('id')]
+                ]);
+        }
 
         return $this->render('index', ['op' => 7, 'model' => $model, 'mensaje' => $mensajes, 'chat' => $chat]);
     }
@@ -605,7 +617,7 @@ class CuentaController extends Controller
 
     }
 
-    public function actionupdateA($id)
+    public function actionUpdatea($id)
     {
         $vendido = Yii::$app->request->get('estado');
         $precio = Yii::$app->request->get('precio');
@@ -626,10 +638,10 @@ class CuentaController extends Controller
                 $sw = 1;
             }
             if ($sw == 1) {
-                if ($model->save()) {
-                    Yii::$app->session->setFlash('success', ['message' => 'Precio cambiado', 'type' => 'success']);
+                if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', ['message' => 'Anuncio actualizado', 'type' => 'success']);
                 } else
-                    Yii::$app->session->setFlash('error', ['message' => 'Error en el envio, intentelo mas tarde']);
+                    Yii::$app->session->setFlash('error', ['message' => 'Error, intentelo mas tarde']);
             }
         }
         return $this->redirect(Yii::$app->request->referrer);
@@ -709,7 +721,7 @@ class CuentaController extends Controller
         $out = [];
         if (isset($_POST['depdrop_parents'])) {
             $id = end($_POST['depdrop_parents']);
-            $list = Categorias::findAll([ 'idpadre' => $id]);
+            $list = Categorias::findAll(['idpadre' => $id]);
             // $li = ArrayHelper::map($model, 'idcategoria', 'nombre');
             // the getSubCatList function will query the database based on the
             if ($id != null && count($list) > 0) {
@@ -727,6 +739,6 @@ class CuentaController extends Controller
             echo Json::encode(['output' => $out, 'selected' => '']);
             return;
         }
-        echo Json::encode(['output'=>'', 'selected'=>'']);
+        echo Json::encode(['output' => '', 'selected' => '']);
     }
 }
