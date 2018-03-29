@@ -4622,6 +4622,9 @@ footer .up-footer .footer-line p {
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
+.imagennsope span{
+font-size: 10px!important;
+}
 
     .moreven {
         width: 70% !important;
