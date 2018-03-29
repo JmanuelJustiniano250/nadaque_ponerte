@@ -4891,9 +4891,37 @@ footer .up-footer .footer-line p {
     }
 }
 
-
+@media (max-width: 320px) {
+    .navbar-toggle {
+        margin-top: -30px!important;
+    }
+}
 
 @media (max-width: 767px) {
+
+    .navbar-header{
+        margin-top: -20px;
+    }
+
+    .navbar {
+        position: relative;
+        min-height: 20px!important;
+    margin-bottom: 20px!important;}
+
+
+
+            .menud21{
+                margin-bottom: -10px;
+            }
+
+    .leftes.resp23 {
+        padding: 0px 10px !important;
+    }
+
+
+    .logorespeon{
+        max-width: 40%!important;
+    }
 
 
     .lienen23{
@@ -5053,7 +5081,7 @@ footer .up-footer .footer-line p {
     .logores {
         background-color: #ff6d89;
         padding-top: 10px;
-        padding-bottom: 10px;
+        padding-bottom: 0px;
     }
 
     .leftes2 > li > a {
@@ -5071,7 +5099,7 @@ footer .up-footer .footer-line p {
     }
 
     .navbar-toggle {
-        margin-top: 15px;
+        margin-top: -55px;
     }
 
     .nav > li > a,
@@ -5752,8 +5780,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 }
 
+
+.moreven:hover, .moreven:focus, .moreven:active {
+    color: #ff6d89!important;
+}
 .moreven {
-    background: #ff6d89;
+    background: #2d2d2d;
     font-family: 'Raleway', sans-serif;
     /* position: absolute; */
     /* padding: 0px; */
@@ -5765,7 +5797,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     padding: 10px;
     font-weight: 600;
     margin: 0 auto;
-    border: 1px solid #ff6d89;
+    border: 1px solid #2d2d2d;
     border-radius: 5px;
     margin-top: 20px;
     font-size: 13px;
@@ -6016,13 +6048,13 @@ p.nobor {
     margin-top: 5px;
     margin-bottom: 5px;
     color: white;
-    border: 1px solid black;
+    border: 1px solid #2d2d2d;
     padding: 10px;
     margin-right: 10px;
     font-weight: 600;
 
     border-radius: 5px;
-    background: black;
+    background: #2d2d2d;
 }
 
 .anunciocrear:hover, .anunciocrear:focus, .anunciocrear:active {
@@ -6441,4 +6473,14 @@ div.bhoechie-tab-menu div.list-group > a.active, div.bhoechie-tab-menu div.list-
 
 .lienen23{
 
+}
+
+
+.botoncontacro{
+    background: #2d2d2d;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
 }
