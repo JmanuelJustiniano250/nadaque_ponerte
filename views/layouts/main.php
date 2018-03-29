@@ -84,12 +84,12 @@ if($configuracion['google_analitics']) {
         <div class="menuprin">
 
 
-            <div class="container hidden-xs ">
+            <div class="container">
                 <!-- Menu principal -->
-                <ul class="nav navbar-nav navbar-left padding-title">
+                <ul class="nav navbar-nav navbar-left padding-title menud21">
                     <li><p class="plomo-1t"><?= $txt_count ?></p></li>
                 </ul><?php echo \yii\bootstrap\Nav::widget([
-                    'options' => ['class' => ' navbar-nav navbar-right plomo-1t padding-title leftes'],
+                    'options' => ['class' => ' navbar-nav navbar-right plomo-1t padding-title leftes resp23'],
                     'encodeLabels' => false,
                     'items' => $items,
                 ]);
@@ -97,12 +97,12 @@ if($configuracion['google_analitics']) {
             </div>
         </div>
 
-        <nav class="navbar navbar-default visible-xs">
+       <!-- <nav class="navbar navbar-default visible-xs">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- Brand and toggle get grouped for better mobile display
 
                 <div class="navbar-header menuprin">
-                    <div class="col-xs-9"><p class="plomo-1t pull-left" style="padding-top: 5px"><?= $txt_count ?></p>
+                    <div class="col-xs-9"><p class="plomo-1t pull-left" style="padding-top: 5px"><?//= $txt_count ?></p>
                     </div>
                     <div class="col-xs-3">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -117,21 +117,21 @@ if($configuracion['google_analitics']) {
 
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!-- Collect the nav links, forms, and other content for toggling
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <?php echo \yii\bootstrap\Nav::widget([
+                    <?php/* echo \yii\bootstrap\Nav::widget([
                         'options' => ['class' => 'navbar-nav navbar-right plomo-1t leftes2'],
                         'encodeLabels' => false,
                         'items' => $items,
                     ]);
-                    ?>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
+                    */ ?>
+                </div><!-- /.navbar-collapse
+            </div><!-- /.container-fluid
+        </nav>-->
 
 
         <a class="visible-sm visible-xs hidden-md hidden-lg logores" href="<?= Url::home() ?>"><img
-                    src="<?= Url::to(['assets_b/images/logo.png']) ?>" class="logo" style="margin: 0 auto; display: block;
+                    src="<?= Url::to(['assets_b/images/logo.png']) ?>" class="logo logorespeon" style="margin: 0 auto; display: block;
     max-width: 100%;" alt=""></a>
 
 
