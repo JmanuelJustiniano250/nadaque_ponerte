@@ -6484,3 +6484,10 @@ div.bhoechie-tab-menu div.list-group > a.active, div.bhoechie-tab-menu div.list-
     border-radius: 5px;
     font-family: 'Raleway', sans-serif;
 }
+
+.botoncontacro:hover, .botoncontacro:focus,.botoncontacro:active{
+background: #ff728dbf!important;
+    color: white!important;
+    text-decoration: none!important;
+}
+
