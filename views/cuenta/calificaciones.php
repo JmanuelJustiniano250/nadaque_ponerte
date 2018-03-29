@@ -19,6 +19,18 @@ $mes = date("m", strtotime($model['fecha_creacion']));
 $año = date("Y", strtotime($model['fecha_creacion']));
 
 
+
+
+$script = <<<CSS
+
+
+.item4 h3{
+color: black;
+}
+CSS;
+$this->registerCss($script);
+
+
 ?>
 
 <div class="cajacomentearios">

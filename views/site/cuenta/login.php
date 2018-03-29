@@ -11,9 +11,9 @@ use yii\helpers\Html;
 $this->title = 'Ingresar';
 $this->params['breadcrumbs'][] = $this->title;
 $script = <<<CSS
-.help-block-error
+.help-block.help-block-error 
 {
-display: none;
+display: block!important;
 }
 CSS;
 $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);

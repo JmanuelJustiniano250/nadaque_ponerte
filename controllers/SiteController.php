@@ -241,7 +241,8 @@ class SiteController extends Controller
                     }
                 }
 
-                return $this->render('anunciante', [
+                Yii::$app->session->setFlash('error', ['message' => 'Debes llenar tus datos antes de comprar un paquete o anuncio suelto', 'type' => 'warning']);
+                return $this->render('/cuenta/register', [
                     'model' => $model,
                 ]);
             }
@@ -405,7 +406,7 @@ class SiteController extends Controller
                     if ($model->save()) {
                         //$model->send();
                         Correos::nuevoUsuario($model, $randomString);
-                        Yii::$app->session->setFlash('success', ['message' => 'Registro Realizado, Revisa tu correo electronico en breve', 'type' => 'success']);
+                        Yii::$app->session->setFlash('success', ['message' => 'Registro realizado, revisa en breve tu correo electrónico proporcionado  para completar tu registro.', 'type' => 'success']);
                         return $this->redirect(['site/login']);
                     }
                     Yii::$app->session->setFlash('error', ['message' => 'Hubo un error, intentelo mas tarde']);

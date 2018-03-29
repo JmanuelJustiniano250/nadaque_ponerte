@@ -57,20 +57,22 @@ $this->registerCss($script, ['depends' => \app\assets_b\AppAsset::class]);
                 </div>
 
                 <div class="col-sm-6 col-xs-12 dl2" style="padding-right: 0">
-                    <p>Código: <?= $item['codigo'] ?></p>
+
 
                     <?php if ($item['precio_promocion']): ?>
 
-                        <p class="colorwqw">Bs. <?= $item['precio_promocion'] ?>  </p>
+                        <p class="colorwqw" style="    font-weight: 600;">Bs. <?= $item['precio_promocion'] ?>  </p>
                         <p class="colorwqw" style="font-size: 11px;
     text-decoration: line-through;
     font-weight: 300;">Bs.<?= $item['precio'] ?></p>
 
                     <?php else: ?>
 
-                        <p class="colorwqw">Bs. <?= $item['precio'] ?> </p>
+                        <p class="colorwqw" style="    font-weight: 600;">Bs. <?= $item['precio'] ?> </p>
 
                     <?php endif; ?>
+
+                    <p>Código: <?= $item['codigo'] ?></p>
 
                 </div>
 

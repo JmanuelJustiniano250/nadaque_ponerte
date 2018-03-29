@@ -6,8 +6,11 @@ use yii\helpers\Html;
 
 $script = <<<CSS
 .krajee-default.file-preview-frame .kv-file-content {
-    width: 100%;
-    height: 160px;
+     width: 60%;
+    height: 175px;
+    border: 1px solid #e5e5e5;
+    margin: 0 auto;
+    padding: 5px;
 }
 
 .file-zoom-content {
@@ -139,6 +142,17 @@ color:#ff839a; border-color: #ff839a;
 
 
 
+@media (max-width: 767px){
+.krajee-default.file-preview-frame .kv-file-content {
+     width: 100%!important;
+    
+}
+}
+
+
+
+
+
 @media (max-width: 410px)
 {
 .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
@@ -182,6 +196,15 @@ label  span{
     -o-transition: all 0.2s ease-in-out;
 }
 
+
+button[disabled], html input[disabled] {
+  cursor: default;
+    width: 100%;
+    padding: 5px;
+    background: white;
+    border: 1px solid #cccccc;
+}
+
 .field-usuarios-visibletelefono .radio-inline, .checkbox-inline {
     
     display: block; margin-top: 10px;
@@ -198,7 +221,7 @@ label  span{
 .radios .form-group{
 display: inline-block;
 }
-.mi-input::placeholder { color: #b7b7b7;  }
+.mi-input::placeholder { color: #888888;  }
 
 .mi-input { color: black;  }
 
@@ -237,7 +260,8 @@ $this->registerCss($script);
         <div class="row">
 
             <H3 style="    font-size: 14px;
-    text-align: center; font-weight: 300">FOTO (sube tu foto de perfil)</H3>
+    text-align: center; color: black font-weight: 300"> <span style="color: red;
+    font-family: 'Helvetica', sans-serif;">*</span> FOTO (sube tu foto de perfil)</H3>
 
             <?php
             $initial = [];;
@@ -289,14 +313,14 @@ $this->registerCss($script);
                         <?= $form->field($model, 'nombres')->label(false) ?>
                     </div>
                     <div class="col-md-6 col-xs-12">
-                        <label for="">Nombre para mostrar en su perfil <span>*</span></label>
+                        <label for="">Nombre para mostrar en su perfil y anuncios<span>*</span></label>
                         <?= $form->field($model, 'alias')->label(false) ?>
                     </div>
 
                     <div class="col-md-6 col-xs-12">
-                        <label for=""> Correo electrónico (alterno)</label>
+                        <label for=""> Correo electrónico </label>
 
-                        <?= $form->field($model, 'email')->label(false) ?>
+                        <?= $form->field($model, 'email')->label(false)->textInput(['class' => '', 'disabled' => 'disabled']) ?>
                     </div>
 
 
@@ -504,25 +528,38 @@ $this->registerCss($script);
 
 
                         <?= $form->field($model, 'ciudad')->label(false)->dropDownList(
-                            ['Santa-Cruz' => 'Santa Cruz',
-                                'La-Paz' => 'La Paz',
-                                'Cochabamba' => 'Cochabamba',
+                            [
+                                'S' => 'Selecciona tu ciudad',
                                 'Beni' => 'Beni',
-                                'Tarija' => 'Tarija',
-                                'Sucre' => 'Sucre',
-                                'Pando' => 'Pando',
+                                'Cochabamba' => 'Cochabamba',
+                                'Camiri' => 'Camiri',
+                                'El-alto' => 'El Alto',
+                                'La-Paz' => 'La Paz',
+                                'Montero' => 'Montero',
                                 'Oruro' => 'Oruro',
                                 'Potosi' => 'Potosi',
-                                'El-alto' => 'El Alto',
-                                'Montero' => 'Montero',
-                                'Warnes' => 'Warnes',
-                                'San-ignacio-de-velasco' => 'San Ignacio de Velasco',
-                                'Yacuiba' => 'Yacuiba',
-                                'Camiri' => 'Camiri',
-                                'Uyuni' => 'Uyuni',
-                                'Samaipata' => 'Samaipata',
-                                'Riberalta' => 'Riberalta',
+                                'Pando' => 'Pando',
                                 'Quillacollo' => 'Quillacollo',
+                                'Riberalta' => 'Riberalta',
+                                'Santa-Cruz' => 'Santa Cruz',
+                                'Sucre' => 'Sucre',
+                                'San-ignacio-de-velasco' => 'San Ignacio de Velasco',
+                                'Samaipata' => 'Samaipata',
+                                'Tarija' => 'Tarija',
+                                'Uyuni' => 'Uyuni',
+                                'Warnes' => 'Warnes',
+                                'Yacuiba' => 'Yacuiba',
+
+
+
+
+
+
+
+
+
+
+
 
 
                             ]
@@ -533,7 +570,7 @@ $this->registerCss($script);
 
 
                     <div class="col-md-6 col-xs-12">
-                        <label for="">Dirección (No sera mostrada)</label>
+                        <label for="">Dirección (No será mostrada)</label>
                         <?= $form->field($model, 'direccion')->label(false) ?>
                     </div>
 
@@ -562,7 +599,7 @@ $this->registerCss($script);
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <label for="" style="font-weight: 300">Indicanos tu talla (no sera publicada)</label> <br>
+                        <label for="" style="font-weight: 300">Indicanos tu talla (no será mostrada)</label> <br>
 
 
                         <label for="">Blusas</label>
@@ -753,6 +790,7 @@ $this->registerCss($script);
 
         <div class="col-xs-12">
             <?= Html::submitButton('Aplicar cambios', ['class' => 'btnregister btn btn-primary center-block']) ?>
+            <br><br>
         </div>
 
 

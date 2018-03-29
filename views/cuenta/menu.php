@@ -54,6 +54,16 @@ $script = <<<CSS
 }
 
 
+.nav-pills > li.active > a span, .nav-pills > li.active > a span:hover, .nav-pills > li.active > a span:focus {
+    color: red!important;
+
+}
+
+
+.glyphicon.glyphicon-exclamation-sign{
+color: red;
+}
+
 CSS;
 $this->registerCss($script);
 
