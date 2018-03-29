@@ -412,9 +412,13 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                     <div class="imagennsope">
 
-                        <a href="" data-toggle="modal" data-target="#squarespaceModal">
-                            <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt=""
-                                 style="max-width: 100%; margin: 0 auto; display: block" class="lefte">
+                        <a href="" data-toggle="modal" data-target="#squarespaceModal" class="botoncontacro">
+
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span style="font-size: 12px;">Comunícate con la anunciante</span>
+
+                           <!-- <img src="<?= Url::to('@web/assets_b/images/quiero.png') ?>" alt=""
+                                 max-width: 100%; margin: 0 auto; display: block" class="lefte">-->
 
                         </a>
 
@@ -434,7 +438,7 @@ $this->render('../widgets/metatags', ['model' => $configuracion]);
 
                     <div align="right" class="lefte modalesw"><br><br><br>
                         <a href="" data-toggle="modal" class="btonhreg " data-target="#squarespaceModaljuntar"
-                           style="font-weight: 300; font-size: 11px">
+                           style="font-weight: 300;  font-size: 11px">
 
                             ¿Cómo me puedo juntar?</a>
 
