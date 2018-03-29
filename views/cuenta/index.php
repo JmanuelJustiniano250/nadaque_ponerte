@@ -86,8 +86,7 @@ $this->registerCss($script);
                             <div class="statistic-counter">
                                 <?php if ($compra): ?>
                                     <?php $tmp = \app\models\Anuncios::find()
-                                        ->joinWith(['paquete', 'paquete.paquete'])
-                                        ->andWhere(['<=', '(fecha_aprovacion+tiempo_vida)', 'NOW()'])
+                                        ->andWhere(['estado'=>1])
                                         ->andWhere(['anuncios.idusuario' => Yii::$app->session->get('user')['idusuario']])
                                         ->distinct()
                                         ->count() ?>
@@ -129,9 +128,8 @@ $this->registerCss($script);
 
                                 <?php if ($compra): ?>
 
-                                    <?php $tmp = \app\models\Compra::find()
-                                        ->joinWith('paquete')
-                                        ->andWhere(['>', '(fecha_aprovacion+tiempo_vida)', 'NOW()'])
+                                    <?php $tmp = \app\models\Anuncios::find()
+                                        ->andWhere(['estado'=>3])
                                         ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
                                         ->distinct()
                                         ->count() ?>
@@ -149,8 +147,7 @@ $this->registerCss($script);
                             <div class="statistic-counter">
                                 <?php if ($compra): ?>
                                     <?php $tmp = \app\models\Compra::find()
-                                        ->joinWith('paquete')
-                                        ->andWhere(['<=', '(fecha_aprovacion+tiempo_vida)', 'NOW()'])
+                                        ->andWhere(['estado'=>1])
                                         ->andWhere(['idusuario' => Yii::$app->session->get('user')['idusuario']])
                                         ->distinct()
                                         ->count() ?>
